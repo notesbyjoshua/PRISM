@@ -2,6 +2,7 @@
 set -euo pipefail
 
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+export PYTHONDONTWRITEBYTECODE=1
 
 cd "$PROJECT_DIR/backend"
 "$PROJECT_DIR/.venv/bin/uvicorn" app.main:app --reload --port 8000 &
