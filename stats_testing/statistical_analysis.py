@@ -1,3 +1,13 @@
+"""
+
+To run the program, run this script:
+
+cd /Users/joshua/Documents/PRISM
+source .venv/bin/activate
+python stats_testing/statistical_analysis.py
+
+"""
+
 import argparse
 from pathlib import Path
 
