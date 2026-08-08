@@ -27,7 +27,7 @@ from statsmodels.stats.multitest import multipletests
 # =========================
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-OUTPUT_DIR = PROJECT_ROOT / "stats_results"
+OUTPUT_DIR = PROJECT_ROOT / "stats_results/significance_testing"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # -------------------------------------------------------------------------
@@ -35,7 +35,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # Use an absolute path, or a path relative to the PRISM project directory.
 # -------------------------------------------------------------------------
 DISEASE_FILE = "data/phenotypes_all_disease.csv"  # put file here
-HEALTHY_FILE = ""  # put file here
+HEALTHY_FILE = "data/phenotypes_all_healthy.csv"  # put file here
 
 
 def parse_args():
@@ -297,11 +297,11 @@ def cliffs_delta_fast(x, y):
 
 
 def bootstrap_effect_ci(x, y, iterations, rng):
-    """Percentile 95% CIs for Hedges' g and Cliff's delta."""
+    """Effect-size CIs and the fraction of Hedges' g samples with the same direction."""
     x = np.asarray(pd.Series(x).dropna(), dtype=float)
     y = np.asarray(pd.Series(y).dropna(), dtype=float)
     if iterations == 0 or len(x) < 2 or len(y) < 2:
-        return np.nan, np.nan, np.nan, np.nan
+        return np.nan, np.nan, np.nan, np.nan, np.nan
 
     g_samples = np.empty(iterations)
     delta_samples = np.empty(iterations)
@@ -319,7 +319,15 @@ def bootstrap_effect_ci(x, y, iterations, rng):
         if len(delta_valid)
         else [np.nan, np.nan]
     )
-    return g_ci[0], g_ci[1], d_ci[0], d_ci[1]
+    observed_g = hedges_g(pd.Series(x), pd.Series(y))
+    if not len(g_valid) or not np.isfinite(observed_g) or observed_g == 0:
+        direction_stability = np.nan
+    elif observed_g > 0:
+        direction_stability = np.mean(g_valid > 0)
+    else:
+        direction_stability = np.mean(g_valid < 0)
+
+    return g_ci[0], g_ci[1], d_ci[0], d_ci[1], direction_stability
 
 
 def add_fdr(p_values):
@@ -330,6 +338,42 @@ def add_fdr(p_values):
     if valid.any():
         adjusted[valid] = multipletests(p_values[valid], method="fdr_bh")[1]
     return adjusted
+
+
+def add_phenotype_difference_score(results, q_column):
+    """Add the four PDF components and the final 0–100 score.
+
+    PDF = 100 * (0.45 E + 0.20 S + 0.25 B + 0.10 N), where:
+      E = min(abs(Hedges' g) / 1.5, 1)
+      S = min(-log10(FDR q) / 5, 1)
+      B = fraction of bootstrap effects with the observed effect direction
+      N = min(min(n_disease, n_healthy) / 50, 1)
+    """
+    effect = (results["hedges_g"].abs() / 1.5).clip(lower=0, upper=1)
+
+    q_values = pd.to_numeric(results[q_column], errors="coerce")
+    safe_q = q_values.clip(lower=np.finfo(float).tiny, upper=1)
+    confidence = (-np.log10(safe_q) / 5).clip(lower=0, upper=1)
+    confidence[q_values.isna()] = np.nan
+
+    stability = pd.to_numeric(
+        results["effect_direction_bootstrap_stability"], errors="coerce"
+    ).clip(lower=0, upper=1)
+    sample_reliability = (
+        results[["n_disease", "n_healthy"]].min(axis=1) / 50
+    ).clip(lower=0, upper=1)
+
+    results["pdf_effect_component"] = effect
+    results["pdf_statistical_confidence_component"] = confidence
+    results["pdf_direction_stability_component"] = stability
+    results["pdf_sample_reliability_component"] = sample_reliability
+    results["phenotype_difference_score_pdf"] = 100 * (
+        0.45 * effect
+        + 0.20 * confidence
+        + 0.25 * stability
+        + 0.10 * sample_reliability
+    )
+    return results
 
 
 def rank_stability(group_df, reference_df, features, iterations, top_k, rng):
@@ -486,7 +530,7 @@ for feature in feature_cols:
     n_healthy = len(healthy_values)
     directional_auc, discrimination_auc = auc_from_u(u_stat, n_disease, n_healthy)
 
-    g_low, g_high, delta_low, delta_high = bootstrap_effect_ci(
+    g_low, g_high, delta_low, delta_high, direction_stability = bootstrap_effect_ci(
         disease_values, healthy_values, args.bootstrap_iterations, rng
     )
     result = {
@@ -513,6 +557,7 @@ for feature in feature_cols:
         "hedges_g": hedges_g(disease_values, healthy_values),
         "hedges_g_ci_95_low": g_low,
         "hedges_g_ci_95_high": g_high,
+        "effect_direction_bootstrap_stability": direction_stability,
         "welch_t": t_stat,
         "welch_p": t_p,
     }
@@ -550,8 +595,6 @@ binary_results = binary_results.sort_values(
     ["mannwhitney_q_fdr", "hedges_g"],
     ascending=[True, False],
 )
-
-binary_results.to_csv(OUTPUT_DIR / "stats_healthy_vs_disease.csv", index=False)
 
 print("\nTop healthy vs disease features:")
 print(binary_results.head(20))
@@ -594,7 +637,7 @@ for disease in disease_labels:
             u_stat, len(disease_values), len(healthy_values)
         )
 
-        g_low, g_high, delta_low, delta_high = bootstrap_effect_ci(
+        g_low, g_high, delta_low, delta_high, direction_stability = bootstrap_effect_ci(
             disease_values, healthy_values, args.bootstrap_iterations, rng
         )
         result = {
@@ -626,6 +669,7 @@ for disease in disease_labels:
             "hedges_g": hedges_g(disease_values, healthy_values),
             "hedges_g_ci_95_low": g_low,
             "hedges_g_ci_95_high": g_high,
+            "effect_direction_bootstrap_stability": direction_stability,
         }
         result.update(
             robust_two_group_stats(disease_values, healthy_values, args.mad_threshold)
@@ -735,8 +779,6 @@ pairwise_results = pairwise_results.sort_values(
     ascending=[True, True, False],
 )
 
-pairwise_results.to_csv(OUTPUT_DIR / "stats_each_disease_vs_healthy.csv", index=False)
-
 print("\nTop disease-specific features:")
 print(pairwise_results.head(30))
 
@@ -826,7 +868,44 @@ print(kw_results.head(20))
 
 
 # =========================
-# 6. Optional:
+# 6. Phenotype Difference Score (PDF)
+# =========================
+
+# PDF is defined for the two-group comparisons, where a signed Hedges' g and
+# disease/healthy sample sizes are available. Kruskal-Wallis results use
+# epsilon-squared and therefore do not receive a PDF score.
+binary_results = add_phenotype_difference_score(
+    binary_results,
+    "mannwhitney_q_fdr",
+)
+pairwise_results = add_phenotype_difference_score(
+    pairwise_results,
+    "mannwhitney_q_fdr_global",
+)
+
+# Save the complete two-group tables only after their PDF columns are added.
+binary_results.to_csv(OUTPUT_DIR / "stats_healthy_vs_disease.csv", index=False)
+pairwise_results.to_csv(OUTPUT_DIR / "stats_each_disease_vs_healthy.csv", index=False)
+
+print("\nTop Phenotype Difference Scores (all disease vs healthy):")
+print(
+    binary_results.sort_values(
+        "phenotype_difference_score_pdf",
+        ascending=False,
+    )[["feature", "phenotype_difference_score_pdf"]].head(20)
+)
+
+print("\nTop Phenotype Difference Scores (each disease vs healthy):")
+print(
+    pairwise_results.sort_values(
+        "phenotype_difference_score_pdf",
+        ascending=False,
+    )[["disease", "feature", "phenotype_difference_score_pdf"]].head(20)
+)
+
+
+# =========================
+# 7. Optional:
 #    Save top significant features
 # =========================
 
@@ -888,6 +967,13 @@ configuration = pd.DataFrame(
         "top_k": args.top_k,
         "specificity_significance_rule": "global_pairwise_q_fdr<0.05",
         "specificity_effect_rule": f"abs(hedges_g)>={args.effect_threshold}",
+        "pdf_effect_weight": 0.45,
+        "pdf_confidence_weight": 0.20,
+        "pdf_direction_stability_weight": 0.25,
+        "pdf_sample_reliability_weight": 0.10,
+        "pdf_hedges_g_saturation": 1.5,
+        "pdf_fdr_q_saturation": 1e-5,
+        "pdf_sample_n_saturation": 50,
     }]
 )
 configuration.to_csv(OUTPUT_DIR / "analysis_configuration.csv", index=False)

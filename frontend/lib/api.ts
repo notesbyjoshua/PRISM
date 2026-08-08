@@ -23,6 +23,7 @@ export type Result = {
   cliffs_delta: number | null;
   roc_auc: number | null;
   q_value: number | null;
+  pds_score: number | null;
   high_priority: boolean;
   rank_stability: number | null;
   robust_hedges_g: number | null;
@@ -42,4 +43,3 @@ export async function getJson<T>(path: string): Promise<T> {
   if (!response.ok) throw new Error(`API request failed: ${response.status}`);
   return response.json();
 }
-

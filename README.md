@@ -238,6 +238,29 @@ The result tables include:
 - Bootstrap ranking stability: the fraction of bootstrap runs in which a
   feature appears in the top K by absolute Hedges' g.
 
+### Phenotype Difference Score (PDF)
+
+Each two-group result also receives a Phenotype Difference Score from 0 to 100:
+
+```text
+PDF = 100 × (0.45E + 0.20S + 0.25B + 0.10N)
+```
+
+Its components are:
+
+```text
+E = min(|Hedges' g| / 1.5, 1)
+S = min(-log10(FDR q) / 5, 1)
+B = fraction of effect-size bootstrap samples with the observed direction
+N = min(min(n_disease, n_healthy) / 50, 1)
+```
+
+Effect magnitude receives the greatest weight. The output includes the four
+individual `pdf_*_component` columns, the bootstrap direction-stability value,
+and the final `phenotype_difference_score_pdf`, making the calculation fully
+auditable. PDF is not calculated when bootstrapping is disabled because its
+direction-stability component is unavailable.
+
 A two-group result is marked `high_priority` when:
 
 ```text
@@ -520,6 +543,9 @@ policy for sensitive facial or medical data.
 - Add authenticated multi-user support with PostgreSQL/Supabase.
 - Consider an opt-in FaceKit image workflow only after privacy, consent,
   retention, and clinical-safety requirements are defined.
+- Train a neural network using PDS score/implement on new input images? (Each disease might have a PDS 
+  vector signature (signed))
+- add an example photo fro each disease as well as where the top features are on that photo
 
 ## Acknowledgements
 

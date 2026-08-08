@@ -7,7 +7,7 @@ import pandas as pd
 
 from .database import PROJECT_ROOT, connect, initialize_database
 
-RESULTS_DIR = PROJECT_ROOT / "stats_results"
+RESULTS_ROOT = PROJECT_ROOT / "stats_results"
 
 RESULT_FILES = {
     "combined": "stats_healthy_vs_disease.csv",
@@ -55,6 +55,7 @@ def normalized_result(row, analysis_type):
         first_value(row, "cliffs_delta"),
         first_value(row, "roc_auc"),
         q_value,
+        first_value(row, "phenotype_difference_score_pdf", "pds_score"),
         int(bool(first_value(row, "high_priority") or False)),
         first_value(row, "top_k_bootstrap_frequency"),
         first_value(row, "robust_hedges_g", "robust_epsilon_squared"),
@@ -69,8 +70,24 @@ def normalized_result(row, analysis_type):
     )
 
 
-def import_csv_results(results_dir: Path = RESULTS_DIR) -> bool:
+def find_results_directory(results_root: Path = RESULTS_ROOT) -> Path | None:
+    """Locate analysis CSVs in the current or legacy output layout."""
+    candidates = [
+        results_root / "significance_testing",
+        results_root,
+    ]
+    for candidate in candidates:
+        if any((candidate / filename).is_file() for filename in RESULT_FILES.values()):
+            return candidate
+    return None
+
+
+def import_csv_results(results_dir: Path | None = None) -> bool:
     initialize_database()
+    results_dir = results_dir or find_results_directory()
+    if results_dir is None:
+        return False
+
     available = {
         analysis_type: results_dir / filename
         for analysis_type, filename in RESULT_FILES.items()
@@ -91,10 +108,10 @@ def import_csv_results(results_dir: Path = RESULTS_DIR) -> bool:
                 INSERT INTO analysis_results (
                     analysis_type, comparison, disease, feature, n_disease,
                     n_healthy, hedges_g, hedges_g_ci_low, hedges_g_ci_high,
-                    cliffs_delta, roc_auc, q_value, high_priority,
-                    rank_stability, robust_hedges_g, robust_q_value,
+                    cliffs_delta, roc_auc, q_value, pds_score,
+                    high_priority, rank_stability, robust_hedges_g, robust_q_value,
                     raw_json, is_demo
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 rows,
             )
@@ -136,12 +153,12 @@ def import_csv_results(results_dir: Path = RESULTS_DIR) -> bool:
 def seed_demo_data() -> None:
     initialize_database()
     demo = [
-        ("pairwise", "Williams syndrome vs healthy", "Williams syndrome", "chin_height", 82, 410, 1.18, .88, 1.49, .54, .84, 2.1e-8, 1, .94, 1.12, 4.2e-8),
-        ("pairwise", "Noonan syndrome vs healthy", "Noonan syndrome", "inter_canthal_distance", 74, 410, .81, .55, 1.07, .39, .76, 3.4e-5, 1, .78, .79, 5.1e-5),
-        ("pairwise", "Kabuki syndrome vs healthy", "Kabuki syndrome", "eye_fissure_slant_mean", 68, 410, -.96, -1.24, -.67, -.45, .79, 7.7e-7, 1, .87, -.91, 1.2e-6),
-        ("pairwise", "Cornelia de Lange syndrome vs healthy", "Cornelia de Lange syndrome", "philtrum_length", 91, 410, -1.31, -1.58, -1.04, -.59, .86, 8.5e-11, 1, .97, -1.26, 2.4e-10),
-        ("pairwise", "Noonan syndrome vs healthy", "Noonan syndrome", "face_aspect_ratio", 74, 410, .43, .18, .68, .22, .64, .031, 0, .31, .41, .044),
-        ("pairwise", "Williams syndrome vs healthy", "Williams syndrome", "mouth_width", 82, 410, .69, .42, .96, .34, .71, .0008, 1, .62, .66, .0012),
+        ("pairwise", "Williams syndrome vs healthy", "Williams syndrome", "chin_height", 82, 410, 1.18, .88, 1.49, .54, .84, 2.1e-8, 91.4, 1, .94, 1.12, 4.2e-8),
+        ("pairwise", "Noonan syndrome vs healthy", "Noonan syndrome", "inter_canthal_distance", 74, 410, .81, .55, 1.07, .39, .76, 3.4e-5, 74.8, 1, .78, .79, 5.1e-5),
+        ("pairwise", "Kabuki syndrome vs healthy", "Kabuki syndrome", "eye_fissure_slant_mean", 68, 410, -.96, -1.24, -.67, -.45, .79, 7.7e-7, 82.6, 1, .87, -.91, 1.2e-6),
+        ("pairwise", "Cornelia de Lange syndrome vs healthy", "Cornelia de Lange syndrome", "philtrum_length", 91, 410, -1.31, -1.58, -1.04, -.59, .86, 8.5e-11, 95.1, 1, .97, -1.26, 2.4e-10),
+        ("pairwise", "Noonan syndrome vs healthy", "Noonan syndrome", "face_aspect_ratio", 74, 410, .43, .18, .68, .22, .64, .031, 46.2, 0, .31, .41, .044),
+        ("pairwise", "Williams syndrome vs healthy", "Williams syndrome", "mouth_width", 82, 410, .69, .42, .96, .34, .71, .0008, 67.9, 1, .62, .66, .0012),
     ]
     with connect() as connection:
         existing = connection.execute("SELECT COUNT(*) FROM analysis_results").fetchone()[0]
@@ -154,9 +171,9 @@ def seed_demo_data() -> None:
                 INSERT INTO analysis_results (
                     analysis_type, comparison, disease, feature, n_disease,
                     n_healthy, hedges_g, hedges_g_ci_low, hedges_g_ci_high,
-                    cliffs_delta, roc_auc, q_value, high_priority,
-                    rank_stability, robust_hedges_g, robust_q_value, raw_json, is_demo
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
+                    cliffs_delta, roc_auc, q_value, pds_score,
+                    high_priority, rank_stability, robust_hedges_g, robust_q_value, raw_json, is_demo
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
                 """,
                 (*values, raw),
             )
@@ -187,4 +204,3 @@ def ensure_data() -> None:
 if __name__ == "__main__":
     imported = import_csv_results()
     print("Imported stats_results CSVs." if imported else "No result CSVs found.")
-

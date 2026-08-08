@@ -25,6 +25,7 @@ def initialize_database() -> None:
                 cliffs_delta REAL,
                 roc_auc REAL,
                 q_value REAL,
+                pds_score REAL,
                 high_priority INTEGER NOT NULL DEFAULT 0,
                 rank_stability REAL,
                 robust_hedges_g REAL,
@@ -58,6 +59,16 @@ def initialize_database() -> None:
             """
         )
 
+        # Lightweight migration for databases created before PDS was added.
+        columns = {
+            row[1]
+            for row in connection.execute("PRAGMA table_info(analysis_results)")
+        }
+        if "pds_score" not in columns:
+            connection.execute(
+                "ALTER TABLE analysis_results ADD COLUMN pds_score REAL"
+            )
+
 
 @contextmanager
 def connect():
@@ -68,4 +79,3 @@ def connect():
         connection.commit()
     finally:
         connection.close()
-
