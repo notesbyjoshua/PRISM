@@ -1,0 +1,12 @@
+{
+  "formula": "sign(g) * tanh(abs(g)/2) * (0.75*bootstrap_stability + 0.25*sample_reliability) * q_multiplier",
+  "sample_reliability": "1 - exp(-min(n_disease,n_healthy)/40)",
+  "q_multiplier": {
+    "q < 0.01": 1.0,
+    "0.01 <= q < 0.05": 0.8,
+    "q >= 0.05": 0.25
+  },
+  "n_bootstraps": 1000,
+  "effect_scale": 2.0,
+  "sample_scale": 40.0
+}

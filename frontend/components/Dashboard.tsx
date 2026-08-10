@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight, ChartScatter, CheckCircle, CirclesFour, Database, Dna, Flask,
   Images, Info, MagnifyingGlass, PulseIcon, SlidersHorizontal, Sparkle, TrendDown,
-  TrendUp, X,
+  TrendUp, UsersThree, X,
 } from "@phosphor-icons/react";
 import { EffectScatter, SpecificityBars } from "./Charts";
 import MetricCard from "./MetricCard";
@@ -21,6 +21,10 @@ function median(values: number[]) {
   const sorted = [...values].sort((a, b) => a - b);
   const middle = Math.floor(sorted.length / 2);
   return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
+}
+
+function mean(values: number[]) {
+  return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : null;
 }
 
 function Histograms({ data }: { data: Distribution }) {
@@ -44,7 +48,7 @@ function Histograms({ data }: { data: Distribution }) {
           {(values as number[]).map((value, index) => <i key={index} className={String(tone)} style={{ height: `${Math.max(2, value / sharedMaximum * 100)}%` }} title={`${(value * 100).toFixed(1)}%`} />)}
         </div>
         <strong>{label}</strong>
-        <span>Median {formatNumber(median(String(tone) === "healthy" ? data.healthy : data.disease_values), 3)} · n = {String(tone) === "healthy" ? data.healthy.length : data.disease_values.length}</span>
+        <span>Mean {formatNumber(mean(String(tone) === "healthy" ? data.healthy : data.disease_values), 3)} · Median {formatNumber(median(String(tone) === "healthy" ? data.healthy : data.disease_values), 3)} · n = {String(tone) === "healthy" ? data.healthy.length : data.disease_values.length}</span>
       </div>)}
     <div className="axis-labels"><span>{low.toFixed(3)}</span><span>Measurement value · shared y-axis shows relative frequency</span><span>{high.toFixed(3)}</span></div>
   </div>;
@@ -158,6 +162,7 @@ export default function Dashboard() {
         <a className="nav-item active" href="#overview"><CirclesFour size={19} />Overview</a>
         <a className="nav-item" href="#explorer"><ChartScatter size={19} />Feature explorer</a>
         <a className="nav-item" href="#specificity"><Sparkle size={19} />Specificity</a>
+        <a className="nav-item" href="/ancestry"><UsersThree size={19} />Ancestry analysis</a>
         <a className="nav-item" href="/distributions"><Images size={19} />Data distributions</a>
         <a className="nav-item" href="http://localhost:8000/docs"><Database size={19} />API documentation</a>
       </nav>
@@ -188,7 +193,7 @@ export default function Dashboard() {
 
         <section className="filter-panel" id="explorer">
           <div className="filter-title"><SlidersHorizontal size={19} /><span>Explore comparisons</span></div>
-          <label className="search-field"><MagnifyingGlass size={18} /><input ref={featureInput} value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search a feature…" /></label>
+          <label className="search-field"><span>Feature measurement</span><MagnifyingGlass size={18} /><input ref={featureInput} value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search features…" /></label>
           <label className="search-field disease-search"><span>Disease cohort</span><MagnifyingGlass size={18} /><input ref={diseaseSelect} list="disease-options" value={diseaseQuery} placeholder="Search diseases…" autoComplete="off" onChange={(event) => {
             const value = event.target.value;
             setDiseaseQuery(value);

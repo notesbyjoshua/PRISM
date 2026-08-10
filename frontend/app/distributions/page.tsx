@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ChartBar, Dna, Flask, Images, WarningCircle } from "@phosphor-icons/react";
+import { ArrowLeft, ChartBar, Dna, Flask, Images, UsersThree, WarningCircle } from "@phosphor-icons/react";
 import { API_URL, getJson } from "@/lib/api";
 
 type DistributionPlot = {
@@ -30,6 +30,7 @@ export default function DistributionsPage() {
       <div className="brand"><span className="brand-mark"><Dna size={22} weight="bold" /></span><span>PRISM</span></div>
       <nav aria-label="Primary navigation">
         <Link className="nav-item" href="/"><ArrowLeft size={19} />Phenotype atlas</Link>
+        <Link className="nav-item" href="/ancestry"><UsersThree size={19} />Ancestry analysis</Link>
         <Link className="nav-item active" href="/distributions"><ChartBar size={19} />Data distributions</Link>
         <a className="nav-item" href="http://localhost:8000/docs"><Images size={19} />API documentation</a>
       </nav>

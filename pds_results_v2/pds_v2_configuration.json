@@ -1,0 +1,19 @@
+{
+  "formula": "sign(g) * tanh(abs(g)/2) * (0.50*bootstrap_direction_stability + 0.25*sample_reliability + 0.25*ci_precision) * q_multiplier * small_sample_multiplier",
+  "sample_reliability": "1 - exp(-min(n_disease,n_healthy)/75)",
+  "ci_precision": "1 / (1 + CI_width / 1.0)",
+  "q_multiplier": {
+    "q < 0.01": 1.0,
+    "0.01 <= q < 0.05": 0.8,
+    "q >= 0.05": 0.25
+  },
+  "small_sample_multiplier": {
+    "n < 10": 0.6,
+    "10 <= n < 20": 0.8,
+    "n >= 20": 1.0
+  },
+  "N_BOOTSTRAPS": 1000,
+  "EFFECT_SCALE": 2.0,
+  "SAMPLE_SCALE": 75.0,
+  "CI_WIDTH_SCALE": 1.0
+}

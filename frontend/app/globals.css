@@ -49,8 +49,8 @@ main { min-width: 0; }
 .metric-icon.amber { color: var(--amber); background: #fff1dc; }
 .metric-value { display: block; font: 750 25px var(--font-display), sans-serif; letter-spacing: -.04em; }
 .metric-detail { margin: 3px 0 0; color: var(--muted); font-size: 11px; }
-.filter-panel { padding: 14px 16px; display: grid; grid-template-columns: auto minmax(190px, 1fr) minmax(180px, .75fr) minmax(170px, .75fr) auto; align-items: end; gap: 14px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
-.filter-title { align-self: center; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px; }
+.filter-panel { padding: 16px; display: grid; grid-template-columns: minmax(210px, 1.15fr) minmax(210px, 1fr) minmax(190px, .9fr) minmax(150px, auto); align-items: end; gap: 12px 14px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+.filter-title { grid-column: 1 / -1; min-height: 24px; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px; }
 .filter-panel label > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 .filter-panel input, .filter-panel select { width: 100%; height: 38px; border: 1px solid #dce4e1; border-radius: 8px; background: #fafcfb; color: var(--ink); outline: none; }
 .filter-panel input:focus, .filter-panel select:focus { border-color: #69b9a7; box-shadow: 0 0 0 3px #e4f5f0; }
@@ -58,7 +58,7 @@ main { min-width: 0; }
 .search-field svg { position: absolute; left: 11px; bottom: 10px; color: #8b9995; }
 .search-field input { padding: 0 12px 0 36px; }
 .filter-panel select { padding: 0 10px; }
-.check-field { align-self: center; display: flex; align-items: center; gap: 8px; white-space: nowrap; font-size: 12px; }
+.check-field { height: 38px; padding: 0 12px; align-self: end; display: flex; align-items: center; gap: 8px; white-space: nowrap; color: var(--ink); background: #fafcfb; border: 1px solid #dce4e1; border-radius: 8px; font-size: 12px; }
 .check-field input { width: 16px; height: 16px; accent-color: var(--mint); }
 .check-field span { margin: 0 !important; color: var(--ink) !important; text-transform: none !important; letter-spacing: 0 !important; font-size: 12px !important; }
 .chart-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 18px; margin: 18px 0; }
@@ -127,6 +127,14 @@ td strong { color: var(--ink); font-weight: 650; text-transform: capitalize; }
 .chart-tabs button { padding: 8px 13px; color: #65746f; background: transparent; border: 0; border-radius: 7px; font-size: 10px; font-weight: 700; cursor: pointer; }.chart-tabs button.active { color: #176f60; background: white; box-shadow: 0 2px 8px rgba(30,54,48,.08); }
 .distribution-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }.distribution-card { min-width: 0; padding: 18px; background: white; border: 1px solid var(--line); border-radius: 15px; }.distribution-card.overview-chart { grid-column: span 2; }.distribution-card-copy { padding: 2px 4px 14px; }.distribution-card-copy > span { color: var(--mint); font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }.distribution-card h2 { margin: 5px 0 0; font: 720 17px var(--font-display), sans-serif; }.distribution-card p { margin: 5px 0 0; color: var(--muted); font-size: 10px; }.distribution-card img { display: block; width: 100%; height: auto; border: 1px solid #edf1ef; border-radius: 9px; background: #fafcfb; }
 .empty-distributions { min-height: 320px; display: grid; place-content: center; justify-items: center; color: var(--muted); background: white; border: 1px dashed #cad6d2; border-radius: 15px; text-align: center; }.empty-distributions h2 { margin: 12px 0 3px; color: var(--ink); font-size: 16px; }.empty-distributions p { margin: 0; font-size: 11px; }
+.ancestry-content { max-width: 1380px; }.ancestry-hero { padding: 36px 40px; color: white; background: linear-gradient(135deg, #172825, #33465f); border-radius: 18px; }.ancestry-hero h1 { max-width: 850px; margin: 0; font: 750 clamp(30px, 4vw, 46px)/1.08 var(--font-display), sans-serif; letter-spacing: -.045em; }.ancestry-hero > p:not(.kicker) { max-width: 760px; margin: 14px 0 20px; color: #becbcf; font-size: 13px; line-height: 1.6; }
+.layer-switch { display: flex; width: fit-content; gap: 5px; padding: 5px; background: rgba(0,0,0,.2); border-radius: 10px; }.layer-switch button { padding: 8px 12px; color: #b9c9c6; background: transparent; border: 0; border-radius: 7px; font-size: 10px; font-weight: 750; cursor: pointer; }.layer-switch button.active { color: #15362f; background: #d9f4ec; }
+.ancestry-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 18px 0; }.ancestry-metrics article { padding: 17px; background: white; border: 1px solid var(--line); border-radius: 12px; }.ancestry-metrics small, .ancestry-metrics b { display: block; }.ancestry-metrics small { min-height: 28px; color: var(--muted); font-size: 9px; line-height: 1.4; text-transform: uppercase; letter-spacing: .07em; }.ancestry-metrics b { margin-top: 5px; font: 750 25px var(--font-display), sans-serif; }
+.ancestry-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; margin-bottom: 18px; }.harmonization-list { display: grid; gap: 17px; padding: 16px 4px; }.harmonization-list > div { display: grid; grid-template-columns: 1fr auto; gap: 8px 15px; }.harmonization-list span b, .harmonization-list span small { display: block; }.harmonization-list span b { font-size: 11px; }.harmonization-list span small { margin-top: 3px; color: var(--muted); font-size: 9px; }.harmonization-list strong { color: var(--mint); font-size: 12px; }.harmonization-list i { grid-column: 1 / -1; height: 6px; overflow: hidden; background: #e8efec; border-radius: 99px; }.harmonization-list i b { display: block; height: 100%; background: var(--mint); border-radius: inherit; }
+.ancestry-results { margin-bottom: 18px; }.ancestry-filters { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; padding: 14px; background: #f6f8f7; border-radius: 10px; }.ancestry-filters label { position: relative; }.ancestry-filters label > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 9px; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; }.ancestry-filters input, .ancestry-filters select { width: 100%; height: 38px; padding: 0 11px; color: var(--ink); background: white; border: 1px solid #d8e1de; border-radius: 8px; }.ancestry-filters .search-field input { padding-left: 36px; }.ancestry-filters .search-field svg { bottom: 10px; }
+.analysis-c-section { margin: 24px 0; padding: 22px; background: #eaf1f6; border: 1px solid #d8e3ea; border-radius: 17px; }.analysis-c-heading { padding: 4px 4px 16px; }.analysis-c-heading h2 { max-width: 850px; margin: 0; font: 730 23px/1.2 var(--font-display), sans-serif; letter-spacing: -.03em; }.analysis-c-heading > div > p:not(.eyebrow) { max-width: 850px; margin: 10px 0 0; color: #64747a; font-size: 11px; line-height: 1.55; }
+.interaction-metrics { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 14px; }.interaction-metrics article { padding: 13px; background: rgba(255,255,255,.8); border: 1px solid #d7e2e8; border-radius: 10px; }.interaction-metrics small, .interaction-metrics b { display: block; }.interaction-metrics small { min-height: 25px; color: #718188; font-size: 8px; line-height: 1.35; text-transform: uppercase; letter-spacing: .06em; }.interaction-metrics b { margin-top: 5px; color: #25383f; font: 740 19px var(--font-display), sans-serif; }
+.interaction-filter { display: flex; align-items: end; gap: 16px; margin: 13px 0; padding: 13px; background: #f6f8f7; border-radius: 9px; }.interaction-filter label { width: min(330px, 100%); }.interaction-filter label > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 9px; font-weight: 750; text-transform: uppercase; letter-spacing: .07em; }.interaction-filter select { width: 100%; height: 38px; padding: 0 10px; color: var(--ink); background: white; border: 1px solid #d8e1de; border-radius: 8px; }.interaction-filter p { margin: 0 0 11px; color: var(--muted); font-size: 9px; }.interaction-flags { display: flex; flex-wrap: wrap; gap: 4px; }.interaction-flags b { padding: 3px 5px; color: #176f60; background: #e1f4ee; border-radius: 4px; font-size: 8px; white-space: nowrap; }.interaction-flags b.reversal { color: #9a4b35; background: #fae9e4; }
 
 @media (max-width: 1050px) {
   .metric-grid { grid-template-columns: repeat(2, 1fr); }
@@ -138,6 +146,8 @@ td strong { color: var(--ink); font-weight: 650; text-transform: capitalize; }
   .disease-profile { grid-template-columns: 1fr 1fr; }.profile-summary { grid-column: 1 / -1; }
   .region-panel { grid-template-columns: 1fr; }
   .explorer-introduction { grid-template-columns: 1fr; }
+  .ancestry-grid { grid-template-columns: 1fr; }
+  .interaction-metrics { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 760px) {
@@ -151,7 +161,7 @@ td strong { color: var(--ink); font-weight: 650; text-transform: capitalize; }
   .hero { padding: 28px; }
   .hero-orbit { display: none; }
   .metric-grid, .filter-panel { grid-template-columns: 1fr; }
-  .filter-title { grid-column: auto; }
+  .filter-title { grid-column: 1 / -1; }
   .pipeline { grid-template-columns: 1fr 1fr; }
   .disease-profile { grid-template-columns: 1fr; }.profile-summary { grid-column: auto; }
   .region-grid { grid-template-columns: 1fr 1fr; }
@@ -161,4 +171,7 @@ td strong { color: var(--ink); font-weight: 650; text-transform: capitalize; }
   .distribution-hero { padding: 27px; }.distribution-total { display: none; }
   .chart-tabs { width: 100%; overflow-x: auto; }.chart-tabs button { white-space: nowrap; }
   .distribution-cards { grid-template-columns: 1fr; }.distribution-card.overview-chart { grid-column: auto; }
+  .ancestry-hero { padding: 28px; }.layer-switch { width: 100%; }.layer-switch button { flex: 1; }
+  .ancestry-metrics { grid-template-columns: 1fr 1fr; }.ancestry-filters { grid-template-columns: 1fr; }
+  .analysis-c-section { padding: 14px; }.interaction-metrics { grid-template-columns: 1fr 1fr; }.interaction-filter { display: block; }.interaction-filter p { margin: 9px 0 0; }
 }

@@ -9,8 +9,7 @@ DATABASE_PATH = PROJECT_ROOT / "backend" / "data" / "prism.db"
 def initialize_database() -> None:
     DATABASE_PATH.parent.mkdir(parents=True, exist_ok=True)
     with connect() as connection:
-        connection.executescript(
-            """
+        connection.executescript("""
             CREATE TABLE IF NOT EXISTS analysis_results (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 analysis_type TEXT NOT NULL,
@@ -56,18 +55,12 @@ def initialize_database() -> None:
                 key TEXT PRIMARY KEY,
                 value TEXT NOT NULL
             );
-            """
-        )
+            """)
 
         # Lightweight migration for databases created before PDS was added.
-        columns = {
-            row[1]
-            for row in connection.execute("PRAGMA table_info(analysis_results)")
-        }
+        columns = {row[1] for row in connection.execute("PRAGMA table_info(analysis_results)")}
         if "pds_score" not in columns:
-            connection.execute(
-                "ALTER TABLE analysis_results ADD COLUMN pds_score REAL"
-            )
+            connection.execute("ALTER TABLE analysis_results ADD COLUMN pds_score REAL")
 
 
 @contextmanager

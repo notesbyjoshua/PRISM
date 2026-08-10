@@ -1,29 +1,20 @@
 from pathlib import Path
 import pandas as pd
 
-
 # ============================================================
 # PATHS — CHANGE IF NEEDED
 # ============================================================
 
-INPUT_CSV = (
-    "/Users/joshua/Documents/PRISM/data/master_dataset_healthy.csv"
-)
-
-OUTPUT_CSV = (
-    "/Users/joshua/Documents/PRISM/data/phenotypes_all_healthy.csv"
-)
-
+INPUT_CSV = "/Users/joshua/Documents/PRISM/data/master_dataset_healthy.csv"
+OUTPUT_CSV = "/Users/joshua/Documents/PRISM/data/phenotypes_all_healthy.csv"
 
 # ============================================================
 # LOAD DATA
 # ============================================================
 
 df = pd.read_csv(INPUT_CSV)
-
 print(f"Loaded {len(df):,} rows")
 print(f"Input columns: {len(df.columns)}")
-
 
 # ============================================================
 # FACEKIT FEATURE COLUMNS
@@ -51,7 +42,6 @@ feature_columns = [
     "eb_medial_flare_mean",
     "eb_lateral_thickness_mean",
     "eb_lateral_thickness_asym",
-
     "eye_fissure_length_r",
     "eye_fissure_height_r",
     "eye_fissure_length_l",
@@ -97,7 +87,6 @@ feature_columns = [
     "gaze_asym_x",
     "gaze_asym_y",
     "gaze_asym_norm",
-
     "nose_length",
     "nose_bridge_length",
     "nose_bridge_width",
@@ -116,10 +105,8 @@ feature_columns = [
     "columella_length",
     "columella_hang_below_ala",
     "nose_to_face_area_ratio",
-
     "philtrum_length",
     "philtrum_width",
-
     "mouth_width",
     "mouth_opening",
     "upper_vermilion_height",
@@ -136,25 +123,21 @@ feature_columns = [
     "lip_outer_to_inner_area",
     "lip_midline_x_std",
     "cupid_bow_peak_asym",
-
     "chin_height",
     "chin_width",
     "chin_pointedness_angle",
     "jaw_bigonial_width",
-
     "forehead_height",
     "forehead_width_upper",
     "forehead_width_mid",
     "hairline_height",
     "forehead_taper_ratio",
-
     "face_aspect_ratio",
     "face_roundness",
     "face_width_uniformity",
     "jaw_to_forehead_ratio",
     "face_triangularity",
     "face_asymmetry",
-
     "midface_width",
     "malar_bulge_r",
     "malar_bulge_l",
@@ -166,43 +149,26 @@ feature_columns = [
     "cheek_area_asym",
 ]
 
-
 # ============================================================
 # VERIFY REQUIRED INPUT COLUMNS
 # ============================================================
 
-required_input_columns = [
-    "file",
-    "pose_yaw",
-    "pose_pitch",
-    "pose_roll",
-] + feature_columns
-
-missing = [
-    col for col in required_input_columns
-    if col not in df.columns
-]
-
+required_input_columns = ["file", "pose_yaw", "pose_pitch", "pose_roll"] + feature_columns
+missing = [col for col in required_input_columns if col not in df.columns]
 if missing:
     print("\nERROR: The following columns are missing:")
     for col in missing:
         print(f"  - {col}")
-
-    raise ValueError(
-        f"{len(missing)} required columns are missing from the input CSV."
-    )
-
+    raise ValueError(f"{len(missing)} required columns are missing from the input CSV.")
 
 # ============================================================
 # OUTPUT DATASET CREATION
 # ============================================================
 
 output = pd.DataFrame(index=df.index)
-
 output["disease"] = "healthy"
 output["image_id"] = df["file"].astype(str)
 output["frontal_ok"] = True
-
 
 # ------------------------------------------------------------
 # Pose columns
@@ -212,7 +178,6 @@ output["pose_yaw"] = df["pose_yaw"]
 output["pose_pitch"] = df["pose_pitch"]
 output["pose_roll"] = df["pose_roll"]
 
-
 # ------------------------------------------------------------
 # FaceKit geometric features
 # ------------------------------------------------------------
@@ -220,16 +185,11 @@ output["pose_roll"] = df["pose_roll"]
 for col in feature_columns:
     output[col] = df[col]
 
-
 # ============================================================
 # SAVE
 # ============================================================
 
-output.to_csv(
-    OUTPUT_CSV,
-    index=False
-)
-
+output.to_csv(OUTPUT_CSV, index=False)
 
 # ============================================================
 # CHECK RESULTS
@@ -239,38 +199,21 @@ print()
 print("=" * 60)
 print("DONE")
 print("=" * 60)
-
 print(f"Rows: {len(output):,}")
 print(f"Columns: {len(output.columns)}")
 print(f"Feature columns: {len(feature_columns)}")
-
 print()
 print(f"Saved to:")
 print(OUTPUT_CSV)
-
 print()
 print("Disease distribution:")
 print(output["disease"].value_counts())
-
 print()
 print("Frontal distribution:")
 print(output["frontal_ok"].value_counts())
-
 print()
 print("First 10 columns:")
 print(output.columns[:10].tolist())
-
 print()
 print("First 5 rows:")
-print(
-    output[
-        [
-            "disease",
-            "image_id",
-            "frontal_ok",
-            "pose_yaw",
-            "pose_pitch",
-            "pose_roll",
-        ]
-    ].head()
-)
+print(output[["disease", "image_id", "frontal_ok", "pose_yaw", "pose_pitch", "pose_roll"]].head())

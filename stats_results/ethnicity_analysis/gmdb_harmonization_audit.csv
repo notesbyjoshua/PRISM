@@ -1,0 +1,16 @@
+image_dataset_ethnicity_category,image_dataset_ethnicity_sub_category,layer1_group,layer2_group,n
+European,,European,European,5254
+Unknown,,,,1489
+Asian,Middle-East/West Asian,Asian,Middle Eastern,484
+Asian,East Asian,Asian,East Asian,457
+Others,American - Latin/Hispanic,Others,Latino/Hispanic,347
+Asian,South Asian,Asian,South Asian,311
+African,Sub-Saharan,African,African,222
+Asian,Asian Others,Asian,,217
+African,North African,African,African,174
+Others,Others,Others,,128
+Asian,South-East Asian,Asian,SE Asian,90
+Others,American - Native,Others,,84
+African,African Others,African,African,62
+African,African American,African,African,60
+Others,Mixed ancestry,Others,,32

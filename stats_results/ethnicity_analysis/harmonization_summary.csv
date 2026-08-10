@@ -1,0 +1,5 @@
+dataset,layer,total_rows,kept_rows,excluded_rows,percent_kept
+FairFace healthy,layer1_group,1000,1000,0,100.0
+FairFace healthy,layer2_group,1000,1000,0,100.0
+GMDB disease,layer1_group,9411,7922,1489,84.17808946976942
+GMDB disease,layer2_group,9411,7461,1950,79.27956646477526
