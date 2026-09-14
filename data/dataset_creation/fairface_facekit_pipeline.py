@@ -11,7 +11,7 @@ from facekit.core.geometric.extractor import GeometricFeatureExtractor
 
 ZIP_PATH = "/Users/joshua/Documents/PRISM/fairface-img-margin025-trainval.zip"
 TRAIN_LABELS = "/Users/joshua/Documents/PRISM/fairface_label_train.csv"
-VAL_LABELS = "/Users/joshua/Documents/PRISM/fairface_label_train.csv"
+VAL_LABELS = "/Users/joshua/Documents/PRISM/fairface_label_val.csv"
 OUTPUT_CSV = "/Users/joshua/Documents/PRISM/data/fairface_1000_age3to9_frontal_balanced.csv"
 
 # ============================================================
@@ -29,6 +29,10 @@ extractor = GeometricFeatureExtractor(yaw_thresh=15, pitch_thresh=15, roll_thres
 # LOAD FAIRFACE LABELS
 # ============================================================
 
+if Path(OUTPUT_CSV).exists():
+    raise FileExistsError(f"Choose a new output path; refusing to overwrite {OUTPUT_CSV}")
+if Path(TRAIN_LABELS).resolve() == Path(VAL_LABELS).resolve():
+    raise ValueError("Training and validation label paths must differ")
 print("Loading FairFace metadata...")
 train = pd.read_csv(TRAIN_LABELS)
 val = pd.read_csv(VAL_LABELS)
@@ -39,7 +43,7 @@ print(f"All FairFace labels: {len(labels):,}")
 # CHECK REQUIRED COLUMNS
 # ============================================================
 
-required_columns = {"file", "race", "age"}
+required_columns = {"file", "race", "age", "gender"}
 missing = required_columns - set(labels.columns)
 if missing:
     raise ValueError(f"Missing columns: {missing}\n" f"Columns found: {labels.columns.tolist()}")
@@ -73,6 +77,12 @@ def normalize_file_path(x):
 
 
 labels["zip_key"] = labels["file"].apply(normalize_file_path)
+if labels["zip_key"].isna().any() or labels["zip_key"].isin(["", "nan"]).any():
+    raise ValueError("Missing FairFace image path")
+conflicts = labels.groupby("zip_key")[["race", "age", "gender"]].nunique(dropna=False).gt(1).any(axis=1)
+if conflicts.any():
+    raise ValueError(f"{conflicts.sum()} image paths have conflicting labels")
+labels = labels.drop_duplicates("zip_key").copy()
 
 # ============================================================
 # SHOW AVAILABLE RACE COUNTS FOR AGE 3-9

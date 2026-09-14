@@ -25,7 +25,7 @@ from statsmodels.stats.multitest import multipletests
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = PROJECT_ROOT / "stats_results/significance_testing"
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 
 # -------------------------------------------------------------------------
 # CONFIGURE YOUR INPUT FILES HERE
@@ -38,6 +38,7 @@ HEALTHY_FILE = "data/phenotypes_all_healthy.csv"  # put file here
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Compare facial phenotype measurements in healthy and disease groups.")
+    parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument("--input-csv", type=Path, help="Optional combined CSV containing a disease column.")
     parser.add_argument("--healthy-csv", type=Path, help="CSV containing healthy phenotype measurements.")
     parser.add_argument("--disease-csv", type=Path, help="CSV containing disease phenotype measurements.")
@@ -114,6 +115,8 @@ def load_data(args):
 
 
 args = parse_args()
+OUTPUT_DIR = args.output_dir.resolve()
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 df = load_data(args)
 if args.bootstrap_iterations < 0 or args.rank_bootstrap_iterations < 0:
     raise ValueError("Bootstrap iteration counts cannot be negative.")

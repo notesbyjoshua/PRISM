@@ -148,6 +148,7 @@ REQUIRE_FRONTAL = True
 # IMPORTS
 # ============================================================
 
+import argparse
 import itertools
 import re
 from pathlib import Path
@@ -363,17 +364,11 @@ def effect_category(g):
 
 
 def bootstrap_hedges_g_ci(disease_values, healthy_values, rng):
-    disease_values = np.asarray(disease_values, dtype=float)
-    healthy_values = np.asarray(healthy_values, dtype=float)
-    estimates = np.empty(N_BOOTSTRAPS, dtype=float)
-    for i in range(N_BOOTSTRAPS):
-        d_boot = rng.choice(disease_values, size=len(disease_values), replace=True)
-        h_boot = rng.choice(healthy_values, size=len(healthy_values), replace=True)
-        estimates[i] = hedges_g(d_boot, h_boot)
-    estimates = estimates[np.isfinite(estimates)]
-    if len(estimates) == 0:
-        return (np.nan, np.nan)
-    return (float(np.percentile(estimates, 2.5)), float(np.percentile(estimates, 97.5)))
+    from bootstrap_utils import bootstrap_g
+    estimates = bootstrap_g(disease_values, healthy_values, N_BOOTSTRAPS, rng)
+    if not len(estimates):
+        return np.nan, np.nan
+    return tuple(np.percentile(estimates, [2.5, 97.5]))
 
 
 def add_global_fdr(dataframe, p_column="p_value"):
@@ -388,6 +383,18 @@ def add_global_fdr(dataframe, p_column="p_value"):
         dataframe.loc[valid, "global_fdr_q_value"] = q
         dataframe.loc[valid, "global_significant_fdr"] = reject
     return dataframe
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--healthy-csv', default=FAIRFACE_HEALTHY_CSV)
+parser.add_argument('--disease-csv', default=GMDB_DISEASE_CSV)
+parser.add_argument('--output-dir', default=OUTPUT_FOLDER)
+parser.add_argument('--bootstrap-iterations', type=int, default=N_BOOTSTRAPS)
+args = parser.parse_args()
+FAIRFACE_HEALTHY_CSV, GMDB_DISEASE_CSV, OUTPUT_FOLDER = args.healthy_csv, args.disease_csv, args.output_dir
+N_BOOTSTRAPS = args.bootstrap_iterations
+if N_BOOTSTRAPS < 1:
+    raise ValueError('Bootstrap iterations must be positive')
 
 
 # ============================================================

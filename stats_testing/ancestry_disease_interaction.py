@@ -86,6 +86,7 @@ REQUIRE_FRONTAL = True
 # IMPORTS
 # ============================================================
 
+import argparse
 import itertools
 import re
 from pathlib import Path
@@ -163,6 +164,8 @@ def map_fairface_layer1(value):
 def map_gmdb_layer2(ethnicity, subcategory):
     broad = norm_label(ethnicity)
     sub = norm_label(subcategory)
+    if broad is None:
+        return np.nan
 
     if broad in {"african", "africa", "black"}:
         return "African"
@@ -298,6 +301,14 @@ def add_global_fdr(data):
         data.loc[valid_indices, "global_significant_fdr"] = reject
 
     return data
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--healthy-csv', default=FAIRFACE_HEALTHY_CSV)
+parser.add_argument('--disease-csv', default=GMDB_DISEASE_CSV)
+parser.add_argument('--output-dir', default=OUTPUT_FOLDER)
+args = parser.parse_args()
+FAIRFACE_HEALTHY_CSV, GMDB_DISEASE_CSV, OUTPUT_FOLDER = args.healthy_csv, args.disease_csv, args.output_dir
 
 
 # ============================================================

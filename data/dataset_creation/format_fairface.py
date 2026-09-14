@@ -153,7 +153,7 @@ feature_columns = [
 # VERIFY REQUIRED INPUT COLUMNS
 # ============================================================
 
-required_input_columns = ["file", "pose_yaw", "pose_pitch", "pose_roll"] + feature_columns
+required_input_columns = ["file", "frontal_ok", "pose_yaw", "pose_pitch", "pose_roll"] + feature_columns
 missing = [col for col in required_input_columns if col not in df.columns]
 if missing:
     print("\nERROR: The following columns are missing:")
@@ -168,7 +168,7 @@ if missing:
 output = pd.DataFrame(index=df.index)
 output["disease"] = "healthy"
 output["image_id"] = df["file"].astype(str)
-output["frontal_ok"] = True
+output["frontal_ok"] = df["frontal_ok"]
 
 # ------------------------------------------------------------
 # Pose columns
