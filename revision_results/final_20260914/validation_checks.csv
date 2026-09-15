@@ -1,0 +1,7 @@
+cohort,layer,main_tests,B_tests,C_tests,status
+age_3_9,layer1_broad_ethnicity,6125,36000,11500,passed
+age_3_9,layer2_subcategory,6125,33875,15000,passed
+all_ages,layer1_broad_ethnicity,23500,91875,44125,passed
+all_ages,layer2_subcategory,23500,89375,54875,passed
+age_3_9_id_sensitivity,layer1_broad_ethnicity,6125,36000,11500,passed
+age_3_9_id_sensitivity,layer2_subcategory,6125,33875,15000,passed

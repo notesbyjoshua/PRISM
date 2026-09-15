@@ -1,0 +1,73 @@
+cohort,source,layer,group,n,male,female,unknown_other,age_min,age_max
+all_ages,GMDB,layer1,African,475,223,224,28,0.0833333333333333,47.0
+all_ages,GMDB,layer1,Asian,1333,668,563,102,0.0833333333333333,62.0
+all_ages,GMDB,layer1,European,3925,1937,1760,228,0.0833333333333333,84.16666666666667
+all_ages,GMDB,layer1,Others,492,246,226,20,0.0833333333333333,51.0
+all_ages,GMDB,layer1,,1232,554,482,196,0.0833333333333333,68.0
+all_ages,GMDB,layer2,African,475,223,224,28,0.0833333333333333,47.0
+all_ages,GMDB,layer2,East Asian,357,191,158,8,0.0833333333333333,62.0
+all_ages,GMDB,layer2,European,3925,1937,1760,228,0.0833333333333333,84.16666666666667
+all_ages,GMDB,layer2,Latino/Hispanic,298,153,132,13,0.0833333333333333,47.0
+all_ages,GMDB,layer2,Middle Eastern,431,240,175,16,0.0833333333333333,52.0
+all_ages,GMDB,layer2,SE Asian,83,25,38,20,0.25,35.0
+all_ages,GMDB,layer2,South Asian,276,122,118,36,0.0833333333333333,35.0
+all_ages,GMDB,layer2,,1612,737,650,225,0.0833333333333333,68.0
+all_ages,FairFace,layer1,African,136,81,55,0,,
+all_ages,FairFace,layer1,Asian,532,297,235,0,,
+all_ages,FairFace,layer1,European,137,58,79,0,,
+all_ages,FairFace,layer1,Others,137,57,80,0,,
+all_ages,FairFace,layer2,African,136,81,55,0,,
+all_ages,FairFace,layer2,East Asian,140,88,52,0,,
+all_ages,FairFace,layer2,European,137,58,79,0,,
+all_ages,FairFace,layer2,Latino/Hispanic,137,57,80,0,,
+all_ages,FairFace,layer2,Middle Eastern,122,77,45,0,,
+all_ages,FairFace,layer2,SE Asian,137,64,73,0,,
+all_ages,FairFace,layer2,South Asian,133,68,65,0,,
+age_3_9,GMDB,layer1,African,109,52,54,3,3.0,9.5
+age_3_9,GMDB,layer1,Asian,385,210,170,5,3.0,9.833333333333334
+age_3_9,GMDB,layer1,European,939,483,444,12,3.0,9.833333333333334
+age_3_9,GMDB,layer1,Others,136,59,76,1,3.0,9.333333333333334
+age_3_9,GMDB,layer1,,281,137,129,15,3.0,9.833333333333334
+age_3_9,GMDB,layer2,African,109,52,54,3,3.0,9.5
+age_3_9,GMDB,layer2,East Asian,114,68,44,2,3.0,9.5
+age_3_9,GMDB,layer2,European,939,483,444,12,3.0,9.833333333333334
+age_3_9,GMDB,layer2,Latino/Hispanic,95,46,48,1,3.0,9.333333333333334
+age_3_9,GMDB,layer2,Middle Eastern,133,69,62,2,3.0,9.583333333333334
+age_3_9,GMDB,layer2,SE Asian,14,3,11,0,3.0,9.0
+age_3_9,GMDB,layer2,South Asian,72,39,33,0,3.0,9.25
+age_3_9,GMDB,layer2,,374,181,177,16,3.0,9.833333333333334
+age_3_9,FairFace,layer1,African,136,81,55,0,,
+age_3_9,FairFace,layer1,Asian,532,297,235,0,,
+age_3_9,FairFace,layer1,European,137,58,79,0,,
+age_3_9,FairFace,layer1,Others,137,57,80,0,,
+age_3_9,FairFace,layer2,African,136,81,55,0,,
+age_3_9,FairFace,layer2,East Asian,140,88,52,0,,
+age_3_9,FairFace,layer2,European,137,58,79,0,,
+age_3_9,FairFace,layer2,Latino/Hispanic,137,57,80,0,,
+age_3_9,FairFace,layer2,Middle Eastern,122,77,45,0,,
+age_3_9,FairFace,layer2,SE Asian,137,64,73,0,,
+age_3_9,FairFace,layer2,South Asian,133,68,65,0,,
+age_3_9_id_sensitivity,GMDB,layer1,African,109,52,54,3,3.0,9.5
+age_3_9_id_sensitivity,GMDB,layer1,Asian,385,210,170,5,3.0,9.833333333333334
+age_3_9_id_sensitivity,GMDB,layer1,European,939,483,444,12,3.0,9.833333333333334
+age_3_9_id_sensitivity,GMDB,layer1,Others,136,59,76,1,3.0,9.333333333333334
+age_3_9_id_sensitivity,GMDB,layer1,,281,137,129,15,3.0,9.833333333333334
+age_3_9_id_sensitivity,GMDB,layer2,African,109,52,54,3,3.0,9.5
+age_3_9_id_sensitivity,GMDB,layer2,East Asian,114,68,44,2,3.0,9.5
+age_3_9_id_sensitivity,GMDB,layer2,European,939,483,444,12,3.0,9.833333333333334
+age_3_9_id_sensitivity,GMDB,layer2,Latino/Hispanic,95,46,48,1,3.0,9.333333333333334
+age_3_9_id_sensitivity,GMDB,layer2,Middle Eastern,133,69,62,2,3.0,9.583333333333334
+age_3_9_id_sensitivity,GMDB,layer2,SE Asian,14,3,11,0,3.0,9.0
+age_3_9_id_sensitivity,GMDB,layer2,South Asian,72,39,33,0,3.0,9.25
+age_3_9_id_sensitivity,GMDB,layer2,,374,181,177,16,3.0,9.833333333333334
+age_3_9_id_sensitivity,FairFace,layer1,African,136,81,55,0,,
+age_3_9_id_sensitivity,FairFace,layer1,Asian,532,297,235,0,,
+age_3_9_id_sensitivity,FairFace,layer1,European,137,58,79,0,,
+age_3_9_id_sensitivity,FairFace,layer1,Others,137,57,80,0,,
+age_3_9_id_sensitivity,FairFace,layer2,African,136,81,55,0,,
+age_3_9_id_sensitivity,FairFace,layer2,East Asian,140,88,52,0,,
+age_3_9_id_sensitivity,FairFace,layer2,European,137,58,79,0,,
+age_3_9_id_sensitivity,FairFace,layer2,Latino/Hispanic,137,57,80,0,,
+age_3_9_id_sensitivity,FairFace,layer2,Middle Eastern,122,77,45,0,,
+age_3_9_id_sensitivity,FairFace,layer2,SE Asian,137,64,73,0,,
+age_3_9_id_sensitivity,FairFace,layer2,South Asian,133,68,65,0,,

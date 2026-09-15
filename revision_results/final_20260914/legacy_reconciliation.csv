@@ -1,0 +1,12 @@
+metric,handoff,current,difference
+disease_images,9411,9411,0
+reference_rows,1000,1000,0
+syndromes,579,579,0
+tested_syndromes,356,219,-137
+comparisons,44500,27375,-17125
+significant,9002,8038,-964
+significant_abs_g_ge_0_8,4028,2536,-1492
+layer1_broad_ethnicity_analysis_B_matched_significant,8338,8338,0
+layer1_broad_ethnicity_analysis_C_high_confidence_interactions,397,397,0
+layer2_subcategory_analysis_B_matched_significant,7844,7844,0
+layer2_subcategory_analysis_C_high_confidence_interactions,348,348,0

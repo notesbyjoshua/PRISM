@@ -1,0 +1,40 @@
+cohort,layer,group,retained_patients,B_tested_comparisons,C_tests_involving_group
+age_3_9,layer1_broad_ethnicity,African,109,2000,3125
+age_3_9,layer1_broad_ethnicity,Asian,385,9500,7375
+age_3_9,layer1_broad_ethnicity,European,939,21375,8375
+age_3_9,layer1_broad_ethnicity,Others,136,3125,4125
+age_3_9,layer1_broad_ethnicity,Unmapped,281,0,0
+age_3_9,layer2_subcategory,African,109,2000,4125
+age_3_9,layer2_subcategory,East Asian,114,2750,5000
+age_3_9,layer2_subcategory,European,939,21375,7625
+age_3_9,layer2_subcategory,Latino/Hispanic,95,1625,4000
+age_3_9,layer2_subcategory,Middle Eastern,133,3750,3750
+age_3_9,layer2_subcategory,SE Asian,14,375,1500
+age_3_9,layer2_subcategory,South Asian,72,2000,4000
+age_3_9,layer2_subcategory,Unmapped,374,0,0
+age_3_9_id_sensitivity,layer1_broad_ethnicity,African,109,2000,3125
+age_3_9_id_sensitivity,layer1_broad_ethnicity,Asian,385,9500,7375
+age_3_9_id_sensitivity,layer1_broad_ethnicity,European,939,21375,8375
+age_3_9_id_sensitivity,layer1_broad_ethnicity,Others,136,3125,4125
+age_3_9_id_sensitivity,layer1_broad_ethnicity,Unmapped,281,0,0
+age_3_9_id_sensitivity,layer2_subcategory,African,109,2000,4125
+age_3_9_id_sensitivity,layer2_subcategory,East Asian,114,2750,5000
+age_3_9_id_sensitivity,layer2_subcategory,European,939,21375,7625
+age_3_9_id_sensitivity,layer2_subcategory,Latino/Hispanic,95,1625,4000
+age_3_9_id_sensitivity,layer2_subcategory,Middle Eastern,133,3750,3750
+age_3_9_id_sensitivity,layer2_subcategory,SE Asian,14,375,1500
+age_3_9_id_sensitivity,layer2_subcategory,South Asian,72,2000,4000
+age_3_9_id_sensitivity,layer2_subcategory,Unmapped,374,0,0
+all_ages,layer1_broad_ethnicity,African,475,9625,14000
+all_ages,layer1_broad_ethnicity,Asian,1333,24375,27125
+all_ages,layer1_broad_ethnicity,European,3925,47875,30500
+all_ages,layer1_broad_ethnicity,Others,492,10000,16625
+all_ages,layer1_broad_ethnicity,Unmapped,1232,0,0
+all_ages,layer2_subcategory,African,475,9625,16250
+all_ages,layer2_subcategory,East Asian,357,8375,15875
+all_ages,layer2_subcategory,European,3925,47875,29000
+all_ages,layer2_subcategory,Latino/Hispanic,298,5375,12500
+all_ages,layer2_subcategory,Middle Eastern,431,10875,16875
+all_ages,layer2_subcategory,SE Asian,83,1750,6375
+all_ages,layer2_subcategory,South Asian,276,5500,12875
+all_ages,layer2_subcategory,Unmapped,1612,0,0

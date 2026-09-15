@@ -1,0 +1,13 @@
+cohort,layer,file,saved_vs_current
+age_3_9,layer1_broad_ethnicity,analysis_C_all_interactions.csv,identical within 1e-10 relative/1e-12 absolute
+age_3_9,layer1_broad_ethnicity,analysis_A_healthy_kruskal_all_groups.csv,identical within 1e-10 relative/1e-12 absolute
+age_3_9,layer1_broad_ethnicity,analysis_A_healthy_pairwise_groups.csv,identical within 1e-10 relative/1e-12 absolute
+age_3_9_id_sensitivity,layer1_broad_ethnicity,analysis_C_all_interactions.csv,identical within 1e-10 relative/1e-12 absolute
+age_3_9_id_sensitivity,layer1_broad_ethnicity,analysis_A_healthy_kruskal_all_groups.csv,identical within 1e-10 relative/1e-12 absolute
+age_3_9_id_sensitivity,layer1_broad_ethnicity,analysis_A_healthy_pairwise_groups.csv,identical within 1e-10 relative/1e-12 absolute
+age_3_9,layer2_subcategory,analysis_C_all_interactions.csv,identical within 1e-10 relative/1e-12 absolute
+age_3_9,layer2_subcategory,analysis_A_healthy_kruskal_all_groups.csv,identical within 1e-10 relative/1e-12 absolute
+age_3_9,layer2_subcategory,analysis_A_healthy_pairwise_groups.csv,identical within 1e-10 relative/1e-12 absolute
+age_3_9_id_sensitivity,layer2_subcategory,analysis_C_all_interactions.csv,identical within 1e-10 relative/1e-12 absolute
+age_3_9_id_sensitivity,layer2_subcategory,analysis_A_healthy_kruskal_all_groups.csv,identical within 1e-10 relative/1e-12 absolute
+age_3_9_id_sensitivity,layer2_subcategory,analysis_A_healthy_pairwise_groups.csv,identical within 1e-10 relative/1e-12 absolute

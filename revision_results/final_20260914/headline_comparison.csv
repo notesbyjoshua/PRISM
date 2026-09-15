@@ -1,0 +1,10 @@
+analysis,layer,legacy_tests,corrected_tests,legacy_significant,corrected_significant,q_column
+main,pooled,27375,6125,8038,811,mannwhitney_q_fdr_global
+A_omnibus,layer1_broad_ethnicity,125,125,79,72,fdr_q_value
+A_pairwise,layer1_broad_ethnicity,750,750,239,191,within_pair_fdr_q_value
+B,layer1_broad_ethnicity,97500,36000,5929,375,global_fdr_q_value
+C,layer1_broad_ethnicity,49500,11500,2623,479,global_fdr_q_value
+A_omnibus,layer2_subcategory,125,125,94,89,fdr_q_value
+A_pairwise,layer2_subcategory,2625,2625,817,767,within_pair_fdr_q_value
+B,layer2_subcategory,97125,33875,5352,452,global_fdr_q_value
+C,layer2_subcategory,65750,15000,3482,633,global_fdr_q_value

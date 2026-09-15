@@ -1,0 +1,16 @@
+cohort,analysis,layer,tests,syndromes,global_significant,large_significant,within_family_significant,priority
+age_3_9,main,pooled_reference,6125,49.0,811,379.0,,
+age_3_9,B,layer1_broad_ethnicity,36000,,375,,1168.0,329.0
+age_3_9,C,layer1_broad_ethnicity,11500,,479,,539.0,37.0
+age_3_9,B,layer2_subcategory,33875,,452,,1280.0,334.0
+age_3_9,C,layer2_subcategory,15000,,633,,652.0,27.0
+all_ages,main,pooled_reference,23500,188.0,6435,2109.0,,
+all_ages,B,layer1_broad_ethnicity,91875,,4934,,6926.0,2226.0
+all_ages,C,layer1_broad_ethnicity,44125,,1874,,2037.0,232.0
+all_ages,B,layer2_subcategory,89375,,4903,,6830.0,1859.0
+all_ages,C,layer2_subcategory,54875,,2169,,2290.0,183.0
+age_3_9_id_sensitivity,main,pooled_reference,6125,49.0,834,398.0,,
+age_3_9_id_sensitivity,B,layer1_broad_ethnicity,36000,,434,,1150.0,331.0
+age_3_9_id_sensitivity,C,layer1_broad_ethnicity,11500,,469,,550.0,36.0
+age_3_9_id_sensitivity,B,layer2_subcategory,33875,,505,,1297.0,336.0
+age_3_9_id_sensitivity,C,layer2_subcategory,15000,,622,,660.0,27.0
