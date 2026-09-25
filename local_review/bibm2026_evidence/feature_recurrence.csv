@@ -1,0 +1,126 @@
+feature,anatomical_region,feature_family,syndromes_tested,number_significant,number_significant_positive,number_significant_negative,number_significant_large,median_signed_g_among_significant,median_absolute_g_among_significant,significant_fraction_among_tested_syndromes
+midface_width,global face shape / proportions,midface_width,49,5,5,0,2,0.625455922883151,0.625455922883151,0.10204081632653061
+mouth_upper_fit_residual,philtrum / mouth / lips,mouth_upper_fit_residual,49,3,1,2,1,-0.5670179841515873,0.7754770218811521,0.061224489795918366
+mouth_width,philtrum / mouth / lips,mouth_width,49,2,2,0,1,0.725498634889026,0.725498634889026,0.04081632653061224
+nose_tip_to_bridge_ratio,nose,nose_tip_to_bridge_ratio,49,9,2,7,4,-0.7416263654009825,0.7462312013166825,0.1836734693877551
+forehead_height,forehead,forehead_height,49,22,22,0,15,0.9373305072894609,0.9373305072894609,0.4489795918367347
+hairline_height,forehead,hairline_height,49,22,22,0,15,0.9373305072894609,0.9373305072894609,0.4489795918367347
+iris_offset_y_l,ocular position / iris / gaze,iris_offset_y,49,24,0,24,13,-0.8196444320786467,0.8196444320786467,0.4897959183673469
+nose_base_width,nose,nose_base_width,49,8,2,6,2,-0.7362271598388236,0.7499651086760604,0.16326530612244897
+iris_offset_y_r,ocular position / iris / gaze,iris_offset_y,49,18,0,18,9,-0.7981545084578712,0.7981545084578712,0.3673469387755102
+upper_vermilion_height,philtrum / mouth / lips,upper_vermilion_height,49,3,1,2,1,-0.6593178519533154,0.7162799728833378,0.061224489795918366
+mouth_triangularity,philtrum / mouth / lips,mouth_triangularity,49,4,2,2,2,-0.06167281121162249,0.7584696926523884,0.08163265306122448
+mouth_tenting,philtrum / mouth / lips,mouth_tenting,49,5,3,2,3,0.6758632610380965,0.826935678762206,0.10204081632653061
+mouth_upper_curvature_c2,philtrum / mouth / lips,mouth_upper_curvature_c2,49,4,2,2,1,0.03635894563087205,0.7083959534748787,0.08163265306122448
+mouth_corner_drop,philtrum / mouth / lips,mouth_corner_drop,49,6,1,5,3,-0.6901637028303682,0.7837036401055755,0.12244897959183673
+malar_bulge_mean,cheeks / malar region,malar_bulge,49,12,0,12,8,-0.9373932967051425,0.9373932967051425,0.24489795918367346
+upper_lip_eversion,philtrum / mouth / lips,upper_lip_eversion,49,4,2,2,1,-0.09937227689382769,0.6912282970096268,0.08163265306122448
+nose_tip_width,nose,nose_tip_width,49,4,2,2,2,-0.035645292742857604,0.7500268019430261,0.08163265306122448
+vermilion_total,philtrum / mouth / lips,vermilion_total,49,4,4,0,1,0.662414301464578,0.662414301464578,0.08163265306122448
+chin_width,chin / jaw,chin_width,49,18,0,18,13,-0.9132100929051306,0.9132100929051306,0.3673469387755102
+philtrum_width,philtrum / mouth / lips,philtrum_width,49,21,0,21,15,-0.9288175760965144,0.9288175760965144,0.42857142857142855
+face_triangularity,global face shape / proportions,face_triangularity,49,18,18,0,16,1.0379059050174955,1.0379059050174955,0.3673469387755102
+lower_lip_eversion,philtrum / mouth / lips,lower_lip_eversion,49,4,4,0,1,0.6945277208169642,0.6945277208169642,0.08163265306122448
+lower_vermilion_height,philtrum / mouth / lips,lower_vermilion_height,49,5,5,0,1,0.7262551635484835,0.7262551635484835,0.10204081632653061
+inter_canthal_distance,eyes / orbital dimensions,inter_canthal_distance,49,10,9,1,7,1.0246811646763554,1.0246811646763554,0.20408163265306123
+eye_lower_lid_to_iris_asym,ocular position / iris / gaze,eye_lower_lid_to_iris_asym,49,6,0,6,0,-0.3111237013718628,0.3111237013718628,0.12244897959183673
+nose_tip_midline_dent,nose,nose_tip_midline_dent,49,9,7,2,6,0.9173024728520714,0.9700071671553542,0.1836734693877551
+chin_height,chin / jaw,chin_height,49,15,0,15,8,-0.9062322741940704,0.9062322741940704,0.30612244897959184
+cheek_area_asym,cheeks / malar region,cheek_area_asym,49,0,0,0,0,,,0.0
+lip_outer_to_inner_area,philtrum / mouth / lips,lip_outer_to_inner_area,49,2,1,1,1,0.2657870415983763,0.5368333017443511,0.04081632653061224
+nose_ala_height_asym,nose,nose_ala_height_asym,49,3,0,3,0,-0.4345342249877127,0.4345342249877127,0.061224489795918366
+eye_fissure_height_asym,eyes / orbital dimensions,eye_fissure_height_asym,49,0,0,0,0,,,0.0
+inter_pupillary_distance,ocular position / iris / gaze,inter_pupillary_distance,49,10,10,0,6,0.9319828060194908,0.9319828060194908,0.20408163265306123
+columella_hang_below_ala,nose,columella_hang_below_ala,49,6,0,6,3,-0.8374895894139068,0.8374895894139068,0.12244897959183673
+nasolabial_angle,nose,nasolabial_angle,49,8,8,0,2,0.6497909673727479,0.6497909673727479,0.16326530612244897
+eye_fissure_fill_mean,eyes / orbital dimensions,eye_fissure_fill,49,6,6,0,2,0.5744440007117199,0.5744440007117199,0.12244897959183673
+eye_fissure_aspect_r,eyes / orbital dimensions,eye_fissure_aspect,49,3,3,0,1,0.7649630502683306,0.7649630502683306,0.061224489795918366
+eye_fissure_fill_r,eyes / orbital dimensions,eye_fissure_fill,49,4,4,0,1,0.6556494869486095,0.6556494869486095,0.08163265306122448
+cheek_area_mean,cheeks / malar region,cheek_area,49,10,0,10,1,-0.6342187372076638,0.6342187372076638,0.20408163265306123
+eb_lateral_thickness_asym,eyebrows,eb_lateral_thickness_asym,49,8,0,8,0,-0.5268947141997344,0.5268947141997344,0.16326530612244897
+eb_thickness_asym,eyebrows,eb_thickness_asym,49,4,0,4,0,-0.5348522508346055,0.5348522508346055,0.08163265306122448
+face_asymmetry,global face shape / proportions,face_asymmetry,49,8,0,8,1,-0.5380577593092132,0.5380577593092132,0.16326530612244897
+eye_fissure_length_asym,eyes / orbital dimensions,eye_fissure_length_asym,49,2,0,2,0,-0.4723776402494452,0.4723776402494452,0.04081632653061224
+nose_ala_height_mean,nose,nose_ala_height,49,16,15,1,7,0.7930703955958328,0.7930703955958328,0.32653061224489793
+nose_ala_height_l,nose,nose_ala_height,49,16,15,1,7,0.7719054442804975,0.7796336993594404,0.32653061224489793
+eye_fissure_aspect_mean,eyes / orbital dimensions,eye_fissure_aspect,49,4,4,0,2,0.6985304034402484,0.6985304034402484,0.08163265306122448
+eb_arch_mean,eyebrows,eb_arch,49,6,4,2,3,0.43239220175264653,0.7946779270028164,0.12244897959183673
+nostril_region_area,nose,nostril_region_area,49,2,2,0,2,0.880761808531586,0.880761808531586,0.04081632653061224
+nose_to_face_area_ratio,nose,nose_to_face_area_ratio,49,6,1,5,2,-0.7205521903235894,0.7205521903235894,0.12244897959183673
+eb_thickness_r,eyebrows,eb_thickness,49,11,11,0,7,0.9756733258641264,0.9756733258641264,0.22448979591836735
+jaw_to_forehead_ratio,chin / jaw,jaw_to_forehead_ratio,49,11,0,11,9,-1.1892095015207482,1.1892095015207482,0.22448979591836735
+eb_position_l,eyebrows,eb_position,49,6,1,5,2,-0.7466768913351524,0.7466768913351524,0.12244897959183673
+nose_ala_height_r,nose,nose_ala_height,49,14,14,0,8,0.8741307548696161,0.8741307548696161,0.2857142857142857
+eye_fissure_aspect_l,eyes / orbital dimensions,eye_fissure_aspect,49,5,5,0,2,0.6074434556859707,0.6074434556859707,0.10204081632653061
+eye_fissure_fill_l,eyes / orbital dimensions,eye_fissure_fill,49,5,5,0,2,0.6284333181075362,0.6284333181075362,0.10204081632653061
+malar_bulge_l,cheeks / malar region,malar_bulge,49,1,0,1,0,-0.4166830722793111,0.4166830722793111,0.02040816326530612
+jaw_bigonial_width,chin / jaw,jaw_bigonial_width,49,13,1,12,9,-0.9470633362597256,0.9470633362597256,0.2653061224489796
+eye_lower_lid_to_iris_l,ocular position / iris / gaze,eye_lower_lid_to_iris,49,11,11,0,0,0.2089738724414181,0.2089738724414181,0.22448979591836735
+eb_arch_r,eyebrows,eb_arch,49,3,1,2,1,-0.734850366156898,0.7420181242800652,0.061224489795918366
+nose_tip_elevation,nose,nose_tip_elevation,49,6,6,0,2,0.6345522050236649,0.6345522050236649,0.12244897959183673
+gaze_asym_x,ocular position / iris / gaze,gaze_asym_x,49,2,1,1,2,0.09301415963886661,0.9091941158479396,0.04081632653061224
+eye_upper_lid_to_iris_l,ocular position / iris / gaze,eye_upper_lid_to_iris,49,6,0,6,0,-0.14334211535025876,0.14334211535025876,0.12244897959183673
+malar_bulge_asym,cheeks / malar region,malar_bulge_asym,49,2,0,2,0,-0.6598791448701663,0.6598791448701663,0.04081632653061224
+eye_epicanthus_angle_mean,eyes / orbital dimensions,eye_epicanthus_angle,49,8,8,0,1,0.6695919253135598,0.6695919253135598,0.16326530612244897
+eye_epicanthus_angle_r,eyes / orbital dimensions,eye_epicanthus_angle,49,4,4,0,1,0.6822906789437699,0.6822906789437699,0.08163265306122448
+face_aspect_ratio,global face shape / proportions,face_aspect_ratio,49,10,1,9,6,-0.7789759180173347,0.8833468477180826,0.20408163265306123
+nose_length,nose,nose_length,49,2,1,1,0,-0.017159961885911956,0.7359095938023831,0.04081632653061224
+eb_position_mean,eyebrows,eb_position,49,6,1,5,2,-0.7260167375718517,0.7260167375718517,0.12244897959183673
+cupid_bow_peak_asym,philtrum / mouth / lips,cupid_bow_peak_asym,49,0,0,0,0,,,0.0
+eb_lateral_thickness_l,eyebrows,eb_lateral_thickness,49,0,0,0,0,,,0.0
+eb_arch_l,eyebrows,eb_arch,49,4,3,1,1,0.46303193268964304,0.6161396838757995,0.08163265306122448
+face_roundness,global face shape / proportions,face_roundness,49,2,1,1,0,0.13477033082204998,0.5530735017047486,0.04081632653061224
+forehead_width_mid,forehead,forehead_width_mid,49,16,15,1,14,1.0568472217650964,1.059156516168497,0.32653061224489793
+mouth_opening,philtrum / mouth / lips,mouth_opening,49,7,1,6,1,-0.6371524008154839,0.6544616698685233,0.14285714285714285
+eye_lower_lid_to_iris_mean,ocular position / iris / gaze,eye_lower_lid_to_iris,49,7,7,0,0,0.2161400724708093,0.2161400724708093,0.14285714285714285
+gaze_asym_y,ocular position / iris / gaze,gaze_asym_y,49,4,4,0,0,0.41779357224111774,0.41779357224111774,0.08163265306122448
+forehead_width_upper,forehead,forehead_width_upper,49,12,12,0,10,0.9860214007061718,0.9860214007061718,0.24489795918367346
+eye_upper_lid_to_iris_mean,ocular position / iris / gaze,eye_upper_lid_to_iris,49,3,0,3,0,-0.1923742644608938,0.1923742644608938,0.061224489795918366
+eye_fissure_height_l,eyes / orbital dimensions,eye_fissure_height,49,6,6,0,2,0.712107154782382,0.712107154782382,0.12244897959183673
+eye_fissure_height_mean,eyes / orbital dimensions,eye_fissure_height,49,6,6,0,2,0.7125862358345587,0.7125862358345587,0.12244897959183673
+ala_flare_angle,nose,ala_flare_angle,49,3,3,0,0,0.7520460500392037,0.7520460500392037,0.061224489795918366
+eye_epicanthus_angle_l,eyes / orbital dimensions,eye_epicanthus_angle,49,10,10,0,3,0.7275438228127592,0.7275438228127592,0.20408163265306123
+eye_fissure_height_r,eyes / orbital dimensions,eye_fissure_height,49,6,6,0,2,0.7047922708824144,0.7047922708824144,0.12244897959183673
+eb_arch_asym,eyebrows,eb_arch_asym,49,7,0,7,1,-0.6963729812364521,0.6963729812364521,0.14285714285714285
+columella_length,nose,columella_length,49,4,4,0,2,0.7240405113621425,0.7240405113621425,0.08163265306122448
+nose_bridge_length,nose,nose_bridge_length,49,5,0,5,2,-0.6708097101289988,0.6708097101289988,0.10204081632653061
+eye_fissure_length_l,eyes / orbital dimensions,eye_fissure_length,49,4,4,0,0,0.6718748440097817,0.6718748440097817,0.08163265306122448
+eb_inter_distance,eyebrows,eb_inter_distance,49,11,10,1,8,0.8980443749481495,0.9274848161566812,0.22448979591836735
+cupid_bow_drop,philtrum / mouth / lips,cupid_bow_drop,49,13,13,0,8,0.8672472889258721,0.8672472889258721,0.2653061224489796
+eb_position_r,eyebrows,eb_position,49,5,1,4,2,-0.78697761150134,0.78697761150134,0.10204081632653061
+chin_pointedness_angle,chin / jaw,chin_pointedness_angle,49,9,9,0,7,1.0306990117064927,1.0306990117064927,0.1836734693877551
+eye_area_l,eyes / orbital dimensions,eye_area,49,6,6,0,3,0.8087448165795874,0.8087448165795874,0.12244897959183673
+iris_offset_x_r,ocular position / iris / gaze,iris_offset_x,49,0,0,0,0,,,0.0
+eb_lateral_thickness_r,eyebrows,eb_lateral_thickness,49,3,3,0,0,0.6323296994069333,0.6323296994069333,0.061224489795918366
+eye_area_mean,eyes / orbital dimensions,eye_area,49,6,6,0,3,0.8399184589413178,0.8399184589413178,0.12244897959183673
+gaze_asym_norm,ocular position / iris / gaze,gaze_asym_norm,49,1,1,0,0,0.4965676210890867,0.4965676210890867,0.02040816326530612
+eye_lower_lid_to_iris_r,ocular position / iris / gaze,eye_lower_lid_to_iris,49,4,4,0,0,0.21665131526666334,0.21665131526666334,0.08163265306122448
+outer_canthal_distance,eyes / orbital dimensions,outer_canthal_distance,49,11,11,0,6,1.0790013204294004,1.0790013204294004,0.22448979591836735
+eye_fissure_slant_l,eyes / orbital dimensions,eye_fissure_slant,49,4,2,2,1,-0.04387034559268349,0.5464469320432599,0.08163265306122448
+eye_upper_lid_to_iris_r,ocular position / iris / gaze,eye_upper_lid_to_iris,49,1,0,1,0,-0.1837299856913251,0.1837299856913251,0.02040816326530612
+cheek_area_l,cheeks / malar region,cheek_area,49,2,0,2,0,-0.570887566435813,0.570887566435813,0.04081632653061224
+eye_area_r,eyes / orbital dimensions,eye_area,49,7,7,0,4,0.8420221456581599,0.8420221456581599,0.14285714285714285
+eb_medial_flare_l,eyebrows,eb_medial_flare,49,5,1,4,1,-0.4472538722308953,0.4615657231595609,0.10204081632653061
+eye_fissure_slant_mean,eyes / orbital dimensions,eye_fissure_slant,49,3,1,2,0,-0.539338662721481,0.539338662721481,0.061224489795918366
+eb_lateral_thickness_mean,eyebrows,eb_lateral_thickness,49,4,3,1,2,0.7783960421624001,0.8619858545489139,0.08163265306122448
+eye_epicanthus_angle_asym,eyes / orbital dimensions,eye_epicanthus_angle_asym,49,5,0,5,0,-0.4598799821890217,0.4598799821890217,0.10204081632653061
+face_width_uniformity,global face shape / proportions,face_width_uniformity,49,7,5,2,5,0.7758922031927262,0.8804505886307351,0.14285714285714285
+lip_midline_x_std,philtrum / mouth / lips,lip_midline_x_std,49,4,0,4,0,-0.5412557474567972,0.5412557474567972,0.08163265306122448
+eye_fissure_length_mean,eyes / orbital dimensions,eye_fissure_length,49,9,9,0,3,0.7371010436070546,0.7371010436070546,0.1836734693877551
+iris_offset_x_l,ocular position / iris / gaze,iris_offset_x,49,0,0,0,0,,,0.0
+eb_thickness_mean,eyebrows,eb_thickness,49,15,15,0,11,0.9517020713115342,0.9517020713115342,0.30612244897959184
+philtrum_length,philtrum / mouth / lips,philtrum_length,49,19,19,0,18,0.9473727862179484,0.9473727862179484,0.3877551020408163
+eye_fissure_length_r,eyes / orbital dimensions,eye_fissure_length,49,7,7,0,3,0.738031834994691,0.738031834994691,0.14285714285714285
+canthal_to_pupillary_ratio,eyes / orbital dimensions,canthal_to_pupillary_ratio,49,3,1,2,1,-0.5829870464117239,0.7213696513709975,0.061224489795918366
+eb_medial_flare_mean,eyebrows,eb_medial_flare,49,4,0,4,0,-0.4747083594649649,0.4747083594649649,0.08163265306122448
+nose_bridge_width,nose,nose_bridge_width,49,7,6,1,5,0.9916669165101056,0.9916669165101056,0.14285714285714285
+eye_fissure_slant_r,eyes / orbital dimensions,eye_fissure_slant,49,2,1,1,0,-0.08229465371200237,0.4710961330118638,0.04081632653061224
+eye_upper_lid_to_iris_asym,ocular position / iris / gaze,eye_upper_lid_to_iris_asym,49,3,0,3,0,-0.0077272402805953,0.0077272402805953,0.061224489795918366
+eb_thickness_l,eyebrows,eb_thickness,49,5,5,0,2,0.7425643230093131,0.7425643230093131,0.10204081632653061
+forehead_taper_ratio,forehead,forehead_taper_ratio,49,2,2,0,0,0.6260319736879365,0.6260319736879365,0.04081632653061224
+malar_bulge_r,cheeks / malar region,malar_bulge,49,0,0,0,0,,,0.0
+cheek_area_r,cheeks / malar region,cheek_area,49,0,0,0,0,,,0.0
+eb_medial_flare_r,eyebrows,eb_medial_flare,49,1,0,1,0,-0.3876489761006649,0.3876489761006649,0.02040816326530612
+eye_area_asym,eyes / orbital dimensions,eye_area_asym,49,2,0,2,0,-0.44547270064362277,0.44547270064362277,0.04081632653061224
+eb_position_asym,eyebrows,eb_position_asym,49,0,0,0,0,,,0.0
+eye_fissure_slant_asym,eyes / orbital dimensions,eye_fissure_slant_asym,49,0,0,0,0,,,0.0

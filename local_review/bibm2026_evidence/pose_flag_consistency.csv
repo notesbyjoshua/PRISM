@@ -1,0 +1,7 @@
+cohort,classification,count,fraction_of_stored_pass,stored_pass_total,yaw_outside_15,pitch_outside_15,roll_outside_10
+retained disease,stored pass + finite pose within historical default thresholds,1850,1.0,1850,0,0,0
+retained disease,stored pass + finite pose outside at least one historical default threshold,0,0.0,1850,0,0,0
+retained disease,stored pass + missing or nonfinite pose,0,0.0,1850,0,0,0
+retained reference,stored pass + finite pose within historical default thresholds,942,1.0,942,0,0,0
+retained reference,stored pass + finite pose outside at least one historical default threshold,0,0.0,942,0,0,0
+retained reference,stored pass + missing or nonfinite pose,0,0.0,942,0,0,0

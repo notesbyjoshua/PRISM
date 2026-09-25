@@ -1,0 +1,126 @@
+position,feature,anatomical_region,feature_family,family_rule,measurement_description,normalization_or_formula_context
+1,eb_thickness_r,eyebrows,eb_thickness,right/left/mean variants grouped; asymmetry retained separately,Eyebrow thickness right,bizygomatic width squared
+2,eb_thickness_l,eyebrows,eb_thickness,right/left/mean variants grouped; asymmetry retained separately,Eyebrow thickness left,bizygomatic width squared
+3,eb_thickness_mean,eyebrows,eb_thickness,right/left/mean variants grouped; asymmetry retained separately,Eyebrow thickness bilateral mean,bizygomatic width squared
+4,eb_thickness_asym,eyebrows,eb_thickness_asym,exact formula retained as its own family,Eyebrow thickness asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+5,eb_inter_distance,eyebrows,eb_inter_distance,exact formula retained as its own family,Eyebrow between distance,bizygomatic width
+6,eb_arch_r,eyebrows,eb_arch,right/left/mean variants grouped; asymmetry retained separately,Eyebrow arch right,bizygomatic width
+7,eb_arch_l,eyebrows,eb_arch,right/left/mean variants grouped; asymmetry retained separately,Eyebrow arch left,bizygomatic width
+8,eb_arch_mean,eyebrows,eb_arch,right/left/mean variants grouped; asymmetry retained separately,Eyebrow arch bilateral mean,bizygomatic width
+9,eb_arch_asym,eyebrows,eb_arch_asym,exact formula retained as its own family,Eyebrow arch asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+10,eb_position_r,eyebrows,eb_position,right/left/mean variants grouped; asymmetry retained separately,Eyebrow position right,bizygomatic width
+11,eb_position_l,eyebrows,eb_position,right/left/mean variants grouped; asymmetry retained separately,Eyebrow position left,bizygomatic width
+12,eb_position_mean,eyebrows,eb_position,right/left/mean variants grouped; asymmetry retained separately,Eyebrow position bilateral mean,bizygomatic width
+13,eb_position_asym,eyebrows,eb_position_asym,exact formula retained as its own family,Eyebrow position asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+14,eb_medial_flare_r,eyebrows,eb_medial_flare,right/left/mean variants grouped; asymmetry retained separately,Eyebrow medial flare right,bizygomatic width
+15,eb_medial_flare_l,eyebrows,eb_medial_flare,right/left/mean variants grouped; asymmetry retained separately,Eyebrow medial flare left,bizygomatic width
+16,eb_lateral_thickness_r,eyebrows,eb_lateral_thickness,right/left/mean variants grouped; asymmetry retained separately,Eyebrow lateral thickness right,bizygomatic width squared
+17,eb_lateral_thickness_l,eyebrows,eb_lateral_thickness,right/left/mean variants grouped; asymmetry retained separately,Eyebrow lateral thickness left,bizygomatic width squared
+18,eb_medial_flare_mean,eyebrows,eb_medial_flare,right/left/mean variants grouped; asymmetry retained separately,Eyebrow medial flare bilateral mean,bizygomatic width
+19,eb_lateral_thickness_mean,eyebrows,eb_lateral_thickness,right/left/mean variants grouped; asymmetry retained separately,Eyebrow lateral thickness bilateral mean,bizygomatic width squared
+20,eb_lateral_thickness_asym,eyebrows,eb_lateral_thickness_asym,exact formula retained as its own family,Eyebrow lateral thickness asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+21,eye_fissure_length_r,eyes / orbital dimensions,eye_fissure_length,right/left/mean variants grouped; asymmetry retained separately,Eye opening length right,bizygomatic width
+22,eye_fissure_height_r,eyes / orbital dimensions,eye_fissure_height,right/left/mean variants grouped; asymmetry retained separately,Eye opening height right,bizygomatic width
+23,eye_fissure_length_l,eyes / orbital dimensions,eye_fissure_length,right/left/mean variants grouped; asymmetry retained separately,Eye opening length left,bizygomatic width
+24,eye_fissure_height_l,eyes / orbital dimensions,eye_fissure_height,right/left/mean variants grouped; asymmetry retained separately,Eye opening height left,bizygomatic width
+25,eye_fissure_length_mean,eyes / orbital dimensions,eye_fissure_length,right/left/mean variants grouped; asymmetry retained separately,Eye opening length bilateral mean,bizygomatic width
+26,eye_fissure_height_mean,eyes / orbital dimensions,eye_fissure_height,right/left/mean variants grouped; asymmetry retained separately,Eye opening height bilateral mean,bizygomatic width
+27,eye_fissure_length_asym,eyes / orbital dimensions,eye_fissure_length_asym,exact formula retained as its own family,Eye opening length asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+28,eye_fissure_height_asym,eyes / orbital dimensions,eye_fissure_height_asym,exact formula retained as its own family,Eye opening height asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+29,eye_fissure_slant_r,eyes / orbital dimensions,eye_fissure_slant,right/left/mean variants grouped; asymmetry retained separately,Eye opening slant right,"angle in degrees, except normalized asymmetry variants"
+30,eye_fissure_slant_l,eyes / orbital dimensions,eye_fissure_slant,right/left/mean variants grouped; asymmetry retained separately,Eye opening slant left,"angle in degrees, except normalized asymmetry variants"
+31,eye_fissure_slant_mean,eyes / orbital dimensions,eye_fissure_slant,right/left/mean variants grouped; asymmetry retained separately,Eye opening slant bilateral mean,"angle in degrees, except normalized asymmetry variants"
+32,eye_fissure_slant_asym,eyes / orbital dimensions,eye_fissure_slant_asym,exact formula retained as its own family,Eye opening slant asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+33,eye_fissure_aspect_r,eyes / orbital dimensions,eye_fissure_aspect,right/left/mean variants grouped; asymmetry retained separately,Eye opening aspect right,local eye-fissure dimension
+34,eye_fissure_aspect_l,eyes / orbital dimensions,eye_fissure_aspect,right/left/mean variants grouped; asymmetry retained separately,Eye opening aspect left,local eye-fissure dimension
+35,eye_fissure_aspect_mean,eyes / orbital dimensions,eye_fissure_aspect,right/left/mean variants grouped; asymmetry retained separately,Eye opening aspect bilateral mean,local eye-fissure dimension
+36,inter_canthal_distance,eyes / orbital dimensions,inter_canthal_distance,exact formula retained as its own family,Between canthal distance,bizygomatic width
+37,inter_pupillary_distance,ocular position / iris / gaze,inter_pupillary_distance,exact formula retained as its own family,Between pupillary distance,bizygomatic width
+38,outer_canthal_distance,eyes / orbital dimensions,outer_canthal_distance,exact formula retained as its own family,Outer canthal distance,bizygomatic width
+39,canthal_to_pupillary_ratio,eyes / orbital dimensions,canthal_to_pupillary_ratio,exact formula retained as its own family,Canthal to pupillary ratio,intercanthal / interpupillary distance
+40,eye_epicanthus_angle_r,eyes / orbital dimensions,eye_epicanthus_angle,right/left/mean variants grouped; asymmetry retained separately,Eye epicanthus angle right,"angle in degrees, except normalized asymmetry variants"
+41,eye_epicanthus_angle_l,eyes / orbital dimensions,eye_epicanthus_angle,right/left/mean variants grouped; asymmetry retained separately,Eye epicanthus angle left,"angle in degrees, except normalized asymmetry variants"
+42,eye_epicanthus_angle_mean,eyes / orbital dimensions,eye_epicanthus_angle,right/left/mean variants grouped; asymmetry retained separately,Eye epicanthus angle bilateral mean,"angle in degrees, except normalized asymmetry variants"
+43,eye_epicanthus_angle_asym,eyes / orbital dimensions,eye_epicanthus_angle_asym,exact formula retained as its own family,Eye epicanthus angle asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+44,eye_upper_lid_to_iris_r,ocular position / iris / gaze,eye_upper_lid_to_iris,right/left/mean variants grouped; asymmetry retained separately,Eye upper lid to iris right,bizygomatic width
+45,eye_lower_lid_to_iris_r,ocular position / iris / gaze,eye_lower_lid_to_iris,right/left/mean variants grouped; asymmetry retained separately,Eye lower lid to iris right,bizygomatic width
+46,eye_upper_lid_to_iris_l,ocular position / iris / gaze,eye_upper_lid_to_iris,right/left/mean variants grouped; asymmetry retained separately,Eye upper lid to iris left,bizygomatic width
+47,eye_lower_lid_to_iris_l,ocular position / iris / gaze,eye_lower_lid_to_iris,right/left/mean variants grouped; asymmetry retained separately,Eye lower lid to iris left,bizygomatic width
+48,eye_upper_lid_to_iris_mean,ocular position / iris / gaze,eye_upper_lid_to_iris,right/left/mean variants grouped; asymmetry retained separately,Eye upper lid to iris bilateral mean,bizygomatic width
+49,eye_upper_lid_to_iris_asym,ocular position / iris / gaze,eye_upper_lid_to_iris_asym,exact formula retained as its own family,Eye upper lid to iris asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+50,eye_lower_lid_to_iris_mean,ocular position / iris / gaze,eye_lower_lid_to_iris,right/left/mean variants grouped; asymmetry retained separately,Eye lower lid to iris bilateral mean,bizygomatic width
+51,eye_lower_lid_to_iris_asym,ocular position / iris / gaze,eye_lower_lid_to_iris_asym,exact formula retained as its own family,Eye lower lid to iris asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+52,eye_area_r,eyes / orbital dimensions,eye_area,right/left/mean variants grouped; asymmetry retained separately,Eye area right,bizygomatic width squared
+53,eye_area_l,eyes / orbital dimensions,eye_area,right/left/mean variants grouped; asymmetry retained separately,Eye area left,bizygomatic width squared
+54,eye_area_mean,eyes / orbital dimensions,eye_area,right/left/mean variants grouped; asymmetry retained separately,Eye area bilateral mean,bizygomatic width squared
+55,eye_area_asym,eyes / orbital dimensions,eye_area_asym,exact formula retained as its own family,Eye area asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+56,eye_fissure_fill_r,eyes / orbital dimensions,eye_fissure_fill,right/left/mean variants grouped; asymmetry retained separately,Eye opening fill right,local eye-fissure dimension
+57,eye_fissure_fill_l,eyes / orbital dimensions,eye_fissure_fill,right/left/mean variants grouped; asymmetry retained separately,Eye opening fill left,local eye-fissure dimension
+58,eye_fissure_fill_mean,eyes / orbital dimensions,eye_fissure_fill,right/left/mean variants grouped; asymmetry retained separately,Eye opening fill bilateral mean,local eye-fissure dimension
+59,iris_offset_x_r,ocular position / iris / gaze,iris_offset_x,right/left/mean variants grouped; asymmetry retained separately,Iris offset x right,local eye-fissure dimension
+60,iris_offset_y_r,ocular position / iris / gaze,iris_offset_y,right/left/mean variants grouped; asymmetry retained separately,Iris offset y right,local eye-fissure dimension
+61,iris_offset_x_l,ocular position / iris / gaze,iris_offset_x,right/left/mean variants grouped; asymmetry retained separately,Iris offset x left,local eye-fissure dimension
+62,iris_offset_y_l,ocular position / iris / gaze,iris_offset_y,right/left/mean variants grouped; asymmetry retained separately,Iris offset y left,local eye-fissure dimension
+63,gaze_asym_x,ocular position / iris / gaze,gaze_asym_x,exact formula retained as its own family,Gaze asymmetry x,side-to-side difference or normalized asymmetry; see historical formula
+64,gaze_asym_y,ocular position / iris / gaze,gaze_asym_y,exact formula retained as its own family,Gaze asymmetry y,side-to-side difference or normalized asymmetry; see historical formula
+65,gaze_asym_norm,ocular position / iris / gaze,gaze_asym_norm,exact formula retained as its own family,Gaze asymmetry norm,side-to-side difference or normalized asymmetry; see historical formula
+66,nose_length,nose,nose_length,exact formula retained as its own family,Nose length,face height
+67,nose_bridge_length,nose,nose_bridge_length,exact formula retained as its own family,Nose bridge length,midface height
+68,nose_bridge_width,nose,nose_bridge_width,exact formula retained as its own family,Nose bridge width,bizygomatic width
+69,nose_tip_width,nose,nose_tip_width,exact formula retained as its own family,Nose tip width,bizygomatic width
+70,nose_base_width,nose,nose_base_width,exact formula retained as its own family,Nose base width,bizygomatic width
+71,nose_tip_to_bridge_ratio,nose,nose_tip_to_bridge_ratio,exact formula retained as its own family,Nose tip to bridge ratio,nose tip width / bridge width
+72,nose_tip_midline_dent,nose,nose_tip_midline_dent,exact formula retained as its own family,Nose tip midline dent,bizygomatic width
+73,nose_ala_height_r,nose,nose_ala_height,right/left/mean variants grouped; asymmetry retained separately,Nose alar height right,bizygomatic width
+74,nose_ala_height_l,nose,nose_ala_height,right/left/mean variants grouped; asymmetry retained separately,Nose alar height left,bizygomatic width
+75,nose_ala_height_mean,nose,nose_ala_height,right/left/mean variants grouped; asymmetry retained separately,Nose alar height bilateral mean,bizygomatic width
+76,nose_ala_height_asym,nose,nose_ala_height_asym,exact formula retained as its own family,Nose alar height asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+77,nostril_region_area,nose,nostril_region_area,exact formula retained as its own family,Nostril region area,bizygomatic width squared
+78,nasolabial_angle,nose,nasolabial_angle,exact formula retained as its own family,Nasolabial angle,"angle in degrees, except normalized asymmetry variants"
+79,nose_tip_elevation,nose,nose_tip_elevation,exact formula retained as its own family,Nose tip elevation,bizygomatic width
+80,ala_flare_angle,nose,ala_flare_angle,exact formula retained as its own family,Alar flare angle,"angle in degrees, except normalized asymmetry variants"
+81,columella_length,nose,columella_length,exact formula retained as its own family,Columella length,midface height
+82,columella_hang_below_ala,nose,columella_hang_below_ala,exact formula retained as its own family,Columella hang below alar,midface height
+83,nose_to_face_area_ratio,nose,nose_to_face_area_ratio,exact formula retained as its own family,Nose to face area ratio,nose polygon area / face-oval area
+84,philtrum_length,philtrum / mouth / lips,philtrum_length,exact formula retained as its own family,Philtrum length,midface height
+85,philtrum_width,philtrum / mouth / lips,philtrum_width,exact formula retained as its own family,Philtrum width,mouth width
+86,mouth_width,philtrum / mouth / lips,mouth_width,exact formula retained as its own family,Mouth width,bizygomatic width
+87,mouth_opening,philtrum / mouth / lips,mouth_opening,exact formula retained as its own family,Mouth opening,mouth width
+88,upper_vermilion_height,philtrum / mouth / lips,upper_vermilion_height,exact formula retained as its own family,Upper vermilion height,mouth width
+89,lower_vermilion_height,philtrum / mouth / lips,lower_vermilion_height,exact formula retained as its own family,Lower vermilion height,mouth width
+90,vermilion_total,philtrum / mouth / lips,vermilion_total,exact formula retained as its own family,Vermilion total,mouth width
+91,cupid_bow_drop,philtrum / mouth / lips,cupid_bow_drop,exact formula retained as its own family,Cupid bow drop,mouth width
+92,mouth_corner_drop,philtrum / mouth / lips,mouth_corner_drop,exact formula retained as its own family,Mouth corner drop,mouth width
+93,mouth_triangularity,philtrum / mouth / lips,mouth_triangularity,exact formula retained as its own family,Mouth triangularity,mouth width
+94,mouth_tenting,philtrum / mouth / lips,mouth_tenting,exact formula retained as its own family,Mouth tenting,Cupid-bow peak span
+95,mouth_upper_curvature_c2,philtrum / mouth / lips,mouth_upper_curvature_c2,exact formula retained as its own family,Mouth upper curvature quadratic coefficient,bizygomatic width
+96,mouth_upper_fit_residual,philtrum / mouth / lips,mouth_upper_fit_residual,exact formula retained as its own family,Mouth upper fit residual,mouth width
+97,upper_lip_eversion,philtrum / mouth / lips,upper_lip_eversion,exact formula retained as its own family,Upper lip eversion,mouth width
+98,lower_lip_eversion,philtrum / mouth / lips,lower_lip_eversion,exact formula retained as its own family,Lower lip eversion,mouth width
+99,lip_outer_to_inner_area,philtrum / mouth / lips,lip_outer_to_inner_area,exact formula retained as its own family,Lip outer to inner area,outer-lip area / inner-mouth area
+100,lip_midline_x_std,philtrum / mouth / lips,lip_midline_x_std,exact formula retained as its own family,Lip midline x std,bizygomatic width
+101,cupid_bow_peak_asym,philtrum / mouth / lips,cupid_bow_peak_asym,exact formula retained as its own family,Cupid bow peak asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+102,chin_height,chin / jaw,chin_height,exact formula retained as its own family,Chin height,face height
+103,chin_width,chin / jaw,chin_width,exact formula retained as its own family,Chin width,bizygomatic width
+104,chin_pointedness_angle,chin / jaw,chin_pointedness_angle,exact formula retained as its own family,Chin pointedness angle,"angle in degrees, except normalized asymmetry variants"
+105,jaw_bigonial_width,chin / jaw,jaw_bigonial_width,exact formula retained as its own family,Jaw bigonial width,bizygomatic width
+106,forehead_height,forehead,forehead_height,exact formula retained as its own family,Forehead height,face height
+107,forehead_width_upper,forehead,forehead_width_upper,exact formula retained as its own family,Forehead width upper,bizygomatic width
+108,forehead_width_mid,forehead,forehead_width_mid,exact formula retained as its own family,Forehead width mid,bizygomatic width
+109,hairline_height,forehead,hairline_height,exact formula retained as its own family,Hairline height,face height
+110,forehead_taper_ratio,forehead,forehead_taper_ratio,exact formula retained as its own family,Forehead taper ratio,local face-shape ratio
+111,face_aspect_ratio,global face shape / proportions,face_aspect_ratio,exact formula retained as its own family,Face aspect ratio,bizygomatic width
+112,face_roundness,global face shape / proportions,face_roundness,exact formula retained as its own family,Face roundness,local face-shape ratio
+113,face_width_uniformity,global face shape / proportions,face_width_uniformity,exact formula retained as its own family,Face width uniformity,local face-shape ratio
+114,jaw_to_forehead_ratio,chin / jaw,jaw_to_forehead_ratio,exact formula retained as its own family,Jaw to forehead ratio,local face-shape ratio
+115,face_triangularity,global face shape / proportions,face_triangularity,exact formula retained as its own family,Face triangularity,local face-shape ratio
+116,face_asymmetry,global face shape / proportions,face_asymmetry,exact formula retained as its own family,Face asymmetry,bizygomatic width
+117,midface_width,global face shape / proportions,midface_width,exact formula retained as its own family,Midface width,bizygomatic width
+118,malar_bulge_r,cheeks / malar region,malar_bulge,right/left/mean variants grouped; asymmetry retained separately,Malar bulge right,bizygomatic width
+119,malar_bulge_l,cheeks / malar region,malar_bulge,right/left/mean variants grouped; asymmetry retained separately,Malar bulge left,bizygomatic width
+120,malar_bulge_mean,cheeks / malar region,malar_bulge,right/left/mean variants grouped; asymmetry retained separately,Malar bulge bilateral mean,bizygomatic width
+121,malar_bulge_asym,cheeks / malar region,malar_bulge_asym,exact formula retained as its own family,Malar bulge asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+122,cheek_area_r,cheeks / malar region,cheek_area,right/left/mean variants grouped; asymmetry retained separately,Cheek area right,bizygomatic width squared
+123,cheek_area_l,cheeks / malar region,cheek_area,right/left/mean variants grouped; asymmetry retained separately,Cheek area left,bizygomatic width squared
+124,cheek_area_mean,cheeks / malar region,cheek_area,right/left/mean variants grouped; asymmetry retained separately,Cheek area bilateral mean,bizygomatic width squared
+125,cheek_area_asym,cheeks / malar region,cheek_area_asym,exact formula retained as its own family,Cheek area asymmetry,side-to-side difference or normalized asymmetry; see historical formula

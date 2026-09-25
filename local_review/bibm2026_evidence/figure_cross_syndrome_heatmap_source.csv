@@ -1,0 +1,121 @@
+syndrome,feature,feature_family,anatomical_region,n_disease,hedges_g,hedges_g_ci_95_low,hedges_g_ci_95_high,mannwhitney_q_fdr_global,cell_status
+Coffin-Siris syndrome,philtrum_length,philtrum_length,philtrum / mouth / lips,43,0.9050027577477248,0.5116863841486314,1.3666411906240543,0.003155163352184,significant
+Coffin-Siris syndrome,philtrum_width,philtrum_width,philtrum / mouth / lips,43,-0.5705694798559229,-0.8050260362258146,-0.3241145420870386,0.004402863409722,significant
+Coffin-Siris syndrome,forehead_height,forehead_height,forehead,43,0.6320303286023157,0.3098922862221144,0.9235628287483814,0.0102439512778322,significant
+Coffin-Siris syndrome,hairline_height,hairline_height,forehead,43,0.6320303286023157,0.3141546595276557,0.9421503726807714,0.0102439512778322,significant
+Coffin-Siris syndrome,nose_ala_height_mean,nose_ala_height,nose,43,0.5661264251388934,0.1793308127233702,0.9270969901717796,0.0172461761022873,significant
+Coffin-Siris syndrome,forehead_width_mid,forehead_width_mid,forehead,43,0.4165178231081762,-0.0198103271787394,0.8126350067325421,0.0413090230487491,significant
+Coffin-Siris syndrome,eb_thickness_mean,eb_thickness,eyebrows,43,0.4709319063526976,0.1536178427628172,0.7916196235867867,0.0576341515901058,tested_nonsignificant
+Coffin-Siris syndrome,face_triangularity,face_triangularity,global face shape / proportions,43,0.3499647207675971,-0.033531369850469,0.6875947825569039,0.1749818409600468,tested_nonsignificant
+Coffin-Siris syndrome,inter_pupillary_distance,inter_pupillary_distance,ocular position / iris / gaze,43,0.3830140858057108,-0.0056420864342473,0.7730494868604069,0.1937972349407952,tested_nonsignificant
+Coffin-Siris syndrome,malar_bulge_mean,malar_bulge,cheeks / malar region,43,-0.4102347797843911,-0.82170268871488,0.0166468313026486,0.2314345335225956,tested_nonsignificant
+Coffin-Siris syndrome,chin_width,chin_width,chin / jaw,43,-0.3053197107383635,-0.6232880056247984,0.0194665155599199,0.2653306234425984,tested_nonsignificant
+Coffin-Siris syndrome,inter_canthal_distance,inter_canthal_distance,eyes / orbital dimensions,43,0.1531434150260065,-0.2099371222676977,0.4946472519054814,0.7533383384134762,tested_nonsignificant
+Cornelia de Lange syndrome,philtrum_length,philtrum_length,philtrum / mouth / lips,64,1.2804218861700882,0.9890681702133498,1.6064062947832602,7.552098962968956e-13,significant
+Cornelia de Lange syndrome,philtrum_width,philtrum_width,philtrum / mouth / lips,64,-1.0102511688045703,-1.2181727529013966,-0.8163757979334318,8.622968776293074e-12,significant
+Cornelia de Lange syndrome,eb_thickness_mean,eb_thickness,eyebrows,64,0.6890943217492577,0.4027555676599913,0.9724583320782358,0.0002508453217538,significant
+Cornelia de Lange syndrome,nose_ala_height_mean,nose_ala_height,nose,64,0.5359816558639123,0.2681775110975805,0.8471309375528214,0.001951698258955,significant
+Cornelia de Lange syndrome,forehead_width_mid,forehead_width_mid,forehead,64,0.5747065573431465,0.2773762434374661,0.8967333702842565,0.0022170380549832,significant
+Cornelia de Lange syndrome,face_triangularity,face_triangularity,global face shape / proportions,64,0.5107903510015701,0.2349808980432544,0.7933697076281955,0.0069568866445743,significant
+Cornelia de Lange syndrome,forehead_height,forehead_height,forehead,64,0.347070787000904,0.0307592174531538,0.6241798007311501,0.0636203612770132,tested_nonsignificant
+Cornelia de Lange syndrome,hairline_height,hairline_height,forehead,64,0.347070787000904,0.0729887233019162,0.6181624786879679,0.0636203612770132,tested_nonsignificant
+Cornelia de Lange syndrome,chin_width,chin_width,chin / jaw,64,-0.3797227153214976,-0.6187095585481547,-0.1390307580145216,0.0701223377403393,tested_nonsignificant
+Cornelia de Lange syndrome,inter_pupillary_distance,inter_pupillary_distance,ocular position / iris / gaze,64,0.4505334301812881,0.1302035181544859,0.7783375863498162,0.0839727851714935,tested_nonsignificant
+Cornelia de Lange syndrome,malar_bulge_mean,malar_bulge,cheeks / malar region,64,-0.4738079783142677,-0.834271769106292,-0.1087479589288354,0.091716064101065,tested_nonsignificant
+Cornelia de Lange syndrome,inter_canthal_distance,inter_canthal_distance,eyes / orbital dimensions,64,0.2475167008082772,-0.0512629770911551,0.5500323284470625,0.4816504951563903,tested_nonsignificant
+KBG SYNDROME; KBGS,forehead_width_mid,forehead_width_mid,forehead,32,1.0628894905370745,0.6764682543902936,1.4247146562047823,2.9981862750680037e-05,significant
+KBG SYNDROME; KBGS,philtrum_length,philtrum_length,philtrum / mouth / lips,32,1.1184986360103202,0.671738356729675,1.5611013923556494,8.302179580882843e-05,significant
+KBG SYNDROME; KBGS,philtrum_width,philtrum_width,philtrum / mouth / lips,32,-0.8470243610568687,-1.1448107506221497,-0.5600059507130438,0.000101058226919,significant
+KBG SYNDROME; KBGS,face_triangularity,face_triangularity,global face shape / proportions,32,0.8496307195405961,0.477840515191088,1.1664747522590972,0.000193614994553,significant
+KBG SYNDROME; KBGS,chin_width,chin_width,chin / jaw,32,-0.565933006486541,-0.9158747596600828,-0.1942115390493896,0.0085935332961194,significant
+KBG SYNDROME; KBGS,malar_bulge_mean,malar_bulge,cheeks / malar region,32,-0.6971702552878262,-1.1326271173912097,-0.2861328808753634,0.0107896763888289,significant
+KBG SYNDROME; KBGS,inter_pupillary_distance,inter_pupillary_distance,ocular position / iris / gaze,32,0.6010493064036732,0.1958551085557413,0.9929070388047332,0.0141741989950996,significant
+KBG SYNDROME; KBGS,eb_thickness_mean,eb_thickness,eyebrows,32,0.5825612805998606,0.2470940191745853,0.920453628253351,0.0265090777237954,significant
+KBG SYNDROME; KBGS,inter_canthal_distance,inter_canthal_distance,eyes / orbital dimensions,32,0.4765270940815092,0.0818970287784384,0.8689459696853915,0.0946025086339906,tested_nonsignificant
+KBG SYNDROME; KBGS,forehead_height,forehead_height,forehead,32,0.4034441697321366,0.030588571155734,0.8083556272967265,0.2067259123764837,tested_nonsignificant
+KBG SYNDROME; KBGS,hairline_height,hairline_height,forehead,32,0.4034441697321366,0.0019315693774185,0.7580987770127916,0.2067259123764837,tested_nonsignificant
+KBG SYNDROME; KBGS,nose_ala_height_mean,nose_ala_height,nose,32,0.1413694922279494,-0.2416235820860997,0.5298577266782215,0.7015435873224831,tested_nonsignificant
+Kabuki syndrome,chin_width,chin_width,chin / jaw,35,-0.9404694334062448,-1.2695041266267155,-0.5784904654572014,2.872066947086307e-06,significant
+Kabuki syndrome,face_triangularity,face_triangularity,global face shape / proportions,35,0.929810565729683,0.5252332124802915,1.3070251870060632,1.233681835772205e-05,significant
+Kabuki syndrome,inter_canthal_distance,inter_canthal_distance,eyes / orbital dimensions,35,0.9804057520934378,0.650843323350154,1.3509630506498254,7.797215217525661e-05,significant
+Kabuki syndrome,eb_thickness_mean,eb_thickness,eyebrows,35,0.7245948112277858,0.367772719000129,1.0966578117046597,0.0011118525731708,significant
+Kabuki syndrome,inter_pupillary_distance,inter_pupillary_distance,ocular position / iris / gaze,35,0.7553117949034381,0.4288246292452597,1.0849901699036155,0.0018770683713479,significant
+Kabuki syndrome,forehead_height,forehead_height,forehead,35,0.6528076222905359,0.2735155663494871,0.9819428678109684,0.0087583547957463,significant
+Kabuki syndrome,hairline_height,hairline_height,forehead,35,0.6528076222905359,0.2791894638821544,1.0405171809678095,0.0087583547957463,significant
+Kabuki syndrome,malar_bulge_mean,malar_bulge,cheeks / malar region,35,-0.6783648378027771,-1.0811741764259435,-0.2851876766070607,0.0128201900273823,significant
+Kabuki syndrome,nose_ala_height_mean,nose_ala_height,nose,35,0.5109446309753478,0.1617279753482036,0.8726048247865177,0.0492338794037444,significant
+Kabuki syndrome,forehead_width_mid,forehead_width_mid,forehead,35,0.4744520295350124,0.1087344131835941,0.8706824649742695,0.0544835400156695,tested_nonsignificant
+Kabuki syndrome,philtrum_width,philtrum_width,philtrum / mouth / lips,35,-0.2103297864047865,-0.513849699752408,0.13397089143858,0.4249006116256553,tested_nonsignificant
+Kabuki syndrome,philtrum_length,philtrum_length,philtrum / mouth / lips,35,0.2344971711385381,-0.0863723232969082,0.6165463147442838,0.4883625060525189,tested_nonsignificant
+Mucopolysaccharidoses,philtrum_length,philtrum_length,philtrum / mouth / lips,37,0.835842313214958,0.494621131786145,1.2244884348537464,0.0004555494542819,significant
+Mucopolysaccharidoses,philtrum_width,philtrum_width,philtrum / mouth / lips,37,-0.4152688492022956,-0.7748136784809285,-0.0137736366829685,0.0188274864358269,significant
+Mucopolysaccharidoses,nose_ala_height_mean,nose_ala_height,nose,37,0.4720881495545127,0.1816312392006805,0.8337580420612227,0.0572798030627091,tested_nonsignificant
+Mucopolysaccharidoses,eb_thickness_mean,eb_thickness,eyebrows,37,0.5374763294818241,0.1692852298136631,0.901191220707581,0.0744213794746654,tested_nonsignificant
+Mucopolysaccharidoses,malar_bulge_mean,malar_bulge,cheeks / malar region,37,-0.4390396279167403,-0.8205806379509848,-0.0808954193059085,0.0926944406899381,tested_nonsignificant
+Mucopolysaccharidoses,inter_pupillary_distance,inter_pupillary_distance,ocular position / iris / gaze,37,0.3751326259215015,0.0094160437309761,0.7953884718522373,0.1843209504768543,tested_nonsignificant
+Mucopolysaccharidoses,chin_width,chin_width,chin / jaw,37,0.2088608594479843,-0.090193119531777,0.4905170812849789,0.2724927985439422,tested_nonsignificant
+Mucopolysaccharidoses,forehead_width_mid,forehead_width_mid,forehead,37,0.2127103462360384,-0.1184174106239504,0.5518732505228331,0.3595411784960729,tested_nonsignificant
+Mucopolysaccharidoses,inter_canthal_distance,inter_canthal_distance,eyes / orbital dimensions,37,0.2980171375602872,-0.1162228445237788,0.7625688882974652,0.4135495487098556,tested_nonsignificant
+Mucopolysaccharidoses,face_triangularity,face_triangularity,global face shape / proportions,37,-0.0929330862082129,-0.3739985243095226,0.2133506780765829,0.6034554996544306,tested_nonsignificant
+Mucopolysaccharidoses,forehead_height,forehead_height,forehead,37,0.1864342084669242,-0.084454723097557,0.49034304379376,0.6714440068737039,tested_nonsignificant
+Mucopolysaccharidoses,hairline_height,hairline_height,forehead,37,0.1864342084669242,-0.1098808543442834,0.4975855879720102,0.6714440068737039,tested_nonsignificant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,forehead_width_mid,forehead_width_mid,forehead,24,1.4248374234264716,1.0170882800948935,1.885501225801804,4.827044077270809e-06,significant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,philtrum_length,philtrum_length,philtrum / mouth / lips,24,1.310547920321264,0.9360641293842774,1.7142097279244883,7.241553969251347e-06,significant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,face_triangularity,face_triangularity,global face shape / proportions,24,1.0725611543972875,0.780083642531203,1.3853998780049046,2.336197946780192e-05,significant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,philtrum_width,philtrum_width,philtrum / mouth / lips,24,-0.8675039879356212,-1.1227194041429838,-0.6048824568671365,0.0001710760890246,significant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,malar_bulge_mean,malar_bulge,cheeks / malar region,24,-1.0136411404639945,-1.5022065109081344,-0.5466725027563454,0.002056604142053,significant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,eb_thickness_mean,eb_thickness,eyebrows,24,0.9603032016130756,0.4706222813303458,1.434561301120055,0.0054997272760469,significant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,chin_width,chin_width,chin / jaw,24,-0.638509911731127,-0.9146436592378152,-0.3429702905114642,0.0103137955198791,significant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,inter_pupillary_distance,inter_pupillary_distance,ocular position / iris / gaze,24,0.6886055782731418,0.3016861533166392,1.109418728159544,0.025656853581325,significant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,nose_ala_height_mean,nose_ala_height,nose,24,0.672682278378237,0.2563808898791955,1.1231691121004126,0.0361410912031342,significant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,forehead_height,forehead_height,forehead,24,0.547310590584966,0.1817003747173146,1.0351389972920242,0.1348452348996989,tested_nonsignificant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,hairline_height,hairline_height,forehead,24,0.547310590584966,0.089248073284239,0.943080296478204,0.1348452348996989,tested_nonsignificant
+NICOLAIDES-BARAITSER SYNDROME; NCBRS,inter_canthal_distance,inter_canthal_distance,eyes / orbital dimensions,24,0.3991104228923728,0.0143527788669106,0.8100452284371322,0.1960199193002834,tested_nonsignificant
+Noonan syndrome,eb_thickness_mean,eb_thickness,eyebrows,34,1.3968143569492697,1.0658958448182196,1.742607443838493,4.149055130057907e-09,significant
+Noonan syndrome,inter_canthal_distance,inter_canthal_distance,eyes / orbital dimensions,34,1.33788307706647,0.98383156883772,1.7020012613838031,9.264287490396613e-08,significant
+Noonan syndrome,face_triangularity,face_triangularity,global face shape / proportions,34,1.2243864433938392,0.8460470333558155,1.584428388208729,5.034721023875995e-07,significant
+Noonan syndrome,inter_pupillary_distance,inter_pupillary_distance,ocular position / iris / gaze,34,1.318882217017805,0.8200175888304531,1.8177713414474108,2.8806779586561127e-06,significant
+Noonan syndrome,forehead_width_mid,forehead_width_mid,forehead,34,1.2716776813768302,0.7360023929676335,1.734957390254241,3.6027985480003527e-06,significant
+Noonan syndrome,malar_bulge_mean,malar_bulge,cheeks / malar region,34,-1.2381657036005345,-1.6467274148562323,-0.8043723828912324,3.170206531991496e-06,significant
+Noonan syndrome,chin_width,chin_width,chin / jaw,34,-0.9094180800368444,-1.1946238569359726,-0.593333694613748,2.4829063675810663e-05,significant
+Noonan syndrome,philtrum_length,philtrum_length,philtrum / mouth / lips,34,0.9473727862179484,0.5596387416823029,1.3214942611516562,0.0001336700815224,significant
+Noonan syndrome,nose_ala_height_mean,nose_ala_height,nose,34,0.9266414570101312,0.5349589889397545,1.2902891471575555,0.0001763967112141,significant
+Noonan syndrome,forehead_height,forehead_height,forehead,34,0.6912551589869309,0.3626865120294004,1.070546653947365,0.0101818793780923,significant
+Noonan syndrome,hairline_height,hairline_height,forehead,34,0.6912551589869309,0.3737682158641174,1.0177167078145448,0.0101818793780923,significant
+Noonan syndrome,philtrum_width,philtrum_width,philtrum / mouth / lips,34,-0.4442322928815955,-0.7443310033762226,-0.1001953407145935,0.0366024670414307,significant
+Rubinstein-Taybi syndrome,chin_width,chin_width,chin / jaw,24,-1.1022998754289568,-1.4060854890510923,-0.8247847993454887,5.432683416376405e-06,significant
+Rubinstein-Taybi syndrome,inter_canthal_distance,inter_canthal_distance,eyes / orbital dimensions,24,1.3566177165164266,0.888096327281935,1.7911002340234785,1.914583122019522e-05,significant
+Rubinstein-Taybi syndrome,face_triangularity,face_triangularity,global face shape / proportions,24,1.065084860923293,0.669865086561905,1.437088107623945,0.0001141343039164,significant
+Rubinstein-Taybi syndrome,inter_pupillary_distance,inter_pupillary_distance,ocular position / iris / gaze,24,1.0552968007711836,0.6109282871572616,1.4400312856594244,0.0004555494542819,significant
+Rubinstein-Taybi syndrome,forehead_height,forehead_height,forehead,24,0.94124501204191,0.5558048904823462,1.3164507841417163,0.0013205319716341,significant
+Rubinstein-Taybi syndrome,hairline_height,hairline_height,forehead,24,0.94124501204191,0.5723947554622496,1.3799796796233,0.0013205319716341,significant
+Rubinstein-Taybi syndrome,malar_bulge_mean,malar_bulge,cheeks / malar region,24,-1.001558727445106,-1.4628332310859595,-0.4922939641232706,0.0028092798681783,significant
+Rubinstein-Taybi syndrome,philtrum_width,philtrum_width,philtrum / mouth / lips,24,-0.6674889491073451,-1.0104667351146277,-0.3508578751262054,0.0154858072168601,significant
+Rubinstein-Taybi syndrome,eb_thickness_mean,eb_thickness,eyebrows,24,0.6608679442973617,0.2407043803249885,1.143880136358326,0.0607192520540366,tested_nonsignificant
+Rubinstein-Taybi syndrome,forehead_width_mid,forehead_width_mid,forehead,24,0.389628889101195,-0.1309203790436092,0.9004864406684514,0.1305734394186412,tested_nonsignificant
+Rubinstein-Taybi syndrome,philtrum_length,philtrum_length,philtrum / mouth / lips,24,0.3339843868953316,-0.087966873042072,0.7697432939349519,0.2126303908005346,tested_nonsignificant
+Rubinstein-Taybi syndrome,nose_ala_height_mean,nose_ala_height,nose,24,0.0350864575375365,-0.4105118202258682,0.5476332725339885,0.9850257472051148,tested_nonsignificant
+SOTOS SYNDROME; SOTOS,face_triangularity,face_triangularity,global face shape / proportions,25,1.2505274585388348,0.9429469042441908,1.602417442538961,2.07708984080633e-06,significant
+SOTOS SYNDROME; SOTOS,forehead_width_mid,forehead_width_mid,forehead,25,1.3279207261233474,0.9034605417765698,1.7545052367988938,1.0971751874372274e-05,significant
+SOTOS SYNDROME; SOTOS,chin_width,chin_width,chin / jaw,25,-0.9700328643730404,-1.2486680595414388,-0.696063355966493,4.4180440070949795e-05,significant
+SOTOS SYNDROME; SOTOS,eb_thickness_mean,eb_thickness,eyebrows,25,0.9906511112110415,0.446419980618887,1.5581284813873195,0.0031987636745282,significant
+SOTOS SYNDROME; SOTOS,forehead_height,forehead_height,forehead,25,0.7965238892554952,0.3996041913363002,1.1406743115620694,0.0081798884895203,significant
+SOTOS SYNDROME; SOTOS,hairline_height,hairline_height,forehead,25,0.7965238892554952,0.4446030626676039,1.1814474604439469,0.0081798884895203,significant
+SOTOS SYNDROME; SOTOS,nose_ala_height_mean,nose_ala_height,nose,25,0.6457419130047296,0.2345759740285065,1.0501699453765097,0.0311677429185508,significant
+SOTOS SYNDROME; SOTOS,inter_pupillary_distance,inter_pupillary_distance,ocular position / iris / gaze,25,0.6214435108212034,0.2255670254910722,1.0928294754130552,0.0731523368978971,tested_nonsignificant
+SOTOS SYNDROME; SOTOS,philtrum_width,philtrum_width,philtrum / mouth / lips,25,-0.387729165391778,-0.7305520807461228,0.0228221137371406,0.188396950552648,tested_nonsignificant
+SOTOS SYNDROME; SOTOS,philtrum_length,philtrum_length,philtrum / mouth / lips,25,0.3204039619119067,-0.0962007498249514,0.7164482406068551,0.2358895610957556,tested_nonsignificant
+SOTOS SYNDROME; SOTOS,malar_bulge_mean,malar_bulge,cheeks / malar region,25,-0.3836187166289503,-0.9031665182641518,0.1189516923264469,0.4742279627946555,tested_nonsignificant
+SOTOS SYNDROME; SOTOS,inter_canthal_distance,inter_canthal_distance,eyes / orbital dimensions,25,0.0019327589727111,-0.3244700287950264,0.3428430044054564,0.9715933766702542,tested_nonsignificant
+WILLIAMS-BEUREN SYNDROME; WBS,malar_bulge_mean,malar_bulge,cheeks / malar region,67,-1.4071244085987935,-1.763600438424677,-1.114688286175228,1.4070686056078247e-14,significant
+WILLIAMS-BEUREN SYNDROME; WBS,eb_thickness_mean,eb_thickness,eyebrows,67,1.26278705539905,1.0217725976402623,1.5404061766275805,3.1494788136802073e-13,significant
+WILLIAMS-BEUREN SYNDROME; WBS,forehead_width_mid,forehead_width_mid,forehead,67,1.2183809171055109,0.959789511932949,1.4734073236568048,6.57504781591502e-13,significant
+WILLIAMS-BEUREN SYNDROME; WBS,face_triangularity,face_triangularity,global face shape / proportions,67,1.0891849842689283,0.8749883202022392,1.319565809124407,3.328887566118078e-12,significant
+WILLIAMS-BEUREN SYNDROME; WBS,nose_ala_height_mean,nose_ala_height,nose,67,1.1153429666364283,0.753447903716295,1.4476243006929184,8.188228853586687e-08,significant
+WILLIAMS-BEUREN SYNDROME; WBS,philtrum_length,philtrum_length,philtrum / mouth / lips,67,0.9791198380998803,0.7014582164828146,1.2931857361428625,8.117781110872769e-07,significant
+WILLIAMS-BEUREN SYNDROME; WBS,chin_width,chin_width,chin / jaw,67,-0.7207358317427341,-0.9284756844306864,-0.4838412244399579,3.289805318993449e-06,significant
+WILLIAMS-BEUREN SYNDROME; WBS,forehead_height,forehead_height,forehead,67,0.6907506199592408,0.4622102027846878,0.91434175860129,1.6195811915832943e-05,significant
+WILLIAMS-BEUREN SYNDROME; WBS,hairline_height,hairline_height,forehead,67,0.6907506199592408,0.481555385843443,0.9342507241260782,1.6195811915832943e-05,significant
+WILLIAMS-BEUREN SYNDROME; WBS,inter_pupillary_distance,inter_pupillary_distance,ocular position / iris / gaze,67,0.6979302423044613,0.4371682747333164,0.954347809293504,8.793790898822514e-05,significant
+WILLIAMS-BEUREN SYNDROME; WBS,inter_canthal_distance,inter_canthal_distance,eyes / orbital dimensions,67,0.5860083572314341,0.3121839600544359,0.8491612650845778,0.0002802708312771,significant
+WILLIAMS-BEUREN SYNDROME; WBS,philtrum_width,philtrum_width,philtrum / mouth / lips,67,-0.5077063590880371,-0.7002861129830567,-0.3026999795430506,0.0010700289905094,significant
