@@ -1,0 +1,88 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\title{Quantitative Facial Phenotyping Across Rare Syndromes Using Historical PRISM Measurements}
+\author{Blinded for review}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We analyzed 125 normalized facial measurements in 1,850 disease patients aged 3 to under 10 years and 942 distinct reference image paths. The prespecified pooled analysis included 6,125 syndrome--feature comparisons across 49 eligible syndrome groups; 811 comparisons met the global Benjamini--Hochberg threshold, including 379 with $|g| \geq 0.8$. The study is a quantitative association analysis, not an evaluation of diagnostic accuracy. [AUTHOR INPUT REQUIRED: add the clinical motivation, final interpretation, and journal-length word count.]
+\end{abstract}
+
+\section{Introduction}
+[AUTHOR INPUT REQUIRED: position the study against the clinical dysmorphology and quantitative phenotyping literature. Do not infer novelty from HPO absence.]
+
+\section{Materials and Methods}
+\subsection{Study design and data sources}
+Disease images were drawn from GMDB and reference images from FairFace. Because dataset source and disease status are confounded, acquisition and curation differences cannot be separated from disease effects with the available metadata.
+
+\subsection{Cohort construction}
+The primary cohort used one stored frontal-quality-pass photograph per known disease patient and the recorded age rule $3 \leq \mathrm{age} < 10$. Selection first minimized the maximum normalized absolute yaw, pitch, and roll score and then used lexical image ID. The alternative selection used lexical image ID after the same eligibility rules.
+
+\subsection{Historical feature extraction}
+The analysis uses the historical 125-feature FaceKit extraction revision recorded in the publication provenance file. Measurements are normalized ratios, angles, or areas; interpretation therefore refers to normalized features and does not imply absolute anatomical change.
+
+\subsection{Statistical analysis}
+The pooled analysis used a global Benjamini--Hochberg family across 6,125 syndrome--feature tests. Reference omnibus, matched disease--reference, and disease-by-group interaction analyses used their saved, distinct correction families. The disease-by-group coefficient with HC3 standard error is the formal interaction test; differences between group-specific Hedges' $g$ values are descriptive.
+
+\section{Results}
+The primary analysis contained 811 globally significant comparisons (13.2\% of 6,125), of which 379 met $|g| \geq 0.8$. Figure~\ref{fig:cross-syndrome} summarizes selected cross-syndrome effects. Reference-group omnibus tests were significant for 72 of 125 features in the broad layer and 89 of 125 in the detailed layer (Figure~\ref{fig:reference}). The alternative photograph selection changed 94 disease images and shared 770 significant comparisons with the primary selection (Figure~\ref{fig:selection}).
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/fig1_cross_syndrome_heatmap.pdf}
+  \caption{Cross-syndrome Hedges' $g$ values for selected associations. Source values are supplied with the publication package.}
+  \label{fig:cross-syndrome}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\linewidth]{figures/fig2_reference_variation.pdf}
+  \caption{Reference-group omnibus q-values in broad and detailed demographic layers. Dashed lines mark $q=0.05$.}
+  \label{fig:reference}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/fig3_selection_overlap.pdf}
+  \caption{Overlap of globally significant pooled comparisons under primary and alternative photograph selection. This is a sensitivity analysis, not independent replication.}
+  \label{fig:selection}
+\end{figure}
+
+\section{Discussion}
+[AUTHOR AND CLINICAL REVIEW REQUIRED: interpret recovered established associations, quantitative extensions, and candidate underreported associations without converting significant tests into independent discoveries.]
+
+\section{Limitations}
+Reference image-path uniqueness does not establish participant uniqueness. Recorded ages are not independently verified. Small demographic subgroups can yield unstable estimates. The disease and reference cohorts come from different datasets, leaving disease status confounded with acquisition and curation source. Normalized ratios do not isolate absolute changes in their numerators.
+
+\section{Conclusion}
+[AUTHOR INPUT REQUIRED: provide a cautious conclusion limited to quantitative association and reproducibility.]
+
+\section{Data and Code Availability}
+The publication package records source hashes and regeneration scripts. [INSTITUTIONAL CONFIRMATION REQUIRED: state which aggregate outputs, code, and any controlled-access data can be shared.]
+
+\section{Ethics Statement}
+[INSTITUTIONAL CONFIRMATION REQUIRED: insert the approved ethics, consent, exemption, and oversight language.]
+
+\section{Funding}
+[INSTITUTIONAL CONFIRMATION REQUIRED: insert funding sources and grant identifiers, or an approved no-funding statement.]
+
+\section{Conflicts of Interest}
+[AUTHOR CONFIRMATION REQUIRED: insert the journal-approved disclosure statement.]
+
+\section{Author Contributions}
+[AUTHOR CONFIRMATION REQUIRED: insert contribution roles after all authors approve them.]
+
+\section{References}
+[LITERATURE REVIEW REQUIRED: add verified references to \texttt{references.bib} and cite them in the text.]
+
+\section{Supplementary Information}
+Supplementary Tables S1--S6 provide the pooled associations, reference variation, matched comparisons, formal interactions, photograph-selection sensitivity, and feature definitions. The candidate evidence table and feature-redundancy report are also supplied in the publication package.
+
+\end{document}

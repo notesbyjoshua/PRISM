@@ -1,0 +1,126 @@
+feature,anatomical_region,feature_family,bilateral_aggregate_status,geometric_definition,normalization_denominator_reference
+eb_thickness_r,eyebrows,eb_thickness,right-sided,Eyebrow thickness right,bizygomatic width squared
+eb_thickness_l,eyebrows,eb_thickness,left-sided,Eyebrow thickness left,bizygomatic width squared
+eb_thickness_mean,eyebrows,eb_thickness,bilateral aggregate,Eyebrow thickness bilateral mean,bizygomatic width squared
+eb_thickness_asym,eyebrows,eb_thickness_asym,bilateral asymmetry,Eyebrow thickness asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+eb_inter_distance,eyebrows,eb_inter_distance,single or derived aggregate,Eyebrow between distance,bizygomatic width
+eb_arch_r,eyebrows,eb_arch,right-sided,Eyebrow arch right,bizygomatic width
+eb_arch_l,eyebrows,eb_arch,left-sided,Eyebrow arch left,bizygomatic width
+eb_arch_mean,eyebrows,eb_arch,bilateral aggregate,Eyebrow arch bilateral mean,bizygomatic width
+eb_arch_asym,eyebrows,eb_arch_asym,bilateral asymmetry,Eyebrow arch asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+eb_position_r,eyebrows,eb_position,right-sided,Eyebrow position right,bizygomatic width
+eb_position_l,eyebrows,eb_position,left-sided,Eyebrow position left,bizygomatic width
+eb_position_mean,eyebrows,eb_position,bilateral aggregate,Eyebrow position bilateral mean,bizygomatic width
+eb_position_asym,eyebrows,eb_position_asym,bilateral asymmetry,Eyebrow position asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+eb_medial_flare_r,eyebrows,eb_medial_flare,right-sided,Eyebrow medial flare right,bizygomatic width
+eb_medial_flare_l,eyebrows,eb_medial_flare,left-sided,Eyebrow medial flare left,bizygomatic width
+eb_lateral_thickness_r,eyebrows,eb_lateral_thickness,right-sided,Eyebrow lateral thickness right,bizygomatic width squared
+eb_lateral_thickness_l,eyebrows,eb_lateral_thickness,left-sided,Eyebrow lateral thickness left,bizygomatic width squared
+eb_medial_flare_mean,eyebrows,eb_medial_flare,bilateral aggregate,Eyebrow medial flare bilateral mean,bizygomatic width
+eb_lateral_thickness_mean,eyebrows,eb_lateral_thickness,bilateral aggregate,Eyebrow lateral thickness bilateral mean,bizygomatic width squared
+eb_lateral_thickness_asym,eyebrows,eb_lateral_thickness_asym,bilateral asymmetry,Eyebrow lateral thickness asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+eye_fissure_length_r,eyes / orbital dimensions,eye_fissure_length,right-sided,Eye opening length right,bizygomatic width
+eye_fissure_height_r,eyes / orbital dimensions,eye_fissure_height,right-sided,Eye opening height right,bizygomatic width
+eye_fissure_length_l,eyes / orbital dimensions,eye_fissure_length,left-sided,Eye opening length left,bizygomatic width
+eye_fissure_height_l,eyes / orbital dimensions,eye_fissure_height,left-sided,Eye opening height left,bizygomatic width
+eye_fissure_length_mean,eyes / orbital dimensions,eye_fissure_length,bilateral aggregate,Eye opening length bilateral mean,bizygomatic width
+eye_fissure_height_mean,eyes / orbital dimensions,eye_fissure_height,bilateral aggregate,Eye opening height bilateral mean,bizygomatic width
+eye_fissure_length_asym,eyes / orbital dimensions,eye_fissure_length_asym,bilateral asymmetry,Eye opening length asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+eye_fissure_height_asym,eyes / orbital dimensions,eye_fissure_height_asym,bilateral asymmetry,Eye opening height asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+eye_fissure_slant_r,eyes / orbital dimensions,eye_fissure_slant,right-sided,Eye opening slant right,"angle in degrees, except normalized asymmetry variants"
+eye_fissure_slant_l,eyes / orbital dimensions,eye_fissure_slant,left-sided,Eye opening slant left,"angle in degrees, except normalized asymmetry variants"
+eye_fissure_slant_mean,eyes / orbital dimensions,eye_fissure_slant,bilateral aggregate,Eye opening slant bilateral mean,"angle in degrees, except normalized asymmetry variants"
+eye_fissure_slant_asym,eyes / orbital dimensions,eye_fissure_slant_asym,bilateral asymmetry,Eye opening slant asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+eye_fissure_aspect_r,eyes / orbital dimensions,eye_fissure_aspect,right-sided,Eye opening aspect right,local eye-fissure dimension
+eye_fissure_aspect_l,eyes / orbital dimensions,eye_fissure_aspect,left-sided,Eye opening aspect left,local eye-fissure dimension
+eye_fissure_aspect_mean,eyes / orbital dimensions,eye_fissure_aspect,bilateral aggregate,Eye opening aspect bilateral mean,local eye-fissure dimension
+inter_canthal_distance,eyes / orbital dimensions,inter_canthal_distance,single or derived aggregate,Between canthal distance,bizygomatic width
+inter_pupillary_distance,ocular position / iris / gaze,inter_pupillary_distance,single or derived aggregate,Between pupillary distance,bizygomatic width
+outer_canthal_distance,eyes / orbital dimensions,outer_canthal_distance,single or derived aggregate,Outer canthal distance,bizygomatic width
+canthal_to_pupillary_ratio,eyes / orbital dimensions,canthal_to_pupillary_ratio,single or derived aggregate,Canthal to pupillary ratio,intercanthal / interpupillary distance
+eye_epicanthus_angle_r,eyes / orbital dimensions,eye_epicanthus_angle,right-sided,Eye epicanthus angle right,"angle in degrees, except normalized asymmetry variants"
+eye_epicanthus_angle_l,eyes / orbital dimensions,eye_epicanthus_angle,left-sided,Eye epicanthus angle left,"angle in degrees, except normalized asymmetry variants"
+eye_epicanthus_angle_mean,eyes / orbital dimensions,eye_epicanthus_angle,bilateral aggregate,Eye epicanthus angle bilateral mean,"angle in degrees, except normalized asymmetry variants"
+eye_epicanthus_angle_asym,eyes / orbital dimensions,eye_epicanthus_angle_asym,bilateral asymmetry,Eye epicanthus angle asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+eye_upper_lid_to_iris_r,ocular position / iris / gaze,eye_upper_lid_to_iris,right-sided,Eye upper lid to iris right,bizygomatic width
+eye_lower_lid_to_iris_r,ocular position / iris / gaze,eye_lower_lid_to_iris,right-sided,Eye lower lid to iris right,bizygomatic width
+eye_upper_lid_to_iris_l,ocular position / iris / gaze,eye_upper_lid_to_iris,left-sided,Eye upper lid to iris left,bizygomatic width
+eye_lower_lid_to_iris_l,ocular position / iris / gaze,eye_lower_lid_to_iris,left-sided,Eye lower lid to iris left,bizygomatic width
+eye_upper_lid_to_iris_mean,ocular position / iris / gaze,eye_upper_lid_to_iris,bilateral aggregate,Eye upper lid to iris bilateral mean,bizygomatic width
+eye_upper_lid_to_iris_asym,ocular position / iris / gaze,eye_upper_lid_to_iris_asym,bilateral asymmetry,Eye upper lid to iris asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+eye_lower_lid_to_iris_mean,ocular position / iris / gaze,eye_lower_lid_to_iris,bilateral aggregate,Eye lower lid to iris bilateral mean,bizygomatic width
+eye_lower_lid_to_iris_asym,ocular position / iris / gaze,eye_lower_lid_to_iris_asym,bilateral asymmetry,Eye lower lid to iris asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+eye_area_r,eyes / orbital dimensions,eye_area,right-sided,Eye area right,bizygomatic width squared
+eye_area_l,eyes / orbital dimensions,eye_area,left-sided,Eye area left,bizygomatic width squared
+eye_area_mean,eyes / orbital dimensions,eye_area,bilateral aggregate,Eye area bilateral mean,bizygomatic width squared
+eye_area_asym,eyes / orbital dimensions,eye_area_asym,bilateral asymmetry,Eye area asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+eye_fissure_fill_r,eyes / orbital dimensions,eye_fissure_fill,right-sided,Eye opening fill right,local eye-fissure dimension
+eye_fissure_fill_l,eyes / orbital dimensions,eye_fissure_fill,left-sided,Eye opening fill left,local eye-fissure dimension
+eye_fissure_fill_mean,eyes / orbital dimensions,eye_fissure_fill,bilateral aggregate,Eye opening fill bilateral mean,local eye-fissure dimension
+iris_offset_x_r,ocular position / iris / gaze,iris_offset_x,right-sided,Iris offset x right,local eye-fissure dimension
+iris_offset_y_r,ocular position / iris / gaze,iris_offset_y,right-sided,Iris offset y right,local eye-fissure dimension
+iris_offset_x_l,ocular position / iris / gaze,iris_offset_x,left-sided,Iris offset x left,local eye-fissure dimension
+iris_offset_y_l,ocular position / iris / gaze,iris_offset_y,left-sided,Iris offset y left,local eye-fissure dimension
+gaze_asym_x,ocular position / iris / gaze,gaze_asym_x,single or derived aggregate,Gaze asymmetry x,side-to-side difference or normalized asymmetry; see historical formula
+gaze_asym_y,ocular position / iris / gaze,gaze_asym_y,single or derived aggregate,Gaze asymmetry y,side-to-side difference or normalized asymmetry; see historical formula
+gaze_asym_norm,ocular position / iris / gaze,gaze_asym_norm,single or derived aggregate,Gaze asymmetry norm,side-to-side difference or normalized asymmetry; see historical formula
+nose_length,nose,nose_length,single or derived aggregate,Nose length,face height
+nose_bridge_length,nose,nose_bridge_length,single or derived aggregate,Nose bridge length,midface height
+nose_bridge_width,nose,nose_bridge_width,single or derived aggregate,Nose bridge width,bizygomatic width
+nose_tip_width,nose,nose_tip_width,single or derived aggregate,Nose tip width,bizygomatic width
+nose_base_width,nose,nose_base_width,single or derived aggregate,Nose base width,bizygomatic width
+nose_tip_to_bridge_ratio,nose,nose_tip_to_bridge_ratio,single or derived aggregate,Nose tip to bridge ratio,nose tip width / bridge width
+nose_tip_midline_dent,nose,nose_tip_midline_dent,single or derived aggregate,Nose tip midline dent,bizygomatic width
+nose_ala_height_r,nose,nose_ala_height,right-sided,Nose alar height right,bizygomatic width
+nose_ala_height_l,nose,nose_ala_height,left-sided,Nose alar height left,bizygomatic width
+nose_ala_height_mean,nose,nose_ala_height,bilateral aggregate,Nose alar height bilateral mean,bizygomatic width
+nose_ala_height_asym,nose,nose_ala_height_asym,bilateral asymmetry,Nose alar height asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+nostril_region_area,nose,nostril_region_area,single or derived aggregate,Nostril region area,bizygomatic width squared
+nasolabial_angle,nose,nasolabial_angle,single or derived aggregate,Nasolabial angle,"angle in degrees, except normalized asymmetry variants"
+nose_tip_elevation,nose,nose_tip_elevation,single or derived aggregate,Nose tip elevation,bizygomatic width
+ala_flare_angle,nose,ala_flare_angle,single or derived aggregate,Alar flare angle,"angle in degrees, except normalized asymmetry variants"
+columella_length,nose,columella_length,single or derived aggregate,Columella length,midface height
+columella_hang_below_ala,nose,columella_hang_below_ala,single or derived aggregate,Columella hang below alar,midface height
+nose_to_face_area_ratio,nose,nose_to_face_area_ratio,single or derived aggregate,Nose to face area ratio,nose polygon area / face-oval area
+philtrum_length,philtrum / mouth / lips,philtrum_length,single or derived aggregate,Philtrum length,midface height
+philtrum_width,philtrum / mouth / lips,philtrum_width,single or derived aggregate,Philtrum width,mouth width
+mouth_width,philtrum / mouth / lips,mouth_width,single or derived aggregate,Mouth width,bizygomatic width
+mouth_opening,philtrum / mouth / lips,mouth_opening,single or derived aggregate,Mouth opening,mouth width
+upper_vermilion_height,philtrum / mouth / lips,upper_vermilion_height,single or derived aggregate,Upper vermilion height,mouth width
+lower_vermilion_height,philtrum / mouth / lips,lower_vermilion_height,single or derived aggregate,Lower vermilion height,mouth width
+vermilion_total,philtrum / mouth / lips,vermilion_total,single or derived aggregate,Vermilion total,mouth width
+cupid_bow_drop,philtrum / mouth / lips,cupid_bow_drop,single or derived aggregate,Cupid bow drop,mouth width
+mouth_corner_drop,philtrum / mouth / lips,mouth_corner_drop,single or derived aggregate,Mouth corner drop,mouth width
+mouth_triangularity,philtrum / mouth / lips,mouth_triangularity,single or derived aggregate,Mouth triangularity,mouth width
+mouth_tenting,philtrum / mouth / lips,mouth_tenting,single or derived aggregate,Mouth tenting,Cupid-bow peak span
+mouth_upper_curvature_c2,philtrum / mouth / lips,mouth_upper_curvature_c2,single or derived aggregate,Mouth upper curvature quadratic coefficient,bizygomatic width
+mouth_upper_fit_residual,philtrum / mouth / lips,mouth_upper_fit_residual,single or derived aggregate,Mouth upper fit residual,mouth width
+upper_lip_eversion,philtrum / mouth / lips,upper_lip_eversion,single or derived aggregate,Upper lip eversion,mouth width
+lower_lip_eversion,philtrum / mouth / lips,lower_lip_eversion,single or derived aggregate,Lower lip eversion,mouth width
+lip_outer_to_inner_area,philtrum / mouth / lips,lip_outer_to_inner_area,single or derived aggregate,Lip outer to inner area,outer-lip area / inner-mouth area
+lip_midline_x_std,philtrum / mouth / lips,lip_midline_x_std,single or derived aggregate,Lip midline x std,bizygomatic width
+cupid_bow_peak_asym,philtrum / mouth / lips,cupid_bow_peak_asym,bilateral asymmetry,Cupid bow peak asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+chin_height,chin / jaw,chin_height,single or derived aggregate,Chin height,face height
+chin_width,chin / jaw,chin_width,single or derived aggregate,Chin width,bizygomatic width
+chin_pointedness_angle,chin / jaw,chin_pointedness_angle,single or derived aggregate,Chin pointedness angle,"angle in degrees, except normalized asymmetry variants"
+jaw_bigonial_width,chin / jaw,jaw_bigonial_width,single or derived aggregate,Jaw bigonial width,bizygomatic width
+forehead_height,forehead,forehead_height,single or derived aggregate,Forehead height,face height
+forehead_width_upper,forehead,forehead_width_upper,single or derived aggregate,Forehead width upper,bizygomatic width
+forehead_width_mid,forehead,forehead_width_mid,single or derived aggregate,Forehead width mid,bizygomatic width
+hairline_height,forehead,hairline_height,single or derived aggregate,Hairline height,face height
+forehead_taper_ratio,forehead,forehead_taper_ratio,single or derived aggregate,Forehead taper ratio,local face-shape ratio
+face_aspect_ratio,global face shape / proportions,face_aspect_ratio,single or derived aggregate,Face aspect ratio,bizygomatic width
+face_roundness,global face shape / proportions,face_roundness,single or derived aggregate,Face roundness,local face-shape ratio
+face_width_uniformity,global face shape / proportions,face_width_uniformity,single or derived aggregate,Face width uniformity,local face-shape ratio
+jaw_to_forehead_ratio,chin / jaw,jaw_to_forehead_ratio,single or derived aggregate,Jaw to forehead ratio,local face-shape ratio
+face_triangularity,global face shape / proportions,face_triangularity,single or derived aggregate,Face triangularity,local face-shape ratio
+face_asymmetry,global face shape / proportions,face_asymmetry,single or derived aggregate,Face asymmetry,bizygomatic width
+midface_width,global face shape / proportions,midface_width,single or derived aggregate,Midface width,bizygomatic width
+malar_bulge_r,cheeks / malar region,malar_bulge,right-sided,Malar bulge right,bizygomatic width
+malar_bulge_l,cheeks / malar region,malar_bulge,left-sided,Malar bulge left,bizygomatic width
+malar_bulge_mean,cheeks / malar region,malar_bulge,bilateral aggregate,Malar bulge bilateral mean,bizygomatic width
+malar_bulge_asym,cheeks / malar region,malar_bulge_asym,bilateral asymmetry,Malar bulge asymmetry,side-to-side difference or normalized asymmetry; see historical formula
+cheek_area_r,cheeks / malar region,cheek_area,right-sided,Cheek area right,bizygomatic width squared
+cheek_area_l,cheeks / malar region,cheek_area,left-sided,Cheek area left,bizygomatic width squared
+cheek_area_mean,cheeks / malar region,cheek_area,bilateral aggregate,Cheek area bilateral mean,bizygomatic width squared
+cheek_area_asym,cheeks / malar region,cheek_area_asym,bilateral asymmetry,Cheek area asymmetry,side-to-side difference or normalized asymmetry; see historical formula

@@ -1,0 +1,4 @@
+category,count,primary_total,alternative_total,union,jaccard
+Primary only,41,811,834,875,0.88
+Shared,770,811,834,875,0.88
+Alternative only,64,811,834,875,0.88
