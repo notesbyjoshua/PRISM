@@ -1,6 +1,10 @@
 historical_facekit_revision: e474628f3cb17a83edad59ac6e1d9e5438753032
 corrected_prism_results_commit: a0952fdf8e4bc57304ed709e091c9e4eca704407
 bibm_evidence_commit: a20a1be75512b5d3167acd5edebce0b377b74358
+publication_source_commit: null
+publication_package_commit: null
+generation_utc: "2026-10-03T00:00:00+00:00"
+publication_commit_fields_note: publication_source_commit identifies a committed source state when supplied; publication_package_commit remains null until a release commit or tag is created.
 authoritative_results_directory: revision_results/final_20260914
 feature_count: 125
 main_analysis_age_range: "3 <= age < 10"
@@ -8,8 +12,6 @@ main_disease_patients: 1850
 reference_image_paths: 942
 eligible_syndrome_groups: 49
 main_tests: 6125
-repository_head_at_generation: a20a1be75512b5d3167acd5edebce0b377b74358
-generation_utc: "2026-10-03T03:37:53.902551+00:00"
 source_sha256:
   data/master_dataset_disease.csv: 4d6bdaf1e4f137c37c18dfb8395213526d0826347fee10942408bd651902f682
   data/master_dataset_healthy.csv: 171c07e2bad7f4192d0dfcfb913312b327102cc381d6329af56d3ac622c8b260
@@ -18,6 +20,7 @@ source_sha256:
   revision_results/final_20260914/age_3_9_id_sensitivity/significance_testing/stats_each_disease_vs_healthy.csv.gz: aeaec2e0960a1213169062aa6484f3744e61fe7033ceb90f3903f56d24c4e705
   local_review/bibm2026_evidence/feature_region_family_mapping.csv: 30c6e8a5e1f2eb8ba8802bf516c813f400eaa6e0f4c847b300f3d33df4ec47fd
   local_review/bibm2026_evidence/main_candidate_review.csv: 0bd283559f28cc0a30bbbb08b2c7206761f0de1cf82fa9b3f0191a292492ce96
+  publication/requirements.txt: bca896f86caefdce5b4ca044cdce8a6a7ee558acdd62a8403ea7c7fc0e9208d0
 generation_scripts:
   audit:
     path: publication/manuscript_results_audit.py
@@ -34,12 +37,18 @@ generation_scripts:
   candidate_evidence:
     path: publication/scripts/generate_candidate_evidence.py
     sha256: 66678f50979308a2812632bb09a8b22b1d3037799a953433e121cd6d928a5599
+  exact_feature_definitions:
+    path: publication/scripts/generate_feature_definitions.py
+    sha256: 06487a1132bdedbef400d5a315822861bcb6eb5d7d3a65c10a3ff120539bd0cc
+  covariate_sensitivity:
+    path: publication/covariate_sensitivity/run_covariate_sensitivity.py
+    sha256: cfcb96ad3bf935d90fcd09e22e91094821692ee4ea012cdec03adb190677c567
   provenance:
     path: publication/scripts/generate_provenance.py
-    sha256: 915042315ac5daaed37c39f9c70b68500778d9883f30384fa645b0e75454bf14
+    sha256: 0011cf7428727cd52bb48e8f9544d7336ab7cd1ac8aadffe5f5c48f92844460f
   publication_lint:
     path: publication/publication_lint.py
-    sha256: e5e1453b32f338c92857748dcde0c53e9c7e84145877d217b07f8b61c7458b6e
+    sha256: afd84d705a65fb73d1fb979f52c34ff3abc9f63abe1a6af91a692071dfe6b2d2
 software:
   python: "3.11.4"
   numpy: "2.4.6"

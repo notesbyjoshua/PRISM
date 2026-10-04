@@ -1,0 +1,9 @@
+covariate,disease_field,reference_field,disease_n,disease_missing_n,disease_missing_fraction,disease_usable_value_or_category_count,reference_n,reference_missing_n,reference_missing_fraction,reference_usable_value_or_category_count,semantics_comparable,usable_in_sensitivity_model,decision_reason
+stored frontal-quality information,frontal_ok,frontal_ok,1850,0,0.0,1,942,0,0.0,1,yes as a common eligibility rule,no as a covariate,"Both analytic cohorts require a passing stored flag, leaving no modeled variation."
+yaw,pose_yaw,pose_yaw,1850,0,0.0,1850,942,0,0.0,940,yes,yes,Numeric degrees from the same FaceKit pose fields; modeled continuously.
+pitch,pose_pitch,pose_pitch,1850,0,0.0,1850,942,0,0.0,940,yes,yes,Numeric degrees from the same FaceKit pose fields; modeled continuously.
+roll,pose_roll,pose_roll,1850,0,0.0,1850,942,0,0.0,940,yes,yes,Numeric degrees from the same FaceKit pose fields; modeled continuously.
+sex / gender label,gender,gender,1850,36,0.01945945945945946,2,942,0,0.0,2,limited; harmonized dataset labels,yes,Only common Male/Female labels are used; labels are dataset annotations.
+broad demographic group,image_dataset_ethnicity_category,race,1850,281,0.1518918918918919,4,942,0,0.0,4,limited; established publication mapping,yes,Uses the existing broad harmonization and excludes unmapped labels.
+detailed demographic group,image_dataset_ethnicity_category + image_dataset_ethnicity_sub_category,race,1850,374,0.20216216216216215,7,942,0,0.0,7,limited; established publication mapping,no,"Comparable mapped labels exist, but sparse syndrome-specific cells make the broad layer more stable for three models."
+age information / age category,age_year + age_month,age,1850,0,0.0,78,942,0,0.0,1,no for exact age,no,"Disease age can be conditionally reconstructed; FairFace supplies the 3-9 category, not exact age."

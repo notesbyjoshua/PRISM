@@ -1,0 +1,62 @@
+name: Publication readiness
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  HISTORICAL_FACEKIT_COMMIT: e474628f3cb17a83edad59ac6e1d9e5438753032
+  MPLBACKEND: Agg
+  SOURCE_DATE_EPOCH: "1790985600"
+  PUBLICATION_SOURCE_COMMIT: ""
+  PUBLICATION_PACKAGE_COMMIT: ""
+
+jobs:
+  publication-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository and FaceKit history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Verify historical FaceKit revision
+        run: |
+          git -C FaceKit cat-file -e "${HISTORICAL_FACEKIT_COMMIT}^{commit}" || git -C FaceKit fetch origin "$HISTORICAL_FACEKIT_COMMIT"
+          git -C FaceKit cat-file -e "${HISTORICAL_FACEKIT_COMMIT}^{commit}"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.4"
+
+      - name: Install publication dependencies
+        run: python -m pip install --upgrade pip -r publication/requirements.txt
+
+      - name: Regenerate publication package
+        env:
+          PRISM_PYTHON: python3
+        run: bash publication/reproduce_publication.sh
+
+      - name: Verify historical schema and required outputs
+        run: >-
+          python -c "import pandas as pd; from pathlib import Path;
+          schema=pd.read_csv('revision_results/final_20260914/exact_feature_names.csv');
+          exact=pd.read_csv('publication/supplementary/Supplementary_Table_S6_exact_feature_definitions.csv');
+          assert len(schema)==schema.feature.nunique()==125;
+          assert len(exact)==exact.feature.nunique()==125;
+          assert set(schema.feature)==set(exact.feature);
+          required=['publication/MANUSCRIPT_RESULTS_AUDIT.md','publication/feature_definitions/FEATURE_DEPENDENCY_REPORT.md',
+          'publication/covariate_sensitivity/COVARIATE_SENSITIVITY_REPORT.md','publication/PUBLICATION_LINT_REPORT.md'];
+          assert all(Path(path).is_file() for path in required)"
+
+      - name: Verify deterministic outputs
+        run: git diff --exit-code
+
+      - name: Publish readiness summary
+        if: always()
+        run: cat publication/PUBLICATION_LINT_REPORT.md >> "$GITHUB_STEP_SUMMARY"
