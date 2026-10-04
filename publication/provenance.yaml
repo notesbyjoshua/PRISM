@@ -45,7 +45,10 @@ generation_scripts:
     sha256: cfcb96ad3bf935d90fcd09e22e91094821692ee4ea012cdec03adb190677c567
   provenance:
     path: publication/scripts/generate_provenance.py
-    sha256: 0011cf7428727cd52bb48e8f9544d7336ab7cd1ac8aadffe5f5c48f92844460f
+    sha256: db4ff73e648f25448239c44a61133c461a091dbca8e261d85a4b9a73ca8bde7f
+  reproducibility_verification:
+    path: publication/scripts/verify_reproducible_outputs.py
+    sha256: 3a7d61ce2cfd621f9941ca91f51c42475285f5c44b0a8858edf2daa75d80f050
   publication_lint:
     path: publication/publication_lint.py
     sha256: afd84d705a65fb73d1fb979f52c34ff3abc9f63abe1a6af91a692071dfe6b2d2

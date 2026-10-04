@@ -54,8 +54,8 @@ jobs:
           'publication/covariate_sensitivity/COVARIATE_SENSITIVITY_REPORT.md','publication/PUBLICATION_LINT_REPORT.md'];
           assert all(Path(path).is_file() for path in required)"
 
-      - name: Verify deterministic outputs
-        run: git diff --exit-code
+      - name: Verify reproducible outputs
+        run: python publication/scripts/verify_reproducible_outputs.py
 
       - name: Publish readiness summary
         if: always()

@@ -9,7 +9,7 @@
 - Clinical literature review: INCOMPLETE. Candidate classifications and manuscript references still require verified literature and clinical review.
 - Institutional approvals/statements: INCOMPLETE. Ethics, funding, data/code availability, and approved sharing language remain unresolved.
 - Manuscript completeness: INCOMPLETE. The Introduction, Discussion, Conclusion, bibliography, and author-dependent statements remain placeholders.
-- CI status: CONFIGURED. The workflow regenerates the package, enforces the historical schema, runs technical lint, and checks deterministic output. A remote GitHub run is still required after push.
+- CI status: CONFIGURED. The workflow regenerates the package, enforces the historical schema, runs technical lint, and checks exact structure plus cross-platform numeric equivalence. A remote GitHub run is still required after push.
 - Submission ready: NO
 
 ## Resolved since previous review
@@ -23,7 +23,7 @@
 - The linter now distinguishes technical errors, warnings, and submission blockers. It reports 0 technical errors, 0 warnings, and 11 submission blockers.
 - Publication regeneration now includes formula extraction and covariate sensitivity.
 - Provenance distinguishes source and package commits and supports deterministic `SOURCE_DATE_EPOCH` timestamps in CI.
-- A push/pull-request GitHub Actions workflow now checks regeneration, required outputs, exact 125-feature coverage, and repository cleanliness.
+- A push/pull-request GitHub Actions workflow now checks regeneration, required outputs, exact 125-feature coverage, and semantic equivalence of regenerated CSVs while allowing platform-specific figure bytes.
 
 ## Remaining scientific blockers
 

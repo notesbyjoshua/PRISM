@@ -21,4 +21,4 @@ The package treats global Benjamini-Hochberg families for pooled, matched, and i
 
 ## Deterministic CI generation
 
-`generate_provenance.py` uses real UTC time during ordinary local runs. When `SOURCE_DATE_EPOCH` is set, it uses that timestamp instead, allowing CI to compare regenerated outputs byte-for-byte. `PUBLICATION_SOURCE_COMMIT` and `PUBLICATION_PACKAGE_COMMIT` are optional explicit inputs; the package commit remains `null` until a release commit or tag can be named without creating a self-reference.
+`generate_provenance.py` uses real UTC time during ordinary local runs. When `SOURCE_DATE_EPOCH` is set, it uses that timestamp instead. CI requires exact generated structure and text plus tight numeric equivalence for CSV outputs; figure files are regenerated but are not compared byte-for-byte because Matplotlib rendering and floating-point serialization can differ across operating systems. `PUBLICATION_SOURCE_COMMIT` and `PUBLICATION_PACKAGE_COMMIT` are optional explicit inputs; the package commit remains `null` until a release commit or tag can be named without creating a self-reference.

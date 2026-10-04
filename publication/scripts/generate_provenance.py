@@ -46,6 +46,7 @@ def main():
         "exact_feature_definitions": "publication/scripts/generate_feature_definitions.py",
         "covariate_sensitivity": "publication/covariate_sensitivity/run_covariate_sensitivity.py",
         "provenance": "publication/scripts/generate_provenance.py",
+        "reproducibility_verification": "publication/scripts/verify_reproducible_outputs.py",
         "publication_lint": "publication/publication_lint.py",
     }
     source_commit = os.environ.get("PUBLICATION_SOURCE_COMMIT")
