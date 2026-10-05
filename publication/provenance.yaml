@@ -25,6 +25,9 @@ generation_scripts:
   audit:
     path: publication/manuscript_results_audit.py
     sha256: 814d67874ed5178d7ba0d253617b5c9ba820f7cde1827165b1c9bc00e78bd0b7
+  data_privacy_audit:
+    path: publication/scripts/data_privacy_audit.py
+    sha256: 190bd565263d07449b86cd721310b8ead5f928f8daf6ba5874572d12f9989d5a
   supplementary_tables:
     path: publication/scripts/generate_supplementary.py
     sha256: 17af574975e0438c6d3184081bfc1f927551fdffa55ae7a47ec087f5ef5de57f
@@ -36,7 +39,7 @@ generation_scripts:
     sha256: 284ab4d6987e93e20c0d129af4d17eb63a393e4e9b4bea55340ed550e8b87202
   candidate_evidence:
     path: publication/scripts/generate_candidate_evidence.py
-    sha256: 66678f50979308a2812632bb09a8b22b1d3037799a953433e121cd6d928a5599
+    sha256: ef827ea61bce2c997e1bc91fe7554329ce939a16990288b20f3003ea8d6c507f
   exact_feature_definitions:
     path: publication/scripts/generate_feature_definitions.py
     sha256: 06487a1132bdedbef400d5a315822861bcb6eb5d7d3a65c10a3ff120539bd0cc
@@ -45,13 +48,13 @@ generation_scripts:
     sha256: cfcb96ad3bf935d90fcd09e22e91094821692ee4ea012cdec03adb190677c567
   provenance:
     path: publication/scripts/generate_provenance.py
-    sha256: db4ff73e648f25448239c44a61133c461a091dbca8e261d85a4b9a73ca8bde7f
+    sha256: 69671cf41f0175792271e4c2cf9ef236843e22d7b2bfb736e8897adf8e6e2559
   reproducibility_verification:
     path: publication/scripts/verify_reproducible_outputs.py
     sha256: 3a7d61ce2cfd621f9941ca91f51c42475285f5c44b0a8858edf2daa75d80f050
   publication_lint:
     path: publication/publication_lint.py
-    sha256: afd84d705a65fb73d1fb979f52c34ff3abc9f63abe1a6af91a692071dfe6b2d2
+    sha256: a78c1fbd2b014166cffc8d2fa4855ceafb69271395d68365e668d4fce544309e
 software:
   python: "3.11.4"
   numpy: "2.4.6"

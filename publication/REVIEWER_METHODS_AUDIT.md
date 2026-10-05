@@ -80,6 +80,6 @@ The first four locations can contaminate a new analysis if selected by a broad f
 
 ## Clinical and literature review
 
-**NEEDS_CLINICAL_REVIEW - phenotype wording.** Cornelia de Lange philtrum length and Noonan interpupillary distance are classified here as established clinical associations recovered quantitatively. Rubinstein-Taybi malar bulge remains a candidate underreported quantitative association. Other rows remain unclassified until literature and clinical review are recorded.
+**HUMAN_INPUT_REQUIRED - phenotype wording.** All candidate literature and clinical classifications remain unresolved. Quantitative examples, including Cornelia de Lange philtrum length, Noonan interpupillary distance, and Rubinstein-Taybi malar bulge, remain review candidates rather than established, underreported, or novel phenotype claims until a documented literature search and clinical review are recorded.
 
 **REQUIRES_EXTERNAL_DATA - novelty and validation.** HPO absence cannot establish novelty. Claims of a new phenotype, diagnostic accuracy, or external replication require a documented literature search and an independent clinical or imaging cohort.

@@ -4,7 +4,7 @@
 
 - Numerical reproducibility: PASS. The existing manuscript audit reports 90 PASS, 0 FAIL, and 0 unresolved claims.
 - Historical-method reproducibility: PASS for the 125-feature schema. Exact formulas, source locations, and landmark dependencies were recovered from FaceKit commit `e474628f3cb17a83edad59ac6e1d9e5438753032`.
-- Data-sharing/privacy status: Proceeding under the user's instruction to assume no privacy concerns. The repository still needs a formal data/code-availability statement and a recorded institutional decision for submission.
+- Data-sharing/privacy status: BLOCKED FOR HUMAN REVIEW. The repository is currently private, and no absence of privacy concerns is assumed. Public redistribution remains pending mentor, institution, and data-provider approval. No data or Git history was deleted or rewritten.
 - Covariate sensitivity: COMPLETE for three predefined highlighted examples using sex label, broad demographic label, yaw, pitch, and roll. Exact-age adjustment was not possible.
 - Clinical literature review: INCOMPLETE. Candidate classifications and manuscript references still require verified literature and clinical review.
 - Institutional approvals/statements: INCOMPLETE. Ethics, funding, data/code availability, and approved sharing language remain unresolved.
@@ -20,7 +20,7 @@
 - Formula-derived feature dependencies and pairwise landmark/normalizer overlap are documented without changing any historical correction family.
 - Common metadata feasibility and descriptive disease/reference distributions are documented.
 - Three highlighted associations were analyzed in a predefined exploratory OLS family with HC3 robust standard errors and three-test Benjamini–Hochberg correction.
-- The linter now distinguishes technical errors, warnings, and submission blockers. It reports 0 technical errors, 0 warnings, and 11 submission blockers.
+- The linter now distinguishes technical errors, warnings, and submission blockers. Its report enumerates unresolved human inputs without treating them as software failures.
 - Publication regeneration now includes formula extraction and covariate sensitivity.
 - Provenance distinguishes source and package commits and supports deterministic `SOURCE_DATE_EPOCH` timestamps in CI.
 - A push/pull-request GitHub Actions workflow now checks regeneration, required outputs, exact 125-feature coverage, and semantic equivalence of regenerated CSVs while allowing platform-specific figure bytes.
@@ -34,10 +34,10 @@
 
 ## Remaining human/institutional blockers
 
-- Confirm the final data/code availability language and the public-release boundary for source-level and aggregate artifacts.
-- Supply approved ethics, consent, exemption, and oversight language.
-- Supply funding and grant information or an approved no-funding statement.
-- Approve conflicts-of-interest language and author contributions.
+- **HUMAN_INPUT_REQUIRED:** Confirm the final data/code availability language and the public-release boundary for source-level and aggregate artifacts with the mentor, institution, and relevant data providers.
+- **HUMAN_INPUT_REQUIRED:** Supply approved ethics, consent, exemption, and oversight language.
+- **HUMAN_INPUT_REQUIRED:** Supply funding and grant information or an approved no-funding statement.
+- **HUMAN_INPUT_REQUIRED:** Approve conflicts-of-interest language and author contributions.
 - Confirm final author list, affiliations, acknowledgments, and journal-specific disclosures.
 
 ## Remaining manuscript blockers

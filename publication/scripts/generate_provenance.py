@@ -39,6 +39,7 @@ def main():
     ]
     scripts = {
         "audit": "publication/manuscript_results_audit.py",
+        "data_privacy_audit": "publication/scripts/data_privacy_audit.py",
         "supplementary_tables": "publication/scripts/generate_supplementary.py",
         "figures": "publication/scripts/generate_figures.py",
         "feature_correlation": "publication/scripts/feature_correlation.py",

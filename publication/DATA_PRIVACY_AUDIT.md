@@ -1,18 +1,19 @@
 # Data Privacy and Repository Audit
 
-Audit date: 2026-10-02
+Audit date: 2026-10-04
 
-> **PUBLICATION BLOCKER — HUMAN REVIEW REQUIRED.** Committed source tables contain patient- or image-level
+> **PUBLICATION BLOCKER — HUMAN_INPUT_REQUIRED.** Committed source tables contain patient- or image-level
 > records, identifiers or locators, demographic attributes, diagnoses, genetic/phenotypic metadata, and
-> derived facial measurements. Because the repository is already public, treat the present exposure as requiring
-> urgent review and do not create a new public release until authorized reviewers confirm what may be redistributed.
+> derived facial measurements. The repository is currently private. Public redistribution remains pending explicit
+> mentor, institution, and data-provider approval; private status does not establish that the files may be released.
+> This audit performs no deletion, history rewrite, access change, or release action.
 
 This report records repository-relative paths and schema only. It intentionally includes no record values,
 patient identifiers, image filenames, image URLs, or machine-local absolute paths.
 
 ## Scope and method
 
-The reproducible audit inventoried 138 current or historically committed tabular/database artifacts in
+The reproducible audit inventoried 148 current or historically committed tabular/database artifacts in
 `data/`, `revision_results/`, `publication/`, `manuscript/`, `stats_results/`, and `pds_results_v2/`, plus the
 ignored local application database if present. It examined Git tracking/history, file type, approximate row count,
 and column names only. The complete file-by-file inventory is `publication/data_privacy_audit.csv`; rerun it with
@@ -69,9 +70,9 @@ when absent from the current checkout.
 |---|---:|---|---|
 | `data/master_dataset.csv` | 2 | `bc140f464c33` | `27ba5ce9cdc3` |
 
-If a public repository is approved only after sensitive artifacts are removed, use a coordinated history-rewrite
-plan, rotate or retire the affected remote, and obtain explicit confirmation before force-pushing. This audit does
-not perform any deletion or history rewrite.
+If authorized reviewers later require sensitive artifacts to be removed before public release, they must define and
+approve a coordinated remediation plan covering current files, Git history, remotes, and any existing clones or
+forks. This audit does not recommend or perform deletion, force-pushing, or history rewriting.
 
 ## Data-use and licensing sources
 
@@ -86,10 +87,11 @@ not perform any deletion or history rewrite.
 
 ## Recommended release boundary
 
-Until authorization is documented, a public release should contain code and reviewed aggregate artifacts only.
-Keep patient/image-level source tables and derived per-image tables outside the public repository; describe how
-qualified researchers can request the controlled data. Before any publication transition, verify all branches,
-tags, release assets, caches, CI artifacts, and remotes—not only the current branch.
+Keep the repository private while mentor, institution, and data-provider review is pending. No source-level,
+patient/image-level, per-image derived, aggregate, code, or history content should be represented as approved for
+public redistribution until that review defines the release boundary. If a public release is authorized, verify all
+branches, tags, release assets, caches, CI artifacts, and remotes—not only the current branch—and provide approved
+controlled-data access language for materials that cannot be redistributed.
 
 ## Decisions requiring mentor / institution / data-provider confirmation
 

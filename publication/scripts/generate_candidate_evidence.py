@@ -23,11 +23,8 @@ def main():
     frame = candidates.merge(mapping[columns], on="feature", validate="many_to_one")
     frame = frame.merge(demographic, on=["syndrome", "feature"], how="left").merge(interactions, on=["syndrome", "feature"], how="left")
     frame["absolute_delta_g"] = (frame.hedges_g_alternative - frame.hedges_g).abs()
-    classifications = {("Cornelia de Lange syndrome", "philtrum_length"): "established clinical association",
-                       ("Noonan syndrome", "inter_pupillary_distance"): "established clinical association",
-                       ("Rubinstein-Taybi syndrome", "malar_bulge_mean"): "candidate underreported association"}
-    frame["literature_classification"] = [classifications.get((r.syndrome, r.feature), "unclassified") for r in frame.itertuples()]
-    frame["clinical_review_status"] = "unresolved - clinical review required"
+    frame["literature_classification"] = "unreviewed"
+    frame["clinical_review_status"] = "HUMAN_INPUT_REQUIRED - literature and clinical review"
     frame["demographic_subgroup_support"] = frame.demographic_subgroup_support.fillna("none in current evidence shortlist")
     frame["formal_interaction_evidence"] = frame.formal_interaction_evidence.fillna("none in current evidence shortlist")
     frame = frame.rename(columns={"hedges_g": "primary_g", "hedges_g_ci_95_low": "primary_ci_95_lower", "hedges_g_ci_95_high": "primary_ci_95_upper",
@@ -36,7 +33,7 @@ def main():
     frame[["syndrome", "feature", "n_disease", "primary_g", "primary_ci_95_lower", "primary_ci_95_upper", "primary_global_q", "alternative_g",
            "alternative_q", "absolute_delta_g", "demographic_subgroup_support", "formal_interaction_evidence", "anatomical_definition", "normalization_reference",
            "literature_classification", "clinical_review_status"]].to_csv(OUTPUT, index=False)
-    print(f"Generated {len(frame)} candidate evidence rows; literature classifications remain unresolved except for three handoff-confirmed examples")
+    print(f"Generated {len(frame)} candidate evidence rows; all literature and clinical classifications remain unresolved")
 
 
 if __name__ == "__main__": main()
