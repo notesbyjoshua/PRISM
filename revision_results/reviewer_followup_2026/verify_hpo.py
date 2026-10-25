@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import argparse
+from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
@@ -12,8 +14,17 @@ URL = 'https://raw.githubusercontent.com/obophenotype/human-phenotype-ontology/m
 
 
 def main():
-    with urllib.request.urlopen(URL, timeout=60) as response:
-        payload = response.read()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--ontology-file', type=Path, help='Verify a retained public ontology snapshot without network access')
+    args = parser.parse_args()
+    verified_at = datetime.now(timezone.utc)
+    if args.ontology_file:
+        payload = args.ontology_file.read_bytes()
+    else:
+        with urllib.request.urlopen(URL, timeout=60) as response:
+            payload = response.read()
+    (OUT/'local_only').mkdir(exist_ok=True)
+    (OUT/'local_only/hp.obo').write_bytes(payload)
     text = payload.decode()
     terms = {}
     for stanza in text.split('[Term]')[1:]:
@@ -46,7 +57,9 @@ def main():
     version = re.search(r'^data-version: (.+)$', text, re.M)
     (OUT/'hpo_source_provenance.json').write_text(json.dumps({'url': URL, 'sha256': hashlib.sha256(payload).hexdigest(),
         'data_version': version.group(1) if version else None, 'verified_candidates': sum(r['id_label_verified'] for r in rows),
-        'candidate_rows': len(rows), 'retrieved_date': '2026-10-24'}, indent=2))
+        'candidate_rows': len(rows), 'verified_utc': verified_at.isoformat(),
+        'retrieved_date': verified_at.date().isoformat() if not args.ontology_file else None,
+        'acquisition': 'local_snapshot' if args.ontology_file else 'public_download', 'retained_snapshot': 'local_only/hp.obo'}, indent=2))
     print(f'HPO identifier/label checks: {sum(r["id_label_verified"] for r in rows)}/{len(rows)}; no patient metadata transmitted')
 
 

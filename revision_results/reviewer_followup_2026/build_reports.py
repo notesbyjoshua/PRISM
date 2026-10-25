@@ -53,6 +53,7 @@ def figures():
     fig.text(.09, .025, 'Each comparison uses its own 49 x 125 BH family. The comparator populations answer different questions.', fontsize=7)
     save(fig, 'within_gmdb_vs_fairface')
     highlights = read('highlighted_examples.csv')
+    iterations = int(highlights.bootstrap_iterations.iloc[0])
     frozen = pd.read_csv(ROOT/'revision_results/final_20260914/age_3_9/significance_testing/stats_each_disease_vs_healthy.csv.gz')
     fig, ax = plt.subplots(figsize=(7.2, 4.3))
     for i, row in enumerate(highlights.itertuples()):
@@ -76,7 +77,7 @@ def figures():
               loc='lower right', frameon=False, fontsize=7)
     ax.spines[['top', 'right']].set_visible(False)
     fig.tight_layout(rect=(0, .08, 1, 1))
-    fig.text(.04, .02, 'GMDB: 1,000 patient bootstraps. FairFace: frozen intervals (500 resamples). Normalized measures require clinical review.', fontsize=6.5)
+    fig.text(.04, .02, f'GMDB: {iterations:,} patient bootstraps. FairFace: frozen intervals (500 resamples). Normalized measures require clinical review.', fontsize=6.5)
     save(fig, 'highlighted_comparators')
     photo = read('sensitivity_effect_sizes.csv')
     random = read('random_photo_selection_summary.csv')
@@ -93,7 +94,7 @@ def figures():
     ax.legend(frameon=False, fontsize=5.5, loc='upper left')
     ax = axes[1]
     ax.hist(random.significant_frequency, bins=np.linspace(0, 1, 11), color='#2166ac', edgecolor='white')
-    ax.set(xlabel='Significance frequency', ylabel='Hypotheses', title='B  100 random selections', xlim=(0, 1))
+    ax.set(xlabel='Significance frequency', ylabel='Hypotheses', title=f'B  {int(random.replicates.iloc[0])} random selections', xlim=(0, 1))
     ax = axes[2]
     for (analysis, layer), frame in thresholds.groupby(['analysis', 'layer']):
         frame = frame.sort_values('minimum_disease_n')
@@ -126,7 +127,9 @@ def reports():
     categories = j.discovery_category.value_counts().to_dict()
     comparison = r[['syndrome', 'feature', 'hedges_g', 'q_global_bh']].merge(
         restricted[['syndrome', 'feature', 'hedges_g', 'q_global_bh']], on=['syndrome','feature'], suffixes=('_main', '_eligible49'),validate='one_to_one')
-    summary = {'within_significant': int(r.significant.sum()), 'hypotheses': len(r), 'estimable': int(r.estimable.sum()),
+    summary = {'bootstrap_iterations': int(r.bootstrap_iterations.iloc[0]), 'photo_replicates': len(random),
+               'target_missing_fraction_max': float(r.target_missing_fraction.max()),
+               'comparator_missing_fraction_max': float(r.comparator_missing_fraction.max()), 'within_significant': int(r.significant.sum()), 'hypotheses': len(r), 'estimable': int(r.estimable.sum()),
                'positive_significant': int((r.significant&r.hedges_g.gt(0)).sum()),
                'negative_significant': int((r.significant&r.hedges_g.lt(0)).sum()),
                'pearson_g_between_comparators': j.hedges_g.corr(j.fairface_g),
@@ -155,12 +158,13 @@ def reports():
              'Frozen significance: 811/6,125 pooled comparisons, including 379 with |g| >= 0.8; alternative selection has 834 with 770 shared. '
              'Independent numerical checks are described in the unit-test and validation files; frozen bootstrap intervals were read, not re-created from the original RNG stream.', '',
              '## New implemented within-GMDB results', '',
-             f'All {len(r):,} prespecified comparisons were estimable, with {summary["within_significant"]} meeting BH q < 0.05 '
+             f'{summary["estimable"]:,} of {len(r):,} planned comparisons were estimable, with {summary["within_significant"]} meeting BH q < 0.05 '
              f'({summary["positive_significant"]} positive, {summary["negative_significant"]} negative). '
              f'Target n ranges {summary["target_n_min"]}-{summary["target_n_max"]}; the other-GMDB comparator ranges '
-             f'{summary["other_n_min"]}-{summary["other_n_max"]}. No selected feature values were missing. '
-             f'The 1,000-resample marginal percentile interval width has median {summary["bootstrap_ci_width_median"]:.6g}; '
-             f'every comparison has {summary["bootstrap_finite_min"]} finite bootstrap estimates.', '',
+             f'{summary["other_n_min"]}-{summary["other_n_max"]}. Maximum feature missingness: '
+             f'target {summary["target_missing_fraction_max"]:.2%}, other {summary["comparator_missing_fraction_max"]:.2%}. '
+             f'The {summary["bootstrap_iterations"]:,}-resample marginal percentile interval width has median {summary["bootstrap_ci_width_median"]:.6g}; '
+             f'finite bootstrap estimates range {summary["bootstrap_finite_min"]}-{summary["bootstrap_finite_max"]} per comparison.', '',
              'The main comparator contains every other age-eligible selected GMDB patient, including patients in smaller syndrome groups. '
              'Independent patient resampling within target/comparator groups keeps all 125 measurements together within each patient. '
              'BH is applied once to the 49 x 125 primary hypotheses. Statistical dependence among features and shared comparators remains; '
@@ -199,19 +203,21 @@ def reports():
                      f'Pearson r={row.pearson_r:.6f}, Spearman rho={row.spearman_rho:.6f}, sign agreement={row.sign_agreement_fraction:.2%}.')
     lines += ['', 'Near-threshold is prespecified as either frozen global q in [0.025,0.10]. '
               'Feature and syndrome breakdowns are provided in separate CSVs; these describe shifts rather than test a difference between correlated estimates.', '',
-              f'Across 100 uniform one-photo-per-recorded-patient random selections, global-BH-significant counts range '
+              f'Across {summary["photo_replicates"]} uniform one-photo-per-recorded-patient random selections, global-BH-significant counts range '
               f'{summary["random_photo_significant_min"]}-{summary["random_photo_significant_max"]}, median '
               f'{summary["random_photo_significant_median"]:g}. {summary["random_photo_always_significant"]} hypotheses are significant in every sampled selection; '
               f'{summary["random_photo_ever_significant"]} are significant at least once. '
               'The empirical g 2.5th/97.5th quantiles describe variation over available photograph choices, not population-bootstrap confidence intervals. '
               'Each replicate keeps 1,850 patients, the 49 targets, 942 reference paths and the 6,125-test BH family. '
-              'With 100 draws, estimated selection-frequency Monte Carlo SE can reach 0.05; frequency 0 or 1 is not proof of probability 0 or 1. '
+              f'With {summary["photo_replicates"]} draws, estimated selection-frequency Monte Carlo SE can reach '
+              f'{0.5 / np.sqrt(summary["photo_replicates"]):.4f}; frequency 0 or 1 is not proof of probability 0 or 1. '
               'The same observed photographs and patients are reused, so this is not independent replication.', '',
               '## Subgroup size restriction', '',
               'The restricted-family table uses the existing finite-observation sample sizes and saved raw p-values. '
               'Each threshold/analysis/layer has a separate recomputed BH family. This is a restriction and re-correction of existing fits, '
               'not a model refit; no retained effect or HC3 interval changes. Median widths can change because the retained hypotheses differ. '
-              'Original p-values, old global q, and new restricted q are all retained. Sparse disease cells and high leverage can make HC3 unstable even when estimation succeeds.', '',
+              'Original p-values, old global q, and new restricted q are all retained. Sparse disease cells and high leverage can make HC3 unstable even when estimation succeeds. '
+              'Analysis C interval-width medians pool feature-specific scales, including angles and normalized ratios; they are not a comparable cross-feature precision metric. Prefer within-feature intervals.', '',
               '| Analysis | Layer | Minimum disease n | Tests | Significant/new BH | Significant/old q filtered | Median interval width |',
               '|---|---|---:|---:|---:|---:|---:|']
     for row in thresholds.itertuples():

@@ -6,3 +6,6 @@
 !build_reports.py
 !verify_hpo.py
 !test_followup.py
+!independent_review.py
+!test_review_contracts.py
+!requirements.txt

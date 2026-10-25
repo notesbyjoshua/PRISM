@@ -216,14 +216,18 @@ def bootstrap_effect(x, y, iterations, seed):
     return values
 
 
+def eligible_feature_counts(nx, ny, total_x, total_y):
+    return (nx >= 10) & (ny >= 10) & (10*(total_x-nx) <= 3*total_x) & (10*(total_y-ny) <= 3*total_y)
+
+
 def contrast(frame, targets, features, comparator='all', iterations=0):
     rows = []
     for index, syndrome in enumerate(targets):
         target, other = comparator_frames(frame, syndrome, targets, comparator)
         x, y = target[features].to_numpy(float), other[features].to_numpy(float)
         nx, ny = np.isfinite(x).sum(axis=0), np.isfinite(y).sum(axis=0)
-        missing_x, missing_y = 1-nx/len(x), 1-ny/len(y)
-        estimable = (nx >= 10) & (ny >= 10) & (missing_x <= .30) & (missing_y <= .30)
+        missing_x, missing_y = (len(x)-nx)/len(x), (len(y)-ny)/len(y)
+        estimable = eligible_feature_counts(nx, ny, len(x), len(y))
         g = effect(x, y)
         estimable &= np.isfinite(g)
         test = mannwhitneyu(x, y, axis=0, alternative='two-sided', method='asymptotic', use_continuity=True, nan_policy='omit')
@@ -410,7 +414,8 @@ def random_photos(raw, ref, targets, features, replicates):
         for syndrome in targets:
             x = chosen[diseases == syndrome]
             finite_n = np.isfinite(x).sum(axis=0)
-            check((finite_n >= 10).all() and (1-finite_n/len(x) <= .30).all(), 'Random replicate feature eligibility changed')
+            check(eligible_feature_counts(finite_n, np.isfinite(reference).sum(axis=0), len(x), len(reference)).all(),
+                  'Random replicate feature eligibility changed')
             gs.extend(effect(x, reference))
             ps.extend(mannwhitneyu(x, reference, axis=0, method='asymptotic', alternative='two-sided', nan_policy='omit').pvalue)
         q = bh(ps)
@@ -432,16 +437,36 @@ def random_photos(raw, ref, targets, features, replicates):
     write(pd.DataFrame(records), 'random_photo_replicate_counts.csv')
 
 
+def facekit_provenance():
+    path = ROOT/'FaceKit'
+    checkout, status = None, 'uninitialized'
+    if (path/'.git').exists():
+        try:
+            top = subprocess.check_output(['git', 'rev-parse', '--show-toplevel'], cwd=path, text=True).strip()
+            if Path(top).resolve() == path.resolve():
+                checkout = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=path, text=True).strip()
+                status = 'initialized; informational application checkout, not extraction provenance'
+            else:
+                status = 'not a distinct FaceKit repository'
+        except subprocess.CalledProcessError:
+            status = 'unreadable repository'
+    recorded = subprocess.check_output(['git', 'rev-parse', 'HEAD:FaceKit'], cwd=ROOT, text=True).strip()
+    return {'facekit_checkout': checkout, 'facekit_checkout_status': status, 'facekit_recorded_gitlink': recorded,
+            'historical_source_sha256': sha(ROOT/'publication/historical_facekit/extractor.py')}
+
+
 def provenance(args, started):
     INPUTS.update([ROOT/'stats_testing/prepare_cohorts.py', ROOT/'stats_testing/cohort_audit.py',
                   ROOT/'stats_testing/ancestry_analysis.py', ROOT/'stats_testing/statistical_analysis.py',
                   ROOT/'stats_testing/ancestry_disease_interaction.py', ROOT/'stats_testing/bootstrap_utils.py',
-                  ROOT/'data/dataset_creation/fairface_facekit_pipeline.py'])
+                  ROOT/'data/dataset_creation/fairface_facekit_pipeline.py',
+                  ROOT/'publication/historical_facekit/extractor.py', ROOT/'publication/historical_facekit/SHA256SUMS'])
     data = {'command': sys.argv, 'python': sys.version, 'numpy': np.__version__, 'pandas': pd.__version__,
             'scipy': scipy.__version__, 'statsmodels': statsmodels.__version__, 'seed': SEED,
             'bootstrap_iterations': args.bootstrap, 'random_photo_replicates': args.photo_replicates,
             'random_photo_seed': SEED+1, 'git_head': subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
-            'facekit_checkout': subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT/'FaceKit',text=True).strip(),
+            'git_working_tree_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain', '--untracked-files=no'], cwd=ROOT, text=True).strip()),
+            **facekit_provenance(), 'phase': args.phase,
             'historical_facekit': 'e474628f3cb17a83edad59ac6e1d9e5438753032',
             'script_sha256': sha(__file__), 'elapsed_seconds': time.time()-started,
             'inputs_sha256': {str(p.relative_to(ROOT)): sha(p) for p in sorted(INPUTS)},
@@ -457,6 +482,7 @@ def main():
     args = parser.parse_args()
     check(args.bootstrap >= 100 and args.photo_replicates >= 20, 'Minimum numerical settings violated')
     (OUT/'local_only').mkdir(exist_ok=True)
+    INPUTS.clear()
     started = time.time()
     raw, reference, primary, alternate, ref, frozen, targets, features = load()
     if args.phase in ['all', 'audit']:
