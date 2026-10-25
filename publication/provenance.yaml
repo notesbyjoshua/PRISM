@@ -21,6 +21,9 @@ source_sha256:
   local_review/bibm2026_evidence/feature_region_family_mapping.csv: 30c6e8a5e1f2eb8ba8802bf516c813f400eaa6e0f4c847b300f3d33df4ec47fd
   local_review/bibm2026_evidence/main_candidate_review.csv: 0bd283559f28cc0a30bbbb08b2c7206761f0de1cf82fa9b3f0191a292492ce96
   publication/requirements.txt: bca896f86caefdce5b4ca044cdce8a6a7ee558acdd62a8403ea7c7fc0e9208d0
+  publication/historical_facekit/extractor.py: 4dbdd486cb942f93017c442dec7325936933a7d296f3ad99c66550fc54eaf377
+  publication/historical_facekit/LICENSE: 1524041c0ca2f1019344e7cb9c1a8c65ffc259989a6c081e80224621565de655
+  publication/historical_facekit/SHA256SUMS: 79ca73fb3504e2d9164f0ac31a1c69589bf095747b57c92351d9f61cdd7918e2
 generation_scripts:
   audit:
     path: publication/manuscript_results_audit.py
@@ -33,7 +36,7 @@ generation_scripts:
     sha256: 17af574975e0438c6d3184081bfc1f927551fdffa55ae7a47ec087f5ef5de57f
   figures:
     path: publication/scripts/generate_figures.py
-    sha256: 07d4773dadc268886fdc397abc3cc4ceed9ea1817c89a43df0658a2c742b929a
+    sha256: 10c075581f816c5bbb1d40455deebfaff09c0b1b1c33eb8a7d121d0c03f0b7f7
   feature_correlation:
     path: publication/scripts/feature_correlation.py
     sha256: 284ab4d6987e93e20c0d129af4d17eb63a393e4e9b4bea55340ed550e8b87202
@@ -42,13 +45,13 @@ generation_scripts:
     sha256: ef827ea61bce2c997e1bc91fe7554329ce939a16990288b20f3003ea8d6c507f
   exact_feature_definitions:
     path: publication/scripts/generate_feature_definitions.py
-    sha256: 06487a1132bdedbef400d5a315822861bcb6eb5d7d3a65c10a3ff120539bd0cc
+    sha256: 180045f196e5dc23fc89dfae612b91e2ba9567700d1388f7a8680eb5b8792c49
   covariate_sensitivity:
     path: publication/covariate_sensitivity/run_covariate_sensitivity.py
     sha256: cfcb96ad3bf935d90fcd09e22e91094821692ee4ea012cdec03adb190677c567
   provenance:
     path: publication/scripts/generate_provenance.py
-    sha256: 69671cf41f0175792271e4c2cf9ef236843e22d7b2bfb736e8897adf8e6e2559
+    sha256: d82b832116e0b22420d9f252fc2c0abeddea45f9ab2409997f4c5c126c972ac4
   reproducibility_verification:
     path: publication/scripts/verify_reproducible_outputs.py
     sha256: 3a7d61ce2cfd621f9941ca91f51c42475285f5c44b0a8858edf2daa75d80f050

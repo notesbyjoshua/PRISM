@@ -18,16 +18,14 @@ jobs:
   publication-readiness:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository and FaceKit history
+      - name: Check out repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          submodules: recursive
+          submodules: false
 
-      - name: Verify historical FaceKit revision
-        run: |
-          git -C FaceKit cat-file -e "${HISTORICAL_FACEKIT_COMMIT}^{commit}" || git -C FaceKit fetch origin "$HISTORICAL_FACEKIT_COMMIT"
-          git -C FaceKit cat-file -e "${HISTORICAL_FACEKIT_COMMIT}^{commit}"
+      - name: Verify historical FaceKit source snapshot
+        run: sha256sum --check publication/historical_facekit/SHA256SUMS
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -36,6 +34,9 @@ jobs:
 
       - name: Install publication dependencies
         run: python -m pip install --upgrade pip -r publication/requirements.txt
+
+      - name: Test cohort and historical source handling
+        run: python -m unittest discover -s tests -v
 
       - name: Regenerate publication package
         env:

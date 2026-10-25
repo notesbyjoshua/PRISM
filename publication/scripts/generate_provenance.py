@@ -36,6 +36,8 @@ def main():
         "local_review/bibm2026_evidence/feature_region_family_mapping.csv",
         "local_review/bibm2026_evidence/main_candidate_review.csv",
         "publication/requirements.txt",
+        "publication/historical_facekit/extractor.py", "publication/historical_facekit/LICENSE",
+        "publication/historical_facekit/SHA256SUMS",
     ]
     scripts = {
         "audit": "publication/manuscript_results_audit.py",

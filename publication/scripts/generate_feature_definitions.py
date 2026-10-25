@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import ast
 import csv
+import hashlib
+import os
 import re
 import subprocess
 from collections import Counter, defaultdict
@@ -10,9 +12,11 @@ import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[2]
-FACEKIT = ROOT / "FaceKit"
+FACEKIT = Path(os.environ.get("PUBLICATION_FACEKIT_REPOSITORY", ROOT / "FaceKit"))
 COMMIT = "e474628f3cb17a83edad59ac6e1d9e5438753032"
 SOURCE_PATH = "src/facekit/core/geometric/extractor.py"
+SNAPSHOT = ROOT / "publication/historical_facekit/extractor.py"
+SOURCE_SHA256 = "4dbdd486cb942f93017c442dec7325936933a7d296f3ad99c66550fc54eaf377"
 SCHEMA_PATH = ROOT / "revision_results/final_20260914/exact_feature_names.csv"
 MAPPING_PATH = ROOT / "local_review/bibm2026_evidence/feature_region_family_mapping.csv"
 OUTPUT = ROOT / "publication/feature_definitions"
@@ -32,6 +36,13 @@ COLUMNS = [
 
 def git_show(path):
     return subprocess.check_output(["git", "-C", str(FACEKIT), "show", f"{COMMIT}:{path}"], text=True)
+
+
+def historical_source():
+    source = git_show(SOURCE_PATH).encode("utf-8") if os.environ.get("PUBLICATION_FACEKIT_REPOSITORY") else SNAPSHOT.read_bytes()
+    if hashlib.sha256(source).hexdigest() != SOURCE_SHA256:
+        raise ValueError("Historical FaceKit source differs from the pinned extraction revision")
+    return source.decode("utf-8")
 
 
 def read_csv(path):
@@ -145,7 +156,7 @@ def supporting_definitions(function, line, expression, definitions):
 
 
 def load_historical_source():
-    source = git_show(SOURCE_PATH)
+    source = historical_source()
     records = {}
 
     def record(key, value, function, line, end_line, expression, values):
