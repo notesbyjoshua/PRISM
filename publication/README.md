@@ -22,3 +22,9 @@ The package treats global Benjamini-Hochberg families for pooled, matched, and i
 ## Deterministic CI generation
 
 `generate_provenance.py` uses real UTC time during ordinary local runs. When `SOURCE_DATE_EPOCH` is set, it uses that timestamp instead. CI requires exact generated structure and text plus tight numeric equivalence for CSV outputs; figure files are regenerated but are not compared byte-for-byte because Matplotlib rendering and floating-point serialization can differ across operating systems. `PUBLICATION_SOURCE_COMMIT` and `PUBLICATION_PACKAGE_COMMIT` are optional explicit inputs; the package commit remains `null` until a release commit or tag can be named without creating a self-reference.
+
+## Figure-only generation
+
+Run `.venv/bin/python publication/scripts/generate_figures.py` to regenerate Figures 1 and 3, the new three-panel `fig2_demographic_analyses`, and two clearly labeled code-drawn schematics, without regenerating statistical analyses or tables. Use `--figures 1 2 3` for numbered figures only, or select individual figures. Numbered PDFs are synchronized to `manuscript/figures/`.
+
+The legacy `fig2_reference_variation` files and their existing LaTeX caption are preserved. Adopting the A/B/C graphic requires changing the manuscript figure path and caption together; manuscript text is not changed by the figure generator. See [figure report and suggested captions](figures/FIGURE_GENERATION_REPORT.md) for source lineage, verified counts, output inventory, visual checks, and author integration steps.
