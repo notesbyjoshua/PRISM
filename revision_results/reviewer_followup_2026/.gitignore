@@ -9,3 +9,6 @@
 !independent_review.py
 !test_review_contracts.py
 !requirements.txt
+!extended_analysis.py
+!test_extended_analysis.py
+!EXTENSION_METHODS.md
