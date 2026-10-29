@@ -19,6 +19,18 @@
   "synthetic_rows_in_primary": 0,
   "historical_archive": "revision_results/rebuild_120_20261028/local_only/run_20261028/archive/historical_125",
   "retired_active_exports": "revision_results/rebuild_120_20261028/local_only/run_20261028/archive/retired_active_exports",
-  "promotion_basis": "User authorized validated new 120-feature primary analysis and removal of old analysis from active outputs",
-  "publication_release": "not_performed; private/raw data and image publication rights remain restricted"
+  "promotion_basis": "Validated 120-feature measurements and statistical families; sole active manuscript-facing study",
+  "publication_release": "not_performed; private/raw data and image publication rights remain restricted",
+  "study_type": "Statistical investigation built on FaceKit",
+  "active_specifications": [
+    "primary_balanced",
+    "reference_all_eligible",
+    "reference_race_sex",
+    "alternative_photo"
+  ],
+  "concordance_uncertainty": "excluded_biased_bootstrap_intervals",
+  "publication_permission_review": "publication/PI_REVIEW.md",
+  "retired_comparison_archive": "revision_results/rebuild_120_20261028/local_only/run_20261028/archive/retired_comparisons_20261028",
+  "active_manuscript": "manuscript/main.tex",
+  "public_exports": "aggregate_only"
 }

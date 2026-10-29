@@ -1,4 +1,4 @@
-name: Publication readiness
+name: PRISM 120-feature study checks
 
 on:
   push:
@@ -23,9 +23,6 @@ jobs:
           fetch-depth: 0
           submodules: true
 
-      - name: Verify historical FaceKit source snapshot
-        run: sha256sum --check publication/historical_facekit/SHA256SUMS
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -34,7 +31,7 @@ jobs:
       - name: Install publication dependencies
         run: python -m pip install --upgrade pip -r publication/requirements.txt
 
-      - name: Test current pipeline and frozen historical code
+      - name: Test current FaceKit study and numerical contracts
         run: python -m pytest tests -q --tb=short
 
       - name: Test exploratory extension contracts with synthetic data
@@ -46,7 +43,7 @@ jobs:
           python publication/scripts/verify_reproducible_outputs.py
           --report "$RUNNER_TEMP/prism-120-publication-report.md"
 
-      - name: Publish readiness summary
+      - name: Summarize study checks
         if: always()
         run: |
           if [ -f "$RUNNER_TEMP/prism-120-publication-report.md" ]; then

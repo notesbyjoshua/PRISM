@@ -9,7 +9,7 @@ type DistributionPlot = {
   filename: string;
   title: string;
   description: string;
-  category: "Dataset overview" | "Ethnicity comparisons";
+  category: "Dataset overview" | "Recorded group comparisons";
 };
 
 export default function DistributionsPage() {
@@ -30,7 +30,7 @@ export default function DistributionsPage() {
       <div className="brand"><span className="brand-mark"><Dna size={22} weight="bold" /></span><span>PRISM</span></div>
       <nav aria-label="Primary navigation">
         <Link className="nav-item" href="/"><ArrowLeft size={19} />Phenotype atlas</Link>
-        <Link className="nav-item" href="/ancestry"><UsersThree size={19} />Ancestry analysis</Link>
+        <Link className="nav-item" href="/demographics"><UsersThree size={19} />Recorded demographics</Link>
         <Link className="nav-item active" href="/distributions"><ChartBar size={19} />Data distributions</Link>
         <a className="nav-item" href="http://localhost:8000/docs"><Images size={19} />API documentation</a>
       </nav>
@@ -46,7 +46,7 @@ export default function DistributionsPage() {
         </section>
 
         <div className="chart-tabs" role="group" aria-label="Filter distribution charts">
-          {["All charts", "Dataset overview", "Ethnicity comparisons"].map((item) => <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>{item}</button>)}
+          {["All charts", "Dataset overview", "Recorded group comparisons"].map((item) => <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>{item}</button>)}
         </div>
 
         {error && <div className="alert"><WarningCircle size={17} />{error}</div>}

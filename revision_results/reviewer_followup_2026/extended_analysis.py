@@ -679,4 +679,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit('Use revision_results/rebuild_120_20261028/extensions.py for the validated current study')

@@ -155,8 +155,7 @@ def main():
     rows.append({'component':'literal_actual_bootstrap_CI_replay','status':'PASS',**ci})
     if args.scope=='full':
         jobs=[('reference_all_eligible','primary','reference_all_eligible'),('reference_race_sex','primary','reference_race_sex'),
-              ('reference_fixed_historical','primary','reference_fixed_historical'),('alternative_photo','alternate','reference_balanced'),
-              ('fixed_common_new','fixed_common_new','reference_fixed_historical'),('fixed_common_old','fixed_common_old','fixed_common_reference_old')]
+              ('alternative_photo','alternate','reference_balanced')]
         for name,d,r in jobs:
             table=pd.read_csv(results/name/'stats_each_disease_vs_healthy.csv')
             x=pd.read_csv(cohorts/f'{d}_phenotypes.csv');y=pd.read_csv(cohorts/f'{r}_phenotypes.csv')
@@ -229,7 +228,8 @@ def main():
             close(np.quantile(draws,[.025,.975]),[row.ci_95_lower,row.ci_95_upper],'literal within-GMDB CI replay',atol=1e-8)
         rows.append({'component':'four_actual_within_GMDB_CI_replays','status':'PASS','bootstrap':1000})
         concord=pd.read_csv(extension/'concordance_summary.csv')
-        assert concord.bootstrap_iterations.eq(1000).all()
+        assert not any('bootstrap' in c or '_ci_' in c for c in concord.columns)
+        assert concord.uncertainty_status.str.contains('descriptive_point_estimates_only').all()
         entries=pd.read_csv(extension/'concordance_entries.csv')
         for mode,group in entries.groupby('comparator'):
             record=concord.loc[concord.comparator.eq(mode)&concord.level.eq('overall')].iloc[0]
@@ -237,7 +237,7 @@ def main():
             close(np.corrcoef(group.fairface_g,group.within_g)[0,1],record.pearson_r,'independent concordance Pearson')
             close(np.corrcoef(rankdata(group.fairface_g),rankdata(group.within_g))[0,1],record.spearman_rho,'independent concordance Spearman')
             close(np.median(group.fairface_g.abs()-group.within_g.abs()),record.median_absolute_attenuation,'independent attenuation')
-        rows.append({'component':'concordance_and_sampling','status':'PASS','bootstrap':1000})
+        rows.append({'component':'descriptive_concordance_and_sampling','status':'PASS','uncertainty':'excluded_biased_bootstrap_intervals'})
         random=pd.read_csv(extension/'random_photo_replicates.csv')
         assert len(random)==100 and random.hypotheses.eq(5760).all()
     result={'status':'VALIDATED' if args.scope=='full' else 'PRIMARY_VALIDATED','components':rows,

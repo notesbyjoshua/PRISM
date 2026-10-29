@@ -3,7 +3,7 @@
 `extract_current_120.py` produces local 120-feature measurements from official
 FairFace margin025 images or the verified private GMDB Arrow backup. It performs
 extraction and QC bookkeeping only. It never runs PRISM hypothesis tests, trains
-models, uploads data or changes the historical 125-feature tables.
+models, uploads data or changes source measurement tables.
 
 The completed October 28 run is documented in
 `local_review/feature_extraction_120/20261028_current120/README.md`.

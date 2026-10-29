@@ -1,5 +1,5 @@
-import AncestryDashboard from "@/components/AncestryDashboard";
+import { redirect } from "next/navigation";
 
-export default function AncestryPage() {
-  return <AncestryDashboard />;
+export default function PreviousDemographicRoute() {
+  redirect("/demographics");
 }

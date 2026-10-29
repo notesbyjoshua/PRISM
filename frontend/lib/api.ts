@@ -6,6 +6,9 @@ export type Summary = {
   disease_count: number;
   high_priority_count: number;
   average_auc: number | null;
+  primary_significant_count: number;
+  analysis_id: string;
+  feature_source: "FaceKit";
   is_demo: boolean;
   data_source: string;
 };

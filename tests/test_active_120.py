@@ -28,6 +28,8 @@ def test_active_api_uses_current_measurements():
         summary = client.get('/api/summary').json()
         assert summary['feature_count'] == 120 and summary['disease_count'] == 48
         assert summary['data_source'] == 'analysis' and not summary['is_demo']
+        assert summary['result_count'] == 5760 and summary['primary_significant_count'] == 955
+        assert summary['feature_source'] == 'FaceKit' and summary['synthetic_primary_rows'] == 0
         results = pd.read_csv(ROOT/config['results_directory']/'stats_each_disease_vs_healthy.csv')
         first = results.iloc[0]
         response = client.get('/api/distributions', params={'disease': first.disease, 'feature': first.feature})
@@ -36,8 +38,10 @@ def test_active_api_uses_current_measurements():
             return
         assert response.status_code == 200
         values = response.json()
-        assert len(values['healthy']) == config['reference_images'] == 3409
-        assert len(values['disease_values']) == first.n_disease
+        assert values['representation'] == 'aggregate_histogram'
+        assert 'healthy' not in values and 'disease_values' not in values
+        assert sum(values['reference']['counts']) == values['reference']['n'] == config['reference_images'] == 3409
+        assert sum(values['disease_group']['counts']) == values['disease_group']['n'] == first.n_disease
 
 
 def test_active_manuscript_and_figures_are_current():
@@ -48,3 +52,12 @@ def test_active_manuscript_and_figures_are_current():
     assert (figures/'fig2_clinical_indices.png').is_file()
     assert not (figures/'fig2_demographic_analyses.pdf').exists()
     assert not (figures/'fig3_selection_overlap.pdf').exists()
+
+
+def test_missing_current_results_cannot_seed_unvalidated_demo(monkeypatch):
+    pytest.importorskip('fastapi')
+    from backend.app import import_results
+    monkeypatch.setattr(import_results,'initialize_database',lambda:None)
+    monkeypatch.setattr(import_results,'import_csv_results',lambda:False)
+    with pytest.raises(FileNotFoundError,match='unvalidated fallback'):
+        import_results.ensure_data()

@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from functools import lru_cache
 from pathlib import Path
 import pandas as pd
+import numpy as np
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -64,7 +65,7 @@ def ancestry_layer_directory(layer: str) -> Path:
         raise HTTPException(status_code=400, detail="Layer must be 'broad' or 'subcategory'")
     directory = directories[layer]
     if not directory.is_dir():
-        raise HTTPException(status_code=404, detail="Ancestry analysis results were not found")
+        raise HTTPException(status_code=404, detail="Recorded demographic analysis results were not found")
     return directory
 
 
@@ -114,11 +115,15 @@ def summary():
                    COUNT(DISTINCT disease) disease_count,
                    SUM(high_priority) high_priority_count,
                    AVG(roc_auc) average_auc,
+                   SUM(q_value < 0.05) primary_significant_count,
                    MAX(is_demo) is_demo
             FROM analysis_results
+            WHERE analysis_type = 'pairwise'
             """).fetchone()
         source = connection.execute("SELECT value FROM app_metadata WHERE key = 'data_source'").fetchone()
-    return {**serialize_row(totals), "data_source": source[0] if source else "unknown"}
+    return {**serialize_row(totals), "data_source": source[0] if source else "unknown",
+            "analysis_id": ACTIVE_ANALYSIS['analysis_id'], "feature_source": "FaceKit",
+            "study_type": "statistical investigation", "synthetic_primary_rows": 0}
 
 
 @app.get("/api/diseases")
@@ -215,7 +220,11 @@ def feature_detail(feature: str):
 
 @app.get("/api/distributions")
 def distributions(disease: str, feature: str):
-    """Return the underlying healthy and disease measurements for a selected result."""
+    """Return aggregate histograms for a validated primary comparison."""
+    with connect() as connection:
+        row = connection.execute("SELECT 1 FROM analysis_results WHERE analysis_type='pairwise' AND disease=? AND feature=?", (disease,feature)).fetchone()
+    if row is None:
+        raise HTTPException(status_code=404, detail="No current primary comparison was found")
     if not DISEASE_PHENOTYPES.is_file() or not HEALTHY_PHENOTYPES.is_file():
         raise HTTPException(status_code=404, detail="Phenotype source CSVs were not found")
     try:
@@ -225,7 +234,12 @@ def distributions(disease: str, feature: str):
         raise HTTPException(status_code=404, detail=str(error)) from error
     if not affected:
         raise HTTPException(status_code=404, detail="No matching disease measurements were found")
-    return {"feature": feature, "disease": disease, "healthy": healthy, "disease_values": affected}
+    edges = np.histogram_bin_edges(np.r_[healthy,affected], bins=18)
+    def aggregate(values):
+        counts,_ = np.histogram(values,bins=edges)
+        return {"counts":counts.tolist(), "n":len(values), "mean":float(np.mean(values)), "median":float(np.median(values))}
+    return {"feature":feature, "disease":disease, "bin_edges":edges.tolist(),
+            "reference":aggregate(healthy), "disease_group":aggregate(affected), "representation":"aggregate_histogram"}
 
 
 @app.get("/api/distribution-plots")
@@ -237,15 +251,15 @@ def distribution_plots():
             "Cohort size for every disease, ordered from largest to smallest.",
         ),
         "02_top_20_diseases.png": ("Top 20 diseases", "The twenty disease cohorts with the most images."),
-        "03_rows_per_ethnicity.png": ("Rows per ethnicity", "Image counts across the dataset's ethnicity categories."),
+        "03_rows_per_ethnicity.png": ("Recorded demographic groups", "Selected patient counts across recorded source categories."),
     }
     plots = []
     if DISTRIBUTION_PLOTS.is_dir():
         for path in sorted(DISTRIBUTION_PLOTS.glob("*.png")):
             if path.name.startswith("04_scatter_"):
                 pair = path.stem.removeprefix("04_scatter_").replace("_vs_", " vs. ").replace("_", " ").title()
-                title, description = pair, "Disease-level image counts compared between two ethnicity groups."
-                category = "Ethnicity comparisons"
+                title, description = pair, "Selected patient counts compared between recorded demographic groups."
+                category = "Recorded group comparisons"
             elif path.name in plot_details:
                 title, description = plot_details[path.name]
                 category = "Dataset overview"
@@ -266,7 +280,8 @@ def distribution_plot_image(filename: str):
     return FileResponse(path, media_type="image/png")
 
 
-@app.get("/api/ancestry/overview")
+@app.get("/api/ancestry/overview", include_in_schema=False)
+@app.get("/api/demographics/overview")
 def ancestry_overview(layer: str = "broad"):
     directory = ancestry_layer_directory(layer)
     group_counts = cached_csv(str(directory / "healthy_group_counts.csv"))
@@ -299,7 +314,8 @@ def ancestry_overview(layer: str = "broad"):
     }
 
 
-@app.get("/api/ancestry/matched-results")
+@app.get("/api/ancestry/matched-results", include_in_schema=False)
+@app.get("/api/demographics/matched-results")
 def ancestry_matched_results(
     layer: str = "broad", disease: str | None = None, group: str | None = None, limit: int = Query(30, ge=1, le=200)
 ):
@@ -328,7 +344,8 @@ def ancestry_matched_results(
     return frame_records(frame[columns])
 
 
-@app.get("/api/ancestry/healthy-effects")
+@app.get("/api/ancestry/healthy-effects", include_in_schema=False)
+@app.get("/api/demographics/reference-effects")
 def ancestry_healthy_effects(layer: str = "broad", limit: int = Query(20, ge=1, le=200)):
     directory = ancestry_layer_directory(layer)
     frame = cached_csv(str(directory / "analysis_A_healthy_pairwise_significant.csv"))
@@ -349,7 +366,8 @@ def ancestry_healthy_effects(layer: str = "broad", limit: int = Query(20, ge=1, 
     return frame_records(frame[columns])
 
 
-@app.get("/api/ancestry/interactions")
+@app.get("/api/ancestry/interactions", include_in_schema=False)
+@app.get("/api/demographics/interactions")
 def ancestry_interactions(
     layer: str = "broad",
     result_set: str = Query("high_priority", pattern="^(all|within_syndrome_fdr|global_fdr|high_priority|high_confidence|direction_reversals)$"),
@@ -376,7 +394,8 @@ def ancestry_interactions(
     return frame_records(frame[columns])
 
 
-@app.get("/api/ancestry/interaction-summaries")
+@app.get("/api/ancestry/interaction-summaries", include_in_schema=False)
+@app.get("/api/demographics/interaction-summaries")
 def ancestry_interaction_summaries(layer: str = "broad", limit: int = Query(12, ge=1, le=100)):
     directory = ancestry_layer_directory(layer)
     frame = cached_csv(str(directory / "analysis_C_syndrome_summary.csv"))

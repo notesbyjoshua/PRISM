@@ -23,10 +23,7 @@ def main():
     cohorts=RUN/'COHORTS';results=RUN/'RESULTS_120'
     jobs=[('reference_all_eligible','primary','reference_all_eligible'),
           ('reference_race_sex','primary','reference_race_sex'),
-          ('reference_fixed_historical','primary','reference_fixed_historical'),
-          ('alternative_photo','alternate','reference_balanced'),
-          ('fixed_common_new','fixed_common_new','reference_fixed_historical'),
-          ('fixed_common_old','fixed_common_old','fixed_common_reference_old')]
+          ('alternative_photo','alternate','reference_balanced')]
     if args.dry_run:
         print(json.dumps({'jobs':jobs,'bootstrap':500,'rank_bootstrap':200,'seed':2026},indent=2));return
     for name,disease,reference in jobs:

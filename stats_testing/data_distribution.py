@@ -187,7 +187,7 @@ def plot_ethnicities(ethnicity_counts, output_dir):
     figure, axis = plt.subplots(figsize=(10, max(5, len(display_counts) * 0.65)))
     palette = [COLORS["purple"] if label != "Unknown" else "#9AA7A3" for label in display_counts.index]
     bars = axis.barh(display_counts.index, display_counts.values, color=palette)
-    axis.set_title("Number of rows per ethnicity", loc="left", fontsize=16, fontweight="bold", pad=14)
+    axis.set_title("Selected patients by recorded demographic group", loc="left", fontsize=16, fontweight="bold", pad=14)
     axis.set_xlabel("Number of rows")
     axis.set_ylabel("Ethnicity category")
     axis.xaxis.set_major_locator(MaxNLocator(integer=True))
@@ -240,10 +240,10 @@ def plot_ethnicity_pair(counts, ethnicity_x, ethnicity_y, output_dir):
     axis.set_xlim(-limit * 0.015, limit)
     axis.set_ylim(-limit * 0.015, limit)
     axis.set_aspect("equal", adjustable="box")
-    axis.set_xlabel(f"{ethnicity_x} images per disease")
-    axis.set_ylabel(f"{ethnicity_y} images per disease")
+    axis.set_xlabel(f"{ethnicity_x} selected patients per syndrome")
+    axis.set_ylabel(f"{ethnicity_y} selected patients per syndrome")
     axis.set_title(
-        f"Disease image counts: {ethnicity_x} vs {ethnicity_y}", loc="left", fontsize=15, fontweight="bold", pad=14
+        f"Recorded patient counts: {ethnicity_x} vs {ethnicity_y}", loc="left", fontsize=15, fontweight="bold", pad=14
     )
     axis.text(
         0.99,

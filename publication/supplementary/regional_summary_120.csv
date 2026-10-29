@@ -1,10 +1,10 @@
 anatomical_region,tested,significant,features,fraction_significant
-cheeks / malar region,384,35,8,0.09114583333333333
+cheeks / malar region,384,35,8,0.0911458333333333
 chin / jaw,240,87,5,0.3625
-eyebrows,960,197,20,0.20520833333333333
-eyes / orbital dimensions,1392,158,29,0.11350574712643678
+eyebrows,960,197,20,0.2052083333333333
+eyes / orbital dimensions,1392,158,29,0.1135057471264367
 forehead,192,60,4,0.3125
 global face shape / proportions,288,59,6,0.2048611111111111
-nose,816,133,17,0.16299019607843138
+nose,816,133,17,0.1629901960784313
 ocular position / iris / gaze,768,96,16,0.125
-philtrum / mouth / lips,720,130,15,0.18055555555555555
+philtrum / mouth / lips,720,130,15,0.1805555555555555

@@ -14,43 +14,26 @@ import { displayDisease, displayFeature, featureRegion, REGIONS, Region } from "
 const formatNumber = (value: number | null, digits = 2) => value == null ? "—" : value.toFixed(digits);
 const formatQ = (value: number | null) => value == null ? "—" : value < .001 ? "<0.001" : value.toPrecision(2);
 
-type Distribution = { feature: string; disease: string; healthy: number[]; disease_values: number[] };
-
-function median(values: number[]) {
-  if (!values.length) return null;
-  const sorted = [...values].sort((a, b) => a - b);
-  const middle = Math.floor(sorted.length / 2);
-  return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
-}
-
-function mean(values: number[]) {
-  return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : null;
-}
+type DistributionGroup = { counts: number[]; n: number; mean: number; median: number };
+type Distribution = { feature: string; disease: string; reference: DistributionGroup; disease_group: DistributionGroup; bin_edges: number[]; representation: "aggregate_histogram" };
 
 function Histograms({ data }: { data: Distribution }) {
-  const all = [...data.healthy, ...data.disease_values];
-  const low = Math.min(...all), high = Math.max(...all), bins = 18;
-  const width = high - low || 1;
-  const histogram = (values: number[]) => {
-    const counts = Array(bins).fill(0) as number[];
-    values.forEach((value) => counts[Math.min(bins - 1, Math.floor(((value - low) / width) * bins))]++);
-    // Relative frequency keeps groups with different sample sizes comparable.
-    return counts.map((count) => count / Math.max(values.length, 1));
-  };
-  const healthy = histogram(data.healthy), affected = histogram(data.disease_values);
-  const sharedMaximum = Math.max(...healthy, ...affected, .01);
+  const groups = [
+    { label: "FairFace reference", group: data.reference, tone: "reference" },
+    { label: displayDisease(data.disease), group: data.disease_group, tone: "affected" },
+  ];
+  const maximum = Math.max(...groups.flatMap(({ group }) => group.counts.map((count) => count / group.n)), .01);
   return <div className="distribution-grid">
-    {[["FairFace reference", healthy, "healthy"], [displayDisease(data.disease), affected, "affected"]].map(([label, values, tone]) =>
-      <div className="distribution-group" key={String(label)}>
-        <div className="histogram" aria-label={`${label} relative-frequency histogram`}>
-          <span className="histogram-scale"><b>{(sharedMaximum * 100).toFixed(0)}%</b><b>0%</b></span>
-          <span className="histogram-midline" aria-hidden="true" />
-          {(values as number[]).map((value, index) => <i key={index} className={String(tone)} style={{ height: `${Math.max(2, value / sharedMaximum * 100)}%` }} title={`${(value * 100).toFixed(1)}%`} />)}
-        </div>
-        <strong>{label}</strong>
-        <span>Mean {formatNumber(mean(String(tone) === "healthy" ? data.healthy : data.disease_values), 3)} · Median {formatNumber(median(String(tone) === "healthy" ? data.healthy : data.disease_values), 3)} · n = {String(tone) === "healthy" ? data.healthy.length : data.disease_values.length}</span>
-      </div>)}
-    <div className="axis-labels"><span>{low.toFixed(3)}</span><span>Measurement value · shared y-axis shows relative frequency</span><span>{high.toFixed(3)}</span></div>
+    {groups.map(({ label, group, tone }) => <div className="distribution-group" key={tone}>
+      <div className="histogram" aria-label={`${label} aggregate relative-frequency histogram`}>
+        <span className="histogram-scale"><b>{(maximum * 100).toFixed(0)}%</b><b>0%</b></span>
+        <span className="histogram-midline" aria-hidden="true" />
+        {group.counts.map((count, index) => <i key={index} className={tone} style={{ height: `${Math.max(2, count / group.n / maximum * 100)}%` }} title={`${(count / group.n * 100).toFixed(1)}%`} />)}
+      </div>
+      <strong>{label}</strong>
+      <span>Mean {formatNumber(group.mean, 3)} · Median {formatNumber(group.median, 3)} · n = {group.n}</span>
+    </div>)}
+    <div className="axis-labels"><span>{data.bin_edges[0].toFixed(3)}</span><span>Aggregate bins · shared relative-frequency axis</span><span>{data.bin_edges[data.bin_edges.length - 1].toFixed(3)}</span></div>
   </div>;
 }
 
@@ -59,12 +42,12 @@ function DistributionModal({ row, onClose }: { row: Result; onClose: () => void 
   const [error, setError] = useState("");
   useEffect(() => {
     const params = new URLSearchParams({ feature: row.feature, disease: row.disease ?? "" });
-    getJson<Distribution>(`/api/distributions?${params}`).then(setData).catch(() => setError("The underlying measurements could not be loaded."));
+    getJson<Distribution>(`/api/distributions?${params}`).then(setData).catch(() => setError("The aggregate distributions could not be loaded."));
   }, [row]);
   return <div className="modal-backdrop" role="presentation" onMouseDown={onClose}>
     <section className="modal" role="dialog" aria-modal="true" aria-labelledby="distribution-title" onMouseDown={(event) => event.stopPropagation()}>
       <button className="close-button" onClick={onClose} aria-label="Close"><X size={20} /></button>
-      <p className="eyebrow">Underlying measurements</p>
+      <p className="eyebrow">Aggregate distributions</p>
       <h2 id="distribution-title">{displayFeature(row.feature)}</h2>
       <p className="modal-subtitle">FairFace reference compared with {displayDisease(row.disease)}</p>
       {error && <div className="alert">{error}</div>}
@@ -74,13 +57,13 @@ function DistributionModal({ row, onClose }: { row: Result; onClose: () => void 
         <span><small>Hedges’ g</small><b>{formatNumber(row.hedges_g)}</b></span>
         <span><small>95% CI</small><b>{formatNumber(row.hedges_g_ci_low)} to {formatNumber(row.hedges_g_ci_high)}</b></span>
         <span><small>FDR q</small><b>{formatQ(row.q_value)}</b></span>
-        <span><small>AUROC</small><b>{formatNumber(row.roc_auc)}</b></span>
+        <span><small>Descriptive rank AUC</small><b>{formatNumber(row.roc_auc)}</b></span>
       </div>
     </section>
   </div>;
 }
 
-const pipeline = ["Facial images", "FaceKit", "120 geometric measurements", "Eligible syndrome cohorts vs FairFace reference", "Statistical testing + FDR", "Effect size + stability + AUROC", "Quantitative phenotype atlas"];
+const pipeline = ["Facial images", "FaceKit", "120 FaceKit measurements", "Eligible syndrome cohorts vs FairFace reference", "Statistical testing + FDR", "Effect sizes + robustness", "Cohort statistical investigation"];
 
 export default function Dashboard() {
   const [summary, setSummary] = useState<Summary | null>(null);
@@ -162,7 +145,7 @@ export default function Dashboard() {
         <a className="nav-item active" href="#overview"><CirclesFour size={19} />Overview</a>
         <a className="nav-item" href="#explorer"><ChartScatter size={19} />Feature explorer</a>
         <a className="nav-item" href="#specificity"><Sparkle size={19} />Specificity</a>
-        <a className="nav-item" href="/ancestry"><UsersThree size={19} />Ancestry analysis</a>
+        <a className="nav-item" href="/demographics"><UsersThree size={19} />Recorded demographics</a>
         <a className="nav-item" href="/distributions"><Images size={19} />Data distributions</a>
         <a className="nav-item" href="http://localhost:8000/docs"><Database size={19} />API documentation</a>
       </nav>
@@ -170,11 +153,11 @@ export default function Dashboard() {
     </aside>
 
     <main>
-      <header className="topbar"><div><span className="status-dot" />Local analysis workspace</div><span className="version-tag">Quantitative phenotype atlas</span></header>
+      <header className="topbar"><div><span className="status-dot" />Local analysis workspace</div><span className="version-tag">Cohort statistical investigation</span></header>
       <div className="content">
         <section className="hero" id="overview">
-          <div><p className="kicker">Rare-disease phenotype intelligence</p><h1>Quantifying facial phenotypes across rare genetic disorders.</h1>
-            <p>Explore statistically significant differences in {summary?.feature_count ?? 120} geometric facial measurements between FairFace reference images and {summary?.disease_count ?? 0} rare-disease cohorts.</p>
+          <div><p className="kicker">FaceKit-based statistical study</p><h1>Quantifying facial phenotypes across rare genetic disorders.</h1>
+            <p>Explore statistically significant differences in {summary?.feature_count ?? 120} FaceKit geometric measurements between FairFace reference images and {summary?.disease_count ?? 0} rare-disease cohorts.</p>
             <div className="hero-actions"><button onClick={() => focusControl(diseaseSelect)}>Explore a disease</button><button onClick={() => focusControl(featureInput)}>Explore a feature</button><a href="/distributions">View dataset distributions</a></div>
           </div><div className="hero-orbit" aria-hidden="true"><Dna size={68} weight="duotone" /></div>
         </section>
@@ -182,13 +165,13 @@ export default function Dashboard() {
         {error && <div className="alert">{error}</div>}
         {summary?.is_demo && <div className="demo-banner"><Sparkle size={17} />Showing illustrative demo data. Run the analysis to populate this dashboard with your results.</div>}
 
-        <section className="study-overview" aria-labelledby="study-heading"><div className="section-intro"><p className="eyebrow">Study overview</p><h2 id="study-heading">From facial images to an interpretable atlas</h2></div><div className="pipeline">{pipeline.map((step, index) => <div className="pipeline-step" key={step}><span>{index === 0 ? <Images size={18} /> : index + 1}</span><b>{step}</b>{index < pipeline.length - 1 && <ArrowRight className="pipeline-arrow" size={15} />}</div>)}</div></section>
+        <section className="study-overview" aria-labelledby="study-heading"><div className="section-intro"><p className="eyebrow">Study overview</p><h2 id="study-heading">Statistical investigation built on FaceKit</h2></div><div className="pipeline">{pipeline.map((step, index) => <div className="pipeline-step" key={step}><span>{index === 0 ? <Images size={18} /> : index + 1}</span><b>{step}</b>{index < pipeline.length - 1 && <ArrowRight className="pipeline-arrow" size={15} />}</div>)}</div></section>
 
         <section className="metric-grid" aria-label="Dataset summary">
-          <MetricCard label="Features analyzed" value={(summary?.feature_count ?? 0).toLocaleString()} detail="Geometric phenotypes" icon={PulseIcon} />
+          <MetricCard label="Features analyzed" value={(summary?.feature_count ?? 0).toLocaleString()} detail="Measurements supplied by FaceKit" icon={PulseIcon} />
           <MetricCard label="Disease cohorts" value={(summary?.disease_count ?? 0).toLocaleString()} detail="Compared with FairFace reference" icon={Dna} tone="violet" />
           <MetricCard label="High priority" value={(summary?.high_priority_count ?? 0).toLocaleString()} detail="FDR + effect threshold" icon={CheckCircle} tone="amber" />
-          <MetricCard label="Mean AUROC" value={formatNumber(summary?.average_auc ?? null)} detail="Univariate discrimination" icon={TrendUp} />
+          <MetricCard label="Primary BH associations" value={(summary?.primary_significant_count ?? 0).toLocaleString()} detail="Global q < 0.05 across 5,760 tests" icon={TrendUp} />
         </section>
 
         <section className="filter-panel" id="explorer">
@@ -210,7 +193,7 @@ export default function Dashboard() {
           <div className="intro-options">
             <article><span>01</span><div><h3>Select a disease</h3><p>See sample size, significant measurements, strongest increases and decreases, and anatomical-region patterns.</p></div></article>
             <article><span>02</span><div><h3>Inspect the evidence</h3><p>Compare Hedges’ g, confidence intervals, FDR q-values, AUROC, bootstrap stability, and PDS rankings.</p></div></article>
-            <article><span>03</span><div><h3>View underlying values</h3><p>Click a feature or scatterplot point to compare its healthy and disease measurement distributions.</p></div></article>
+            <article><span>03</span><div><h3>Inspect aggregate distributions</h3><p>Click a feature or scatterplot point to compare its FairFace reference and disease aggregate distributions.</p></div></article>
           </div>
         </section>}
 
@@ -230,7 +213,7 @@ export default function Dashboard() {
 
         <section className="panel results-panel" id="evidence">
           <div className="panel-heading"><div><p className="eyebrow">Evidence table</p><h2>Feature comparisons</h2><p className="panel-description">Ranked by Phenotype Difference Score (PDS), highest first.</p></div><span className="result-count">{filtered.length} results</span></div>
-          <div className="table-wrap"><table><thead><tr><th>Feature</th>{!disease && <th>Disease</th>}<th>Direction</th><th>Hedges’ g</th><th>95% CI</th><th>FDR q</th><th>AUROC</th><th>PDS <span className="info-tip" tabIndex={0}><Info size={12} /><span><b>Composite ranking index.</b> PDS integrates standardized effect magnitude, statistical confidence, bootstrap direction stability, and sample reliability. It prioritizes features and does not replace significance testing.</span></span></th><th>Stability</th><th>Status</th></tr></thead>
+          <div className="table-wrap"><table><thead><tr><th>Feature</th>{!disease && <th>Disease</th>}<th>Direction</th><th>Hedges’ g</th><th>95% CI</th><th>FDR q</th><th>Rank AUC</th><th>PDS <span className="info-tip" tabIndex={0}><Info size={12} /><span><b>Composite ranking index.</b> PDS integrates standardized effect magnitude, statistical confidence, bootstrap direction stability, and sample reliability. It prioritizes features and does not replace significance testing.</span></span></th><th>Stability</th><th>Status</th></tr></thead>
             <tbody>{visibleResults.map((row) => <tr key={row.id}><td><button className="feature-link" onClick={() => setSelected(row)}>{displayFeature(row.feature)}</button></td>{!disease && <td>{displayDisease(row.disease)}</td>}<td><span className={(row.hedges_g ?? 0) < 0 ? "direction down" : "direction up"}>{(row.hedges_g ?? 0) < 0 ? "↓ Smaller" : "↑ Larger"}</span></td><td className={(row.hedges_g ?? 0) < 0 ? "negative" : "positive"}>{formatNumber(row.hedges_g)}</td><td>{formatNumber(row.hedges_g_ci_low)} to {formatNumber(row.hedges_g_ci_high)}</td><td>{formatQ(row.q_value)}</td><td><span className="auc-pill">{formatNumber(row.roc_auc)}</span></td><td><span className="pds-pill">{row.pds_score == null ? "—" : Math.round(row.pds_score)}</span></td><td>{row.rank_stability == null ? "—" : `${Math.round(row.rank_stability * 100)}%`}</td><td>{row.high_priority ? <span className="priority"><CheckCircle size={14} weight="fill" />Priority</span> : <span className="muted-status">Monitor</span>}</td></tr>)}</tbody></table></div>
           {filtered.length > 12 && <button className="text-button" onClick={() => setShowAll((value) => !value)}>{showAll ? "Show top results" : "View all comparisons"} <ArrowRight size={16} /></button>}
         </section>

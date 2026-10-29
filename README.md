@@ -2,18 +2,17 @@
 
 **Phenotype Representation for Interpretable Syndrome Mapping**
 
-PRISM is a local research application for exploring facial phenotype measurements
-across rare-disease cohorts. It combines FaceKit feature extraction, a
-pandas/SciPy statistical pipeline, a FastAPI and SQLite backend, and a
-Next.js/Recharts dashboard.
+PRISM is a statistical investigation of facial phenotype variation across rare-disease
+cohorts using 120 geometric measurements supplied by FaceKit. A pandas/SciPy
+analysis, FastAPI/SQLite backend and local dashboard support this study. Feature
+extraction is attributed to FaceKit; PRISM supplies the statistical investigation.
 
 The active analysis uses **120 current FaceKit features**: 1,845 selected GMDB
 patients, 3,409 FairFace reference image paths, 48 eligible syndromes, and 5,760
 primary hypotheses. Global BH correction identifies 955 associations at q < 0.05.
 PDIDB synthetic images remain a separate extraction catalog. The configuration is
-in [ACTIVE_ANALYSIS.json](ACTIVE_ANALYSIS.json); the previous analysis and manuscript
-are preserved in a private read-only archive. See
-[the rebuild workflow](revision_results/rebuild_120_20261028/README.md) for provenance,
+in [ACTIVE_ANALYSIS.json](ACTIVE_ANALYSIS.json); the research record is preserved in a private read-only archive. See
+[the current study workflow](revision_results/rebuild_120_20261028/README.md) for provenance,
 validation, sensitivity analyses and the private report location.
 
 > PRISM is an exploratory research tool. Its results are not medical advice,
@@ -129,7 +128,7 @@ missing, the pipeline stops; it does not substitute historical measurements.
 Explicit input overrides must match the ordered current 120-feature schema.
 Keep per-person measurements and metadata in an ignored private directory.
 
-### Separate healthy and disease CSVs
+### Separate reference and disease CSVs
 
 Both files should have:
 
@@ -229,8 +228,8 @@ especially when the disease CSV contains many cohorts.
 
 The script performs three main analyses:
 
-1. All disease rows combined versus healthy rows.
-2. Every eligible disease cohort versus healthy rows.
+1. All disease rows combined versus reference rows.
+2. Every eligible disease cohort versus reference rows.
 3. Kruskal-Wallis comparison across all sufficiently large groups.
 
 The result tables include:

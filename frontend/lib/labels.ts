@@ -13,10 +13,13 @@ const WORDS: Record<string, string> = {
 };
 
 export const FEATURE_DISPLAY_NAMES: Record<string, string> = {
+  eb_thickness_mean: "Eyebrow geometric area index",
+  philtrum_length: "Philtrum / midface height",
+  malar_bulge_mean: "Malar geometric index",
   eb_inter_distance: "Inter-eyebrow distance",
-  inter_pupillary_distance: "Interpupillary distance",
+  inter_pupillary_distance: "Interpupillary / bizygomatic width",
   inter_canthal_distance: "Intercanthal distance",
-  outer_canthal_distance: "Outer canthal distance",
+  outer_canthal_distance: "Outer-canthal / bizygomatic width",
   forehead_width_mid: "Mid-forehead width",
   forehead_width_upper: "Upper-forehead width",
   jaw_to_forehead_ratio: "Jaw-to-forehead ratio",

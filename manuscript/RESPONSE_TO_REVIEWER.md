@@ -1,3 +1,3 @@
-# Current analysis revision notes
+# Current study response guidance
 
-The former response refers to a retired analysis and is preserved in the read-only archive. Use the current 120-feature manuscript and source-linked handoff for any new response. Primary counts: 1,845 recorded patients, 3,409 reference paths, 48 eligible syndromes, 5,760 hypotheses and 955 global-BH discoveries. No external reviewer replies were sent.
+Use the active FaceKit-based statistical study, its declared correction families and the complete current supplementary tables for reviewer responses. Cite the expanded reference, recorded-demographic, within-GMDB, adjusted and photo/reference robustness results in `main.tex`. Concordance points are descriptive; excluded uncertainty intervals must not be quoted as inferential support. Resolve the PI review items before submission. No external reviewer replies have been sent.

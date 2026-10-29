@@ -49,3 +49,27 @@ def test_manifest_cannot_read_outside_aggregate_inventory(aggregate):
     manifest['files']['../restricted.csv'] = 'not a valid path'
     with pytest.raises(ValueError, match='inventory'):
         package.verify_manifest(root, manifest)
+
+
+def test_concordance_uncertainty_is_excluded_without_changing_points():
+    import pandas as pd
+    from publication.scripts.current_120 import publication_table
+    frame=pd.DataFrame({'direction_agreement':[.713], 'direction_agreement_ci_low':[.731],
+                        'direction_agreement_bootstrap_se':[.01], 'bootstrap_iterations':[1000]})
+    result=publication_table(frame,concordance=True)
+    assert result.direction_agreement.iloc[0]==frame.direction_agreement.iloc[0]
+    assert not any('_ci_' in c or 'bootstrap' in c for c in result)
+    assert result.uncertainty_status.str.contains('descriptive_point_estimates_only').all()
+
+
+def test_failed_table_export_preserves_the_previous_valid_file(tmp_path,monkeypatch):
+    from publication.scripts import current_120
+    source=tmp_path/'source.csv';source.write_text('feature,value\nx,1\n')
+    target=tmp_path/'published.csv';target.write_text('feature,value\nx,2\n')
+    def interrupted_copy(source,destination):
+        Path(destination).write_text('incomplete')
+        raise OSError('interrupted copy')
+    monkeypatch.setattr(current_120.shutil,'copyfile',interrupted_copy)
+    with pytest.raises(OSError,match='interrupted'):
+        current_120.copy_table(source,target)
+    assert target.read_text()=='feature,value\nx,2\n'

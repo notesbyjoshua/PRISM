@@ -106,7 +106,9 @@ def verify_package(root=ROOT, manifest_required=True):
         raise ValueError('Primary significance count disagrees with the active configuration')
     for path in [root/'publication/supplementary/S1_primary_all_5760_hypotheses.csv',
                  root/'manuscript/supplementary/S1_primary_all_5760_hypotheses.csv']:
-        pd.testing.assert_frame_equal(primary, pd.read_csv(path), check_exact=False, rtol=1e-12, atol=1e-14)
+        expected=primary.rename(columns=lambda c:c.replace('healthy','reference')).copy()
+        expected['comparison']=expected.comparison.str.replace('healthy','FairFace reference',regex=False)
+        pd.testing.assert_frame_equal(expected, pd.read_csv(path), check_exact=False, rtol=1e-12, atol=1e-14)
     for path in [root/'publication/feature_definitions/current_120_feature_formulas.csv',
                  root/'manuscript/supplementary/Supplementary_Table_S6_exact_feature_definitions.csv']:
         if sha(path) != sha(schema_path):
@@ -116,6 +118,29 @@ def verify_package(root=ROOT, manifest_required=True):
             first, second = [root/f'{folder}/figures/{figure}.{extension}' for folder in ['publication', 'manuscript']]
             if sha(first) != sha(second):
                 raise ValueError('Manuscript and publication figures disagree')
+    for filename,planned in [('within_gmdb_results.csv',5760),('within_gmdb_current_eligible_sensitivity.csv',5760),
+                             ('full_adjusted_screen.csv',5880),('targeted_pairwise.csv',22320),('age_stratified.csv',11760)]:
+        frame=pd.read_csv(root/'stats_results/extensions_120'/filename)
+        if len(frame)!=planned or not set(frame.feature).issubset(features):
+            raise ValueError('An active extension has the wrong feature schema or planned family size')
+        p=frame.correction_p if 'correction_p' in frame else frame.p_value
+        expected=bh(p)
+        supported=frame.status.eq('ok') if 'status' in frame else frame.estimable
+        np.testing.assert_allclose(frame.loc[supported,'q_global_bh'],expected[supported],rtol=1e-10,atol=1e-12)
+    for folder in ['stats_results/extensions_120','publication/supplementary','manuscript/supplementary']:
+        concordance=pd.read_csv(root/folder/'concordance_summary.csv')
+        if any('bootstrap' in column or '_ci_' in column for column in concordance):
+            raise ValueError('Concordance bootstrap uncertainty must not appear in active exports')
+        if not concordance.uncertainty_status.str.contains('descriptive_point_estimates_only').all():
+            raise ValueError('Concordance must be explicitly descriptive')
+    text=(root/'manuscript/main.tex').read_text().lower()
+    if any(term in text for term in ['125-feature','historical','compatibility','rebuilt','[0.731','[0.725']):
+        raise ValueError('Retired analysis content has entered the active manuscript')
+    if 'statistical investigation' not in text or 'facekit' not in text:
+        raise ValueError('PRISM must be framed as a statistical investigation built on FaceKit')
+    for path in [root/'publication/historical_facekit',root/'stats_results/sensitivities/reference_fixed_historical']:
+        if path.exists():
+            raise ValueError('A retired analysis directory remains in the active package')
     paths = artifact_paths(root)
     count = check_public_csvs(root, paths)
     if manifest_required:

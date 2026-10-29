@@ -24,7 +24,7 @@ function EffectTooltip({ active, payload }: { active?: boolean; payload?: Array<
     <dl>
       <dt>Hedges’ g</dt><dd>{(row.hedges_g ?? 0) > 0 ? "+" : ""}{number(row.hedges_g)}</dd>
       <dt>95% CI</dt><dd>{number(row.hedges_g_ci_low)}–{number(row.hedges_g_ci_high)}</dd>
-      <dt>AUROC</dt><dd>{number(row.roc_auc)}</dd>
+      <dt>Descriptive rank AUC</dt><dd>{number(row.roc_auc)}</dd>
       <dt>FDR q</dt><dd>{qValue(row.q_value)}</dd>
       <dt>PDS</dt><dd>{row.pds_score == null ? "—" : Math.round(row.pds_score)}</dd>
       <dt>Stability</dt><dd>{row.rank_stability == null ? "—" : `${Math.round(row.rank_stability * 100)}%`}</dd>
@@ -41,7 +41,7 @@ export function EffectScatter({ results, onSelect }: { results: Result[]; onSele
     <ScatterChart margin={{ top: 12, right: 12, bottom: 10, left: -12 }}>
       <CartesianGrid stroke="#e6ebe8" strokeDasharray="3 5" />
       <XAxis type="number" dataKey="effect" name="|Hedges' g|" domain={[0, "auto"]} tick={{ fill: "#71807c", fontSize: 11 }} label={{ value: "Absolute Hedges’ g", position: "insideBottom", offset: -5, fill: "#71807c", fontSize: 10 }} />
-      <YAxis type="number" dataKey="roc_auc" name="AUROC" domain={[0.5, 1]} tick={{ fill: "#71807c", fontSize: 11 }} />
+      <YAxis type="number" dataKey="roc_auc" name="Descriptive rank AUC" domain={[0.5, 1]} tick={{ fill: "#71807c", fontSize: 11 }} />
       <ReferenceLine x={0.8} stroke="#c87d20" strokeDasharray="5 4" label={{ value: "large effect", fill: "#9a641e", fontSize: 10, position: "insideTopRight" }} />
       <Tooltip cursor={{ strokeDasharray: "3 3" }} content={<EffectTooltip />} />
       <Scatter data={data} onClick={(point) => onSelect((point as unknown as { payload: Result }).payload)} cursor="pointer">

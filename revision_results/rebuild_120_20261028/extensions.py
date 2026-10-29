@@ -20,6 +20,8 @@ RUN=HERE/'local_only/run_20261028'
 sys.path.insert(0,str(ROOT/'revision_results/reviewer_followup_2026'))
 import followup as f
 import extended_analysis as ext
+sys.path.insert(0,str(ROOT))
+from publication.scripts.current_120 import publication_table
 
 
 def sha(path):
@@ -119,7 +121,7 @@ def reference_redundancy(reference,features,mapping,entries,adjusted,out):
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--phase',choices=['within','models','concordance','photos','all'],default='all')
     parser.add_argument('--dry-run',action='store_true');args=parser.parse_args()
-    plan=json.loads((RUN/'ANALYSIS_PLAN.json').read_text());targets=plan['targets'];fixed=plan['historical_targets']
+    plan=json.loads((RUN/'ANALYSIS_PLAN.json').read_text());targets=plan['targets'];fixed=plan['adjustment_targets']
     out=RUN/'RESULTS_120/extensions';out.mkdir(parents=True,exist_ok=True,mode=0o700)
     cohorts=RUN/'COHORTS'
     features=pd.read_csv(cohorts/'exact_feature_names.csv').feature.tolist()
@@ -128,9 +130,9 @@ def main():
     raw=pd.read_csv(cohorts/'all_gmdb_candidates_master.csv',dtype={'patient_id':'string','image_id':'string'})
     f.OUT=out
     if args.dry_run:
-        print(json.dumps({'within_targets':len(targets),'historical_extension_targets':len(fixed),
+        print(json.dumps({'within_targets':len(targets),'prespecified_adjustment_targets':len(fixed),
             'adjusted_planned':len(fixed)*120,'pairwise_planned':len(ext.planned_pairs(fixed))*120,
-            'age_strata_planned':len(fixed)*120*2,'bootstrap':1000,'concordance_bootstrap':1000,'random_photos':100},indent=2));return
+            'age_strata_planned':len(fixed)*120*2,'bootstrap':1000,'concordance_bootstrap':0,'random_photos':100},indent=2));return
     signature={'primary':sha(cohorts/'primary_master.csv'),'reference':sha(cohorts/'reference_balanced_master.csv'),
                'script':sha(Path(__file__)),'followup_source':sha(Path(f.__file__)),'extension_source':sha(Path(ext.__file__))}
     def stage(name,fn):
@@ -156,7 +158,7 @@ def main():
     def models():
         ext.full_adjusted(primary,fixed,features).to_csv(out/'full_adjusted_screen.csv',index=False)
         pairs=ext.pairwise(primary,fixed,features,1000)
-        pairs['fdr_family']='historical_fixed_anchor_pairs_120_features';pairs.to_csv(out/'targeted_pairwise.csv',index=False)
+        pairs['fdr_family']='prespecified_anchor_pairs_120_features';pairs.to_csv(out/'targeted_pairwise.csv',index=False)
         age=ext.age_stratified(primary,fixed,features,1000);age.to_csv(out/'age_stratified.csv',index=False)
         ext.age_agreement(age).to_csv(out/'age_stratum_agreement.csv',index=False)
         import importlib.util
@@ -170,7 +172,9 @@ def main():
         mapping=pd.read_csv(cohorts/'feature_anatomy_grouping.csv')
         existing={'all':pd.read_csv(out/'within_gmdb_results.csv'),
             'eligible49':pd.read_csv(out/'within_gmdb_current_eligible_sensitivity.csv')}
-        summary,entries=ext.concordance(primary,reference,result,targets,features,mapping,existing,1000)
+        summary,entries=ext.concordance(primary,reference,result,targets,features,mapping,existing,0)
+        summary=publication_table(summary,concordance=True)
+        entries=publication_table(entries)
         summary.to_csv(out/'concordance_summary.csv',index=False);entries.to_csv(out/'concordance_entries.csv',index=False)
         adjusted=pd.read_csv(out/'full_adjusted_screen.csv')
         reference_redundancy(reference,features,mapping,entries,adjusted,out).to_csv(out/'redundancy_cluster_discoveries.csv',index=False)
@@ -182,8 +186,7 @@ def main():
             stage(name,fn)
     (out/'FAMILY_DEFINITIONS.json').write_text(json.dumps({'primary_current_targets':len(targets),
         'within_each_family':len(targets)*120,'within_restricted_comparator_count':len(targets),
-        'legacy_internal_label_eligible49_means_current_target_set':True,
-        'adjusted_fixed_historical_targets':len(fixed),'adjusted_planned':len(fixed)*120,
+        'adjusted_prespecified_targets':len(fixed),'adjusted_planned':len(fixed)*120,
         'targeted_pairs':len(ext.planned_pairs(fixed)),'pairwise_planned':len(ext.planned_pairs(fixed))*120,
         'age_strata_planned':len(fixed)*120*2,'unsupported_extension_cells':'correction p=1, estimate/q missing; retained in planned denominator',
         'four_highlighted_within_GMDB_models':'separate original 4-model family',
