@@ -121,8 +121,9 @@ For an editor's Run button, configure its Python interpreter as:
 ## Preparing input data
 
 The default inputs are the validated private 120-feature cohorts resolved from
-`ACTIVE_ANALYSIS.json`. The historical `data/*.csv` inputs are retained as research
-records and are no longer the active inputs. If authorized current inputs are
+`ACTIVE_ANALYSIS.json`. Obsolete row-level inputs have been removed from `data/`
+and preserved in private read-only archives. The condition-label taxonomy remains
+because it supports the current study. If authorized current inputs are
 missing, the pipeline stops; it does not substitute historical measurements.
 
 Explicit input overrides must match the ordered current 120-feature schema.
@@ -464,7 +465,7 @@ PRISM/
 │   │   └── main.py                  # FastAPI routes
 │   ├── data/prism.db                # Generated local DB; ignored by Git
 │   └── requirements.txt
-├── data/                             # Input phenotype/metadata CSVs
+├── data/                             # Current extraction code and condition-label taxonomy
 ├── frontend/
 │   ├── app/                          # Next.js app and global styles
 │   ├── components/                   # Dashboard, cards, and charts

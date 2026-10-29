@@ -8,3 +8,5 @@ frontend/node_modules/
 frontend/.env.local
 local_review/
 frontend/*.tsbuildinfo
+data/*.csv
+!data/syndrome_folder_map.csv

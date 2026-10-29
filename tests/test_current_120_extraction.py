@@ -161,3 +161,26 @@ def test_missing_race_sex_cell_produces_explicit_zero_capacity():
     assert selected.sample_C.sum() == 0
     assert len(capacity.loc[capacity.design.eq('C')]) == 4
     assert capacity.loc[capacity.design.eq('C'), 'target'].eq(0).all()
+
+
+def test_gmdb_candidates_need_only_verified_arrow_metadata(tmp_path,monkeypatch):
+    import hashlib
+    import json
+    import pyarrow as pa
+    backup=tmp_path/'backup';backup.mkdir()
+    count=10980
+    values={'image_id':[str(i) for i in range(count)],'patient_id':[str(i) for i in range(count)],
+            'internal_syndrome_id':['synthetic']*count,'internal_syndrome_name':['Synthetic']*count,
+            'age_year':[5]*count,'age_month':[0]*count,'gender':['Unknown']*count,
+            'ethnicity_category':['Unknown']*count,'ethnicity_sub_category':['Unknown']*count}
+    table=pa.Table.from_pydict(values);path=backup/'train.arrow'
+    with pa.OSFile(str(path),'wb') as sink:
+        with pa.ipc.new_stream(sink,table.schema) as writer:writer.write_table(table)
+    (tmp_path/'backup_manifest.json').write_text(json.dumps({'files':[{'file':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}]}))
+    def retired_csv(*args,**kwargs):
+        raise AssertionError('Retired CSV read')
+    monkeypatch.setattr(extract.pd,'read_csv',retired_csv)
+    out=tmp_path/'output';out.mkdir()
+    candidates=extract.gmdb_candidates(backup,out)
+    assert len(candidates)==count and candidates.key.is_unique
+    assert not any('historical' in column or '125' in column for column in candidates)

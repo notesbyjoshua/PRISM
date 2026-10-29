@@ -61,3 +61,10 @@ def test_missing_current_results_cannot_seed_unvalidated_demo(monkeypatch):
     monkeypatch.setattr(import_results,'import_csv_results',lambda:False)
     with pytest.raises(FileNotFoundError,match='unvalidated fallback'):
         import_results.ensure_data()
+
+
+def test_only_shared_taxonomy_remains_in_public_data_directory():
+    assert {path.name for path in (ROOT/'data').glob('*.csv')}=={'syndrome_folder_map.csv'}
+    config=json.loads((ROOT/'ACTIVE_ANALYSIS.json').read_text())
+    for field in ['disease_csv','reference_csv','disease_master_csv','reference_master_csv']:
+        assert 'local_only' in Path(config[field]).parts

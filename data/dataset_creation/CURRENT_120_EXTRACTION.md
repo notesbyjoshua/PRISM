@@ -82,8 +82,15 @@ expression, identity and clinical-quality assessments are not invented.
   local_review/feature_extraction_120/20261028_current120
 ```
 
-The validator checks every serialized measurement against the checkpoint, accepted
-feature finiteness, source labels, all candidate keys, QC counts, manifests, pinned
-assets, original cache integrity and historical CSV hashes. It does not compute
-disease effects or significance. Original image-byte equivalence to the historical
-extraction and exact paper execution provenance remain unverified.
+The validator checks every serialized measurement against its checkpoint, accepted
+feature finiteness, source labels, candidate keys, QC counts, manifests, model
+assets and original cache integrity. For completed runs, recorded input/source
+hashes resolve to the immutable execution archive when an obsolete file has been
+retired. This is provenance verification, not reuse of retired measurements.
+
+New extraction requires only the current image inputs and the pinned 120-feature
+definitions. No retired measurement CSV or comparison membership is read, and no
+reference-key comparison is regenerated. The completed measurement arrays remain
+unchanged. Because the orchestration source changed during cleanup, use a fresh
+output directory for a new extraction; an old checkpoint must not be resumed with
+a different code signature. No images were reprocessed during data cleanup.

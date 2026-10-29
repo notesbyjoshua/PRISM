@@ -39,7 +39,7 @@ def main():
     replay=json.loads((OUT/'PRIMARY_REPLAY_VALIDATION.json').read_text())
     assert validation['status']=='VALIDATED' and replay['status']=='PASS'
     archives={}
-    for folder in [RUN/'archive/historical_125',OUT/'archive_before_cleanup',RUN/'archive/retired_comparisons_20261028',RUN/'archive/retired_reports_20261028']:
+    for folder in [RUN/'archive/historical_125',OUT/'archive_before_cleanup',RUN/'archive/retired_comparisons_20261028',RUN/'archive/retired_reports_20261028',OUT/'archive_legacy_data_cleanup']:
         archives[str(folder.relative_to(ROOT))]=verify_archive(folder)
     coverage=json.loads((OUT/'ARCHIVE_COVERAGE_MANIFEST.json').read_text())
     for item in coverage['archives']:
@@ -60,16 +60,19 @@ def main():
     assert len(gmdb)==1845 and not gmdb.synthetic.any() and gmdb.source_dataset.str.contains('gmdb',case=False).all()
     assert len(synthetic)==1727 and synthetic.synthetic.all()
     assert subprocess.run(['git','check-ignore','-q',str(OUT)],cwd=ROOT).returncode==0
-    assert not subprocess.check_output(['git','diff','--name-only','--','data/*.csv'],cwd=ROOT,text=True).strip()
+    retired=['master_dataset_disease.csv','master_dataset_healthy.csv','metadata_with_images.csv','phenotypes_all_disease.csv','phenotypes_all_healthy.csv']
+    assert not any((ROOT/'data'/name).exists() for name in retired)
+    assert [path.name for path in (ROOT/'data').glob('*.csv')]==['syndrome_folder_map.csv']
     result={'status':'PASS','study_type':'Statistical investigation using FaceKit','active_package':package,
         'independent_numerical_components':len(validation['components']),'primary_full_replay_tables':len(replay['tables']),
         'concordance_uncertainty':'excluded_biased_bootstrap_intervals; descriptive_points_only',
         'synthetic_records':1727,'synthetic_records_in_real_inference':0,'private_read_only_archive_files':archives,
         'source_cache':'original bytes, size and timestamps unchanged; private independent read-only backup verified',
         'patient_level_API_arrays':'removed; aggregate histogram counts and summaries only',
-        'legacy_per_row_data_files':'unchanged; existing Git-history exposure requires PI remediation review',
+        'legacy_per_row_data_files':'removed from current checkout into read-only private archive; existing Git-history exposure still requires PI remediation review',
         'permission_review':'publication/PI_REVIEW.md','source_and_role_tables':'private, gitignored; no photographs, landmarks or row-level tables in manuscript outputs'}
-    result['verification']={'repository_tests':'51 passed','synthetic_extension_tests':'16 passed',
+    outcomes={name:next(line for line in reversed((OUT/file).read_text().splitlines()) if ' passed' in line) for name,file in [('repository_tests','tests.log'),('synthetic_extension_tests','extension-tests.log')]}
+    result['verification']={**outcomes,
                             'frontend':'typecheck, lint and production build passed','manuscript':'desktop compiler success'}
     (OUT/'FINAL_ACTIVE_STUDY_AUDIT.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))

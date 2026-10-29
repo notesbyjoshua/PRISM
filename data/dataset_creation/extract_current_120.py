@@ -277,16 +277,11 @@ def prepare_fairface(archive_path, train_path, val_path, out):
 
 
 def gmdb_candidates(backup, out):
-    from prepare_cohorts import select_patients
     source = backup.parent
     manifest = json.loads((source/'backup_manifest.json').read_text())
     for entry in manifest['files']:
         if sha(backup/entry['file']) != entry['sha256']:
             raise ExtractionContractError('Private GMDB backup checksum mismatch')
-    original = pd.read_csv(ROOT/'data/master_dataset_disease.csv', dtype={'image_id': 'string', 'patient_id': 'string'}, low_memory=False)
-    primary, _ = select_patients(original, '3-9', 'pose')
-    historic = original.set_index('image_id').disease.to_dict()
-    selected = set(primary.image_id.astype(str))
     columns = ['image_id', 'patient_id', 'internal_syndrome_id', 'internal_syndrome_name', 'age_year', 'age_month',
                'gender', 'ethnicity_category', 'ethnicity_sub_category']
     frames = []
@@ -301,17 +296,11 @@ def gmdb_candidates(backup, out):
     candidates['key'] = 'gmdb:'+candidates.source_image_id
     candidates['dataset'] = 'GMDB_restored'
     candidates['cache_split'] = 'train'
-    candidates['in_historical_125_table'] = candidates.source_image_id.isin(historic)
-    candidates['in_historical_primary'] = candidates.source_image_id.isin(selected)
-    candidates['historical_disease_label'] = candidates.source_image_id.map(historic)
     if candidates.key.duplicated().any() or len(candidates) != 10980:
         raise ExtractionContractError('Unexpected GMDB cache key universe')
     atomic_csv(out/'candidate_manifest.csv', candidates)
     atomic_json(out/'input_audit.json', {'candidates': len(candidates), 'private_backup_verified': True,
-        'historical_125_rows_covered': int(candidates.in_historical_125_table.sum()),
-        'historical_primary_rows_covered': int(candidates.in_historical_primary.sum()),
-        'pixel_identity_to_historical_extraction': 'unverified; restored inputs and matching metadata are not proof of historical image-byte identity',
-        'selection': 'All 10,980 cache records; no demographic or age resampling; historical cohort flags preserved',
+        'selection': 'All cache records; no historical measurement inputs or comparison membership flags',
         'permission': 'User explicitly requested GMDB extraction in this turn; private local processing only'} )
     return candidates
 
@@ -404,8 +393,6 @@ def export(dataset, out, checkpoint, candidates, signature, completed, input_aud
         os.replace(temporary, path)
         atomic_csv(out/'fairface_120_extraction_status.csv', frame.drop(columns=features))
         sizes = {flag: int(accepted[flag].sum()) for flag in ['sample_A', 'sample_B', 'sample_C']}
-        if len(accepted) < 942:
-            input_audit['low_supply_warning'] = 'Fewer accepted images than the historical 942; investigate before any reference use'
     else:
         for subset, name in [(frame, 'all_records'), (accepted, 'quality_passed')]:
             path = out/f'gmdb_120_{name}_measurements.parquet'
@@ -415,10 +402,7 @@ def export(dataset, out, checkpoint, candidates, signature, completed, input_aud
         atomic_csv(out/'gmdb_120_extraction_status.csv', frame.drop(columns=features))
         counts = frame.groupby(['reason'], dropna=False).size().rename('n').reset_index()
         atomic_csv(out/'cohort_counts.csv', counts)
-        sizes = {'historical_primary_rows': int(frame.in_historical_primary.sum()),
-                 'historical_primary_with_120_finite': int((frame.in_historical_primary & has_values).sum()),
-                 'historical_primary_quality_passed': int((frame.in_historical_primary & frame.quality_passed).sum()),
-                 'all_records_with_120_finite': int(has_values.sum())}
+        sizes = {'all_records_with_120_finite': int(has_values.sum())}
     failure_counts = {str(key): int(value) for key, value in frame.reason.value_counts().items()}
     summary = {'status': status, 'candidates': len(candidates), 'attempted': len(frame), 'pending': len(candidates)-len(frame),
                'quality_passed': len(accepted), 'reason_counts': failure_counts, 'samples': sizes,
@@ -431,7 +415,7 @@ def export(dataset, out, checkpoint, candidates, signature, completed, input_aud
         '## Cohort / retention counts', '', '```json', json.dumps(sizes, indent=2), '```', '',
         'Accepted rows have exactly 120 named, finite morphology measurements. Image keys, source labels and quality/pose metadata are separate fields. Duplicate image keys are prohibited. All accepted rows use full matrix-based canonicalization; unknown/roll-only corrections are rejected.', '',
         'Images were decoded to RGB in memory without crop, resize, EXIF rotation or restoration. A two-face detector screens ambiguity, and an independent one-face detector supplies the standard FaceKit geometry input. This cannot rule out undetected faces, occlusion or expression artifacts. No such unmeasured quality outcomes were invented.', '',
-        'The 15/15/10-degree gate uses current FaceKit frontal_ok semantics. For GMDB, finite measurements from pose-failed records remain in all_records with explicit QC flags; quality_passed is a separate subset. The historical image selection was not changed. No patient images, landmarks, embeddings or binary pixels are exported.', '',
+        'The 15/15/10-degree gate uses current FaceKit frontal_ok semantics. For GMDB, finite measurements from pose-failed records remain in all_records with explicit QC flags; quality_passed is a separate subset. Patient selection belongs to the separate current statistical preparation. No patient images, landmarks, embeddings or binary pixels are exported.', '',
         'FairFace A uses up to 500 per source race category. B includes all quality-passed images. C uses the same count in every race x Female/Male cell: min(250, smallest observed cell capacity). Unknown sex is preserved in A/B but excluded from C. Shortfalls from the nominal 250-per-cell goal are explicit. A/B/C overlap and are not independent cohorts. Labels remain source labels, not verified ancestry, exact age or clinical health.', '',
         'Restart requires --resume with identical inputs, code, model, versions and feature schema. SQLite primary keys prevent duplicate rows; transactions checkpoint every 25 records. Atomic exports may be rebuilt within that same run. A partial scan must never be used as a final balanced reference.', '']
     (out/'EXTRACTION_QA.md').write_text('\n'.join(text))
@@ -471,14 +455,12 @@ def main():
         if not args.gmdb_backup:
             raise ExtractionContractError('Verified private GMDB backup is required')
         source_paths = sorted(args.gmdb_backup.glob('*.arrow'))
-        source_paths += [args.gmdb_backup/'dataset_info.json', ROOT/'data/master_dataset_disease.csv']
+        source_paths += [args.gmdb_backup/'dataset_info.json']
         candidates = gmdb_candidates(args.gmdb_backup, out)
         input_audit = json.loads((out/'input_audit.json').read_text())
         lookup, source = None, args.gmdb_backup
-        pilot_groups = ['ethnicity_category', 'gender', 'in_historical_primary']
+        pilot_groups = ['ethnicity_category', 'gender', 'cache_split']
     signature['input_sha256'] = {str(path.resolve()): sha(path) for path in source_paths}
-    historical_paths = [ROOT/'data/master_dataset_disease.csv', ROOT/'data/master_dataset_healthy.csv']
-    signature['historical_source_sha256'] = {str(path.resolve()): sha(path) for path in historical_paths}
     checkpoint = Checkpoint(out/'measurements_checkpoint.sqlite3', signature, args.resume)
     done = checkpoint.keys()
     if not done.issubset(set(candidates.key)):
@@ -490,14 +472,10 @@ def main():
                  'GMDB': 'GestaltGANwglabshare/gmdb_enhanced_v1.1.0_new; verified restored-image Arrow backup'})
     atomic_json(out/'provenance.json', provenance)
     schema_rows = []
-    definitions_path = ROOT/'revision_results/facekit_120_comparison_20261028/local_only/run_20261028_final/formula_details.csv'
-    formulas = pd.read_csv(definitions_path).dropna(subset=['new_feature']).drop_duplicates('new_feature').set_index('new_feature') if definitions_path.exists() else None
-    for index, feature in enumerate(features):
-        schema_rows.append({'feature': feature, 'order': index, 'units': 'degrees' if 'angle' in feature or 'slant' in feature else 'unitless',
-            'source_commit': COMMIT, 'extractor_sha256': signature['extractor_sha256'], 'permitted_missingness_accepted_rows': 0,
-            'source_location': formulas.loc[feature, 'new_source'] if formulas is not None else 'FaceKit/src/facekit/core/geometric/extractor.py',
-            'formula': formulas.loc[feature, 'new_formula'] if formulas is not None else 'See pinned source',
-            'historical_mapping': 'Not certified as full-pipeline equivalent; no conversion from 125-feature values'})
+    definitions = pd.read_csv(ROOT/'publication/feature_definitions/current_120_feature_formulas.csv')
+    if definitions.feature.tolist() != features or not definitions.source_commit.eq(COMMIT).all() or not definitions.extractor_sha256.eq(signature['extractor_sha256']).all():
+        raise ExtractionContractError('Current feature definitions differ from the pinned extraction schema')
+    schema_rows = definitions.to_dict('records')
     atomic_csv(out/'feature_schema.csv', pd.DataFrame(schema_rows))
     pipeline = Pipeline(args.model, features)
     pilot = candidates.groupby(pilot_groups, dropna=False, group_keys=False).head(1)
@@ -548,13 +526,13 @@ def main():
                     raise ExtractionContractError('No pilot determinism evidence for resumed run')
                 print(f'{args.dataset}: pilot passed; cached {len(pilot_keys)} demographic/selection cells', flush=True)
         summary = export(args.dataset, out, checkpoint, candidates, signature, not args.pilot_only, input_audit)
-        for path, expected in {**signature['input_sha256'], **signature['historical_source_sha256']}.items():
+        for path, expected in signature['input_sha256'].items():
             if sha(Path(path)) != expected:
-                raise ExtractionContractError('An input or historical source changed during extraction')
+                raise ExtractionContractError('An input changed during extraction')
         if sha(args.model) != MODEL_SHA or sha(Path(__file__)) != signature['script_sha256']:
             raise ExtractionContractError('Model or extraction script changed during execution')
         provenance.update(status=summary['status'], completed_at_utc=now(), counts=summary,
-                          source_and_historical_hashes_unchanged=True, model_hash_unchanged=True)
+                          source_hashes_unchanged=True, model_hash_unchanged=True)
         atomic_json(out/'provenance.json', provenance)
         print(json.dumps({key: summary[key] for key in ['status', 'candidates', 'attempted', 'quality_passed', 'reason_counts', 'samples']}, indent=2), flush=True)
     except BaseException as error:

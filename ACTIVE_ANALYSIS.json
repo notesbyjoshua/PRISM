@@ -32,5 +32,7 @@
   "publication_permission_review": "publication/PI_REVIEW.md",
   "retired_comparison_archive": "revision_results/rebuild_120_20261028/local_only/run_20261028/archive/retired_comparisons_20261028",
   "active_manuscript": "manuscript/main.tex",
-  "public_exports": "aggregate_only"
+  "public_exports": "aggregate_only",
+  "retired_input_manifest": "local_review/prism_120_primary_20261028/archive_legacy_data_cleanup/ARCHIVE_MANIFEST.json",
+  "extraction_execution_source": "local_review/prism_120_primary_20261028/archive_legacy_data_cleanup/data/dataset_creation/extract_current_120.py"
 }

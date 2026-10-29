@@ -52,34 +52,7 @@ def sha(path):
 
 
 def load():
-    features = read(FROZEN / 'exact_feature_names.csv').feature.tolist()
-    check(len(features) == len(set(features)) == 125, 'Historical schema mismatch')
-    disease = read(ROOT / 'data/master_dataset_disease.csv', dtype={'patient_id': 'string', 'image_id': 'string'}, low_memory=False)
-    reference = read(ROOT / 'data/master_dataset_healthy.csv', low_memory=False)
-    primary, _ = select_patients(disease, '3-9', 'pose')
-    alternate, _ = select_patients(disease, '3-9', 'image_id')
-    check(quality_status(reference.frontal_ok).eq('pass').all(), 'Reference stored frontal flags changed')
-    reference_unique, _ = deduplicate_reference(reference)
-    for frame in [primary, alternate, reference_unique]:
-        check(frame.loc[:, features[0]:features[-1]].columns.tolist() == features, 'Feature order mismatch')
-        frame[features] = frame[features].apply(pd.to_numeric, errors='coerce').replace([np.inf, -np.inf], np.nan)
-    check(primary.patient_id.notna().all() and primary.patient_id.is_unique, 'Recorded patients not unique')
-    check(primary.patient_id.tolist() == alternate.patient_id.tolist(), 'Patient universes differ')
-    frozen = read(FROZEN / 'age_3_9/significance_testing/stats_each_disease_vs_healthy.csv.gz')
-    targets = sorted(frozen.disease.unique())
-    check(len(targets) == 49 and len(frozen) == 6125, 'Frozen test family mismatch')
-    check(set(targets).issubset(primary.disease), 'Frozen target labels absent')
-    primary, reference_unique = primary.copy(), reference_unique.copy()
-    maps = read_mapping_functions(ROOT / 'stats_testing/ancestry_analysis.py')
-    for frame in [primary, reference_unique]:
-        frame['sex_label'] = frame.gender.astype('string').str.strip().str.lower().map(
-            {'male': 'Male', 'm': 'Male', 'female': 'Female', 'f': 'Female'})
-    primary['broad_group'] = primary.image_dataset_ethnicity_category.map(maps['map_gmdb_layer1'])
-    primary['detailed_group'] = [maps['map_gmdb_layer2'](a, b) for a, b in zip(
-        primary.image_dataset_ethnicity_category, primary.image_dataset_ethnicity_sub_category)]
-    for layer in LAYERS:
-        reference_unique[f'{layer}_group'] = reference_unique.race.map(maps[f'map_fairface_layer{1 if layer == "broad" else 2}'])
-    return disease, reference, primary, alternate, reference_unique, frozen, targets, features
+    raise RuntimeError('The obsolete data loader is retired; use the validated current cohorts selected by ACTIVE_ANALYSIS.json')
 
 
 def audit(disease, reference, primary, alternate, ref, frozen, targets, features):
