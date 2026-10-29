@@ -31,7 +31,7 @@ def test_exact_historical_draws_and_effects(seed,n,m):
 
 
 def test_frozen_ci_function_equivalence():
-    archived=ROOT/'revision_results/rebuild_120_20261028/local_only/run_20261028/archive/historical_125/stats_testing/statistical_analysis.py'
+    archived=ROOT/'tests/fixtures/historical_bootstrap.py'
     old=ast.parse(archived.read_text());new=ast.parse((ROOT/'stats_testing/statistical_analysis.py').read_text())
     names={'cohens_d','hedges_g','cliffs_delta_fast','bootstrap_effect_ci'}
     def functions(tree):

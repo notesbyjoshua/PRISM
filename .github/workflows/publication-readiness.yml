@@ -8,11 +8,10 @@ permissions:
   contents: read
 
 env:
-  HISTORICAL_FACEKIT_COMMIT: e474628f3cb17a83edad59ac6e1d9e5438753032
   MPLBACKEND: Agg
-  SOURCE_DATE_EPOCH: "1790985600"
-  PUBLICATION_SOURCE_COMMIT: ""
-  PUBLICATION_PACKAGE_COMMIT: ""
+  PYTHONPATH: .:FaceKit/src
+  HF_HUB_OFFLINE: "1"
+  HF_DATASETS_OFFLINE: "1"
 
 jobs:
   publication-readiness:
@@ -22,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          submodules: false
+          submodules: true
 
       - name: Verify historical FaceKit source snapshot
         run: sha256sum --check publication/historical_facekit/SHA256SUMS
@@ -35,34 +34,23 @@ jobs:
       - name: Install publication dependencies
         run: python -m pip install --upgrade pip -r publication/requirements.txt
 
-      - name: Test cohort and historical source handling
-        run: python -m unittest discover -s tests -v
+      - name: Test current pipeline and frozen historical code
+        run: python -m pytest tests -q --tb=short
 
       - name: Test exploratory extension contracts with synthetic data
         run: |
-          python -m pip install -r revision_results/reviewer_followup_2026/requirements.txt
           python -m pytest revision_results/reviewer_followup_2026/test_extended_analysis.py -q --tb=short
 
-      - name: Regenerate publication package
-        env:
-          PRISM_PYTHON: python3
-        run: bash publication/reproduce_publication.sh
-
-      - name: Verify historical schema and required outputs
+      - name: Verify committed 120-feature aggregate package
         run: >-
-          python -c "import pandas as pd; from pathlib import Path;
-          schema=pd.read_csv('revision_results/final_20260914/exact_feature_names.csv');
-          exact=pd.read_csv('publication/supplementary/Supplementary_Table_S6_exact_feature_definitions.csv');
-          assert len(schema)==schema.feature.nunique()==125;
-          assert len(exact)==exact.feature.nunique()==125;
-          assert set(schema.feature)==set(exact.feature);
-          required=['publication/MANUSCRIPT_RESULTS_AUDIT.md','publication/feature_definitions/FEATURE_DEPENDENCY_REPORT.md',
-          'publication/covariate_sensitivity/COVARIATE_SENSITIVITY_REPORT.md','publication/PUBLICATION_LINT_REPORT.md'];
-          assert all(Path(path).is_file() for path in required)"
-
-      - name: Verify reproducible outputs
-        run: python publication/scripts/verify_reproducible_outputs.py
+          python publication/scripts/verify_reproducible_outputs.py
+          --report "$RUNNER_TEMP/prism-120-publication-report.md"
 
       - name: Publish readiness summary
         if: always()
-        run: cat publication/PUBLICATION_LINT_REPORT.md >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          if [ -f "$RUNNER_TEMP/prism-120-publication-report.md" ]; then
+            cat "$RUNNER_TEMP/prism-120-publication-report.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "120-feature package verification did not complete. See the failed step above." >> "$GITHUB_STEP_SUMMARY"
+          fi

@@ -24,8 +24,6 @@ def test_active_api_uses_current_measurements():
     from fastapi.testclient import TestClient
     from backend.app.main import app
     config = json.loads((ROOT/'ACTIVE_ANALYSIS.json').read_text())
-    if not (ROOT/config['disease_csv']).exists():
-        pytest.skip('Authorized private current measurements are local-only')
     with TestClient(app) as client:
         summary = client.get('/api/summary').json()
         assert summary['feature_count'] == 120 and summary['disease_count'] == 48
@@ -33,6 +31,9 @@ def test_active_api_uses_current_measurements():
         results = pd.read_csv(ROOT/config['results_directory']/'stats_each_disease_vs_healthy.csv')
         first = results.iloc[0]
         response = client.get('/api/distributions', params={'disease': first.disease, 'feature': first.feature})
+        if not (ROOT/config['disease_csv']).exists() or not (ROOT/config['reference_csv']).exists():
+            assert response.status_code == 404
+            return
         assert response.status_code == 200
         values = response.json()
         assert len(values['healthy']) == config['reference_images'] == 3409
