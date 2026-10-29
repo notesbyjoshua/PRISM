@@ -11,8 +11,11 @@ from .database import connect
 from .import_results import ensure_data, import_csv_results
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DISEASE_PHENOTYPES = PROJECT_ROOT / "data" / "phenotypes_all_disease.csv"
-HEALTHY_PHENOTYPES = PROJECT_ROOT / "data" / "phenotypes_all_healthy.csv"
+ACTIVE_ANALYSIS = json.loads((PROJECT_ROOT / "ACTIVE_ANALYSIS.json").read_text())
+if ACTIVE_ANALYSIS.get('status') != 'VALIDATED_ACTIVE' or ACTIVE_ANALYSIS.get('feature_count') != 120:
+    raise RuntimeError('A validated current 120-feature analysis is required')
+DISEASE_PHENOTYPES = PROJECT_ROOT / ACTIVE_ANALYSIS['disease_csv']
+HEALTHY_PHENOTYPES = PROJECT_ROOT / ACTIVE_ANALYSIS['reference_csv']
 DISTRIBUTION_PLOTS = PROJECT_ROOT / "stats_results" / "data_distribution"
 ANCESTRY_RESULTS = PROJECT_ROOT / "stats_results" / "ethnicity_analysis"
 

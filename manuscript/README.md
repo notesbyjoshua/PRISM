@@ -1,7 +1,3 @@
-# Journal manuscript workspace
+# Active 120-feature manuscript draft
 
-This directory is separate from the BIBM short-paper files. `main.tex` is a journal-article scaffold grounded in the corrected 125-feature publication package. Institutional and author-dependent statements remain explicit placeholders.
-
-The PDFs in `figures/` are copied from `publication/figures/` by the figure-generation script. Supplementary CSVs remain authoritative under `publication/supplementary/`; do not edit copied or linked presentation files as scientific sources.
-
-Compile `main.tex` after regenerating the publication package. Before submission, complete the literature review, obtain clinical review of phenotype language, replace institutional placeholders, choose the target journal class and formatting, and rerun `publication/publication_lint.py`.
+main.tex and figures use the validated current analysis. Primary: 48 syndromes, 120 features, 5,760 tests, 955 discoveries. No real patient photographs. The previous manuscript and reviewer response are archived privately. Author review of clinical wording, IRB identifier, funding and final release terms remains required before submission. See the private run MANUSCRIPT_HANDOFF.md and CHANGELOG_120_MIGRATION.md. The live Google Doc was not edited.

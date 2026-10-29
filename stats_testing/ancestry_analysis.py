@@ -115,8 +115,8 @@ Install once:
 # CONFIG — EDIT THESE
 # ============================================================
 
-FAIRFACE_HEALTHY_CSV = r"/Users/joshua/Documents/PRISM/data/master_dataset_healthy.csv"
-GMDB_DISEASE_CSV = r"/Users/joshua/Documents/PRISM/data/master_dataset_disease.csv"
+FAIRFACE_HEALTHY_CSV = None  # Resolved from the active manifest by the command parser.
+GMDB_DISEASE_CSV = None
 OUTPUT_FOLDER = r"stats_results/ethnicity_analysis"
 
 FAIRFACE_RACE_COLUMN = "race"
@@ -390,6 +390,10 @@ parser.add_argument('--healthy-csv', default=FAIRFACE_HEALTHY_CSV)
 parser.add_argument('--disease-csv', default=GMDB_DISEASE_CSV)
 parser.add_argument('--output-dir', default=OUTPUT_FOLDER)
 parser.add_argument('--bootstrap-iterations', type=int, default=N_BOOTSTRAPS)
+from analysis_config import active_configuration
+ACTIVE = active_configuration()
+parser.set_defaults(healthy_csv=ACTIVE['reference_master_csv'], disease_csv=ACTIVE['disease_master_csv'])
+parser.add_argument('--feature-schema', type=Path, default=Path(ACTIVE['feature_schema']))
 args = parser.parse_args()
 FAIRFACE_HEALTHY_CSV, GMDB_DISEASE_CSV, OUTPUT_FOLDER = args.healthy_csv, args.disease_csv, args.output_dir
 N_BOOTSTRAPS = args.bootstrap_iterations
@@ -457,14 +461,18 @@ disease["layer2_group"] = [
 ]
 
 # ============================================================
-# EXACT 125 FACEKIT FEATURES
+# EXACT CURRENT FACEKIT FEATURE SCHEMA
 # ============================================================
 
 healthy_features = list(healthy.loc[:, FIRST_FACEKIT_FEATURE:LAST_FACEKIT_FEATURE].columns)
 disease_features = list(disease.loc[:, FIRST_FACEKIT_FEATURE:LAST_FACEKIT_FEATURE].columns)
 feature_columns = [feature for feature in healthy_features if feature in disease_features]
-if len(feature_columns) != 125:
-    raise ValueError(f"Expected exactly 125 shared FaceKit features, " f"found {len(feature_columns)}.")
+if args.feature_schema is not None:
+    expected_features = pd.read_csv(args.feature_schema).feature.tolist()
+    if feature_columns != expected_features or len(expected_features) != len(set(expected_features)):
+        raise ValueError('Feature columns differ from the supplied ordered schema')
+elif len(feature_columns) != 120:
+    raise ValueError(f"Expected exactly 120 shared FaceKit features, found {len(feature_columns)}.")
 for feature in feature_columns:
     healthy[feature] = pd.to_numeric(healthy[feature], errors="coerce")
     disease[feature] = pd.to_numeric(disease[feature], errors="coerce")

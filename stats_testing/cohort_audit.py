@@ -238,10 +238,30 @@ def audit(root, output, dry_run=False):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Read-only cohort audit; outputs can contain local patient identifiers.')
+    parser = argparse.ArgumentParser(description='Read-only current cohort audit; historical audit requires an explicit flag.')
     parser.add_argument('--output', type=Path, default=ROOT / 'local_review' / datetime.now().strftime('audit_%Y%m%d_%H%M%S'))
     parser.add_argument('--dry-run', action='store_true')
+    parser.add_argument('--historical', action='store_true')
     args = parser.parse_args()
+    if args.historical:
+        parser.error('Run the frozen historical audit with its archived inputs/results; the active tree contains current 120-feature results')
+    if not args.historical:
+        from analysis_config import active_configuration
+        config = active_configuration()
+        disease = pd.read_csv(config['disease_master_csv'], dtype={'patient_id': 'string'})
+        reference = pd.read_csv(config['reference_master_csv'])
+        features = pd.read_csv(config['feature_schema']).feature.tolist()
+        assert len(features) == 120 and disease.patient_id.is_unique and reference.file.is_unique
+        assert disease.frontal_ok.eq(True).all() and reference.frontal_ok.eq(True).all()
+        assert np.isfinite(disease[features].to_numpy(float)).all()
+        assert np.isfinite(reference[features].to_numpy(float)).all()
+        result = {'status': 'PASS', 'feature_count': 120, 'selected_patients': len(disease),
+                  'reference_paths': len(reference), 'eligible_syndromes': int(disease.disease.value_counts().ge(10).sum())}
+        print(json.dumps(result, indent=2))
+        if not args.dry_run:
+            args.output.mkdir(parents=True, exist_ok=False)
+            (args.output/'current_120_cohort_audit.json').write_text(json.dumps(result, indent=2)+'\n')
+        return
     tables, _ = audit(ROOT, args.output, args.dry_run)
     print(tables['cohort_flow'].to_string(index=False))
     print(tables['legacy_reconciliation'].to_string(index=False))

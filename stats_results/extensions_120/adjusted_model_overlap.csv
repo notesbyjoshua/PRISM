@@ -1,0 +1,9 @@
+syndrome,feature,group,n,age_min,age_q25,age_median,age_q75,age_max,female_n,male_n
+Cornelia de Lange syndrome__fb4a389d,philtrum_length,other GMDB,1747,3.0,4.0,6.0,7.416666666666667,9.833333333333334,842,905
+Cornelia de Lange syndrome__fb4a389d,philtrum_length,target,63,3.0,4.0,6.0,8.0,9.5,29,34
+Noonan syndrome__c2df3f82,inter_pupillary_distance,other GMDB,1776,3.0,4.0,6.0,7.5,9.833333333333334,855,921
+Noonan syndrome__c2df3f82,inter_pupillary_distance,target,34,3.0,4.0,5.25,7.0,9.0,16,18
+WILLIAMS-BEUREN SYNDROME; WBS__93e4a782,eb_thickness_mean,other GMDB,1743,3.0,4.0,6.0,7.5,9.833333333333334,835,908
+WILLIAMS-BEUREN SYNDROME; WBS__93e4a782,eb_thickness_mean,target,67,3.0,4.0,5.916666666666667,7.0,9.5,36,31
+Rubinstein-Taybi syndrome__ad6c2718,malar_bulge_mean,other GMDB,1786,3.0,4.0,6.0,7.5,9.833333333333334,853,933
+Rubinstein-Taybi syndrome__ad6c2718,malar_bulge_mean,target,24,3.0,4.0,5.0,7.0,9.0,18,6

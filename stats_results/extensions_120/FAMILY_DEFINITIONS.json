@@ -1,0 +1,14 @@
+{
+  "primary_current_targets": 48,
+  "within_each_family": 5760,
+  "within_restricted_comparator_count": 48,
+  "legacy_internal_label_eligible49_means_current_target_set": true,
+  "adjusted_fixed_historical_targets": 49,
+  "adjusted_planned": 5880,
+  "targeted_pairs": 186,
+  "pairwise_planned": 22320,
+  "age_strata_planned": 11760,
+  "unsupported_extension_cells": "correction p=1, estimate/q missing; retained in planned denominator",
+  "four_highlighted_within_GMDB_models": "separate original 4-model family",
+  "three_highlighted_reference_models": "separate original 3-model family"
+}

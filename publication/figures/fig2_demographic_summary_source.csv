@@ -1,7 +1,0 @@
-analysis,layer,significant,tested,percent_significant,q_column,bh_family,source
-A,broad,72,125,57.6,fdr_q_value,"Analysis A, broad layer",revision_results/final_20260914/age_3_9/ethnicity_analysis/layer1_broad_ethnicity/analysis_A_healthy_kruskal_all_groups.csv.gz
-A,detailed,89,125,71.2,fdr_q_value,"Analysis A, detailed layer",revision_results/final_20260914/age_3_9/ethnicity_analysis/layer2_subcategory/analysis_A_healthy_kruskal_all_groups.csv.gz
-B,broad,375,36000,1.0416666666666667,global_fdr_q_value,"Analysis B, broad layer",revision_results/final_20260914/age_3_9/ethnicity_analysis/layer1_broad_ethnicity/analysis_B_matched_disease_vs_healthy.csv.gz
-B,detailed,452,33875,1.3343173431734316,global_fdr_q_value,"Analysis B, detailed layer",revision_results/final_20260914/age_3_9/ethnicity_analysis/layer2_subcategory/analysis_B_matched_disease_vs_healthy.csv.gz
-C,broad,479,11500,4.165217391304348,global_fdr_q_value,"Analysis C, broad layer",revision_results/final_20260914/age_3_9/ethnicity_analysis/layer1_broad_ethnicity/analysis_C_all_interactions.csv.gz
-C,detailed,633,15000,4.22,global_fdr_q_value,"Analysis C, detailed layer",revision_results/final_20260914/age_3_9/ethnicity_analysis/layer2_subcategory/analysis_C_all_interactions.csv.gz

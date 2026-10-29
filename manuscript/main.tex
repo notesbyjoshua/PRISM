@@ -1,119 +1,66 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{graphicx}
-\usepackage{booktabs}
+\usepackage{graphicx,booktabs,longtable}
 \usepackage[hidelinks]{hyperref}
-
-\title{Quantitative Facial Phenotyping Across Rare Syndromes Using Historical PRISM Measurements}
+\title{Quantitative Facial Phenotyping Across Rare Syndromes Using a Rebuilt 120-Feature PRISM Workflow}
 \author{Blinded for review}
 \date{}
-
 \begin{document}
 \maketitle
-
 \begin{abstract}
-We analyzed 125 normalized facial measurements in 1,850 disease patients aged 3 to under 10 years and 942 distinct reference image paths. The prespecified pooled analysis included 6,125 syndrome--feature comparisons across 49 eligible syndrome groups; 811 comparisons met the global Benjamini--Hochberg threshold, including 379 with $|g| \geq 0.8$. The study is a quantitative association analysis, not an evaluation of diagnostic accuracy. [\detokenize{HUMAN_INPUT_REQUIRED}: add the clinical motivation, author-approved interpretation, and journal-length word count.]
+We rebuilt PRISM using 120 current FaceKit measurements from authorized restored GMDB images and an expanded FairFace reference. The age-eligible disease pool contained 1,845 unique recorded patients; 48 syndrome groups met the unchanged minimum size for testing against 3,409 reference images. Among 5,760 two-sided syndrome--feature tests, 955 met the global Benjamini--Hochberg threshold, including 482 with $|g|\geq0.8$. Reference, photograph, demographic and within-GMDB analyses were recomputed separately. Synthetic PDIDB records were excluded from all real-patient inference. These are exploratory geometric associations, not diagnostic-accuracy or clinical-validation results.
 \end{abstract}
-
 \section{Introduction}
-[\detokenize{HUMAN_INPUT_REQUIRED}: position the study against the clinical dysmorphology and quantitative phenotyping literature using verified citations. Do not infer novelty from HPO absence.]
-
+Facial phenotype measurements can provide reproducible descriptions of variation across rare-disease image cohorts, while remaining sensitive to landmark detection, normalization and acquisition conditions. FaceKit derives interpretable geometric measurements from facial landmarks \cite{facekit2026}. PRISM examines cohort-level associations using GMDB \cite{gestaltmatcher} and FairFace \cite{fairface}. The present workflow measures current features from source images and recomputes every reported statistical family; it does not translate earlier feature tables or p-values.
 \section{Materials and Methods}
-\subsection{Study design and data sources}
-Disease photographs and associated metadata were drawn from the GestaltMatcher Database (GMDB); reference photographs and labels were drawn from FairFace. The analysis compares these assembled cohorts rather than images collected under a common protocol. Disease status is therefore perfectly confounded with dataset source. Differences in acquisition, camera, lighting, compression, cropping, pose, curation, and demographic labeling cannot be estimated separately from disease--reference differences with the available data.
-
-\subsection{Cohort construction}
-The childhood analysis used the interval $3 \leq \mathrm{age} < 10$. For GMDB records, age was calculated as recorded year plus recorded month divided by 12. Year and month were required to be nonnegative integers, month was restricted to 0--11, and missing, invalid, and zero-year/zero-month records were excluded. FairFace supplied the categorical label ``3--9'' rather than exact age; all retained reference paths carried that label. Recorded ages and their cross-dataset semantics could not be independently verified.
-
-Disease photographs first had to pass the stored frontal-quality flag. We retained one photograph per nonmissing patient identifier. For the primary selection, eligible photographs were ranked within patient by
-\[
-\max\left(\frac{|\mathrm{yaw}|}{15},\frac{|\mathrm{pitch}|}{15},\frac{|\mathrm{roll}|}{10}\right),
-\]
-with the lowest score selected and lexical image ID used to break ties. This ranking uses the historical $15^\circ/15^\circ/10^\circ$ denominators but does not reclassify the stored quality flag. The alternative photograph-selection sensitivity analysis applied the same source, quality, age, and patient eligibility rules but selected the lexically first image ID. It tests dependence on the within-patient photograph choice and is not an independent replication.
-
-FairFace rows were restricted by the stored frontal-quality flag and deduplicated by normalized image path, removing repeated rows with the same path. Image-path uniqueness identifies distinct files, not necessarily distinct people; FairFace metadata available to this analysis did not include a participant identifier that could establish reference-participant uniqueness.
-
-The primary syndrome analysis required at least 10 retained disease patients in a syndrome and retained the existing feature-level requirement of no more than 30\% missingness. Forty-nine syndromes met the main-analysis criterion. Demographic matched and interaction analyses used their separate computational eligibility rules: at least two disease observations in the required group or groups and at least 20 reference observations. These thresholds permit estimation but do not establish adequate power for small subgroups.
-
-\subsection{Historical feature extraction}
-The analysis uses the frozen measurements generated with the historical 125-feature FaceKit implementation at revision \texttt{e474628f3cb17a83edad59ac6e1d9e5438753032}; no newer FaceKit output is substituted. The inspected implementation converts normalized landmark coordinates to two-dimensional image pixels, centers landmarks at the midpoint of inner-canthal landmarks 133 and 362, and rotates them by the negative angle of the inner-canthal line. This is in-plane roll alignment, not yaw/pitch frontalization or three-dimensional reconstruction.
-
-The 125 features are normalized distances, areas, angles, asymmetries, or local ratios. Normalization is formula-specific: many distances use bizygomatic width, areas often use its square, and other features use face height, midface height, mouth width, face-oval area, or a local denominator. For example, normalized philtrum length uses midface height, chin height uses face height, and cheek areas use squared bizygomatic width. Exact expressions, source locations, landmark dependencies, units, and denominators are recorded in Supplementary Table S6 and the historical formula audit. A difference in a normalized ratio can reflect its numerator, its denominator, or both and is not evidence of an absolute anatomical change.
-
-\subsection{Statistical analysis}
-For the primary pooled analysis, each of 49 eligible syndromes was compared with the reference cohort across the same 125 historical features, giving 6,125 syndrome--feature tests. The saved analysis reports Mann--Whitney tests, disease-minus-reference Hedges' $g$, and confidence intervals. One Benjamini--Hochberg (BH) correction was applied globally across all 6,125 primary tests; examples and counts in this manuscript use that global q-value rather than a within-syndrome value.
-
-Demographic analyses were run in two harmonized layers. The broad layer combines source labels into larger groups to provide more stable cell sizes and cross-source comparability; the detailed layer preserves more of the available source-label granularity. The layers reuse observations and related mappings, so agreement between them is a sensitivity description, not independent replication. Unmapped disease records remained in the pooled analysis but were excluded from demographic comparisons. The labels are dataset annotations and should not be interpreted as precise genetic ancestry.
-
-Analyses A, B, and C answer different questions and retain separate multiplicity families. Analysis A assesses reference-cohort variation: its omnibus BH correction spans 125 features separately within each demographic layer, while pairwise follow-up correction is performed within pair. Analysis B compares disease and reference observations within a demographic group and uses a global BH family separately for the broad and detailed layers. Analysis C tests whether the disease--reference difference varies between two groups and likewise uses a separate global BH family within each layer. Counts from these families are not additive.
-
-For Analysis C, the formal interaction test is the disease-by-group coefficient from the interaction model, reported with an HC3 robust standard error, confidence interval, and the Analysis C global q-value. Group-specific Hedges' $g$ values and their difference ($\Delta g$) are descriptive and are not substituted for the interaction coefficient. A sign reversal in descriptive effects is not by itself evidence of interaction.
-
-Three predefined recorded-covariate sensitivity models were also fit for highlighted syndrome--feature pairs using complete-case ordinary least squares with HC3 robust standard errors. These models included sex label, broad demographic group, yaw, pitch, and roll and applied BH correction across the three predefined models. Exact-age adjustment was not possible because FairFace provides an age category rather than exact age. These exploratory models assess sensitivity to recorded covariates only; they neither replace the primary Mann--Whitney analysis nor resolve unmeasured acquisition differences or the perfect confounding of disease status with dataset source.
-
+\subsection{Sources, authorization and analytical roles}
+Restricted restored GMDB images were processed locally under the author-provided mentor/IRB research authorization. Real patient images are not included in publication figures or released with this work. FairFace supplied reference images with recorded category labels rather than clinically screened healthy subjects. The official padding-0.25 archive and both label files were verified, including ZIP CRC integrity and complete path correspondence. All 11,764 unique age-category 3--9 candidates were screened before sampling. A balanced-by-source-category reference included up to 500 accepted images per category without replacement: 3,409 in total, including 409 Middle Eastern images and 500 in each other category. Alternatives used all 5,864 accepted paths or 151 in each of 14 category-by-recorded-sex cells, totaling 2,114. These overlapping specifications are not independent confirmations.
+\subsection{Current feature extraction and cohort selection}
+One pinned FaceKit revision, \texttt{5764bdd4af9360b55a046a16579fb5a890a8182f}, and one checksummed MediaPipe Face Landmarker float16 version-1 asset were used for all sources. Images were decoded to RGB without additional crop, resize, restoration or EXIF rotation. A two-face pass screened detected ambiguity; the standard one-face detector supplied 478 floating-point pixel coordinates and a facial transformation matrix. Current canonicalization uses an SVD-derived pure rotation and fixed canonical depth. Accepted measurements required full pose correction, exactly 120 finite outputs, and absolute yaw/pitch/roll no greater than $15^\circ/15^\circ/10^\circ$. Angular outputs are degrees; other outputs are unitless indices with feature-specific denominators. The exact paper-execution commit is not independently established. Supplementary Table S6 supplies current formula pointers and hashes.
+GMDB ages use recorded year plus month/12, requiring nonnegative integer components, month 0--11 and $3\leq\mathrm{age}<10$; missing, invalid and zero-zero records are excluded. One eligible image per recorded patient was selected by minimum $\max(|yaw|/15,|pitch|/15,|roll|/10)$, then lexical image ID. Alternative selection uses the first lexical eligible image. The current pool has 1,845 patients. Six historical patients are no longer eligible and one newly measurable patient enters; one shared patient has a changed primary photograph. FBXW7 has nine retained patients and is below the unchanged primary minimum of ten. FairFace age remains the supplied category, not an inferred exact age. Distinct reference paths do not establish distinct people.
+\subsection{Statistical specification}
+The primary family comprises 48 eligible syndromes times 120 measurements: 5,760 two-sided Mann--Whitney tests. Effects are syndrome-minus-reference Hedges' $g$, with the historical small-sample correction. Feature eligibility requires at least ten finite observations per side and no more than 30\% missingness. One global BH correction spans the primary tested family. Marginal percentile intervals use 500 independent group-row bootstrap resamples, seed 2026; ranking stability uses 200 draws. A rank-count implementation accelerates Cliff's delta bootstraps while preserving the original interleaved random draws exactly, verified against frozen literal code.
+Analyses A, B and C retain the frozen broad/detailed label maps and separate correction scopes. A uses reference-only Kruskal--Wallis tests with a 120-feature family per layer, and pairwise correction within each reference-group pair. B compares syndrome and reference observations within recorded groups, with 1,000 bootstrap draws and global BH per layer. C uses HC3 disease-by-group interaction coefficients with global BH per layer. The original computational support minimum is two disease and twenty reference observations in required cells; sparse estimates remain exploratory, not causal demographic effects.
+Within-GMDB analyses compare each current eligible syndrome with all other age-eligible GMDB patients and with other current eligible syndromes, using separate 5,760-test families. The approved adjusted extension retains 49 historical target slots (5,880 planned models), 186 fixed anchor pairs (22,320 hypotheses) and two age strata (11,760 hypotheses). Unsupported cells retain correction p=1 and missing estimates/q-values. Four highlighted within-GMDB and three reference-covariate models keep separate four- and three-model families. Joint concordance bootstraps use 1,000 shared patient-row/reference-path resamples. Correlation clustering is descriptive and does not reduce BH denominators.
 \section{Results}
-\subsection{Cohort and primary analysis}
-Of 10,942 disease-image records, 9,411 carried a passing stored frontal-quality flag and 2,101 of those met the recorded childhood age rule. Removing 251 additional photographs from patients with more than one eligible image left 1,850 disease patients with one selected photograph each. Deduplication of the reference cohort left 942 distinct FairFace image paths. Forty-nine syndrome groups met the minimum disease-group size, producing 6,125 primary tests across 125 features.
-
-The primary analysis contained 811 globally significant comparisons (13.2\% of 6,125), of which 379 met $|g| \geq 0.8$. Among globally significant rows, 490 effects were positive and 321 were negative under the stored disease-minus-reference sign convention. These are counts of correlated normalized measurements, not counts of independent biological discoveries. Figure~\ref{fig:cross-syndrome} summarizes selected cross-syndrome effects without assigning a clinical or literature classification.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\linewidth]{figures/fig1_cross_syndrome_heatmap.pdf}
-  \caption{Cross-syndrome Hedges' $g$ values for selected associations. Source values are supplied with the publication package.}
-  \label{fig:cross-syndrome}
-\end{figure}
-
-\subsection{Demographic analyses}
-Reference-group omnibus tests were significant for 72 of 125 features in the broad layer and 89 of 125 in the detailed layer (Figure~\ref{fig:reference}). Analysis B contained 36,000 broad-layer tests with 375 global-BH-significant results and 33,875 detailed-layer tests with 452 significant results. Analysis C contained 11,500 broad-layer tests with 479 global-BH-significant interaction coefficients and 15,000 detailed-layer tests with 633 significant interaction coefficients. These totals belong to separate correction families, use overlapping observations, and should not be summed or treated as replication across layers.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.9\linewidth]{figures/fig2_reference_variation.pdf}
-  \caption{Reference-group omnibus q-values in broad and detailed demographic layers. Dashed lines mark $q=0.05$.}
-  \label{fig:reference}
-\end{figure}
-
-\subsection{Photograph-selection sensitivity}
-The alternative selection changed the retained photograph for 94 of 1,850 disease patients (5.1\%). It yielded 834 comparisons meeting the global BH threshold, compared with 811 under the primary selection. The selections shared 770 significant comparisons; 41 were primary-only and 64 were alternative-only. Thus, 94.9\% of primary significant findings were retained and the significant-set Jaccard overlap was 88.0\% (Figure~\ref{fig:selection}). This analysis changes only within-patient photograph selection and does not provide an external cohort or independent replication.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.85\linewidth]{figures/fig3_selection_overlap.pdf}
-  \caption{Overlap of globally significant pooled comparisons under primary and alternative photograph selection. This is a sensitivity analysis, not independent replication.}
-  \label{fig:selection}
-\end{figure}
-
+\subsection{Primary associations}
+The 48 eligible syndrome groups produced 5,760 primary hypotheses; 955 were global-BH significant (16.6\%), including 482 with $|g|\geq0.8$. These counts describe correlated measurements, not independent anatomical discoveries. The full table supplies negative and nonsignificant findings as well as supported associations. Figure~\ref{fig:clinical} presents the five predefined examples in their current measurement units.
+\begin{table}[htbp]\centering\small
+\begin{tabular}{p{2.8cm}p{3.8cm}rp{2.7cm}r}\toprule Syndrome & Measurement & $g$ & 95\% CI & Global $q$\\\midrule
+Cornelia de Lange syndrome & philtrum length & 1.163 & [0.886, 1.412] & 1.1e-12 \\
+Noonan syndrome & inter pupillary distance & 1.244 & [0.757, 1.684] & 5.4e-06 \\
+WILLIAMS-BEUREN SYNDROME; WBS & eb thickness mean & 1.266 & [0.987, 1.587] & 6.2e-13 \\
+WILLIAMS-BEUREN SYNDROME; WBS & outer canthal distance & 1.039 & [0.780, 1.307] & 1.3e-10 \\
+Rubinstein-Taybi syndrome & malar bulge mean & -1.009 & [-1.530, -0.514] & 0.0025 \\
+\bottomrule\end{tabular}
+\caption{Current predefined examples. The intervals are marginal bootstrap intervals; significance uses the complete 5,760-test primary family. Indices are normalized geometry rather than direct clinical diagnoses.}
+\end{table}
+\begin{figure}[htbp]\centering\includegraphics[width=\linewidth]{figures/fig2_clinical_indices.png}\caption{Current syndrome-minus-reference effects and marginal 95\% bootstrap intervals. No patient photographs are shown.}\label{fig:clinical}\end{figure}
+\subsection{Demographic and sensitivity analyses}
+\begin{table}[htbp]\centering
+\begin{tabular}{llrr}\toprule Layer & Analysis & Hypotheses & BH discoveries\\\midrule
+Broad & A\_omnibus & 120 & 104 \\
+Broad & B\_matched & 34,560 & 733 \\
+Broad & C\_interaction & 11,040 & 566 \\
+Detailed & A\_omnibus & 120 & 114 \\
+Detailed & B\_matched & 32,520 & 706 \\
+Detailed & C\_interaction & 14,400 & 760 \\
+\bottomrule\end{tabular}
+\caption{Separate demographic correction families. Counts are not additive and overlapping observations do not provide independent replication.}\end{table}
+Reference alternatives yield 971 discoveries with all eligible reference paths, 945 with category-by-sex balance, and 919 with the 941 currently passing historical reference paths. These specifications reuse cases and overlapping controls. The alternate eligible-photograph selection yields 996 discoveries; common and discordant hypotheses are supplied separately. The full within-GMDB, adjusted, pairwise and age-stratum tables retain declared planned denominators and unsupported cells.
+\subsection{Synthetic source catalog}
+PDIDB revision \texttt{d0907a56525dc3b25712d360f9ce3031150eb535} contains 1,727 author-designated synthetic records; 1,563 pass current QC. Its schema provides v1/v2 model tags and verification annotations, but no source-patient identifiers or substantive generation/license description. Demographic fields are missing for all records. PDIDB contributes zero observations to primary or demographic real-patient inference. Illustration redistribution and source independence remain unresolved; no PDIDB images are reproduced here.
 \section{Discussion}
-[\detokenize{HUMAN_INPUT_REQUIRED}: add a literature-verified and clinician-reviewed interpretation. Do not classify candidate associations, claim novelty, or convert correlated significant measurements into independent discoveries until that review is recorded.]
-
+The rebuilt analysis supports quantitative cohort associations under a fixed, auditable current feature definition. The expanded reference and image-quality rules change the study population, so the new headline total should not be interpreted as a simple software-version effect. Matched-record-key and reference-size benchmarks are supplied as methodological sensitivity analyses. They do not establish interchangeability of changed feature formulas, exact historical pixel identity, or clinical validity. Within-GMDB comparisons address source heterogeneity but still share acquisition and annotation limitations.
 \section{Limitations}
-Reference image-path uniqueness does not establish participant uniqueness. Recorded ages are not independently verified. Small demographic subgroups can yield unstable estimates. The disease and reference cohorts come from different datasets, leaving disease status confounded with acquisition and curation source. Normalized ratios do not isolate absolute changes in their numerators.
-
+Disease status remains confounded with GMDB-versus-FairFace source. Landmark errors, restoration, image selection, residual pose, expression and occlusion can affect measured geometry. Ratios can change through their denominators; the indices are not calibrated three-dimensional anthropometry. FairFace labels are annotations rather than verified ancestry, exact ages or clinical health assessments. Recorded GMDB IDs support the implemented one-patient rule but do not establish undocumented biological independence; reference identities are unavailable. HC3 inference and marginal bootstrap intervals may be unreliable in sparse subgroups. The frozen concordance bootstrap has substantial bias: observed direction agreement is 0.713, while its percentile interval is [0.731, 0.775], excluding the observed point; Pearson intervals show the same problem. These intervals are retained with bias flags and should not be interpreted as reliable uncertainty confirmation. Correlated features and overlapping comparators do not establish realized FDR. Synthetic origin, generation lineage and publication rights for PDIDB require further provider/PI review.
 \section{Conclusion}
-[\detokenize{HUMAN_INPUT_REQUIRED}: provide an author-approved conclusion limited to quantitative association and reproducibility.]
-
-\section{Data and Code Availability}
-The publication package records source hashes and regeneration scripts. The repository is currently private, and this manuscript makes no claim that source-level, patient/image-level, per-image derived, aggregate, code, or historical Git content is approved for public redistribution. [\detokenize{HUMAN_INPUT_REQUIRED}: insert mentor-, institution-, and data-provider-approved data/code availability language and the authorized public-release boundary.]
-
-\section{Ethics Statement}
-[\detokenize{HUMAN_INPUT_REQUIRED}: insert the institution-approved ethics, consent, exemption, and oversight language.]
-
-\section{Funding}
-[\detokenize{HUMAN_INPUT_REQUIRED}: insert funding sources and grant identifiers, or an approved no-funding statement.]
-
-\section{Conflicts of Interest}
-[\detokenize{HUMAN_INPUT_REQUIRED}: insert the author- and journal-approved conflicts-of-interest statement.]
-
-\section{Author Contributions}
-[\detokenize{HUMAN_INPUT_REQUIRED}: insert contribution roles after all authors approve them.]
-
-\section{References}
-[\detokenize{HUMAN_INPUT_REQUIRED}: add only verified references to \texttt{references.bib} and cite them in the text.]
-
-\section{Supplementary Information}
-Supplementary Tables S1--S6 provide the pooled associations, reference variation, matched comparisons, formal interactions, photograph-selection sensitivity, and feature definitions. The candidate evidence table and feature-redundancy report are also supplied in the publication package.
-
-[\detokenize{HUMAN_INPUT_REQUIRED}: review and approve the exact historical feature-definition supplement before submission.]
-
+PRISM now provides a validated 120-feature computational analysis with explicit source roles, quality accounting and versioned outputs. The findings are exploratory geometric associations; clinical interpretation and diagnostic utility require separate validation.
+\section{Data, Code and Ethics}
+Real GMDB images, patient identifiers and row-level measurements remain in restricted local storage. Aggregate artifacts require author privacy review before release. Historical analyses remain in a checksummed read-only archive; the active results and figure generators use current 120-feature outputs. The live Google Doc was not edited. [AUTHOR REVIEW REQUIRED: verify IRB identifier, exact permitted study scope, funding, contributions and final data/code release statement before submission.]
+\begin{thebibliography}{9}
+\bibitem{facekit2026} H. Chen et al., ``FaceKit: a Toolkit for Interpretable Facial Phenotyping, Synthetic Image Generation and Privacy Analysis in Rare Diseases,'' arXiv:2610.09288v1, 2026.
+\bibitem{gestaltmatcher} T.-C. Hsieh et al., ``GestaltMatcher facilitates rare disease matching using facial phenotype descriptors,'' Nature Genetics, vol. 54, pp. 349--357, 2022.
+\bibitem{fairface} K. Karkkainen and J. Joo, ``FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation,'' WACV, pp. 1548--1558, 2021.
+\end{thebibliography}
 \end{document}

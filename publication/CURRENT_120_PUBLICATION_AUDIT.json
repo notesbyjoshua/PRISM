@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "feature_count": 120,
+  "primary_hypotheses": 5760,
+  "primary_significant": 955,
+  "source_run": "revision_results/rebuild_120_20261028/local_only/run_20261028"
+}

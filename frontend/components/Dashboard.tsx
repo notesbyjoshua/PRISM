@@ -40,7 +40,7 @@ function Histograms({ data }: { data: Distribution }) {
   const healthy = histogram(data.healthy), affected = histogram(data.disease_values);
   const sharedMaximum = Math.max(...healthy, ...affected, .01);
   return <div className="distribution-grid">
-    {[["Healthy controls", healthy, "healthy"], [displayDisease(data.disease), affected, "affected"]].map(([label, values, tone]) =>
+    {[["FairFace reference", healthy, "healthy"], [displayDisease(data.disease), affected, "affected"]].map(([label, values, tone]) =>
       <div className="distribution-group" key={String(label)}>
         <div className="histogram" aria-label={`${label} relative-frequency histogram`}>
           <span className="histogram-scale"><b>{(sharedMaximum * 100).toFixed(0)}%</b><b>0%</b></span>
@@ -66,7 +66,7 @@ function DistributionModal({ row, onClose }: { row: Result; onClose: () => void 
       <button className="close-button" onClick={onClose} aria-label="Close"><X size={20} /></button>
       <p className="eyebrow">Underlying measurements</p>
       <h2 id="distribution-title">{displayFeature(row.feature)}</h2>
-      <p className="modal-subtitle">Healthy controls compared with {displayDisease(row.disease)}</p>
+      <p className="modal-subtitle">FairFace reference compared with {displayDisease(row.disease)}</p>
       {error && <div className="alert">{error}</div>}
       {!data && !error && <div className="loading">Loading distributions…</div>}
       {data && <Histograms data={data} />}
@@ -80,7 +80,7 @@ function DistributionModal({ row, onClose }: { row: Result; onClose: () => void 
   </div>;
 }
 
-const pipeline = ["Facial images", "FaceKit", "125 geometric measurements", "219 disease cohorts vs healthy controls", "Statistical testing + FDR", "Effect size + stability + AUROC", "Quantitative phenotype atlas"];
+const pipeline = ["Facial images", "FaceKit", "120 geometric measurements", "Eligible syndrome cohorts vs FairFace reference", "Statistical testing + FDR", "Effect size + stability + AUROC", "Quantitative phenotype atlas"];
 
 export default function Dashboard() {
   const [summary, setSummary] = useState<Summary | null>(null);
@@ -174,7 +174,7 @@ export default function Dashboard() {
       <div className="content">
         <section className="hero" id="overview">
           <div><p className="kicker">Rare-disease phenotype intelligence</p><h1>Quantifying facial phenotypes across rare genetic disorders.</h1>
-            <p>Explore statistically significant differences in {summary?.feature_count ?? 125} geometric facial measurements between healthy controls and {summary?.disease_count ?? 219} rare-disease cohorts.</p>
+            <p>Explore statistically significant differences in {summary?.feature_count ?? 120} geometric facial measurements between FairFace reference images and {summary?.disease_count ?? 0} rare-disease cohorts.</p>
             <div className="hero-actions"><button onClick={() => focusControl(diseaseSelect)}>Explore a disease</button><button onClick={() => focusControl(featureInput)}>Explore a feature</button><a href="/distributions">View dataset distributions</a></div>
           </div><div className="hero-orbit" aria-hidden="true"><Dna size={68} weight="duotone" /></div>
         </section>
@@ -186,7 +186,7 @@ export default function Dashboard() {
 
         <section className="metric-grid" aria-label="Dataset summary">
           <MetricCard label="Features analyzed" value={(summary?.feature_count ?? 0).toLocaleString()} detail="Geometric phenotypes" icon={PulseIcon} />
-          <MetricCard label="Disease cohorts" value={(summary?.disease_count ?? 0).toLocaleString()} detail="Compared with healthy" icon={Dna} tone="violet" />
+          <MetricCard label="Disease cohorts" value={(summary?.disease_count ?? 0).toLocaleString()} detail="Compared with FairFace reference" icon={Dna} tone="violet" />
           <MetricCard label="High priority" value={(summary?.high_priority_count ?? 0).toLocaleString()} detail="FDR + effect threshold" icon={CheckCircle} tone="amber" />
           <MetricCard label="Mean AUROC" value={formatNumber(summary?.average_auc ?? null)} detail="Univariate discrimination" icon={TrendUp} />
         </section>
@@ -206,7 +206,7 @@ export default function Dashboard() {
         </section>
 
         {!hasSelection && <section className="explorer-introduction">
-          <div className="intro-copy"><p className="eyebrow">How to explore PRISM</p><h2>Start with a scientific question—not an undirected list.</h2><p>PRISM compares quantitative facial measurements from rare-disease cohorts with healthy controls. Select a disease to build its phenotype profile, or search for a measurement to see how it differs across disorders.</p><button onClick={() => focusControl(diseaseSelect)}>Choose a disease <ArrowRight size={16} /></button></div>
+          <div className="intro-copy"><p className="eyebrow">How to explore PRISM</p><h2>Start with a scientific question—not an undirected list.</h2><p>PRISM compares quantitative facial measurements from rare-disease cohorts with FairFace reference images. Select a disease to build its phenotype profile, or search for a measurement to see how it differs across disorders.</p><button onClick={() => focusControl(diseaseSelect)}>Choose a disease <ArrowRight size={16} /></button></div>
           <div className="intro-options">
             <article><span>01</span><div><h3>Select a disease</h3><p>See sample size, significant measurements, strongest increases and decreases, and anatomical-region patterns.</p></div></article>
             <article><span>02</span><div><h3>Inspect the evidence</h3><p>Compare Hedges’ g, confidence intervals, FDR q-values, AUROC, bootstrap stability, and PDS rankings.</p></div></article>

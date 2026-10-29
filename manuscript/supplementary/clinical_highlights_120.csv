@@ -1,0 +1,6 @@
+syndrome,feature,display_label,n_disease,n_reference,hedges_g,ci_low,ci_high,q_global
+Cornelia de Lange syndrome,philtrum_length,Philtrum / midface height,64,3409,1.162832541655347,0.8857934490998508,1.4115120491426627,1.0873109128548585e-12
+Noonan syndrome,inter_pupillary_distance,Interpupillary / bizygomatic width,34,3409,1.2436943892097312,0.7574639302784503,1.6837412134215193,5.435497823044436e-06
+WILLIAMS-BEUREN SYNDROME; WBS,eb_thickness_mean,Eyebrow geometric area index,67,3409,1.266137411935299,0.9866504900416012,1.5868324887161391,6.241834368602917e-13
+WILLIAMS-BEUREN SYNDROME; WBS,outer_canthal_distance,Outer-canthal / bizygomatic width,67,3409,1.0394301608625076,0.7799868532797704,1.307021721576141,1.261030452043253e-10
+Rubinstein-Taybi syndrome,malar_bulge_mean,Malar geometric index,24,3409,-1.0090315432292167,-1.5303756438322715,-0.5137437995946716,0.0025186336105822

@@ -1,0 +1,2 @@
+bootstrap_iterations,rank_bootstrap_iterations,bootstrap_seed,max_missing_fraction,min_group_n,hedges_g_threshold,kw_epsilon_squared_threshold,mad_threshold,top_k,specificity_significance_rule,specificity_effect_rule,pdf_effect_weight,pdf_confidence_weight,pdf_direction_stability_weight,pdf_sample_reliability_weight,pdf_hedges_g_saturation,pdf_fdr_q_saturation,pdf_sample_n_saturation
+500,200,2026,0.3,10,0.5,0.06,5.0,10,global_pairwise_q_fdr<0.05,abs(hedges_g)>=0.5,0.45,0.2,0.25,0.1,1.5,1e-05,50

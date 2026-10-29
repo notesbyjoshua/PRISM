@@ -54,7 +54,7 @@ def select_patients(frame, age_scope='all', selection='pose'):
     return selected, manifest
 
 
-def prepare(output):
+def prepare_historical(output):
     disease_path, reference_path = ROOT / 'data/master_dataset_disease.csv', ROOT / 'data/master_dataset_healthy.csv'
     disease = pd.read_csv(disease_path, dtype={'patient_id': 'string', 'image_id': 'string'}, low_memory=False)
     reference = pd.read_csv(reference_path)
@@ -93,6 +93,23 @@ def prepare(output):
                   'software': {'pandas': pd.__version__, 'numpy': np.__version__}}
     (output / 'cohort_provenance.json').write_text(json.dumps(provenance, indent=2))
     print(pd.DataFrame(summary).to_string(index=False))
+
+
+def prepare(output):
+    import shutil
+    import subprocess
+    from analysis_config import active_configuration
+    config = active_configuration()
+    output = output.resolve()
+    if subprocess.run(['git', 'check-ignore', '-q', str(output / 'provenance.json')], cwd=ROOT).returncode:
+        raise ValueError('Current person-level cohort exports must stay in a Git-ignored private directory')
+    output.mkdir(parents=True, exist_ok=False)
+    source = Path(config['disease_csv']).parent
+    for name in ['primary_master.csv', 'primary_phenotypes.csv', 'alternate_master.csv', 'alternate_phenotypes.csv',
+                 'reference_balanced_master.csv', 'reference_balanced_phenotypes.csv', 'exact_feature_names.csv']:
+        shutil.copy2(source / name, output / name)
+    (output / 'provenance.json').write_text(json.dumps({'active_analysis': config['analysis_id'],
+        'feature_count': 120, 'source_run': config['private_run'], 'historical_values_used': False}, indent=2)+'\n')
 
 
 if __name__ == '__main__':

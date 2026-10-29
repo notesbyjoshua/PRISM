@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib.ticker import MaxNLocator
+from analysis_config import active_configuration
 
 # ==============================================================
 # 1. RUN-BUTTON SETTINGS
@@ -25,7 +26,7 @@ from matplotlib.ticker import MaxNLocator
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # Use an absolute path or a path relative to the PRISM project directory.
-INPUT_FILE = "data/master_dataset.csv"  # put CSV file here
+INPUT_FILE = active_configuration()['disease_master_csv']
 OUTPUT_FOLDER = "stats_results/data_distribution"  # plots are saved here
 TOP_N = 20  # number of diseases in the top-diseases graph
 ETHNICITIES = ("European", "Asian", "African", "Other")
@@ -55,6 +56,8 @@ def load_data(input_path):
     if not input_path.is_file():
         raise FileNotFoundError(f"Input CSV does not exist: {input_path}")
     data = pd.read_csv(input_path)
+    if 'ethnicity_category' not in data and 'broad_group' in data:
+        data['ethnicity_category'] = data['broad_group']
     required = {"disease", "ethnicity_category"}
     missing = required.difference(data.columns)
     if missing:

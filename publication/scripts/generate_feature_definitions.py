@@ -383,7 +383,7 @@ def write_dependency_report(rows, landmark_rows, edges):
     (OUTPUT / "FEATURE_DEPENDENCY_REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def main():
+def historical_main():
     source, tree, namespace, records = load_historical_source()
     schema = [row["feature"] for row in read_csv(SCHEMA_PATH)]
     dependencies = landmark_dependencies(namespace, schema)
@@ -405,4 +405,6 @@ def main():
     print(f"Generated exact definitions for {len(rows)} historical features and {len(edges)} dependency edges")
 
 
-if __name__ == "__main__": main()
+if __name__ == "__main__":
+    from current_120 import export
+    export("schema")

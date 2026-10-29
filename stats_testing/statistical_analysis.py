@@ -18,6 +18,8 @@ import numpy as np
 import pandas as pd
 from scipy.stats import mannwhitneyu, kruskal, ttest_ind
 from statsmodels.stats.multitest import multipletests
+from bootstrap_utils import bootstrap_pair_effects
+from analysis_config import active_configuration
 
 # =========================
 # 1. Load data
@@ -32,8 +34,9 @@ OUTPUT_DIR = PROJECT_ROOT / "stats_results/significance_testing"
 # Use an absolute path, or a path relative to the PRISM project directory.
 # -------------------------------------------------------------------------
 
-DISEASE_FILE = "data/phenotypes_all_disease.csv"  # put file here
-HEALTHY_FILE = "data/phenotypes_all_healthy.csv"  # put file here
+ACTIVE = active_configuration()
+DISEASE_FILE = ACTIVE['disease_csv']
+HEALTHY_FILE = ACTIVE['reference_csv']
 
 
 def parse_args():
@@ -51,6 +54,7 @@ def parse_args():
     parser.add_argument("--kw-effect-threshold", type=float, default=0.06)
     parser.add_argument("--mad-threshold", type=float, default=5.0)
     parser.add_argument("--top-k", type=int, default=10)
+    parser.add_argument("--feature-schema", type=Path, default=Path(ACTIVE['feature_schema']))
     return parser.parse_args()
 
 
@@ -135,6 +139,9 @@ exclude_cols = ["disease", "image_id", "frontal_ok"]
 if DROP_POSE:
     exclude_cols += ["pose_yaw", "pose_pitch", "pose_roll"]
 feature_cols = [c for c in df.columns if c not in exclude_cols and pd.api.types.is_numeric_dtype(df[c])]
+expected_features = pd.read_csv(args.feature_schema).feature.tolist()
+if feature_cols != expected_features or len(expected_features) != 120:
+    raise ValueError('Active analysis requires the exact ordered current 120-feature schema')
 print("Number of rows:", len(df))
 print("Number of features:", len(feature_cols))
 print(df["disease"].value_counts())
@@ -257,13 +264,7 @@ def bootstrap_effect_ci(x, y, iterations, rng):
     y = np.asarray(pd.Series(y).dropna(), dtype=float)
     if iterations == 0 or len(x) < 2 or len(y) < 2:
         return np.nan, np.nan, np.nan, np.nan, np.nan
-    g_samples = np.empty(iterations)
-    delta_samples = np.empty(iterations)
-    for i in range(iterations):
-        xb = x[rng.integers(0, len(x), len(x))]
-        yb = y[rng.integers(0, len(y), len(y))]
-        g_samples[i] = hedges_g(pd.Series(xb), pd.Series(yb))
-        delta_samples[i] = cliffs_delta_fast(xb, yb)
+    g_samples, delta_samples = bootstrap_pair_effects(x, y, iterations, rng)
     g_valid = g_samples[np.isfinite(g_samples)]
     delta_valid = delta_samples[np.isfinite(delta_samples)]
     g_ci = np.quantile(g_valid, [0.025, 0.975]) if len(g_valid) else [np.nan, np.nan]

@@ -1,0 +1,7 @@
+layer,analysis,hypotheses,significant,family
+layer1_broad_ethnicity,A_omnibus,120,104,separate global BH within this layer and analysis
+layer1_broad_ethnicity,B_matched,34560,733,separate global BH within this layer and analysis
+layer1_broad_ethnicity,C_interaction,11040,566,separate global BH within this layer and analysis
+layer2_subcategory,A_omnibus,120,114,separate global BH within this layer and analysis
+layer2_subcategory,B_matched,32520,706,separate global BH within this layer and analysis
+layer2_subcategory,C_interaction,14400,760,separate global BH within this layer and analysis

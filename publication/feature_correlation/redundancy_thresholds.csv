@@ -1,0 +1,5 @@
+absolute_rho_threshold,pairs,total_pairs,source
+0.7,318,7140,new_120_balanced_FairFace_reference
+0.8,269,7140,new_120_balanced_FairFace_reference
+0.9,153,7140,new_120_balanced_FairFace_reference
+0.95,53,7140,new_120_balanced_FairFace_reference

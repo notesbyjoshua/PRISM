@@ -1,0 +1,56 @@
+cluster_id,features,hypotheses,fairface_discoveries,within_discoveries,adjusted_supported,adjusted_discoveries,anatomical_regions,median_absolute_attenuation
+1,3,144,15,0,141,3,eyebrows;eyes / orbital dimensions;nose,0.2376032040762099
+2,9,432,76,3,423,8,cheeks / malar region;eyebrows;eyes / orbital dimensions;global face shape / proportions;nose;philtrum / mouth / lips,0.27478198669633724
+3,1,48,4,0,47,1,eyes / orbital dimensions,0.21275887514340755
+4,1,48,2,0,47,1,eyebrows,0.15660907564948737
+5,2,96,58,5,94,11,eyebrows,0.5802457134191059
+6,2,96,4,1,94,5,eyebrows;eyes / orbital dimensions,-0.0336701988936989
+7,1,48,27,4,47,7,eyebrows,0.5960148246282688
+8,4,192,7,4,188,8,cheeks / malar region;eyebrows,-0.026110424343395763
+9,1,48,5,1,47,4,eyes / orbital dimensions,0.1291761568985421
+10,1,48,3,1,47,1,cheeks / malar region,0.2199656974540295
+11,1,48,2,0,47,1,cheeks / malar region,0.17679391002335684
+12,2,96,11,2,94,6,eyebrows;eyes / orbital dimensions,0.1101150512362684
+13,2,96,10,2,94,3,eyebrows,0.0743049747580424
+14,1,48,6,1,47,2,eyes / orbital dimensions,0.14974119228946806
+15,1,48,12,7,47,10,eyebrows,0.40953647412806576
+16,2,96,14,8,94,14,nose,-0.013600974780808704
+17,1,48,15,3,47,8,cheeks / malar region,0.4765342848605873
+18,3,144,29,4,141,20,eyes / orbital dimensions;ocular position / iris / gaze,0.20964557239536863
+19,1,48,8,2,47,6,eyebrows,-0.07736675189684417
+20,3,144,31,6,141,17,forehead,0.12083842457228096
+21,1,48,9,5,47,5,global face shape / proportions,-0.060729448316937995
+22,1,48,10,5,47,9,eyes / orbital dimensions,-0.01788289786798289
+23,2,96,14,5,94,10,eyebrows,0.20471035542892346
+24,4,192,37,14,188,30,nose,0.10671364059578559
+25,2,96,16,7,94,13,nose,0.1960192636513995
+26,1,48,8,3,47,6,global face shape / proportions,0.26414618413759927
+27,1,48,29,1,47,5,forehead,1.0413165307470695
+28,1,48,13,3,47,3,philtrum / mouth / lips,0.36679383760053996
+29,5,240,27,8,235,14,philtrum / mouth / lips,0.11642615045196739
+30,2,96,10,3,94,9,nose,0.038149152286337334
+31,2,96,17,5,94,13,nose,0.15583018635870985
+32,1,48,17,2,47,3,philtrum / mouth / lips,0.4825187346452837
+33,4,192,36,10,188,22,philtrum / mouth / lips,0.12870318621810728
+34,5,240,33,8,235,27,global face shape / proportions;nose;philtrum / mouth / lips,0.064747513698589
+35,1,48,10,2,47,5,nose,0.2928001894451985
+36,3,144,26,10,141,23,eyebrows,0.09565107515502567
+37,2,96,19,2,94,7,ocular position / iris / gaze,0.1793779631876701
+38,1,48,0,0,47,6,eyes / orbital dimensions,0.09354519122640265
+39,1,48,4,0,47,4,ocular position / iris / gaze,0.17822117513147517
+40,21,1008,134,51,987,94,eyes / orbital dimensions;ocular position / iris / gaze,0.09664189316741426
+41,1,48,8,4,47,8,eyes / orbital dimensions,0.21870336815313968
+42,1,48,1,0,47,2,ocular position / iris / gaze,-0.1222149620041478
+43,1,48,8,2,47,7,philtrum / mouth / lips,0.09597474660906617
+44,1,48,11,2,47,4,chin / jaw,0.321707220231233
+45,2,96,46,5,94,10,chin / jaw;global face shape / proportions,0.6624142103253071
+46,2,96,26,7,94,10,chin / jaw,0.3652211037675682
+47,1,48,27,2,47,6,chin / jaw,0.6664607411119243
+48,1,48,6,1,47,5,eyes / orbital dimensions,-0.003679689597430147
+49,1,48,2,1,47,4,ocular position / iris / gaze,0.047933049744695394
+50,1,48,1,0,47,1,ocular position / iris / gaze,-0.03995639077959905
+51,1,48,0,0,47,1,ocular position / iris / gaze,-0.04370517641514685
+52,1,48,1,0,47,2,ocular position / iris / gaze,0.0408589947331118
+53,1,48,5,0,47,2,eyes / orbital dimensions,0.1457067976165995
+54,1,48,5,0,47,0,ocular position / iris / gaze,0.21149297601543404
+55,1,48,0,0,47,1,cheeks / malar region,-0.007506172300387968

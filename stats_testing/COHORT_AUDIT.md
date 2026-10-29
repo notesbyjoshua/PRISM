@@ -1,46 +1,15 @@
-# Cohort audit
+# Current 120-feature cohort audit
 
-Run from the PRISM root with `.venv/bin/python stats_testing/cohort_audit.py`.
-The default output is a new timestamped directory under ignored `local_review/`.
-Use `--output local_review/audit_name` to select a new directory or `--dry-run`
-to calculate the audit without writing outputs. Existing output directories are
-never overwritten. Run tests with `.venv/bin/python -m unittest discover -s tests -v`.
+The active configuration is `ACTIVE_ANALYSIS.json`. Run
+`.venv/bin/python stats_testing/cohort_audit.py --dry-run` to verify the exact
+120-column schema, finite vectors, current quality flags, unique recorded GMDB
+patient IDs, unique FairFace paths and actual eligible-syndrome counts.
 
-This is a descriptive audit, not a corrected statistical analysis. It does not
-select a patient image, impute age, change thresholds, modify raw inputs, or
-replace saved statistical results. A missing patient identifier stays unknown.
-Reference file paths identify images, not people. Patient manifests and manuscript
-snapshots belong in `local_review/` and must not be committed.
+Current: 1,845 selected GMDB patients, 3,409 reference paths, 48 main syndromes.
+Reference identity uniqueness and clinical health are unverified. PDIDB is excluded.
 
-The audit reads both master datasets, the saved statistical configuration and
-results, and the existing demographic mapping function definitions. Those functions
-are isolated with the Python AST because importing the original analysis scripts
-would run analyses and write outputs. A/B and C now both exclude unknown broad labels even when a subcategory is recognized.
-The audit reports mapping differences to detect future divergence.
-
-Outputs include cohort flow; source-label and age/sex distributions; per-patient
-repeat-image age spans; patient metadata inconsistencies; layer-specific image and
-known-patient counts; feature missingness; image-based syndrome and feature
-eligibility with exclusion reasons; saved-results reconciliation; and input/code
-SHA-256 hashes. `provenance.json` lists every hashed file, the current Git commits,
-versions and audit assumptions. A current FaceKit commit does not establish the
-version used to extract historical data.
-
-Age summaries are conditional diagnostics: year + month/12 assumes component
-fields, retains zero-zero as unresolved, and flags months outside 0–11 rather than
-silently carrying them into years. Nonzero ages still need confirmation as age at
-photograph. Age categories for FairFace remain categories. No age adjustment or
-clinical age inference is performed.
-
-The saved minimum-n and missingness parameters are used only to reproduce legacy
-image eligibility. Nonfinite feature values are reported and excluded by the
-audit; the original scripts use `dropna`, so any infinities could cause a discrepancy.
-`eligibility_reconciliation.csv` identifies differences in tested syndrome-feature
-pairs. The audit recognizes boolean strings explicitly and reports malformed
-quality flags; this is stricter than accepting truthy strings or numeric flags.
-
-The available master files are downstream of image export and extraction.
-Upstream source-pool and rejection counts cannot be reconstructed from these
-masters alone. Recover selection manifests and extraction logs before claiming a
-complete source-to-analysis flow. Confirm cohort design and extraction provenance
-before replacing manuscript counts, p-values, or figures.
+The historical audit and source were frozen privately with the original analysis.
+Historical reproduction uses the frozen source and matching archived inputs and
+results. The active CLI rejects `--historical` to prevent mixing old data with
+current result tables. Historical helper functions remain for frozen workflows.
+See `revision_results/rebuild_120_20261028/README.md` for the full validation package.

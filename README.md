@@ -7,6 +7,15 @@ across rare-disease cohorts. It combines FaceKit feature extraction, a
 pandas/SciPy statistical pipeline, a FastAPI and SQLite backend, and a
 Next.js/Recharts dashboard.
 
+The active analysis uses **120 current FaceKit features**: 1,845 selected GMDB
+patients, 3,409 FairFace reference image paths, 48 eligible syndromes, and 5,760
+primary hypotheses. Global BH correction identifies 955 associations at q < 0.05.
+PDIDB synthetic images remain a separate extraction catalog. The configuration is
+in [ACTIVE_ANALYSIS.json](ACTIVE_ANALYSIS.json); the previous analysis and manuscript
+are preserved in a private read-only archive. See
+[the rebuild workflow](revision_results/rebuild_120_20261028/README.md) for provenance,
+validation, sensitivity analyses and the private report location.
+
 > PRISM is an exploratory research tool. Its results are not medical advice,
 > a diagnosis, or a substitute for clinical evaluation.
 
@@ -112,7 +121,13 @@ For an editor's Run button, configure its Python interpreter as:
 
 ## Preparing input data
 
-The analysis supports either two separate CSVs or one combined CSV.
+The default inputs are the validated private 120-feature cohorts resolved from
+`ACTIVE_ANALYSIS.json`. The historical `data/*.csv` inputs are retained as research
+records and are no longer the active inputs. If authorized current inputs are
+missing, the pipeline stops; it does not substitute historical measurements.
+
+Explicit input overrides must match the ordered current 120-feature schema.
+Keep per-person measurements and metadata in an ignored private directory.
 
 ### Separate healthy and disease CSVs
 
@@ -147,20 +162,13 @@ See [FaceKit/README.md](FaceKit/README.md) for its full extraction workflow.
 
 ## Running the statistical analysis
 
-The simplest workflow is to edit the two constants near the top of
-`stats_testing/statistical_analysis.py`:
-
-```python
-DISEASE_FILE = "data/phenotypes_all_disease.csv"
-HEALTHY_FILE = "data/phenotypes_all_healthy.csv"
-```
-
-Paths may be absolute or relative to the PRISM directory. Then run:
+The analysis reads its current inputs and schema from `ACTIVE_ANALYSIS.json`.
+To reproduce the primary analysis in a new private output directory, run:
 
 ```bash
 cd /Users/joshua/Documents/PRISM
 source .venv/bin/activate
-python stats_testing/statistical_analysis.py
+python stats_testing/statistical_analysis.py --output-dir local_review/current_120_reproduction
 ```
 
 This also works with an editor's Run button when the editor uses the `.venv`
@@ -168,27 +176,28 @@ interpreter.
 
 ### Command-line input overrides
 
-Command-line arguments override the constants in the file:
+Command-line arguments may select other authorized current-schema inputs:
 
 ```bash
 python stats_testing/statistical_analysis.py \
-  --healthy-csv data/phenotypes_all_healthy.csv \
-  --disease-csv data/phenotypes_all_disease.csv
+  --healthy-csv local_review/current_inputs/reference_120.csv \
+  --disease-csv local_review/current_inputs/disease_120.csv \
+  --output-dir local_review/current_120_custom
 ```
 
 For a combined file:
 
 ```bash
 python stats_testing/statistical_analysis.py \
-  --input-csv data/phenotypes_all.csv
+  --input-csv local_review/current_inputs/combined_120.csv \
+  --output-dir local_review/current_120_combined
 ```
 
 ### Adjusting analysis settings
 
 ```bash
 python stats_testing/statistical_analysis.py \
-  --healthy-csv data/phenotypes_all_healthy.csv \
-  --disease-csv data/phenotypes_all_disease.csv \
+  --output-dir local_review/current_120_custom_settings \
   --bootstrap-iterations 1000 \
   --rank-bootstrap-iterations 500 \
   --max-missing-fraction 0.20 \
