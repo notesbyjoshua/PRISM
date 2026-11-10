@@ -1,0 +1,5 @@
+size_proxy,metric,syndromes,descriptive_spearman
+age-restricted available selected GMDB n; NOT training n,median_absolute_standardized_shift,9,-0.5774109120414489
+age-restricted available selected GMDB n; NOT training n,median_variance_ratio,9,-0.30962614123961751
+age-restricted available selected GMDB n; NOT training n,direction_agreement,9,0.27615304488938858
+age-restricted available selected GMDB n; NOT training n,pearson_g,9,0.67783020109213565

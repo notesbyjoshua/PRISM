@@ -9,11 +9,13 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
 DIRECTORIES = ['publication/figures', 'publication/supplementary', 'publication/feature_definitions',
-               'publication/feature_correlation', 'stats_results', 'manuscript/figures', 'manuscript/supplementary']
+               'publication/feature_correlation', 'publication/final_research_120', 'publication/synthetic_consistency',
+               'stats_results', 'manuscript/figures', 'manuscript/supplementary']
 PERSON_COLUMNS = {'patient_id', 'image_id', 'facekit_image_id', 'patient_name', 'file', 'image_path',
                   'image_path_key', 'source_image_key', 'recorded_patient_group_key', 'reference_key',
-                  'prompt', 'landmarks', 'embedding'}
+                  'prompt', 'landmarks', 'embedding', 'image_sha256'}
 
 
 def sha(path):
@@ -25,9 +27,14 @@ def sha(path):
 
 
 def artifact_paths(root):
-    paths = [root/name for name in ['ACTIVE_ANALYSIS.json', 'manuscript/main.tex'] if (root/name).is_file()]
+    named = ['ACTIVE_ANALYSIS.json', 'manuscript/main.tex', 'manuscript/FINAL_120_RESULTS_INSERTIONS.md',
+             'manuscript/FINAL_CODEX_RESEARCH_COMPLETION_REPORT.md']
+    paths = [root/name for name in named if (root/name).is_file()]
     for directory in DIRECTORIES:
-        paths.extend(path for path in (root/directory).rglob('*') if path.is_file() and path.suffix in {'.csv', '.png', '.svg'})
+        suffixes = {'.csv', '.png', '.svg'}
+        if directory in {'publication/final_research_120', 'publication/synthetic_consistency'}:
+            suffixes |= {'.md', '.json'}
+        paths.extend(path for path in (root/directory).rglob('*') if path.is_file() and path.suffix in suffixes)
     return sorted(path.relative_to(root).as_posix() for path in paths)
 
 
@@ -143,6 +150,8 @@ def verify_package(root=ROOT, manifest_required=True):
             raise ValueError('A retired analysis directory remains in the active package')
     paths = artifact_paths(root)
     count = check_public_csvs(root, paths)
+    from publication.scripts.verify_final_research import verify
+    targeted = verify(root)
     if manifest_required:
         manifest = json.loads((root/'publication/ARTIFACT_MANIFEST.json').read_text())
         if manifest['analysis_id'] != config['analysis_id'] or manifest['feature_count'] != 120:
@@ -151,6 +160,7 @@ def verify_package(root=ROOT, manifest_required=True):
     return {'status': 'PASS', 'analysis_id': config['analysis_id'], 'features': 120,
             'syndromes': config['eligible_syndromes'], 'primary_hypotheses': len(primary),
             'global_BH_discoveries': significant, 'aggregate_CSVs': count, 'aggregate_artifacts': len(paths),
+            'targeted_research': targeted,
             'scope': 'Committed aggregate integrity, current schema/source pins, primary BH and effect arithmetic; no private inputs or image reprocessing'}
 
 
@@ -162,7 +172,7 @@ def main():
     result = verify_package(manifest_required=not args.write_manifest)
     if args.write_manifest:
         manifest = {'analysis_id': result['analysis_id'], 'feature_count': 120,
-                    'scope': 'Reviewed code-derived aggregate working exports; excludes private data and reports',
+                    'scope': 'Reviewed aggregate exports and targeted manuscript-support reports; excludes all private inputs',
                     'files': {name: sha(ROOT/name) for name in artifact_paths(ROOT)}}
         (ROOT/'publication/ARTIFACT_MANIFEST.json').write_text(json.dumps(manifest, indent=2)+'\n')
     if args.report:

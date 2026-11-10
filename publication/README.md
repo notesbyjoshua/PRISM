@@ -17,3 +17,5 @@ extraction and analysis require the authorized private run described in
 `revision_results/rebuild_120_20261028/README.md`.
 
 The active manuscript, tables and figures contain only the current study. Concordance points are descriptive and its assessed bootstrap uncertainty is excluded. See `PI_REVIEW.md` before submission or any image reuse.
+
+The targeted final research pass adds `synthetic_consistency/` (conditional PDIDB–GMDB fidelity; no synthetic clinical inference) and `final_research_120/` (source-verified manuscript tables, clinical/FaceKit overlap audits and figure metadata). Read `manuscript/FINAL_CODEX_RESEARCH_COMPLETION_REPORT.md` and `manuscript/FINAL_120_RESULTS_INSERTIONS.md` for scope, commands and unresolved scientific judgments. New SVG/PNG figures 5–10 are original schematics or aggregate plots. Public CI verifies their committed source correspondence and hashes; private synthetic validation uses the authorized local measurements separately.

@@ -5,3 +5,5 @@
 All figures are aggregate statistical plots. Synthetic PDIDB records remain separate from real-patient inference. Concordance uncertainty is excluded; descriptive points are retained. PI review items are in `../publication/PI_REVIEW.md`.
 
 The generation template is `../revision_results/rebuild_120_20261028/manuscript_120.tex`; the generator reads validated current results and does not create measurement-version comparisons. Protected source inputs and the research archive remain private. The live Google Doc is outside this local update.
+
+`FINAL_120_RESULTS_INSERTIONS.md` supplies the remaining quantitative paragraphs, tables, captions and source map for the Formal Paper tab. `FINAL_CODEX_RESEARCH_COMPLETION_REPORT.md` records the November 9 targeted secondary pass. Figures 5–10 add original workflow/anatomical artwork, regional rates and separate synthetic fidelity summaries; sources and alt text are in `../publication/final_research_120/FIGURE_SOURCE_MANIFEST.json` and `FIGURE_CAPTIONS.md`. The Google Doc was inspected read-only; its tabs and comments were not modified.

@@ -1,0 +1,4 @@
+sensitivity,selection_status,syndromes,median_absolute_standardized_shift,median_variance_ratio,median_direction_agreement,median_pearson_g
+all_supported,predeclared support,9,0.1664254313441077,0.98630598864829333,0.84999999999999998,0.8960259177555544
+real_n_at_least_20,exploratory cutoff after initial pooled results,7,0.16480933730082331,0.98630598864829333,0.85833333333333328,0.90296650338229634
+real_n_at_least_30,exploratory cutoff after initial pooled results,5,0.16199437821009269,0.89693353007881615,0.85833333333333328,0.90296650338229634

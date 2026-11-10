@@ -1,0 +1,87 @@
+{
+  "analysis": "conditional_PDidb_GMDB_distributional_consistency_120",
+  "primary_analysis_id": "PRISM_120_20261028",
+  "primary_unchanged": {
+    "syndromes": 48,
+    "hypotheses": 5760,
+    "discoveries": 955,
+    "synthetic_rows": 0
+  },
+  "facekit_commit": "5764bdd4af9360b55a046a16579fb5a890a8182f",
+  "model_sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+  "extractor_sha256": "8657c0fa5e9aad74d300c8c9bbf023e35f6c5f0a0f74559b2febb43f57fe0a0e",
+  "pdidb_revision": "d0907a56525dc3b25712d360f9ce3031150eb535",
+  "feature_count": 120,
+  "seed_reserved": 20261109,
+  "resampling": "none; descriptive point estimates only",
+  "real_selected_n": 1845,
+  "reference_n": 3409,
+  "synthetic_total_n": 1727,
+  "synthetic_qc_n": 1563,
+  "supported_syndromes": 9,
+  "supported_real_n": 314,
+  "supported_synthetic_n": 1424,
+  "excluded_synthetic_labels": [
+    {
+      "pdidb_disease": "22q11.2 deletion syndrome",
+      "reason": "excluded_ambiguous_scope"
+    }
+  ],
+  "primary_syndromes_without_synthetic_label": 39,
+  "missingness": {
+    "age_range": 1727,
+    "gender": 1727,
+    "race": 1727
+  },
+  "age_matched_sensitivity": "unavailable; all synthetic ages missing; no imputation",
+  "model_tags_qc": {
+    "v2": 829,
+    "v1": 734
+  },
+  "duplicate_audit": {
+    "real_selected_duplicate_byte_groups": 0,
+    "synthetic_all_duplicate_byte_groups": 0,
+    "exact_synthetic_to_selected_real_byte_overlap": 0,
+    "interpretation": "encoded-byte audit only; not a privacy/identity test"
+  },
+  "generation_origin": {
+    "mentor_statement_date": "2026-11-09",
+    "statement": "StyleGAN trained on GMDB; PDIDB sampled its learned distribution",
+    "verification": "mentor context; not verified for each row/tag/checkpoint",
+    "training_membership_and_counts": "not available for this PDIDB release",
+    "paper_generator_release_equivalence": "unverified"
+  },
+  "input_sha256": {
+    "disease_master_csv": "2280212c43392d746e882c2c49775e26859b624f93308fc137323ea2c6fd9e42",
+    "reference_master_csv": "ddb740c99110dcdfe851d744d5e10923c0438ff8af0d8211a43204f59c6537fc",
+    "feature_schema": "0c9466f60ef5317ecbc72f4bb35ea8ed320a77baf9cb91c8e46e7585c5459f6b",
+    "synthetic_all": "f1bbaf4834f543d225e79c614373f8b803eac0ea11ce0f96d7925a12782d1fe6",
+    "synthetic_qc": "5cfde84c1916085db2831d1b16759521a96272f4c3ce0f0c24c941917d520209",
+    "provenance": "fd74b0942fe537d0b36e7c5d7ba3cd00e4cca3da9fa458f7824897effde39261",
+    "real_selected": "8ab28275ff36cfe903ea69003950ab69a70fba26475b24a629b41e66971f468c",
+    "real_measured": "d9d7d40190acf020df7eff62fe334ad3393f045913c425a12cd48138e0d5ff10",
+    "reference_selected": "71e1ea0fed7aa8434c417c957724151d35fcf73ba1764e2b19cfcf8401e8d3a2"
+  },
+  "config_sha256": "42d6bfbf494ee7b00ae5a38f584da994ba63f5e3ae05684b7fbe50e441c608c4",
+  "mapping_sha256": "870bbfe52188efd3a4e25c09521e796b2db35788e9c190177d5d1160c6138829",
+  "plan_sha256": "6547503f23da43dc1e5e3da4122257bd3d4dc972e53a23ee7d0fde45592c0b22",
+  "code_sha256": "d14c661d3795d81f5b06dacd7ec8f0369fed9ed0c33137f7ce4b068e877d7bbb",
+  "code_base_commit": "2596428d51d423c0e179045a700ab30b43aac1f7",
+  "publication_status": "aggregate-only candidate; existing PI review applies; no release permission inferred",
+  "outputs": {
+    "cohort_and_mapping_audit.csv": "273699983daea84cc510221b5ba5e603a0f44afa5571df7511ea59e8e5eed53c",
+    "metadata_audit.csv": "48caaaaa4f99983943eb7fb76c1885f2d023ac2a57d1c914a897b95110530f7e",
+    "feature_fidelity_summary.csv": "8eddcc394cf62fc2cf03fd275fc0ba08c62a00f1eff48c3c810efefedcb996d3",
+    "syndrome_fidelity_summary.csv": "7de47b6dc654b2b5d9d84c5548000127a7e33f57e1e5fcd030c3e37a3da92ac3",
+    "anchor_distribution_source.csv": "0016c231d72ef169d0749a3448cdc265e128406ea9cc61128d40ee8dbe8c0245",
+    "effect_scatter_source.csv": "8a4a126bcee0b05c2175e19f38c5b6b5b41c68ea1e0b4b8c668fdf0a22289cfb",
+    "largest_gaps_exploratory.csv": "835543e0fef605d1cebbba4894055bb64d65a161498ca6e5968743c8e419aa0f",
+    "cluster_fidelity_summary.csv": "2f7145f034f5b534e55db79ff5ce376d7d9b656c17cf8cc3b5eaa8fe33958ee4",
+    "equal_cluster_weight_summary.csv": "3bf932f68116f7e289376f928c8a9493a9cf984b5ec9046cee24da62f0a24690",
+    "low_real_n_sensitivity.csv": "ffdb3ede9d6d975591a09b5751cfed71f0a0ae2aa188959691f7df60a6c29dbd",
+    "available_size_proxy_summary.csv": "2e973c2db1849e41fce3875c4efa940abf6679b73a49b058bf5dac2021cb24ed",
+    "synthetic_consistency_results.md": "e633e8d1d00bc526c122aa63eeef3b974262444e0ce6dac9640160ef5e20a5ab"
+  },
+  "report_generation_code_sha256": "bf1d4960c236e7b5a2af3bc19170b397699fdf48e1b78d717d32326d3adf91fe",
+  "figure_source_manifest_sha256": "95717b1bd11366753666a9dd29e6b0935d6144bddf3b5bf2beb2b2a31f3ee7c7"
+}

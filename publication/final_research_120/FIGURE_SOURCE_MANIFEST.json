@@ -1,0 +1,80 @@
+{
+  "script_sha256": "ba986d70296c14478aa5a978ba4f2e38502ff205c0ea2ebb8929017218377c54",
+  "figures": [
+    {
+      "name": "fig5_facekit_prism_workflow",
+      "sources": {
+        "ACTIVE_ANALYSIS.json": "42d6bfbf494ee7b00ae5a38f584da994ba63f5e3ae05684b7fbe50e441c608c4",
+        "publication/synthetic_consistency/cohort_and_mapping_audit.csv": "273699983daea84cc510221b5ba5e603a0f44afa5571df7511ea59e8e5eed53c"
+      },
+      "caption": "FaceKit measurement platform and PRISM study design. FaceKit provides landmark detection, pose correction and 120 measurements; PRISM supplies cohort selection and the statistical branches. Synthetic fidelity is separate and conditional on a GMDB-trained generator (mentor statement; checkpoint-specific provenance unverified). FaceKit: arXiv:2610.09288v1, \u00a7\u00a72.1\u20132.2. This original schematic contains no patient images.",
+      "alt_text": "Flow diagram separates the FaceKit measurement steps from PRISM real-patient testing and the synthetic-only fidelity branch.",
+      "outputs": {
+        "svg": "cd594c3a53fff76801e1759b59fb6f7ac671f0f7de9ef2417891114920658e22",
+        "png": "86af40dc91d9938464181a6ff296dea81c3061924ca84843b6fce8049fa6a5cb"
+      }
+    },
+    {
+      "name": "fig6_anatomical_definitions",
+      "sources": {
+        "publication/feature_definitions/current_120_feature_formulas.csv": "8757c08c9498246c09f277b04c4491525e306183263109b6d9367c4b73fc3832"
+      },
+      "caption": "Original anatomical schematic for five FaceKit indices. A: subnasale-to-upper-lip distance divided by vertical nasion-to-subnasale midface height. B: iris-center distance divided by bizygomatic width. C: outer-canthal distance divided by bizygomatic width. D: bilateral mean star-polygon eyebrow area divided by squared bizygomatic width; this measures geometry, not hair density. E: bilateral signed horizontal cheek-to-interpolated-face-oval distance divided by bizygomatic width, not three-dimensional malar projection. Blue indicates numerator geometry, orange the length scale. Points are illustrative artwork; exact landmark sets, signs and branches are defined in S6 and the pinned FaceKit source.",
+      "alt_text": "Five original face-outline panels illustrate philtrum, iris and canthal distances, eyebrow polygons and cheek-to-oval geometry with their normalization lengths.",
+      "outputs": {
+        "svg": "ce1cc2b8571143c7cff4b33aeb5d44826bd760f396e98fa98464c394bcc152c2",
+        "png": "2fe11e034ae1e6133d1ee3c1dc592704dc2816dd0ccf684549afdc54a6a966ce"
+      }
+    },
+    {
+      "name": "fig7_regional_discovery_rates",
+      "sources": {
+        "publication/final_research_120/regional_discovery_source.csv": "f29dbc0ae440bd1fb56f728da7fa94cacda763015c429ed6c3e5393e2a0536ad"
+      },
+      "caption": "Significant/tested syndrome-feature counts and rates in nine anatomical regions. All tests belong to the single 5,760-hypothesis primary global-BH family (q < .05). Region denominators equal 48 syndromes times the number of features in the region and therefore differ; correlated features are not independent anatomical discoveries. Source: regional_discovery_source.csv, independently cross-checked against S1 and regional_summary_120.csv.",
+      "alt_text": "Horizontal bars show discovery rates for all nine regions, with counts and percentages. Chin/jaw and forehead have the highest rates; denominators differ.",
+      "outputs": {
+        "svg": "f577814edf8d3658fd3f4c5f5287697f0971743949fc44056e24e4b160916034",
+        "png": "a3df42e203118401b573ac5d1660ab2a55fa3c36d8c9455fd4ebebe92a43decf"
+      }
+    },
+    {
+      "name": "fig8_synthetic_anchor_distributions",
+      "sources": {
+        "publication/synthetic_consistency/anchor_distribution_source.csv": "0016c231d72ef169d0749a3448cdc265e128406ea9cc61128d40ee8dbe8c0245"
+      },
+      "caption": "Real and synthetic interquartile distributions for all five predeclared syndrome-feature anchors. Boxes span Q1\u2013Q3 and horizontal lines show medians in actual normalized feature units; no whiskers, extrema, individual observations or photographs are displayed. GMDB contributes one selected age-eligible image per recorded patient. PDIDB model tags are pooled as an observed release mixture; all synthetic ages are missing. These are within-source distribution summaries, not clinical replication.",
+      "alt_text": "Five paired interquartile boxes compare GMDB and PDIDB for the predeclared philtrum, pupil-spacing, malar, eyebrow-area and canthal-width anchors.",
+      "outputs": {
+        "svg": "c84964285cfa5656ce4c77c317f5aeaed113b1a9c1aac7c1c525f6f71cf2fbda",
+        "png": "1ca1b5a519f1a8035b6966f6e6eeb1c9a83a7ffef965986df47b731713f29730"
+      }
+    },
+    {
+      "name": "fig9_synthetic_effect_profiles",
+      "sources": {
+        "publication/synthetic_consistency/effect_scatter_source.csv": "8a4a126bcee0b05c2175e19f38c5b6b5b41c68ea1e0b4b8c668fdf0a22289cfb",
+        "publication/synthetic_consistency/syndrome_fidelity_summary.csv": "7de47b6dc654b2b5d9d84c5548000127a7e33f57e1e5fcd030c3e37a3da92ac3"
+      },
+      "caption": "Real-versus-synthetic effect profiles against the identical frozen 3,409-path FairFace reference. Each point is a syndrome-feature aggregate (120 per panel), not an individual; dashed lines indicate equality. Orange marks strictly opposite effect directions. Titles report within-syndrome Pearson correlation and direction agreement. Hedges\u2019 g uses syndrome-minus-reference mean difference and pooled SD with the stated small-sample correction. Correlated features, a shared reference and GMDB-trained generation induce dependence; no independent confirmatory p-values or confidence intervals are inferred.",
+      "alt_text": "Nine effect-profile scatter panels show real and synthetic syndrome-minus-reference Hedges g, an identity line and per-syndrome correlation and sign agreement.",
+      "outputs": {
+        "svg": "355619d4e888a2e27aefae0a0b331ced3d3dd4755f91497fbc284018cd0d492b",
+        "png": "96dd4f2b125e327a02f31f17858086b3f9ed1da86afb07b2a21db38c9fd4097f"
+      }
+    },
+    {
+      "name": "fig10_synthetic_fidelity",
+      "sources": {
+        "publication/synthetic_consistency/syndrome_fidelity_summary.csv": "7de47b6dc654b2b5d9d84c5548000127a7e33f57e1e5fcd030c3e37a3da92ac3"
+      },
+      "caption": "Per-syndrome descriptive fidelity across 120 correlated features. A: median absolute synthetic-minus-real mean shift divided by the real sample SD. B: median sample variance ratio; dashed line is equal dispersion. C: agreement of the signs of real/synthetic Hedges\u2019 g against the same fixed FairFace reference. Model tags are pooled as the empirical release mixture; stratified and 1%/99% winsorized results are supplied separately. No bootstrap intervals or biological independence across features are assumed.",
+      "alt_text": "Three aligned bar panels show standardized mean shift, variance preservation and effect-direction agreement for nine matched syndromes.",
+      "outputs": {
+        "svg": "8a891c1e2d52c197a708722018874d7098722686b64a9d57424dee74863fa94d",
+        "png": "c1ac3757ff5e634ba6c70ee4ced308bf7a01a57aba951e0c38ccdb151b088015"
+      }
+    }
+  ],
+  "format": "SVG with editable vector text and 300 dpi PNG; 7.1-inch manuscript width; no image-derived art"
+}

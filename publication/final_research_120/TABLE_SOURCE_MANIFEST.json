@@ -1,0 +1,26 @@
+{
+  "source_sha256": {
+    "S1_primary_all_5760_hypotheses.csv": "ef2775dab3529e5e0c34d82c793030679ca09d4c0106b4f89d46ace7b0cefd5c",
+    "Supplementary_Table_S6_exact_feature_definitions.csv": "8757c08c9498246c09f277b04c4491525e306183263109b6d9367c4b73fc3832",
+    "clinical_highlights_120.csv": "b2fa312f4fc5d0659af39357c5ce3f6555a5f197a361b270a15b35ec52bf1b15",
+    "full_adjusted_screen.csv": "79da99efab7049a9a0fa1f57786a1140eb83d7d4270b5d9664177e7734a40e4a",
+    "layer1_broad_ethnicity_analysis_A_reference_kruskal_all_groups.csv": "e66c65f2842705abb9ef6f468e05e309522115f1ca8f96943a069d7619cf65d5",
+    "layer1_broad_ethnicity_analysis_B_matched_disease_vs_reference.csv": "6ce17874dcc939e5e94badd451c568f65c2e1cc70f028398b214a2ac5f9e3e4a",
+    "layer1_broad_ethnicity_analysis_C_all_interactions.csv": "0eddb5fd8a3386fc668ee85fa3feb2b31327514fc69f2256cf598118c2a10c2c",
+    "layer2_subcategory_analysis_A_reference_kruskal_all_groups.csv": "814defbb44fb87693519fbf42c9bed3ecbe171c96c4cd13aac2a042137b504f7",
+    "layer2_subcategory_analysis_B_matched_disease_vs_reference.csv": "6a23e35671a226d6b168517af14c127fbdfc32de69b8860d16df4afc4dbdcaa7",
+    "layer2_subcategory_analysis_C_all_interactions.csv": "81b5cdaf480f3d190302f416a5b1526469cafd72ca0cb1dd0d9a22f96f729e28",
+    "regional_summary_120.csv": "8238c63c742aad53756ba0b684a2514e2b9ccc794ec5733746780d241fb0c37a",
+    "three_predefined_reference_adjusted_models.csv": "c3a633bd1b00bf7a429799298d70c682d2e8cb81dc6226d3ba2f9ff8469784d4",
+    "within_gmdb_age_sex_adjusted.csv": "2173c271dcb81fa4c5c986cbc6f82522a315eb8cb1403e1f9d0f2bba4a63c2f3",
+    "within_gmdb_results.csv": "20a1367844d2e08cc112e2052f6e16c76ef1e097ced60df2553009fa06105912"
+  },
+  "code_sha256": "c72e5193b2e5e3e630879732bf3aa883eff03484a8a513435af65801b2cb938e",
+  "primary": {
+    "features": 120,
+    "syndromes": 48,
+    "hypotheses": 5760,
+    "significant": 955
+  },
+  "selection_rules": "SELECTION_RULES.md; support-first selection without significance filtering"
+}

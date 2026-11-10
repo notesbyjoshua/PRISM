@@ -1,0 +1,34 @@
+layer,feature,group,n,mean,median
+layer1_broad_ethnicity,philtrum_length,African,500,0.28401199999999999,0.281947
+layer1_broad_ethnicity,philtrum_length,Asian,1909,0.28493299999999999,0.283111
+layer1_broad_ethnicity,philtrum_length,European,500,0.30665599999999998,0.30424800000000002
+layer1_broad_ethnicity,philtrum_length,Others,500,0.290099,0.291628
+layer1_broad_ethnicity,inter_pupillary_distance,African,500,0.47703899999999999,0.47763499999999998
+layer1_broad_ethnicity,inter_pupillary_distance,Asian,1909,0.45261200000000001,0.45236799999999999
+layer1_broad_ethnicity,inter_pupillary_distance,European,500,0.45400400000000002,0.45324799999999998
+layer1_broad_ethnicity,inter_pupillary_distance,Others,500,0.455542,0.45483000000000001
+layer1_broad_ethnicity,forehead_height,African,500,0.199324,0.19997799999999999
+layer1_broad_ethnicity,forehead_height,Asian,1909,0.19986899999999999,0.201234
+layer1_broad_ethnicity,forehead_height,European,500,0.199962,0.20082
+layer1_broad_ethnicity,forehead_height,Others,500,0.202266,0.20341999999999999
+layer2_subcategory,philtrum_length,African,500,0.28401199999999999,0.281947
+layer2_subcategory,philtrum_length,East Asian,500,0.29022799999999999,0.286277
+layer2_subcategory,philtrum_length,European,500,0.30665599999999998,0.30424800000000002
+layer2_subcategory,philtrum_length,Latino/Hispanic,500,0.290099,0.291628
+layer2_subcategory,philtrum_length,Middle Eastern,409,0.296792,0.29444300000000001
+layer2_subcategory,philtrum_length,SE Asian,500,0.27524300000000002,0.27398600000000001
+layer2_subcategory,philtrum_length,South Asian,500,0.27962900000000002,0.27881699999999998
+layer2_subcategory,inter_pupillary_distance,African,500,0.47703899999999999,0.47763499999999998
+layer2_subcategory,inter_pupillary_distance,East Asian,500,0.43822800000000001,0.43730599999999997
+layer2_subcategory,inter_pupillary_distance,European,500,0.45400400000000002,0.45324799999999998
+layer2_subcategory,inter_pupillary_distance,Latino/Hispanic,500,0.455542,0.45483000000000001
+layer2_subcategory,inter_pupillary_distance,Middle Eastern,409,0.45574300000000001,0.45457500000000001
+layer2_subcategory,inter_pupillary_distance,SE Asian,500,0.45190799999999998,0.45045000000000002
+layer2_subcategory,inter_pupillary_distance,South Asian,500,0.465138,0.46525300000000003
+layer2_subcategory,forehead_height,African,500,0.199324,0.19997799999999999
+layer2_subcategory,forehead_height,East Asian,500,0.194103,0.19526099999999999
+layer2_subcategory,forehead_height,European,500,0.199962,0.20082
+layer2_subcategory,forehead_height,Latino/Hispanic,500,0.202266,0.20341999999999999
+layer2_subcategory,forehead_height,Middle Eastern,409,0.199598,0.20152
+layer2_subcategory,forehead_height,SE Asian,500,0.20197799999999999,0.20279700000000001
+layer2_subcategory,forehead_height,South Asian,500,0.20374900000000001,0.20411899999999999

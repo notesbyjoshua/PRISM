@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="410.58pt" height="408.024pt" viewBox="0 0 410.58 408.024" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 408.024
+L 410.58 408.024
+L 410.58 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 23.0472 70.967088
+L 387.5328 70.967088
+Q 392.28696 70.967088 392.28696 66.2436
+L 392.28696 38.68992
+Q 392.28696 33.966432 387.5328 33.966432
+L 23.0472 33.966432
+Q 18.29304 33.966432 18.29304 38.68992
+L 18.29304 66.2436
+Q 18.29304 70.967088 23.0472 70.967088
+z
+" clip-path="url(#pfe8bf4b450)" style="fill: #f3f5f6; stroke: #66727d; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 23.0472 157.564368
+L 387.5328 157.564368
+Q 392.28696 157.564368 392.28696 152.84088
+L 392.28696 93.79728
+Q 392.28696 89.073792 387.5328 89.073792
+L 23.0472 89.073792
+Q 18.29304 89.073792 18.29304 93.79728
+L 18.29304 152.84088
+Q 18.29304 157.564368 23.0472 157.564368
+z
+" clip-path="url(#pfe8bf4b450)" style="fill: #e0eef1; stroke: #66727d; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 23.0472 236.289168
+L 387.5328 236.289168
+Q 392.28696 236.289168 392.28696 231.56568
+L 392.28696 188.26704
+Q 392.28696 183.543552 387.5328 183.543552
+L 23.0472 183.543552
+Q 18.29304 183.543552 18.29304 188.26704
+L 18.29304 231.56568
+Q 18.29304 236.289168 23.0472 236.289168
+z
+" clip-path="url(#pfe8bf4b450)" style="fill: #edf2e5; stroke: #66727d; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 23.0472 348.472008
+L 197.3664 348.472008
+Q 202.12056 348.472008 202.12056 343.74852
+L 202.12056 263.0556
+Q 202.12056 258.332112 197.3664 258.332112
+L 23.0472 258.332112
+Q 18.29304 258.332112 18.29304 263.0556
+L 18.29304 343.74852
+Q 18.29304 348.472008 23.0472 348.472008
+z
+" clip-path="url(#pfe8bf4b450)" style="fill: #edf2e5; stroke: #66727d; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 213.2136 348.472008
+L 387.5328 348.472008
+Q 392.28696 348.472008 392.28696 343.74852
+L 392.28696 263.0556
+Q 392.28696 258.332112 387.5328 258.332112
+L 213.2136 258.332112
+Q 208.45944 258.332112 208.45944 263.0556
+L 208.45944 343.74852
+Q 208.45944 348.472008 213.2136 348.472008
+z
+" clip-path="url(#pfe8bf4b450)" style="fill: #fbedd8; stroke: #66727d; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start" x="15.1236" y="17.0406" transform="rotate(-0 15.1236 17.0406)">A  Inputs and FaceKit measurement platform</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle" x="205.29" y="54.805002" transform="rotate(-0 205.29 54.805002)">GMDB photographs     •     FairFace margin 0.25     •     PDIDB synthetic images</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 205.29 74.150676
+Q 205.29 80.020318 205.29 84.771927
+" style="fill: none; stroke: #5f6b76; stroke-linecap: round"/>
+    <path d="M 207.09 81.171927
+L 205.29 84.771927
+L 203.49 81.171927
+z
+" style="fill: #5f6b76; stroke: #5f6b76; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(110.691563 109.453631)">FaceKit (Chen et al., 2026; pinned source)</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(101.941875 120.256092)">478 landmarks + facial transformation matrix</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(132.282422 131.058553)">Canonical-depth pose correction</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(98.793984 141.861014)">120 feature-specific normalized measurements</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 397.4373 158.778394
+Q 397.4373 170.554897 397.4373 181.213365
+" style="fill: none; stroke: #5f6b76; stroke-linecap: round"/>
+    <path d="M 399.2373 177.613365
+L 397.4373 181.213365
+L 395.6373 177.613365
+z
+" style="fill: #5f6b76; stroke: #5f6b76; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start" x="15.1236" y="170.55396" transform="rotate(-0 15.1236 170.55396)">B  PRISM cohort design and statistical investigation</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(34.305469 201.452141)">QC: one unambiguous face; 120 finite outputs; yaw/pitch/roll ≤ 15°/15°/10°</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(59.024531 212.254602)">GMDB: age 3 ≤ age &lt; 10; select one image per recorded patient</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(67.486641 223.057063)">FairFace: source age label 3–9; expanded balanced reference</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 110.2068 239.473717
+Q 110.2068 247.31337 110.2068 254.03499
+" style="fill: none; stroke: #5f6b76; stroke-linecap: round"/>
+    <path d="M 112.0068 250.43499
+L 110.2068 254.03499
+L 108.4068 250.43499
+z
+" style="fill: #5f6b76; stroke: #5f6b76; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 300.3732 239.473717
+Q 300.3732 247.31337 300.3732 254.03499
+" style="fill: none; stroke: #5f6b76; stroke-linecap: round"/>
+    <path d="M 302.1732 250.43499
+L 300.3732 254.03499
+L 298.5732 250.43499
+z
+" style="fill: #5f6b76; stroke: #5f6b76; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(68.957269 278.73415)">Real-patient study</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(41.757581 289.536611)">1,845 selected GMDB patients</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(40.761956 300.339072)">3,409 FairFace reference paths</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(38.289066 311.141533)">48 × 120 = 5,760 primary tests</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(45.290081 321.943994)">Demographics; within-GMDB</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(30.276253 332.746455)">Covariates; photo/reference checks</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(236.930231 278.73415)">Separate conditional fidelity</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(227.688356 289.536611)">1,563 synthetic images pass QC</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(227.944997 300.339072)">9 matched labels; 1,424 images</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(238.899684 311.141533)">At least 10 rows per source</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(222.216637 321.943994)">Distribution and profile summaries</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'" transform="translate(233.540466 332.746455)">Model tags; heavy-tail checks</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle" x="205.29" y="367.36596" transform="rotate(-0 205.29 367.36596)">Synthetic rows contribute zero observations to real-patient inference.</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #53606b" x="205.29" y="387.04716" transform="rotate(-0 205.29 387.04716)">Original schematic. No real or generated facial photographs are displayed.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pfe8bf4b450">
+   <rect x="7.2" y="7.2" width="396.18" height="393.624"/>
+  </clipPath>
+ </defs>
+</svg>

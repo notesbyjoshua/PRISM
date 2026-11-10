@@ -1,0 +1,195 @@
+syndrome,source,field,recorded_value,n,source_total_n
+22q11.2 deletion syndrome,PDIDB_total,age_range,<missing>,141,141
+22q11.2 deletion syndrome,PDIDB_total,gender,<missing>,141,141
+22q11.2 deletion syndrome,PDIDB_total,race,<missing>,141,141
+22q11.2 deletion syndrome,PDIDB_total,model,v1,54,141
+22q11.2 deletion syndrome,PDIDB_total,model,v2,87,141
+22q11.2 deletion syndrome,PDIDB_total,verification,clinician,54,141
+22q11.2 deletion syndrome,PDIDB_total,verification,low,87,141
+22q11.2 deletion syndrome,PDIDB_QC,age_range,<missing>,139,139
+22q11.2 deletion syndrome,PDIDB_QC,gender,<missing>,139,139
+22q11.2 deletion syndrome,PDIDB_QC,race,<missing>,139,139
+22q11.2 deletion syndrome,PDIDB_QC,model,v1,53,139
+22q11.2 deletion syndrome,PDIDB_QC,model,v2,86,139
+22q11.2 deletion syndrome,PDIDB_QC,verification,clinician,53,139
+22q11.2 deletion syndrome,PDIDB_QC,verification,low,86,139
+angelman syndrome; as,GMDB_selected,sex_label,Female,7,18
+angelman syndrome; as,GMDB_selected,sex_label,Male,11,18
+angelman syndrome; as,GMDB_selected,broad_group,African,2,18
+angelman syndrome; as,GMDB_selected,broad_group,Asian,7,18
+angelman syndrome; as,GMDB_selected,broad_group,European,7,18
+angelman syndrome; as,GMDB_selected,broad_group,Others,2,18
+angelman syndrome; as,PDIDB_total,age_range,<missing>,169,169
+angelman syndrome; as,PDIDB_total,gender,<missing>,169,169
+angelman syndrome; as,PDIDB_total,race,<missing>,169,169
+angelman syndrome; as,PDIDB_total,model,v1,77,169
+angelman syndrome; as,PDIDB_total,model,v2,92,169
+angelman syndrome; as,PDIDB_total,verification,low,169,169
+angelman syndrome; as,PDIDB_QC,age_range,<missing>,144,144
+angelman syndrome; as,PDIDB_QC,gender,<missing>,144,144
+angelman syndrome; as,PDIDB_QC,race,<missing>,144,144
+angelman syndrome; as,PDIDB_QC,model,v1,65,144
+angelman syndrome; as,PDIDB_QC,model,v2,79,144
+angelman syndrome; as,PDIDB_QC,verification,low,144,144
+cornelia de lange syndrome,GMDB_selected,sex_label,<missing>,1,64
+cornelia de lange syndrome,GMDB_selected,sex_label,Female,29,64
+cornelia de lange syndrome,GMDB_selected,sex_label,Male,34,64
+cornelia de lange syndrome,GMDB_selected,broad_group,<missing>,1,64
+cornelia de lange syndrome,GMDB_selected,broad_group,African,2,64
+cornelia de lange syndrome,GMDB_selected,broad_group,Asian,11,64
+cornelia de lange syndrome,GMDB_selected,broad_group,European,29,64
+cornelia de lange syndrome,GMDB_selected,broad_group,Others,21,64
+cornelia de lange syndrome,PDIDB_total,age_range,<missing>,182,182
+cornelia de lange syndrome,PDIDB_total,gender,<missing>,182,182
+cornelia de lange syndrome,PDIDB_total,race,<missing>,182,182
+cornelia de lange syndrome,PDIDB_total,model,v1,90,182
+cornelia de lange syndrome,PDIDB_total,model,v2,92,182
+cornelia de lange syndrome,PDIDB_total,verification,low,182,182
+cornelia de lange syndrome,PDIDB_QC,age_range,<missing>,140,140
+cornelia de lange syndrome,PDIDB_QC,gender,<missing>,140,140
+cornelia de lange syndrome,PDIDB_QC,race,<missing>,140,140
+cornelia de lange syndrome,PDIDB_QC,model,v1,67,140
+cornelia de lange syndrome,PDIDB_QC,model,v2,73,140
+cornelia de lange syndrome,PDIDB_QC,verification,low,140,140
+kabuki syndrome,GMDB_selected,sex_label,Female,16,35
+kabuki syndrome,GMDB_selected,sex_label,Male,19,35
+kabuki syndrome,GMDB_selected,broad_group,<missing>,2,35
+kabuki syndrome,GMDB_selected,broad_group,Asian,19,35
+kabuki syndrome,GMDB_selected,broad_group,European,13,35
+kabuki syndrome,GMDB_selected,broad_group,Others,1,35
+kabuki syndrome,PDIDB_total,age_range,<missing>,161,161
+kabuki syndrome,PDIDB_total,gender,<missing>,161,161
+kabuki syndrome,PDIDB_total,race,<missing>,161,161
+kabuki syndrome,PDIDB_total,model,v1,70,161
+kabuki syndrome,PDIDB_total,model,v2,91,161
+kabuki syndrome,PDIDB_total,verification,low,161,161
+kabuki syndrome,PDIDB_QC,age_range,<missing>,142,142
+kabuki syndrome,PDIDB_QC,gender,<missing>,142,142
+kabuki syndrome,PDIDB_QC,race,<missing>,142,142
+kabuki syndrome,PDIDB_QC,model,v1,63,142
+kabuki syndrome,PDIDB_QC,model,v2,79,142
+kabuki syndrome,PDIDB_QC,verification,low,142,142
+kbg syndrome; kbgs,GMDB_selected,sex_label,<missing>,1,32
+kbg syndrome; kbgs,GMDB_selected,sex_label,Female,7,32
+kbg syndrome; kbgs,GMDB_selected,sex_label,Male,24,32
+kbg syndrome; kbgs,GMDB_selected,broad_group,<missing>,2,32
+kbg syndrome; kbgs,GMDB_selected,broad_group,Asian,2,32
+kbg syndrome; kbgs,GMDB_selected,broad_group,European,24,32
+kbg syndrome; kbgs,GMDB_selected,broad_group,Others,4,32
+kbg syndrome; kbgs,PDIDB_total,age_range,<missing>,187,187
+kbg syndrome; kbgs,PDIDB_total,gender,<missing>,187,187
+kbg syndrome; kbgs,PDIDB_total,race,<missing>,187,187
+kbg syndrome; kbgs,PDIDB_total,model,v1,92,187
+kbg syndrome; kbgs,PDIDB_total,model,v2,95,187
+kbg syndrome; kbgs,PDIDB_total,verification,low,187,187
+kbg syndrome; kbgs,PDIDB_QC,age_range,<missing>,173,173
+kbg syndrome; kbgs,PDIDB_QC,gender,<missing>,173,173
+kbg syndrome; kbgs,PDIDB_QC,race,<missing>,173,173
+kbg syndrome; kbgs,PDIDB_QC,model,v1,87,173
+kbg syndrome; kbgs,PDIDB_QC,model,v2,86,173
+kbg syndrome; kbgs,PDIDB_QC,verification,low,173,173
+nicolaides-baraitser syndrome; ncbrs,GMDB_selected,sex_label,Female,9,24
+nicolaides-baraitser syndrome; ncbrs,GMDB_selected,sex_label,Male,15,24
+nicolaides-baraitser syndrome; ncbrs,GMDB_selected,broad_group,<missing>,4,24
+nicolaides-baraitser syndrome; ncbrs,GMDB_selected,broad_group,African,1,24
+nicolaides-baraitser syndrome; ncbrs,GMDB_selected,broad_group,Asian,2,24
+nicolaides-baraitser syndrome; ncbrs,GMDB_selected,broad_group,European,17,24
+nicolaides-baraitser syndrome; ncbrs,PDIDB_total,age_range,<missing>,168,168
+nicolaides-baraitser syndrome; ncbrs,PDIDB_total,gender,<missing>,168,168
+nicolaides-baraitser syndrome; ncbrs,PDIDB_total,race,<missing>,168,168
+nicolaides-baraitser syndrome; ncbrs,PDIDB_total,model,v1,85,168
+nicolaides-baraitser syndrome; ncbrs,PDIDB_total,model,v2,83,168
+nicolaides-baraitser syndrome; ncbrs,PDIDB_total,verification,low,168,168
+nicolaides-baraitser syndrome; ncbrs,PDIDB_QC,age_range,<missing>,141,141
+nicolaides-baraitser syndrome; ncbrs,PDIDB_QC,gender,<missing>,141,141
+nicolaides-baraitser syndrome; ncbrs,PDIDB_QC,race,<missing>,141,141
+nicolaides-baraitser syndrome; ncbrs,PDIDB_QC,model,v1,72,141
+nicolaides-baraitser syndrome; ncbrs,PDIDB_QC,model,v2,69,141
+nicolaides-baraitser syndrome; ncbrs,PDIDB_QC,verification,low,141,141
+noonan syndrome,GMDB_selected,sex_label,Female,16,34
+noonan syndrome,GMDB_selected,sex_label,Male,18,34
+noonan syndrome,GMDB_selected,broad_group,<missing>,8,34
+noonan syndrome,GMDB_selected,broad_group,African,6,34
+noonan syndrome,GMDB_selected,broad_group,Asian,9,34
+noonan syndrome,GMDB_selected,broad_group,European,9,34
+noonan syndrome,GMDB_selected,broad_group,Others,2,34
+noonan syndrome,PDIDB_total,age_range,<missing>,190,190
+noonan syndrome,PDIDB_total,gender,<missing>,190,190
+noonan syndrome,PDIDB_total,race,<missing>,190,190
+noonan syndrome,PDIDB_total,model,v1,92,190
+noonan syndrome,PDIDB_total,model,v2,98,190
+noonan syndrome,PDIDB_total,verification,low,190,190
+noonan syndrome,PDIDB_QC,age_range,<missing>,178,178
+noonan syndrome,PDIDB_QC,gender,<missing>,178,178
+noonan syndrome,PDIDB_QC,race,<missing>,178,178
+noonan syndrome,PDIDB_QC,model,v1,87,178
+noonan syndrome,PDIDB_QC,model,v2,91,178
+noonan syndrome,PDIDB_QC,verification,low,178,178
+rubinstein-taybi syndrome,GMDB_selected,sex_label,Female,18,24
+rubinstein-taybi syndrome,GMDB_selected,sex_label,Male,6,24
+rubinstein-taybi syndrome,GMDB_selected,broad_group,African,6,24
+rubinstein-taybi syndrome,GMDB_selected,broad_group,Asian,8,24
+rubinstein-taybi syndrome,GMDB_selected,broad_group,European,4,24
+rubinstein-taybi syndrome,GMDB_selected,broad_group,Others,6,24
+rubinstein-taybi syndrome,PDIDB_total,age_range,<missing>,177,177
+rubinstein-taybi syndrome,PDIDB_total,gender,<missing>,177,177
+rubinstein-taybi syndrome,PDIDB_total,race,<missing>,177,177
+rubinstein-taybi syndrome,PDIDB_total,model,v1,87,177
+rubinstein-taybi syndrome,PDIDB_total,model,v2,90,177
+rubinstein-taybi syndrome,PDIDB_total,verification,low,177,177
+rubinstein-taybi syndrome,PDIDB_QC,age_range,<missing>,167,167
+rubinstein-taybi syndrome,PDIDB_QC,gender,<missing>,167,167
+rubinstein-taybi syndrome,PDIDB_QC,race,<missing>,167,167
+rubinstein-taybi syndrome,PDIDB_QC,model,v1,80,167
+rubinstein-taybi syndrome,PDIDB_QC,model,v2,87,167
+rubinstein-taybi syndrome,PDIDB_QC,verification,low,167,167
+smith-magenis syndrome; sms,GMDB_selected,sex_label,Female,9,16
+smith-magenis syndrome; sms,GMDB_selected,sex_label,Male,7,16
+smith-magenis syndrome; sms,GMDB_selected,broad_group,<missing>,1,16
+smith-magenis syndrome; sms,GMDB_selected,broad_group,Asian,6,16
+smith-magenis syndrome; sms,GMDB_selected,broad_group,European,9,16
+smith-magenis syndrome; sms,PDIDB_total,age_range,<missing>,166,166
+smith-magenis syndrome; sms,PDIDB_total,gender,<missing>,166,166
+smith-magenis syndrome; sms,PDIDB_total,race,<missing>,166,166
+smith-magenis syndrome; sms,PDIDB_total,model,v1,78,166
+smith-magenis syndrome; sms,PDIDB_total,model,v2,88,166
+smith-magenis syndrome; sms,PDIDB_total,verification,low,166,166
+smith-magenis syndrome; sms,PDIDB_QC,age_range,<missing>,156,156
+smith-magenis syndrome; sms,PDIDB_QC,gender,<missing>,156,156
+smith-magenis syndrome; sms,PDIDB_QC,race,<missing>,156,156
+smith-magenis syndrome; sms,PDIDB_QC,model,v1,71,156
+smith-magenis syndrome; sms,PDIDB_QC,model,v2,85,156
+smith-magenis syndrome; sms,PDIDB_QC,verification,low,156,156
+williams-beuren syndrome; wbs,GMDB_selected,sex_label,Female,36,67
+williams-beuren syndrome; wbs,GMDB_selected,sex_label,Male,31,67
+williams-beuren syndrome; wbs,GMDB_selected,broad_group,African,14,67
+williams-beuren syndrome; wbs,GMDB_selected,broad_group,Asian,25,67
+williams-beuren syndrome; wbs,GMDB_selected,broad_group,European,7,67
+williams-beuren syndrome; wbs,GMDB_selected,broad_group,Others,21,67
+williams-beuren syndrome; wbs,PDIDB_total,age_range,<missing>,186,186
+williams-beuren syndrome; wbs,PDIDB_total,gender,<missing>,186,186
+williams-beuren syndrome; wbs,PDIDB_total,race,<missing>,186,186
+williams-beuren syndrome; wbs,PDIDB_total,model,v1,90,186
+williams-beuren syndrome; wbs,PDIDB_total,model,v2,96,186
+williams-beuren syndrome; wbs,PDIDB_total,verification,low,186,186
+williams-beuren syndrome; wbs,PDIDB_QC,age_range,<missing>,183,183
+williams-beuren syndrome; wbs,PDIDB_QC,gender,<missing>,183,183
+williams-beuren syndrome; wbs,PDIDB_QC,race,<missing>,183,183
+williams-beuren syndrome; wbs,PDIDB_QC,model,v1,89,183
+williams-beuren syndrome; wbs,PDIDB_QC,model,v2,94,183
+williams-beuren syndrome; wbs,PDIDB_QC,verification,low,183,183
+all selected/source records,GMDB_all_selected,sex_label,<missing>,35,1845
+all selected/source records,GMDB_all_selected,sex_label,Female,871,1845
+all selected/source records,GMDB_all_selected,sex_label,Male,939,1845
+all selected/source records,GMDB_all_selected,broad_group,<missing>,280,1845
+all selected/source records,GMDB_all_selected,broad_group,African,109,1845
+all selected/source records,GMDB_all_selected,broad_group,Asian,383,1845
+all selected/source records,GMDB_all_selected,broad_group,European,937,1845
+all selected/source records,GMDB_all_selected,broad_group,Others,136,1845
+all selected/source records,PDIDB_all,age_range,<missing>,1727,1727
+all selected/source records,PDIDB_all,gender,<missing>,1727,1727
+all selected/source records,PDIDB_all,race,<missing>,1727,1727
+all selected/source records,PDIDB_all,model,v1,815,1727
+all selected/source records,PDIDB_all,model,v2,912,1727
+all selected/source records,PDIDB_all,verification,clinician,54,1727
+all selected/source records,PDIDB_all,verification,low,1673,1727

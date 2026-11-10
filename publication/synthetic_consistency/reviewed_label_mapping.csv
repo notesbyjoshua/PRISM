@@ -1,0 +1,11 @@
+pdidb_disease,gmdb_syndrome,mapping_status,review_basis
+22q11.2 deletion syndrome,,excluded_ambiguous_scope,Generic deletion label cannot be equated with current DiGeorge or distal deletion cohorts
+angelman syndrome; as,ANGELMAN SYNDROME; AS__471b9572,reviewed_exact_name,Exact syndrome name and current internal name; no subtype expansion
+cornelia de lange syndrome,Cornelia de Lange syndrome__fb4a389d,reviewed_exact_name,Exact syndrome name and current internal name; no subtype expansion
+kabuki syndrome,Kabuki syndrome__fa463433,reviewed_exact_name,Exact syndrome name and current internal name; no subtype expansion
+kbg syndrome; kbgs,KBG SYNDROME; KBGS__4b10cf71,reviewed_exact_name,Exact syndrome name and current internal name; no subtype expansion
+nicolaides-baraitser syndrome; ncbrs,NICOLAIDES-BARAITSER SYNDROME; NCBRS__78ac980b,reviewed_exact_name,Exact syndrome name and current internal name; no subtype expansion
+noonan syndrome,Noonan syndrome__c2df3f82,reviewed_exact_name,Exact syndrome name only; excludes Noonan-like loose anagen hair cohort
+rubinstein-taybi syndrome,Rubinstein-Taybi syndrome__ad6c2718,reviewed_exact_name,Exact syndrome name and current internal name; no subtype expansion
+smith-magenis syndrome; sms,SMITH-MAGENIS SYNDROME; SMS__211f4178,reviewed_exact_name,Exact syndrome name only; excludes similarly spelled distinct syndromes
+williams-beuren syndrome; wbs,WILLIAMS-BEUREN SYNDROME; WBS__93e4a782,reviewed_exact_name,Exact syndrome name and current internal name; no subtype expansion

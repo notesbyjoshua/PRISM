@@ -1,0 +1,6 @@
+feature,feature_name,significant_syndromes,tested_syndromes,positive,negative,significance,anatomical_region,formula,units
+eb_lateral_thickness_mean,Bilateral lateral eyebrow thickness index,32,48,32,0,q < 0.05; global BH across all 5760 primary hypotheses,eyebrows,0.5 * (f['eb_lateral_thickness_r'] + f['eb_lateral_thickness_l']),unitless
+forehead_height,Forehead height / bizygomatic width,29,48,29,0,q < 0.05; global BH across all 5760 primary hypotheses,forehead,"abs(lm[TRICHION, 1] - lm[GLABELLA, 1]) / bizygomatic_width",unitless
+chin_height,Chin height / bizygomatic width,27,48,0,27,q < 0.05; global BH across all 5760 primary hypotheses,chin / jaw,"abs(lm[MENTON, 1] - lm[MENTOLABIAL, 1]) / bizygomatic_width",unitless
+eb_lateral_thickness_l,Left lateral eyebrow thickness index,27,48,27,0,q < 0.05; global BH across all 5760 primary hypotheses,eyebrows,"abs(lm[[300, 293, 334, 296, 336][0], 1] - lm[[276, 283, 282, 295, 285][0], 1]) / bizygomatic_width",unitless
+eb_lateral_thickness_r,Right lateral eyebrow thickness index,26,48,26,0,q < 0.05; global BH across all 5760 primary hypotheses,eyebrows,"abs(lm[[70, 63, 105, 66, 107][0], 1] - lm[[46, 53, 52, 65, 55][0], 1]) / bizygomatic_width",unitless
