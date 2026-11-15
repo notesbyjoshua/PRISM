@@ -15,6 +15,12 @@ in [ACTIVE_ANALYSIS.json](ACTIVE_ANALYSIS.json); the research record is preserve
 [the current study workflow](revision_results/rebuild_120_20261028/README.md) for provenance,
 validation, sensitivity analyses and the private report location.
 
+The replacement sensitivity workflow for the experimental three-category redesign is selected in
+[SENSITIVITY_ANALYSIS.json](SENSITIVITY_ANALYSIS.json). It runs same-source FairFace placebo controls,
+within-GMDB syndrome-label permutations and fixed-allocation FairFace reference resampling;
+see [methods and commands](research/race_stratified_sensitivity/README.md) and
+[aggregate sensitivity results](research/race_stratified_sensitivity_results_20261115/README.md).
+
 > PRISM is an exploratory research tool. Its results are not medical advice,
 > a diagnosis, or a substitute for clinical evaluation.
 

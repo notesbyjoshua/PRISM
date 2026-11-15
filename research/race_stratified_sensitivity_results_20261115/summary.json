@@ -1,0 +1,132 @@
+{
+  "analysis_seeds": {
+    "permutation": 2026111502,
+    "placebo": 2026111501,
+    "reference-resampling": 2026111503
+  },
+  "baseline_id": "PRISM_RACE_STRATIFIED_20261115",
+  "eligible_cells": 80,
+  "gmdb_permutation": {
+    "within_race": {
+      "B": 100000,
+      "MC_decision_ambiguous": 141,
+      "MC_upper_q_below_005": 0,
+      "discoveries": 103,
+      "overlap_main": 80,
+      "overlap_main_same_direction": 80,
+      "p_floor": 9.99990000099999e-06
+    },
+    "within_race_sex_age": {
+      "B": 100000,
+      "MC_decision_ambiguous": 135,
+      "MC_upper_q_below_005": 0,
+      "discoveries": 92,
+      "overlap_main": 58,
+      "overlap_main_same_direction": 58,
+      "p_floor": 9.99990000099999e-06
+    }
+  },
+  "interpretation": "Point-estimate permutation discoveries remain Monte Carlo-sensitive; European placebo unsupported and its reference sample fixed.",
+  "observed_main_discoveries": 982,
+  "placebo": {
+    "B": 1000,
+    "fraction_at_least_one": 0.013,
+    "maximum": 4,
+    "mean": 0.021,
+    "median": 0.0,
+    "minimum": 0,
+    "primary_exceedance_fraction_descriptive_only": 0.0,
+    "q95": 0.0,
+    "supported_hypotheses": 2760,
+    "unsupported_hypotheses": 6840
+  },
+  "planned_hypotheses": 9600,
+  "point_estimate_cross_design_candidates": 55,
+  "reference_X": 889,
+  "reference_quotas": {
+    "African": 52,
+    "Asian": 190,
+    "European": 647
+  },
+  "reference_resampling": {
+    "B": 1000,
+    "any_sign_changes": 860,
+    "fraction_at_least_one": 1.0,
+    "maximum": 1090,
+    "mean": 946.684,
+    "median": 950.0,
+    "minimum": 854,
+    "overlap_with_main": {
+      "fraction_at_least_one": 1.0,
+      "maximum": 953,
+      "mean": 904.856,
+      "median": 907.0,
+      "minimum": 837,
+      "q95": 934.0
+    },
+    "q95": 1002.0,
+    "stable_main_associations": 849,
+    "unstable_main_associations": 133
+  },
+  "reference_stability_by_race": [
+    {
+      "canonical_race": "African",
+      "descriptive_stable": 76,
+      "original_discoveries": 135,
+      "reference_images_vary": true
+    },
+    {
+      "canonical_race": "Asian",
+      "descriptive_stable": 193,
+      "original_discoveries": 252,
+      "reference_images_vary": true
+    },
+    {
+      "canonical_race": "European",
+      "descriptive_stable": 580,
+      "original_discoveries": 595,
+      "reference_images_vary": false
+    }
+  ],
+  "release_scope": "Overall aggregates and repetition-count figures only; individual-level and small-cell tables excluded.",
+  "simultaneous_MC_certain_cross_design_candidates": 0,
+  "status": "COMPLETED",
+  "study_id": "PRISM_THREE_RACE_SENSITIVITY_20261115",
+  "verification": {
+    "all_checkpoint_hashes_contiguous": true,
+    "all_empirical_BH_reconstructed": true,
+    "all_reference_quantiles_and_frequencies_reconstructed": true,
+    "direct_SciPy_placebo_repetitions": 3,
+    "direct_SciPy_reference_repetitions": 3,
+    "independent_bincount_permutation_repetitions_per_null": 1000,
+    "input_and_execution_code_hashes_match": true,
+    "planned_family": 9600,
+    "protected_artifacts_unchanged_during_execution": true,
+    "status": "PASS",
+    "synthetic_verification": {
+      "B": 200,
+      "case_n": 20,
+      "clearly_fabricated": true,
+      "features": 4,
+      "null_any_discovery_frequency": 0.035,
+      "positive_shift_SD": 2,
+      "reference_n": 60,
+      "seed": 516,
+      "shifted_mean_discoveries": 4.0
+    },
+    "tests": {
+      "regression_tests.xml": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 45
+      },
+      "tests.xml": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 14
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "status": "SELECTED_REDESIGN_WORKFLOW",
+  "analysis_id": "PRISM_THREE_RACE_SENSITIVITY_20261115",
+  "baseline_analysis_id": "PRISM_RACE_STRATIFIED_20261115",
+  "baseline_private_output": "local_review/race_stratified_20261115",
+  "private_output": "local_review/race_stratified_sensitivity",
+  "entrypoint": "research/race_stratified_sensitivity/run.py",
+  "analyses": ["placebo", "permutation", "reference-resampling"],
+  "replaces_workflow": "stats_testing/reference_sensitivity.py",
+  "historical_primary_and_publication_artifacts": "preserved",
+  "public_exports": "none; private aggregate candidates require review"
+}
