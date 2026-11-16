@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "locked_before_new_candidate_outcomes": true,
+  "study_id": "PRISM_RACE_STRATIFIED_20261115",
+  "selection": "Exactly ten supplied keys in supplied order; no replacements",
+  "seed": 2026111510,
+  "case_bootstrap_B": 2000,
+  "bootstrap": "Case-only percentile intervals, fixed reference, patient resampling units; conditional uncertainty, selected findings",
+  "percentiles": "100*(count reference less than x + 0.5*count equal to x)/reference_n",
+  "loo": "Every case omitted once, fixed reference, raw two-sided p only; no LOO BH or significance decisions",
+  "patient_consistency_score": {"2": "at least 0.80 strictly beyond reference median in primary g direction", "1": "at least 0.60 but below 0.80", "0": "below 0.60"},
+  "loo_robustness_score": {"2": "all signs retained and maximum absolute g change <= 0.25*abs(primary g)", "1": "all signs retained but relative change >0.25", "0": "any zero/opposite sign"},
+  "normalization_interpretability_score": {"2": "verified components on comparable aligned scale; both contributions quantified", "1": "verified formula but geometric comparability unresolved", "NA": "raw aligned components unavailable"},
+  "comparator_stability_score": {"2": "reference varies, sign agreement>=0.95 and global q discovery frequency>=0.80", "1": "reference varies and sign agreement>=0.95 only", "0": "reference varies and sign agreement<0.95", "NA": "no variation or evidence unavailable"},
+  "cross_category_score": {"2": "another eligible cell same direction with original global q<0.05 and no eligible opposite sign", "1": "all other eligible cells same direction, none significant", "0": "any eligible opposite sign", "NA": "no other eligible supported category"},
+  "clinical_interpretability_score": {"1": "simple planar chin width/height or forehead width ratio; prior accepted QC but no independent landmark review", "0": "hairline, eyelid/gaze, nasal vertical proxy or eyebrow area/lateral geometry vulnerable to pose/expression/landmark ambiguity", "2": "requires independent clinical and landmark corroboration; not assigned in this task"},
+  "ranking": "score_earned/score_possible descending, then score_possible descending, then locked candidate rank; report denominators and completeness",
+  "outlier_flag": "max LOO change >25% of abs(primary g), zero or negative boundary values, or nonfinite/missing",
+  "decomposition": "Only actual stored raw components; never invert normalized ratios to invent components",
+  "optional_matching": "Not run: optional additional design not prespecified; covariate compatibility reported, no forced matching",
+  "privacy": "All real outputs in verified ignored local_review; no person-level plots or public release; aggregate robustness figure only",
+  "clinical_claim": "Internal follow-up priority only; no novelty or independent clinical validation"
+}
