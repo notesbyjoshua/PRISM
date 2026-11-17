@@ -1,0 +1,5 @@
+canonical_race,design,reference_n,original_discoveries,stable_original,stable_percent,repetitions,sampling_scheme
+African,Original,52,135,76,56.2962962962963,1000,without_replacement_subset
+African,Larger subset,832,135,112,82.96296296296296,1000,without_replacement_subset
+Asian,Original,190,252,193,76.58730158730158,1000,without_replacement_subset
+Asian,Larger subset,3040,252,233,92.46031746031746,1000,without_replacement_subset

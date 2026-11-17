@@ -1,0 +1,60 @@
+{
+  "release_date": "2026-11-17",
+  "baseline_id": "PRISM_RACE_STRATIFIED_20261115",
+  "study_id": "PRISM_THREE_RACE_SENSITIVITY_20261115",
+  "release_scope": "Aggregate sensitivity figures, category-level plotting counts, caption and plotting code",
+  "no_patient_or_small_cell_tables": true,
+  "inference_rerun": false,
+  "source_commit": "f93b12e323ac0cd7d90551228233df806a1a0c25",
+  "primary_sensitivity_summary": {
+    "path": "research/race_stratified_sensitivity_results_20261115/summary.json",
+    "sha256": "bdf73bc8f210e913a9676d6521bd46d459ae7cc37e45321833f56b05dc7d84df"
+  },
+  "reference_diagnostic_source_sha256": {
+    "local_review/reference_stability_diagnostic/source_and_execution_manifest.json": "8baaf502ab6e575fe45bc34f7977ec17b355ad42eaa2178aec95c8015c1cbb15",
+    "local_review/reference_stability_diagnostic/reference_size_ladder_summary.csv": "96ab1e3745619760dae1b4460fa1afe6cf79f31fab032bdd32806d5e23951318",
+    "local_review/reference_stability_diagnostic/verification_report.json": "64df60bbf9dd65070bf09ee29cff4c330023afeb36391aa889e66b0ebb67d325"
+  },
+  "original_render_script_sha256": "a6e63b30aa73d1173383d1663046810c6b944ca4a9d9ccb94a5d6bc17ba79ca4",
+  "code_sha256": {
+    "generate_prism_sensitivity_figure.py": "fc31ce31748ca584c8057ea795da25a873844e21243497e82f7863db9091914d",
+    "tests/test_figure_data.py": "90a995afaf0f0a28d10690f4aaafae120a34e07c66c10c3a7b55c5a323a206b0"
+  },
+  "software": {
+    "numpy": "2.4.6",
+    "matplotlib": "3.11.1",
+    "pandas": "3.0.5"
+  },
+  "python": "3.11.4",
+  "font": "Times New Roman",
+  "PNG_dpi": 300,
+  "checks": {
+    "tests_passed": 28,
+    "original_and_released_inputs_validated": true,
+    "reproduced_from_released_inputs_only": true,
+    "all_four_PNGs_match_verified_originals_byte_for_byte": true,
+    "all_released_figures_match_verified_local_hashes": true,
+    "caption_and_plotting_CSV_reproduced_exactly": true,
+    "standalone_A_B_unchanged": true,
+    "local_results_unchanged": true,
+    "visual_review": "Unchanged from verified composite and Panel C; no clipped or overlapping labels."
+  },
+  "output_sha256": {
+    "FIGURE_CAPTION.txt": "2b59137c6cae3183f0af9d520c3fc06101a470fc63a3cccde4b9c98db630e302",
+    "README.md": "45b26dd7e4e1131264e6a24f3037cd6b70bc2c54afa7ffc1db8595dfa4869a10",
+    "panel_C_reference_comparison_values.csv": "65556500701660a1f639415e6c6d45e81865b1545abf000fbb06c87ed3681e31",
+    "reference_comparison_inputs.json": "69135fb782ab75bcffa2a12ded89f66de7883726b289410336a224f2b2cd662d",
+    "sensitivity_ABC_composite.pdf": "b67fb093099f6ddc05c0d00a26307a7a1b34a0d7581c8bef30800f64f7f852a1",
+    "sensitivity_ABC_composite.png": "4ff5294391193b20a825422489aa87c16268ea489118ed322c960fe52e8b56aa",
+    "sensitivity_ABC_composite.svg": "c3fafe1cdefe192f1597768ad39c366344a2b0e02afa79270396184480609932",
+    "sensitivity_panel_A.pdf": "42c59187d87c86f41cab9bd22cee8e0c900031c0dfc8a127670bef6faa8d8f31",
+    "sensitivity_panel_A.png": "13b69860a3e39aad27f993e7558a4628e4295839d1e347f7ba30278235f9df3f",
+    "sensitivity_panel_A.svg": "a2be2462a22ea9f9036ac0bedc3ae3ea8ed771b8871440a8e74f1156689bb7eb",
+    "sensitivity_panel_B.pdf": "d800de283ae406fc5a201d18aa290c36975983f9de7782959eafddacd6695380",
+    "sensitivity_panel_B.png": "a4e0dd3dcfec9f6596ea252c3b2925ed76d61b8d822b6f40a3efd1ab9a57a270",
+    "sensitivity_panel_B.svg": "d6e073b15f1f828558ffb8f8bfb6e6518a27c93b99a4a910fb158cc202570906",
+    "sensitivity_panel_C.pdf": "a7e520abc71f544484865ecf41f2bc89118b4ae82e406c7ef3528cb71b075cc8",
+    "sensitivity_panel_C.png": "fd72c66c4e19e4266ecac2771a985b592fec3d67cb8be75e484d1d13ed987c98",
+    "sensitivity_panel_C.svg": "bf0f00ca607f4a342e49a495d08d25fbfec3df0d782bee9903d824880d6f7728"
+  }
+}

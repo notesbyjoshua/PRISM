@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="540pt" height="770.4pt" viewBox="0 0 540 770.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-17T12:22:05.346290</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 770.4 
+L 540 770.4 
+L 540 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 45.9 108.567158 
+L 512.2575 108.567158 
+L 512.2575 84.382797 
+L 45.9 84.382797 
+z
+" clip-path="url(#pfaa12f1f64)" style="fill: #315c7a"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 512.2575 108.567158 
+L 518.4 108.567158 
+L 518.4 84.382797 
+L 512.2575 84.382797 
+z
+" clip-path="url(#pfaa12f1f64)" style="fill: #d55e00"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 45.9 115.822466 
+L 518.4 115.822466 
+" clip-path="url(#pfaa12f1f64)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 45.9 115.822466 
+L 45.9 118.724589 
+" clip-path="url(#pfaa12f1f64)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 164.025 115.822466 
+L 164.025 118.724589 
+" clip-path="url(#pfaa12f1f64)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 282.15 115.822466 
+L 282.15 118.724589 
+" clip-path="url(#pfaa12f1f64)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 400.275 115.822466 
+L 400.275 118.724589 
+" clip-path="url(#pfaa12f1f64)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 518.4 115.822466 
+L 518.4 118.724589 
+" clip-path="url(#pfaa12f1f64)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="62.616872" transform="rotate(-0 45.9 62.616872)">1,000 iterations</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'Times New Roman'; text-anchor: middle; fill: #ffffff" x="279.07875" y="98.867751" transform="rotate(-0 279.07875 98.867751)">987 runs · zero discoveries (98.7%)</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="45.9" y="127.012358" transform="rotate(-0 45.9 127.012358)">0</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="164.025" y="127.012358" transform="rotate(-0 164.025 127.012358)">25</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="282.15" y="127.012358" transform="rotate(-0 282.15 127.012358)">50</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="400.275" y="127.012358" transform="rotate(-0 400.275 127.012358)">75</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="518.4" y="127.012358" transform="rotate(-0 518.4 127.012358)">100</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Times New Roman'; text-anchor: start; fill: #d55e00" x="45.9" y="140.006827" transform="rotate(-0 45.9 140.006827)">≥1 discovery: 13 runs (1.3%)</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="159.354315" transform="rotate(-0 45.9 159.354315)">Mean 0.021 discoveries per run; maximum 4</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="178.701804" transform="rotate(-0 45.9 178.701804)">Supported: 2,760 / 9,600 planned hypotheses</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="198.049293" transform="rotate(-0 45.9 198.049293)">European pseudo-cases unavailable: all 647 reference images used.</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="215.784491" transform="rotate(-0 45.9 215.784491)">Does not test the GMDB–FairFace source effect.</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="43.78" transform="rotate(-0 45.9 43.78)">A   FairFace-only same-source placebo</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_4">
+    <path d="M 45.9 319.723499 
+L 360.9 319.723499 
+L 360.9 301.988301 
+L 45.9 301.988301 
+z
+" clip-path="url(#pa26730b68f)" style="fill: #315c7a"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 360.9 319.723499 
+L 451.4625 319.723499 
+L 451.4625 301.988301 
+L 360.9 301.988301 
+z
+" clip-path="url(#pa26730b68f)" style="fill: #bac5cf"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 45.9 358.418476 
+L 274.275 358.418476 
+L 274.275 340.683278 
+L 45.9 340.683278 
+z
+" clip-path="url(#pa26730b68f)" style="fill: #315c7a"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 274.275 358.418476 
+L 408.15 358.418476 
+L 408.15 340.683278 
+L 274.275 340.683278 
+z
+" clip-path="url(#pa26730b68f)" style="fill: #bac5cf"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 45.9 367.286075 
+L 518.4 367.286075 
+" clip-path="url(#pa26730b68f)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 45.9 367.286075 
+L 45.9 370.188199 
+" clip-path="url(#pa26730b68f)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 144.3375 367.286075 
+L 144.3375 370.188199 
+" clip-path="url(#pa26730b68f)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 242.775 367.286075 
+L 242.775 370.188199 
+" clip-path="url(#pa26730b68f)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 341.2125 367.286075 
+L 341.2125 370.188199 
+" clip-path="url(#pa26730b68f)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 439.65 367.286075 
+L 439.65 370.188199 
+" clip-path="url(#pa26730b68f)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 518.4 367.286075 
+L 518.4 370.188199 
+" clip-path="url(#pa26730b68f)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_14">
+    <path d="M 270.3375 393.888872 
+" clip-path="url(#pa26730b68f)" style="fill: none; stroke: #bac5cf; stroke-width: 1.5; stroke-linecap: square"/>
+    <defs>
+     <path id="ma2360fe38e" d="M -3.5 3.5 
+L 3.5 3.5 
+L 3.5 -3.5 
+L -3.5 -3.5 
+z
+" style="stroke: #bac5cf; stroke-linejoin: miter"/>
+    </defs>
+    <g clip-path="url(#pa26730b68f)">
+     <use xlink:href="#ma2360fe38e" x="270.3375" y="393.888872" style="fill: #bac5cf; stroke: #bac5cf; stroke-linejoin: miter"/>
+    </g>
+   </g>
+   <g id="line2d_15">
+    <path d="M 45.9 393.888872 
+" style="fill: none; stroke: #315c7a; stroke-width: 1.5; stroke-linecap: square"/>
+    <defs>
+     <path id="m00bdf0c13a" d="M -3.5 3.5 
+L 3.5 3.5 
+L 3.5 -3.5 
+L -3.5 -3.5 
+z
+" style="stroke: #315c7a; stroke-linejoin: miter"/>
+    </defs>
+    <g>
+     <use xlink:href="#m00bdf0c13a" x="45.9" y="393.888872" style="fill: #315c7a; stroke: #315c7a; stroke-linejoin: miter"/>
+    </g>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="283.446958" transform="rotate(-0 45.9 283.446958)">100,000 permutations per null · 9,600-test correction families</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="298.76372" transform="rotate(-0 45.9 298.76372)">Within recorded category</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 10px; font-family: 'Times New Roman'; text-anchor: middle; fill: #ffffff" x="203.4" y="313.243595" transform="rotate(-0 203.4 313.243595)">80</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 10px; font-family: 'Times New Roman'; text-anchor: middle; fill: #222222" x="406.18125" y="313.243595" transform="rotate(-0 406.18125 313.243595)">23</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Times New Roman'; text-anchor: start" x="459.3375" y="313.163029" transform="rotate(-0 459.3375 313.163029)">103</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="337.458697" transform="rotate(-0 45.9 337.458697)">Within category + sex/age blocks</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 10px; font-family: 'Times New Roman'; text-anchor: middle; fill: #ffffff" x="160.0875" y="351.938573" transform="rotate(-0 160.0875 351.938573)">58</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 10px; font-family: 'Times New Roman'; text-anchor: middle; fill: #222222" x="341.2125" y="351.938573" transform="rotate(-0 341.2125 351.938573)">34</text>
+   </g>
+   <g id="text_22">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Times New Roman'; text-anchor: start" x="416.025" y="351.858006" transform="rotate(-0 416.025 351.858006)">92</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="45.9" y="378.475968" transform="rotate(-0 45.9 378.475968)">0</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="144.3375" y="378.475968" transform="rotate(-0 144.3375 378.475968)">25</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="242.775" y="378.475968" transform="rotate(-0 242.775 378.475968)">50</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="341.2125" y="378.475968" transform="rotate(-0 341.2125 378.475968)">75</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="439.65" y="378.475968" transform="rotate(-0 439.65 378.475968)">100</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="518.4" y="378.475968" transform="rotate(-0 518.4 378.475968)">120</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: start" x="282.15" y="396.307308" transform="rotate(-0 282.15 396.307308)">Other empirical discoveries</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: start" x="57.7125" y="396.307308" transform="rotate(-0 57.7125 396.307308)">Overlap with primary, same direction</text>
+   </g>
+   <g id="text_31">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Times New Roman'; text-anchor: start; fill: #8b2f3f" x="45.9" y="418.879378" transform="rotate(-0 45.9 418.879378)">55 cross-design point candidates; 0 pass simultaneous MC upper bounds.</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="437.420722" transform="rotate(-0 45.9 437.420722)">Empirical point-estimate BH discoveries; null designs are not replications.</text>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="266.222376" transform="rotate(-0 45.9 266.222376)">B   Within-GMDB label permutations</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_8">
+    <path d="M 45.9 555.44712 
+L 311.9 555.44712 
+L 311.9 532.592899 
+L 45.9 532.592899 
+z
+" clip-path="url(#p3013bad1e4)" style="fill: #315c7a"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 45.9 585.919415 
+L 437.9 585.919415 
+L 437.9 563.065194 
+L 45.9 563.065194 
+z
+" clip-path="url(#p3013bad1e4)" style="fill: #117733"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 45.9 633.804449 
+L 407.775 633.804449 
+L 407.775 610.950228 
+L 45.9 610.950228 
+z
+" clip-path="url(#p3013bad1e4)" style="fill: #315c7a"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 45.9 664.276744 
+L 482.775 664.276744 
+L 482.775 641.422523 
+L 45.9 641.422523 
+z
+" clip-path="url(#p3013bad1e4)" style="fill: #117733"/>
+   </g>
+   <g id="line2d_16">
+    <path d="M 45.9 672.438966 
+L 518.4 672.438966 
+" clip-path="url(#p3013bad1e4)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_17">
+    <path d="M 45.9 672.438966 
+L 45.9 676.356832 
+" clip-path="url(#p3013bad1e4)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_18">
+    <path d="M 164.025 672.438966 
+L 164.025 676.356832 
+" clip-path="url(#p3013bad1e4)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_19">
+    <path d="M 282.15 672.438966 
+L 282.15 676.356832 
+" clip-path="url(#p3013bad1e4)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_20">
+    <path d="M 400.275 672.438966 
+L 400.275 676.356832 
+" clip-path="url(#p3013bad1e4)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_21">
+    <path d="M 518.4 672.438966 
+L 518.4 676.356832 
+" clip-path="url(#p3013bad1e4)" style="fill: none; stroke: #888888; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="507.017938" transform="rotate(-0 45.9 507.017938)">1,000 without-replacement draws per design; same original discoveries</text>
+   </g>
+   <g id="text_35">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="522.254085" transform="rotate(-0 45.9 522.254085)">African recorded category</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: middle; fill: #ffffff" x="178.9" y="546.173506" transform="rotate(-0 178.9 546.173506)">Original: 76/135 (56.3%) · ref n = 52</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: middle; fill: #ffffff" x="241.9" y="576.6458" transform="rotate(-0 241.9 576.6458)">Larger subset: 112/135 (83.0%) · ref n = 832</text>
+   </g>
+   <g id="text_38">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="600.611414" transform="rotate(-0 45.9 600.611414)">Asian recorded category</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: middle; fill: #ffffff" x="226.8375" y="624.530835" transform="rotate(-0 226.8375 624.530835)">Original: 193/252 (76.6%) · ref n = 190</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 9px; font-family: 'Times New Roman'; text-anchor: middle; fill: #ffffff" x="264.3375" y="655.003129" transform="rotate(-0 264.3375 655.003129)">Larger subset: 233/252 (92.5%) · ref n = 3040</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="45.9" y="685.603914" transform="rotate(-0 45.9 685.603914)">0</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="164.025" y="685.603914" transform="rotate(-0 164.025 685.603914)">25</text>
+   </g>
+   <g id="text_43">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="282.15" y="685.603914" transform="rotate(-0 282.15 685.603914)">50</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="400.275" y="685.603914" transform="rotate(-0 400.275 685.603914)">75</text>
+   </g>
+   <g id="text_45">
+    <text style="font-size: 8px; font-family: 'Times New Roman'; text-anchor: middle" x="518.4" y="685.603914" transform="rotate(-0 518.4 685.603914)">100</text>
+   </g>
+   <g id="text_46">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="695.293187" transform="rotate(-0 45.9 695.293187)">Combined: 269/387 (69.5%) → 345/387 (89.1%).</text>
+   </g>
+   <g id="text_47">
+    <text style="font-size: 8.5px; font-family: 'Times New Roman'" transform="translate(45.9 709.954102)">Stable: global q &lt; 0.05 in ≥80% of draws; original g sign in ≥95%.</text>
+    <text style="font-size: 8.5px; font-family: 'Times New Roman'" transform="translate(45.9 719.235704)">European references fixed. Full-pool and bootstrap results are separate.</text>
+   </g>
+   <g id="text_48">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Times New Roman'; text-anchor: start" x="45.9" y="488.664753" transform="rotate(-0 45.9 488.664753)">C   Reference stability: original versus larger subsets</text>
+   </g>
+  </g>
+  <g id="text_49">
+   <text style="font-size: 13px; font-family: 'Times New Roman'; text-anchor: middle" x="270" y="20.582875" transform="rotate(-0 270 20.582875)">Sensitivity of race-stratified FaceKit associations</text>
+  </g>
+  <g id="text_50">
+   <text style="font-size: 9px; font-family: 'Times New Roman'" transform="translate(45.9 751.336059)">Internal sensitivity only; no independent clinical validation</text>
+   <text style="font-size: 9px; font-family: 'Times New Roman'" transform="translate(45.9 761.1552)">or elimination of image-source confounding.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pfaa12f1f64">
+   <rect x="45.9" y="57.78" width="472.5" height="161.229072"/>
+  </clipPath>
+  <clipPath id="pa26730b68f">
+   <rect x="45.9" y="280.222376" width="472.5" height="161.229072"/>
+  </clipPath>
+  <clipPath id="p3013bad1e4">
+   <rect x="45.9" y="502.664753" width="472.5" height="217.659247"/>
+  </clipPath>
+ </defs>
+</svg>

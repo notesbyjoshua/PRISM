@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETED",
+  "scope": "Category-level plotting aggregates only; no syndrome, feature, patient or image records",
+  "original_summary_sha256": "bdf73bc8f210e913a9676d6521bd46d459ae7cc37e45321833f56b05dc7d84df",
+  "plan": {
+    "baseline_id": "PRISM_RACE_STRATIFIED_20261115",
+    "planned_family": 9600,
+    "requested_repetitions": 1000,
+    "original_quotas": {
+      "African": 52,
+      "Asian": 190,
+      "European": 647
+    },
+    "pools": {
+      "African": 1174,
+      "Asian": 3228,
+      "European": 647
+    },
+    "stability_rule": "q<.05 in >=80% and same finite nonzero original-g sign in >=95% of draws",
+    "ladder": [
+      {
+        "African": 52,
+        "Asian": 190,
+        "European": 647
+      },
+      {
+        "African": 104,
+        "Asian": 380,
+        "European": 647
+      },
+      {
+        "African": 208,
+        "Asian": 760,
+        "European": 647
+      },
+      {
+        "African": 416,
+        "Asian": 1520,
+        "European": 647
+      },
+      {
+        "African": 832,
+        "Asian": 3040,
+        "European": 647
+      },
+      {
+        "African": 1174,
+        "Asian": 3228,
+        "European": 647
+      }
+    ]
+  },
+  "summary_rows": [
+    {
+      "design": "A_original",
+      "canonical_race": "African",
+      "sampling_scheme": "original_without_replacement_subset",
+      "reference_n": 52,
+      "repetitions": 1000,
+      "reference_selection_varies": true,
+      "original_discoveries": 135,
+      "stable_original": 76,
+      "stable_original_percent": 56.2962962962963
+    },
+    {
+      "design": "A_original",
+      "canonical_race": "Asian",
+      "sampling_scheme": "original_without_replacement_subset",
+      "reference_n": 190,
+      "repetitions": 1000,
+      "reference_selection_varies": true,
+      "original_discoveries": 252,
+      "stable_original": 193,
+      "stable_original_percent": 76.5873015873016
+    },
+    {
+      "design": "C_stage_4",
+      "canonical_race": "African",
+      "sampling_scheme": "without_replacement_subset",
+      "reference_n": 832,
+      "repetitions": 1000,
+      "reference_selection_varies": true,
+      "original_discoveries": 135,
+      "stable_original": 112,
+      "stable_original_percent": 82.96296296296296
+    },
+    {
+      "design": "C_stage_4",
+      "canonical_race": "Asian",
+      "sampling_scheme": "without_replacement_subset",
+      "reference_n": 3040,
+      "repetitions": 1000,
+      "reference_selection_varies": true,
+      "original_discoveries": 252,
+      "stable_original": 233,
+      "stable_original_percent": 92.46031746031748
+    }
+  ],
+  "diagnostic_source_sha256": {
+    "local_review/reference_stability_diagnostic/source_and_execution_manifest.json": "8baaf502ab6e575fe45bc34f7977ec17b355ad42eaa2178aec95c8015c1cbb15",
+    "local_review/reference_stability_diagnostic/reference_size_ladder_summary.csv": "96ab1e3745619760dae1b4460fa1afe6cf79f31fab032bdd32806d5e23951318",
+    "local_review/reference_stability_diagnostic/verification_report.json": "64df60bbf9dd65070bf09ee29cff4c330023afeb36391aa889e66b0ebb67d325"
+  }
+}
