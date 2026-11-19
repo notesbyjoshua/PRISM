@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "study": "PRISM_RACE_STRATIFIED_20261115",
+  "locked_before_cross_category_results": true,
+  "literature_shortlist": "Reuse all ten prior locked internally validated candidates, ordered by existing descriptive priority; require primary global q<0.05 and audit status not_identified_in_reviewed_annotation_catalogs. No claim of exhaustive literature absence.",
+  "heterogeneity_family": "All eligible category pairs for every exact syndrome and all 120 features, irrespective of primary significance; expected 1,920 tests",
+  "contrast": "(case mean A - reference mean A) - (case mean B - reference mean B), in original feature units",
+  "test": "Two-sided generalized Welch-Satterthwaite four-independent-group linear contrast. SE^2=sum(s_i^2/n_i); df=(sum v_i)^2/sum(v_i^2/(n_i-1)); t=contrast/SE",
+  "adjustment": "Separate BH family over all 1,920 contrasts; supplementary BY adjustment over same family for arbitrary dependence. Original 9,600 primary q values unchanged.",
+  "recommendation_filter": "Interaction BH q<0.05; at least one original primary global q<0.05; rank BY-passing first, then interaction BH q, decreasing abs(t), exact disease/feature/race keys; retain one comparison per syndrome/anatomical trait family until ten",
+  "additional_undercharacterized_list": "Same filter and ranking, additionally require at least one category pair member missing from reviewed annotation catalogs; no re-correction of filtered rows",
+  "limitations": "Approximate mean test with small cells, normality/independence assumptions, selected follow-up display, correlated traits/shared reference groups, unadjusted age/sex/source/pose. Relative-to-reference mean gaps, not tests of primary Mann-Whitney estimand or Hedges g equality. Recorded labels, not biological ancestry or causal effects.",
+  "privacy": "All real outputs in verified ignored local_review/followup_recommendations_20261115; no raw patient data or manuscript modifications"
+}
